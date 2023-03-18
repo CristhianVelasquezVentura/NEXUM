@@ -1,1 +1,186 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer utilities {
+  :root {
+    --c-white: #FFFFFF;
+    --c-zc-50: #FAFAFA;
+    --c-zc-200: #E4E4E7;
+    --c-zc-400: #A1A1AA;
+    --c-zc-600: #52525B;
+    --c-zc-800: #27272A;
+    --c-zc-900: #1D1D20;
+    --c-black: #18181B;
+
+    --c-brand: #F66100;
+    --c-brand-light: #FFF1E8;
+    --c-brand-dark: #1D1D20;
+    --c-brand-gradient: linear-gradient(90deg, #F66100 0%, #F4BC2C 100%);
+
+    --c-alert-error-l: #EF4444;
+    --c-alert-success-l: #22C55E;
+    --c-alert-info-l: #0284C7;
+    --c-alert-warning-l: #FBBF24;
+
+    --c-alert-error-d: #EF4444;
+    --c-alert-success-d: #22C55E;
+    --c-alert-info-d: #0284C7;
+    --c-alert-warning-d: #FBBF24;
+  }
+  .theme-light {
+    --c-fl-white: var(--c-white);
+    --c-fl-zc-50: var(--c-zc-50);
+    --c-fl-zc-200: var(--c-zc-200);
+    --c-fl-zc-400: var(--c-zc-400);
+    --c-fl-zc-600: var(--c-zc-600);
+    --c-fl-zc-800: var(--c-zc-800);
+    --c-fl-zc-900: var(--c-zc-900);
+    --c-fl-black: var(--c-black);
+
+    --c-fl-brand: var(--c-brand);
+    --c-fl-brand-light: var(--c-brand-light);
+    --c-fl-brand-dark: var(--c-brand-dark);
+    --c-fl-brand-gradient: var(--c-brand-gradient);
+
+    --c-fl-alert-error: var(--c-alert-error-d);
+    --c-fl-alert-success: var(--c-alert-success-d);
+    --c-fl-alert-info: var(--c-alert-info-d);
+    --c-fl-alert-warning: var(--c-alert-warning-d);
+  }
+}
+
+@layer utilities {
+  .theme-dark {
+    --c-fl-white: var(--c-black);
+    --c-fl-zc-50: var(--c-zc-900);
+    --c-fl-zc-200: var(--c-zc-800);
+    --c-fl-zc-400: var(--c-zc-600);
+    --c-fl-zc-600: var(--c-zc-400);
+    --c-fl-zc-800: var(--c-zc-200);
+    --c-fl-zc-900: var(--c-zc-50);
+    --c-fl-black: var(--c-white);
+
+    --c-fl-brand: var(--c-brand);
+    --c-fl-brand-light: var(--c-brand-dark);
+    --c-fl-brand-dark: var(--c-brand-light);
+    --c-fl-brand-gradient: var(--c-brand-gradient);
+
+    --c-fl-alert-error: var(--c-alert-error-l);
+    --c-fl-alert-success: var(--c-alert-success-l);
+    --c-fl-alert-info: var(--c-alert-info-l);
+    --c-fl-alert-warning: var(--c-alert-warning-l);
+  }
+}
+
+@layer components {
+
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Mulish:ital@0;1&display=swap');
+
+  .t-title {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+  }
+  .t-subtitle {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .t-body {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+  }
+  .t-body-b {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+  }
+  .t-label {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+  }
+  .t-label-b {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+
+  .b-solid {
+    background: linear-gradient(90deg, #F66100 0%, #F4BC2C 100%);
+    @apply p-3 flex items-center justify-center text-white t-body rounded-lg hover:t-body-b;
+  }
+
+  .b-ghost-sm {
+    @apply p-2 rounded-lg hover:bg-zc-50;
+  }
+
+  .b-ghost-md {
+    @apply py-2 px-4 t-body text-zc-600 rounded-lg bg-zc-50 hover:bg-zc-200;
+    min-width: 160px;
+  }
+
+  .b-tab-on {
+    @apply px-2 py-1 flex items-center justify-center text-black t-body rounded-lg hover:bg-brand-c hover:text-white bg-brand-l;
+  }
+
+  .b-tab-off {
+    @apply px-2 py-1 flex items-center justify-center text-black t-body rounded-lg hover:bg-brand-c hover:text-white;
+  }
+
+  .b-nav-only {
+    @apply w-80 px-8 py-5 flex items-center justify-center t-body text-brand-c bg-white rounded-full border border-zc-200 drop-shadow-xl disabled:text-zc-200 hover:t-body-b
+  }
+  .b-nav-dual {
+    @apply w-80 space-x-2 px-8 py-5 flex items-center justify-center t-body bg-white rounded-full border border-zc-200 drop-shadow-xl;
+    button {
+      @apply disabled:text-zc-200 hover:t-body-b flex-1 h-full rounded flex items-center justify-center;
+    }
+    .primary {
+      @apply text-brand-c
+    }
+    .secondary {
+      @apply text-zc-600
+    }
+    .separador {
+      @apply h-6 border border-zc-200
+    }
+  }
+
+  .i-outline {
+    @apply border border-zc-200 rounded-lg flex flex-col p-3;
+    label {
+      @apply t-label text-zc-400;
+    }
+    input {
+      @apply t-body text-black outline-none placeholder-zc-200 h-10;
+    }
+    span {
+      @apply text-alert-error t-label;
+    }
+  }
+
+}
+
+/*Global Styles*/
+input {
+  background: transparent;
+}
+
+/* Icons */

@@ -1,0 +1,43 @@
+<div class="p-8 flex justify-center">
+  <div class="flex-1 space-y-8" style="max-width: 640px;">
+    <app-header-document-sign></app-header-document-sign>
+    <div class="space-y-10">
+      <div class="flex flex-col gap-4">
+        <span class="t-title text-zc-800">Buenas tardes</span>
+        <span class="t-body text-zc-400">Ingrese el código que recibió en su correo para iniciar con el proceso de firma.</span>
+      </div>
+      <div class="w-full flex items-center justify-center space-x-4">
+        <div class="w-28 h-28 flex flex-col items-center justify-center rounded-lg bg-brand-l text-brand-c t-label-b">
+          <div>
+            <svg class="stroke-brand-c" width="73" height="72" viewBox="0 0 73 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.5 24L33.1718 39.7812C35.1872 41.1248 37.8128 41.1248 39.8282 39.7812L63.5 24M15.5 57H57.5C60.8137 57 63.5 54.3137 63.5 51V21C63.5 17.6863 60.8137 15 57.5 15H15.5C12.1863 15 9.5 17.6863 9.5 21V51C9.5 54.3137 12.1863 57 15.5 57Z" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span>Revise su correo</span>
+        </div>
+        <div class="stroke-brand-c">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.3333 9.3335L24 16.0002M24 16.0002L17.3333 22.6668M24 16.0002L8 16.0002" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="w-28 h-28 flex flex-col items-center justify-center rounded-lg bg-brand-l text-brand-c t-label-b">
+          <div>
+            <svg class="stroke-brand-c" width="73" height="72" viewBox="0 0 73 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M36.5 54H36.53M24.5 63H48.5C51.8137 63 54.5 60.3137 54.5 57V15C54.5 11.6863 51.8137 9 48.5 9H24.5C21.1863 9 18.5 11.6863 18.5 15V57C18.5 60.3137 21.1863 63 24.5 63Z" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span>Ingrese el código</span>
+        </div>
+      </div>
+      <div class="border border-zc-200 bg-white rounded-lg flex flex-col gap-4 p-6 md:flex-row md:items-center">
+        <div class="i-outline w-full">
+          <label>Código</label>
+          <input type="text" placeholder="Ingrese el código de acceso">
+        </div>
+        <button routerLink="/sign/review-doc" class="b-solid" style="min-width: 160px;">Verificar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-toast></app-toast>

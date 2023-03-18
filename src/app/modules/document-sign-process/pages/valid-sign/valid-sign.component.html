@@ -1,0 +1,92 @@
+<div class="flex w-full space-x-4 h-screen flex-row justify-center bg-zc-50 lg:px-8">
+  <div class="flex h-screen w-full flex-col" style="max-width: 1200px;">
+    <div class="header h-fit w-full p-8">
+      <app-header-document-sign [title]="'Proceso de Firma'"></app-header-document-sign>
+    </div>
+    <div class="flex lg:space-x-6 w-full" style="height: calc(100vh - 100px)">
+      <div class="hidden lg:block w-60">
+        <app-steper [steper]="['s','s','f']"></app-steper>
+      </div>
+      <div class="body rounded-t-lg relative flex-1 flex flex-col lg:items-center lg:justify-center p-8 space-y-4 bg-white" style="height: calc(100vh - 100px)">
+        <div *ngIf="true" class="h-fit space-y-2">
+          <app-steper class="lg:hidden" [steper]="['s','s','f']"></app-steper>
+          <div>
+            <span class="t-body text-zc-400">El código de acceso de un solo uso (OTP), fue enviado por Correo y/o SMS, revise sus bandejas.</span>
+          </div>
+        </div>
+        <div *ngIf="true" class="h-full lg:h-fit space-y-4 overflow-y-auto rounded-lg pb-16">
+          <div class="w-full flex items-center justify-center space-x-4">
+            <div class="w-28 h-28 flex flex-col items-center justify-center rounded-lg bg-brand-l text-brand-c t-label-b">
+              <div>
+                <svg class="stroke-brand-c" width="73" height="72" viewBox="0 0 73 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.5 24L33.1718 39.7812C35.1872 41.1248 37.8128 41.1248 39.8282 39.7812L63.5 24M15.5 57H57.5C60.8137 57 63.5 54.3137 63.5 51V21C63.5 17.6863 60.8137 15 57.5 15H15.5C12.1863 15 9.5 17.6863 9.5 21V51C9.5 54.3137 12.1863 57 15.5 57Z" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <span>Revise su correo</span>
+            </div>
+            <div class="stroke-brand-c">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M28 28L20 20M22.6667 13.3333C22.6667 18.488 18.488 22.6667 13.3333 22.6667C8.17868 22.6667 4 18.488 4 13.3333C4 8.17868 8.17868 4 13.3333 4C18.488 4 22.6667 8.17868 22.6667 13.3333Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="w-28 h-28 flex flex-col items-center justify-center rounded-lg bg-brand-l text-brand-c t-label-b">
+              <div>
+                <svg class="stroke-brand-c" width="73" height="72" viewBox="0 0 73 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M36.5 54H36.53M24.5 63H48.5C51.8137 63 54.5 60.3137 54.5 57V15C54.5 11.6863 51.8137 9 48.5 9H24.5C21.1863 9 18.5 11.6863 18.5 15V57C18.5 60.3137 21.1863 63 24.5 63Z" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <span>Revise su SMS</span>
+            </div>
+          </div>
+          <div class="border lg:w-[480px] border-zc-200 bg-white rounded-lg flex flex-col gap-4 p-6 md:flex-row md:items-center">
+            <div class="i-outline w-full">
+              <label>Código</label>
+              <input type="text" placeholder="Ingrese el código de acceso">
+            </div>
+            <button class="b-solid" style="min-width: 160px;">Verificar</button>
+          </div>
+          <div class="text-center">
+            <span class="t-label text-zc-400">En caso omiso revise las bandejas de SPAM.</span>
+          </div>
+        </div>
+
+        <div *ngIf="false" class="notify-sign-valid space-y-2 flex flex-col items-center justify-center">
+          <div>
+            <svg class="stroke-current stroke-alert-success" width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M60 80L73.3333 93.3333L100 66.6667M52.2316 31.3136C57.0151 30.9319 61.5564 29.0509 65.2088 25.9383C73.732 18.6749 86.268 18.6749 94.7912 25.9383C98.4436 29.0509 102.985 30.9319 107.768 31.3136C118.931 32.2045 127.796 41.0687 128.686 52.2316C129.068 57.0151 130.949 61.5564 134.062 65.2088C141.325 73.732 141.325 86.268 134.062 94.7912C130.949 98.4436 129.068 102.985 128.686 107.768C127.796 118.931 118.931 127.796 107.768 128.686C102.985 129.068 98.4436 130.949 94.7912 134.062C86.268 141.325 73.732 141.325 65.2088 134.062C61.5564 130.949 57.0151 129.068 52.2316 128.686C41.0687 127.796 32.2045 118.931 31.3136 107.768C30.9319 102.985 29.0509 98.4436 25.9383 94.7912C18.6749 86.268 18.6749 73.732 25.9383 65.2088C29.0509 61.5564 30.9319 57.0151 31.3136 52.2316C32.2045 41.0687 41.0687 32.2045 52.2316 31.3136Z" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="text-alert-success t-subtitle">Verificado</span>
+        </div>
+
+        <div *ngIf="false" class="notify-sign-send space-y-2 flex flex-col items-center justify-center">
+          <div>
+            <svg width="240" height="120" viewBox="0 0 240 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M45 60.0001L55 70.0001L75 50.0001M103.089 29.9217C102.066 29.9736 101.036 29.9999 100 29.9999C84.6327 29.9999 70.6148 24.2227 59.9997 14.7217C49.3846 24.2223 35.3669 29.9992 20 29.9992C18.9639 29.9992 17.9339 29.973 16.9106 29.9211C15.6635 34.7392 15 39.7921 15 45.0001C15 72.9576 34.1216 96.4491 60 103.11C85.8784 96.4491 105 72.9576 105 45.0001C105 39.7923 104.337 34.7396 103.089 29.9217Z" stroke="url(#paint0_linear_20_941)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M193.75 82.4991C200.293 82.4991 202.841 85.4115 204.776 91.8705L205.116 93.0568C206.028 96.343 206.574 97.3275 207.679 97.783C208.974 98.317 209.838 98.2411 211.196 97.543L211.931 97.1314C212.195 96.9726 212.483 96.7896 212.809 96.5744L216.125 94.3174C219.204 92.292 221.971 90.9533 225.34 90.111C227.35 89.6087 229.386 90.8303 229.888 92.8396C230.39 94.8488 229.169 96.8848 227.159 97.3871C225.124 97.8959 223.368 98.666 221.433 99.8339L219.94 100.788L217.545 102.428C216.396 103.209 215.529 103.749 214.625 104.213C211.411 105.866 208.276 106.141 204.821 104.717C201.097 103.182 199.595 100.818 198.189 96.1089L197.41 93.4C196.504 90.4533 195.886 89.9991 193.75 89.9991C192.203 89.9991 190.602 90.7729 188.408 92.6139L187.484 93.4185L182.88 97.7952C175.839 104.413 169.837 107.627 161.243 107.627C152.812 107.627 145.52 106.357 139.398 103.782L154.136 99.7613C156.373 100.004 158.741 100.127 161.243 100.127C167.157 100.127 171.402 98.0519 176.674 93.3137L177.965 92.1202L180.624 89.5645C181.808 88.4304 182.694 87.6179 183.587 86.8688C187.005 84.0006 190.111 82.4991 193.75 82.4991ZM215.152 14.8474C222.139 21.8347 222.139 33.1634 215.152 40.1507L213.711 41.5943C219.468 48.601 219.26 56.0267 213.905 61.3969L203.899 71.403C202.433 72.8662 200.059 72.8642 198.596 71.3984C197.133 69.9327 197.135 67.5583 198.601 66.0951L208.594 56.1013C211.019 53.6691 211.3 50.6496 208.395 46.9095L165.31 89.9924C163.926 91.3767 162.204 92.3759 160.315 92.891L134.737 99.8669C131.937 100.63 129.369 98.0617 130.132 95.2624L137.108 69.6839C137.623 67.7951 138.622 66.0734 140.007 64.689L189.848 14.8474C196.836 7.86011 208.164 7.86011 215.152 14.8474ZM195.152 20.1507L145.31 69.9924C144.848 70.4538 144.515 71.0277 144.344 71.6573L139.094 90.9045L158.342 85.6553C158.971 85.4836 159.545 85.1505 160.007 84.689L209.848 34.8474C213.907 30.789 213.907 24.2091 209.848 20.1507C205.79 16.0923 199.21 16.0923 195.152 20.1507Z" fill="url(#paint1_linear_20_941)"/>
+              <defs>
+                <linearGradient id="paint0_linear_20_941" x1="15" y1="59.9435" x2="105" y2="59.9435" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#F66100"/>
+                  <stop offset="1" stop-color="#F4BC2C"/>
+                </linearGradient>
+                <linearGradient id="paint1_linear_20_941" x1="129.996" y1="59.7565" x2="230.001" y2="59.7565" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#F66100"/>
+                  <stop offset="1" stop-color="#F4BC2C"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <span class="text-brand-c t-subtitle">Firma Enviada</span>
+        </div>
+
+        <div *ngIf="true" class="b-nav-dual absolute left-1/2 -translate-x-2/4 bottom-4">
+          <button routerLink="/sign/sign-user" class="secondary">Anterior</button>
+          <div class="separador"></div>
+          <button disabled class="primary">Enviar Firma</button>
+        </div>
+        <button *ngIf="false" class="b-nav-only absolute left-1/2 -translate-x-2/4 bottom-4">Enviar Firma</button>
+        <button *ngIf="false" class="b-nav-only absolute left-1/2 -translate-x-2/4 bottom-4">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

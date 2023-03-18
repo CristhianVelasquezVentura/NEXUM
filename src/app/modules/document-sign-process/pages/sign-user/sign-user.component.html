@@ -1,0 +1,31 @@
+<div class="flex w-full space-x-4 h-screen flex-row justify-center bg-zc-50 lg:px-8">
+  <div class="flex h-screen w-full flex-col" style="max-width: 1200px;">
+    <div class="header h-fit w-full p-8">
+      <app-header-document-sign [title]="'Proceso de Firma'"></app-header-document-sign>
+    </div>
+    <div class="flex lg:space-x-6 w-full" style="height: calc(100vh - 100px)">
+      <div class="hidden lg:block w-60">
+        <app-steper [steper]="['s','f','d']"></app-steper>
+      </div>
+      <div class="body rounded-t-lg relative flex-1 flex flex-col lg:items-center lg:justify-center p-8 space-y-4 bg-white" style="height: calc(100vh - 100px)">
+        <div class="h-fit space-y-2">
+          <app-steper class="lg:hidden" [steper]="['s','f','d']"></app-steper>
+        </div>
+        <div>
+          <span class="t-label text-zc-400">Consejo: Que la firma quede lo más centrado posible.</span>
+        </div>
+        <div class="h-full lg:h-fit space-y-4 overflow-y-auto rounded-lg pb-16">
+          <div class="flex flex-col space-y-6 w-full items-center">
+            <div class="sign-container border border-brand-c rounded-lg" style="width: 320px; height: 160px;"></div>
+            <button class="b-ghost-md">Reintentar</button>
+          </div>
+        </div>
+        <div class="b-nav-dual absolute left-1/2 -translate-x-2/4 bottom-4">
+          <button routerLink="/sign/review-doc" class="secondary">Anterior</button>
+          <div class="separador"></div>
+          <button routerLink="/sign/valid-sign" class="primary">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
