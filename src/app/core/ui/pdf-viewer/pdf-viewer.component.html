@@ -1,0 +1,5 @@
+<div class="canvas-pdf">
+  <ng-content></ng-content>
+  <canvas *ngIf="!showAll" #pdfLib style="direction: ltr;"></canvas>
+  <div *ngIf="showAll" #pdfViewer class="flex flex-col gap-4"></div>
+</div>

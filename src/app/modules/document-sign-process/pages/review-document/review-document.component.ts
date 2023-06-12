@@ -1,11 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   trigger,
   state,
   style,
   animate,
-  transition, query, stagger
+  transition
 } from '@angular/animations';
+import {Subscription} from "rxjs";
+import {GetExtensionOfBase64, getTokenUser} from "@app/core/utils/validations/validations";
+import {HttpErrorResponse} from "@angular/common/http";
+import {DocumentService} from "@app/core/services/document/document.service";
+import {FileAnnexe} from "@app/core/models/document";
+import {Router} from "@angular/router";
+import {ToastService} from "ecapture-ng-ui";
 
 @Component({
   selector: 'app-review-document',
@@ -35,15 +42,84 @@ import {
 export class ReviewDocumentComponent implements OnInit {
 
   public typeDoc: string = 'document';
+  public document: any;
+  public signer: any;
 
-  isOpen = true;
-  toggle() {
-    this.isOpen = !this.isOpen;
+  private _subscription: Subscription = new Subscription();
+  // public readonly toastStyle: ToastStyleModel = toastDataStyle;
+  public documentsAnnexes: FileAnnexe[] = [];
+
+  public blockPage: boolean = false;
+  public mainDocument!: FileAnnexe;
+
+  constructor(
+    private _messageService: ToastService,
+    private _documentService: DocumentService,
+    private _router: Router
+  ) {
+    const token = sessionStorage.getItem('signature-token');
+    /*if (!token) {
+      this._router.navigateByUrl('');
+      this._messageService.add({type: 'error', message: 'No esta autorizado para firmar este documento!', life: 5000});
+      return;
+    }*/
+
+    this.signer = getTokenUser(token || '');
+    if (!this.signer || !this.signer.document) return;
+    sessionStorage.setItem('signer', JSON.stringify(this.signer));
   }
 
-  constructor() { }
+  ngOnDestroy(): void {
+    this._subscription.unsubscribe();
+  }
 
   ngOnInit(): void {
+    /*this.blockPage = true;
+    this._subscription.add(
+      this._documentService.getFilesByDocumentID(this.signer.document).subscribe({
+        next: (res) => {
+          if (res.error) {
+            this._messageService.add({type: 'error', message: res.msg, life: 5000});
+            this.blockPage = false;
+            return;
+          }
+
+          if (!res.data || !res.data.length) {
+            this._messageService.add({
+              type: 'warning',
+              message: 'No se encontraron documentos relacionados',
+              life: 5000
+            });
+            this.blockPage = false;
+          }
+
+          for (const document of res.data) {
+            if (document.file_id === 1) {
+              document.type = GetExtensionOfBase64(document.encoding);
+              this.mainDocument = document;
+            }
+
+            document.active = false;
+            document.type = GetExtensionOfBase64(document.encoding);
+            this.documentsAnnexes.push(document);
+          }
+          /!*if (!this.endOtp && !this.existOtp) {
+            this.generateCodeOTP();
+            this.isOtpGenerated.emit(true);
+          }*!/
+          this.blockPage = false;
+        },
+        error: (err: HttpErrorResponse) => {
+          console.error(err);
+          this.blockPage = false;
+          this._messageService.add({
+            type: 'error',
+            message: 'No se pudo obtener los archivos relacionados al documento, intente nuevamente!',
+            life: 5000
+          });
+        }
+      })
+    );*/
   }
 
 }

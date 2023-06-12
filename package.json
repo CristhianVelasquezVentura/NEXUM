@@ -18,6 +18,10 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "@auth0/angular-jwt": "^5.1.2",
+    "@types/offscreencanvas": "^2019.7.0",
+    "ecapture-ng-ui": "^0.0.83",
+    "pdfjs-dist": "^3.7.107",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
