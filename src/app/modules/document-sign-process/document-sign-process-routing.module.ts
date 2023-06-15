@@ -1,16 +1,9 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {AccessProcessSignComponent} from "./pages/access-process-sign/access-process-sign.component";
-import {ReviewDocumentComponent} from "./pages/review-document/review-document.component";
-import {SignUserComponent} from "./pages/sign-user/sign-user.component";
-import { ValidSignComponent } from "./pages/valid-sign/valid-sign.component";
+import {DocumentSignProcessComponent} from "@app/modules/document-sign-process/document-sign-process.component";
 
 const routes: Routes = [
-  {path: '', redirectTo: 'access', pathMatch: 'full'},
-  {path: 'access', component: AccessProcessSignComponent},
-  {path: 'review-doc', component: ReviewDocumentComponent},
-  {path: 'sign-user', component: SignUserComponent},
-  {path: 'valid-sign', component: ValidSignComponent},
+  {path: '', component: DocumentSignProcessComponent}
 ];
 
 @NgModule({

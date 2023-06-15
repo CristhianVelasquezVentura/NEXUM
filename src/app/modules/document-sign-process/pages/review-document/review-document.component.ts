@@ -7,7 +7,7 @@ import {
   transition
 } from '@angular/animations';
 import {Subscription} from "rxjs";
-import {GetExtensionOfBase64, getTokenUser} from "@app/core/utils/validations/validations";
+import {GetExtensionOfBase64, GetTokenUser} from "@app/core/utils/validations/validations";
 import {HttpErrorResponse} from "@angular/common/http";
 import {DocumentService} from "@app/core/services/document/document.service";
 import {FileAnnexe} from "@app/core/models/document";
@@ -51,6 +51,7 @@ export class ReviewDocumentComponent implements OnInit {
 
   public blockPage: boolean = false;
   public mainDocument!: FileAnnexe;
+  public indexAnnexeSelected: number = 0;
 
   constructor(
     private _messageService: ToastService,
@@ -64,7 +65,7 @@ export class ReviewDocumentComponent implements OnInit {
       return;
     }*/
 
-    this.signer = getTokenUser(token || '');
+    this.signer = GetTokenUser(token || '');
     if (!this.signer || !this.signer.document) return;
     sessionStorage.setItem('signer', JSON.stringify(this.signer));
   }
@@ -120,6 +121,10 @@ export class ReviewDocumentComponent implements OnInit {
         }
       })
     );*/
+  }
+
+  public getExtension(file: string): string {
+    return GetExtensionOfBase64(file);
   }
 
 }

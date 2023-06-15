@@ -1,4 +1,5 @@
 import {JwtHelperService} from '@auth0/angular-jwt';
+
 export const onlyNumbers = (value: any) => {
   const key = value.charCode;
   return key >= 48 && key <= 57;
@@ -6,24 +7,22 @@ export const onlyNumbers = (value: any) => {
 
 const helper = new JwtHelperService();
 
-export const getTokenUser = (token: string) => {
-  let user: any;
-  if (token) {
-    user = helper.decodeToken(token);
-  }
+export const GetTokenUser = (token: string) => {
+  let user = null;
+  if (token) return helper.decodeToken(token);
   return user;
 }
 
-export const isInvalidToken = (token: string) => {
+export const IsInvalidToken = (token: string) => {
   if (token) {
-      return helper.isTokenExpired(token);
+    return helper.isTokenExpired(token);
   } else {
     return true;
   }
 }
 
-export const getTokenExpirationDate = (token: string) => {
-  let expirationDate: any;
+export const GetTokenExpirationDate = (token: string): Date | null => {
+  let expirationDate: Date | null = null;
   if (token) {
     expirationDate = helper.getTokenExpirationDate(token);
   }
@@ -31,6 +30,22 @@ export const getTokenExpirationDate = (token: string) => {
 }
 
 export const GetExtensionOfBase64 = (base64: string): string => {
+  const signatures = {
+    pdf: "PDF",
+    gif: "GIF",
+    gif2: "GIF",
+    png: "PNG",
+    jpg: "JPG"
+  };
+  if (base64.indexOf('JVBERi0') !== -1) return signatures.pdf;
+  if (base64.indexOf('R0lGODdh') !== -1) return signatures.gif;
+  if (base64.indexOf('R0lGODlh') !== -1) return signatures.gif2;
+  if (base64.indexOf('iVBORw0KGgo') !== -1) return signatures.png;
+  if (base64.indexOf('/9j/') !== -1) return signatures.jpg;
+  return 'JPG';
+}
+
+export const GetMimeTypeOfBase64 = (base64: string): string => {
   const signatures = {
     pdf: "application/pdf",
     gif: "image/gif",

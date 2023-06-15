@@ -1,18 +1,19 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {Subscription} from "rxjs";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {HttpErrorResponse} from "@angular/common/http";
 import {SignService} from "@app/core/services/sign/sign.service";
-import {getTokenUser, onlyNumbers} from "@app/core/utils/validations/validations";
+import {GetTokenUser, onlyNumbers} from "@app/core/utils/validations/validations";
 import {Token} from "@app/core/models/token";
 import {Router} from "@angular/router";
+import {ToastService} from "ecapture-ng-ui";
 
 @Component({
   selector: 'app-access-process-sign',
   templateUrl: './access-process-sign.component.html',
   styleUrls: ['./access-process-sign.component.scss']
 })
-export class AccessProcessSignComponent implements OnInit {
+export class AccessProcessSignComponent implements OnInit, OnDestroy {
 
   @Input() signer: any;
   @Output() nextStep: EventEmitter<number> = new EventEmitter<number>();
@@ -27,8 +28,8 @@ export class AccessProcessSignComponent implements OnInit {
   constructor(
     private _signService: SignService,
     private _fb: FormBuilder,
-    private _router: Router
-    // private _messageService: ToastService
+    private _router: Router,
+    private _messageService: ToastService
   ) {
     this.accessOtp = new FormControl('', Validators.required);
     const accessToken = sessionStorage.getItem('signature-token');
@@ -37,7 +38,7 @@ export class AccessProcessSignComponent implements OnInit {
       // return;
     }
 
-    this.tokenData = getTokenUser(accessToken || '');
+    this.tokenData = GetTokenUser(accessToken || '');
   }
 
   ngOnDestroy(): void {
@@ -51,11 +52,11 @@ export class AccessProcessSignComponent implements OnInit {
 
   public validateAccessCode(): void {
     if (this.accessOtp.invalid) {
-      /*this._messageService.add({
+      this._messageService.add({
         type: 'warning',
         message: 'El codigo OTP es requerido!',
         life: 5000,
-      });*/
+      });
       return;
     }
 
@@ -64,7 +65,7 @@ export class AccessProcessSignComponent implements OnInit {
       this._signService.validateAccessCode(this.tokenData.signer, this.accessOtp.value).subscribe({
         next: async (response) => {
           if (response.error) {
-            //this._messageService.add({type: 'error', message: response.msg, life: 5000});
+            this._messageService.add({type: 'error', message: response.msg, life: 5000});
             this.isBlocked = false;
             return;
           }
@@ -83,11 +84,11 @@ export class AccessProcessSignComponent implements OnInit {
         error: (err: HttpErrorResponse) => {
           console.error(err);
           this.isBlocked = false;
-          /*this._messageService.add({
+          this._messageService.add({
             type: 'error',
             message: 'No se pudo validar el código OTP, intente nuevamente!',
             life: 5000
-          });*/
+          });
         }
       })
     );

@@ -3,20 +3,32 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {HttpClient} from "@angular/common/http";
 import {EnvServiceProvider} from "@app/core/services/env/env.service.provider";
+import {ResponseSigners, ResponseSignersId, Signer} from "@app/core/models/signer";
+import {Response} from "@app/core/models/response";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SignService {
 
-  private urlValidateCode: string = EnvServiceProvider.useFactory().API_DOCUMENT + '/api/v1/signers/validate/';
+  private readonly urlValidateCode: string = EnvServiceProvider.useFactory().API_DOCUMENT + '/api/v1/signers/validate/';
+  private readonly urlGetSigner: string = EnvServiceProvider.useFactory().API_DOCUMENT + '/api/v1/signers/';
+  private readonly urlSignersValidate: string = EnvServiceProvider.useFactory().API_DOCUMENT + '/api/v1/signers/';
 
   constructor(
-    private _htt: HttpClient
+    private _http: HttpClient
   ) {
   }
 
-  public validateAccessCode(id_signer: number, access_code: string): Observable<any> {
-    return this._htt.get<any>(this.urlValidateCode + `${access_code}/${id_signer}`).pipe(map(res => res));
+  public validateAccessCode(id_signer: number, access_code: string): Observable<Response> {
+    return this._http.get<Response>(this.urlValidateCode + `${access_code}/${id_signer}`).pipe(map(res => res));
+  }
+
+  public getSignersById(signerId: number): Observable<Response<Signer>> {
+    return this._http.get<Response<Signer>>(this.urlGetSigner + signerId).pipe(map((res) => res));
+  }
+
+  public getSignersParams(signerId: number): Observable<Response<Signer>> {
+    return this._http.get<Response<Signer>>(this.urlSignersValidate + signerId).pipe(map((res) => res));
   }
 }

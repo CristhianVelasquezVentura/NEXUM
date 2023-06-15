@@ -10,10 +10,11 @@ import {ValidSignComponent} from './pages/valid-sign/valid-sign.component';
 import {SteperComponent} from './components/steper/steper.component';
 import {ToastComponent} from "@app/core/ui/toast/toast.component";
 import {SignService} from "@app/core/services/sign/sign.service";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import {DocumentService} from "@app/core/services/document/document.service";
 import {UiModule} from "@app/core/ui/ui.module";
+import {SignatureInterceptor} from "@app/core/services/interceptors/sign/sign.interceptor";
 
 @NgModule({
   declarations: [
@@ -26,14 +27,18 @@ import {UiModule} from "@app/core/ui/ui.module";
     SteperComponent,
     ToastComponent,
   ],
-    imports: [
-        CommonModule,
-        DocumentSignProcessRoutingModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        UiModule
-    ],
-  providers: [SignService, DocumentService]
+  imports: [
+    CommonModule,
+    DocumentSignProcessRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    UiModule
+  ],
+  providers: [SignService, DocumentService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: SignatureInterceptor,
+    multi: true
+  }]
 })
 export class DocumentSignProcessModule {
 }
