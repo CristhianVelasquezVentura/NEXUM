@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {
   trigger,
   state,
@@ -7,12 +7,13 @@ import {
   transition
 } from '@angular/animations';
 import {Subscription} from "rxjs";
-import {GetExtensionOfBase64, GetTokenUser} from "@app/core/utils/validations/validations";
-import {HttpErrorResponse} from "@angular/common/http";
+import {GetExtensionOfBase64, GetMimeTypeOfBase64, GetTokenUser} from "@app/core/utils/validations/validations";
 import {DocumentService} from "@app/core/services/document/document.service";
 import {FileAnnexe} from "@app/core/models/document";
 import {Router} from "@angular/router";
-import {ToastService} from "ecapture-ng-ui";
+import {ToastService} from "@app/core/ui/services/toast/toast.service";
+import {HttpErrorResponse} from "@angular/common/http";
+import {Token} from "@app/core/models/token";
 
 @Component({
   selector: 'app-review-document',
@@ -39,19 +40,17 @@ import {ToastService} from "ecapture-ng-ui";
     ]),
   ],
 })
-export class ReviewDocumentComponent implements OnInit {
+export class ReviewDocumentComponent implements OnInit, OnDestroy {
 
-  public typeDoc: string = 'document';
-  public document: any;
-  public signer: any;
-
+  @Output('next-page') nextPage: EventEmitter<string> = new EventEmitter<string>();
   private _subscription: Subscription = new Subscription();
-  // public readonly toastStyle: ToastStyleModel = toastDataStyle;
   public documentsAnnexes: FileAnnexe[] = [];
-
-  public blockPage: boolean = false;
   public mainDocument!: FileAnnexe;
+  public showAnnexe!: FileAnnexe;
   public indexAnnexeSelected: number = 0;
+  public typeDoc: string = 'document';
+  public blockPage: boolean = false;
+  public tokenData!: Token;
 
   constructor(
     private _messageService: ToastService,
@@ -59,15 +58,14 @@ export class ReviewDocumentComponent implements OnInit {
     private _router: Router
   ) {
     const token = sessionStorage.getItem('signature-token');
-    /*if (!token) {
-      this._router.navigateByUrl('');
-      this._messageService.add({type: 'error', message: 'No esta autorizado para firmar este documento!', life: 5000});
+    if (!token) {
+      this._router.navigateByUrl('/sign');
       return;
-    }*/
+    }
 
-    this.signer = GetTokenUser(token || '');
-    if (!this.signer || !this.signer.document) return;
-    sessionStorage.setItem('signer', JSON.stringify(this.signer));
+    this.tokenData = GetTokenUser(token);
+    if (!this.tokenData || !this.tokenData.document) return;
+    sessionStorage.setItem('signer', JSON.stringify(this.tokenData));
   }
 
   ngOnDestroy(): void {
@@ -75,56 +73,69 @@ export class ReviewDocumentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /*this.blockPage = true;
+    this.blockPage = true;
     this._subscription.add(
-      this._documentService.getFilesByDocumentID(this.signer.document).subscribe({
-        next: (res) => {
-          if (res.error) {
-            this._messageService.add({type: 'error', message: res.msg, life: 5000});
-            this.blockPage = false;
-            return;
-          }
-
-          if (!res.data || !res.data.length) {
-            this._messageService.add({
-              type: 'warning',
-              message: 'No se encontraron documentos relacionados',
-              life: 5000
-            });
-            this.blockPage = false;
-          }
-
-          for (const document of res.data) {
-            if (document.file_id === 1) {
-              document.type = GetExtensionOfBase64(document.encoding);
-              this.mainDocument = document;
+      this._documentService.getFilesByDocumentID(this.tokenData.document).subscribe({
+          next: (res) => {
+            if (res.error) {
+              this._messageService.add({type: 'error', message: res.msg, life: 5000});
+              this.blockPage = false;
+              return;
             }
 
-            document.active = false;
-            document.type = GetExtensionOfBase64(document.encoding);
-            this.documentsAnnexes.push(document);
+            if (!res.data || !res.data.length) {
+              this._messageService.add({
+                type: 'warning',
+                message: 'No se encontraron documentos relacionados',
+                life: 5000
+              });
+              this.blockPage = false;
+            }
+
+            for (const document of res.data) {
+              if (document.file_id === 1) {
+                document.type = GetExtensionOfBase64(document.encoding);
+                this.mainDocument = document;
+              }
+
+              document.active = false;
+              document.type = GetExtensionOfBase64(document.encoding);
+              this.documentsAnnexes.push(document);
+            }
+
+            if (this.documentsAnnexes.length) this.showAnnexe = this.documentsAnnexes[0];
+
+            this.blockPage = false;
+          },
+          error: (err: HttpErrorResponse) => {
+            console.error(err);
+            this.blockPage = false;
+            this._messageService.add({
+              type: 'error',
+              message: 'No se pudo obtener los archivos relacionados al documento, intente nuevamente!',
+              life: 5000
+            });
           }
-          /!*if (!this.endOtp && !this.existOtp) {
-            this.generateCodeOTP();
-            this.isOtpGenerated.emit(true);
-          }*!/
-          this.blockPage = false;
-        },
-        error: (err: HttpErrorResponse) => {
-          console.error(err);
-          this.blockPage = false;
-          this._messageService.add({
-            type: 'error',
-            message: 'No se pudo obtener los archivos relacionados al documento, intente nuevamente!',
-            life: 5000
-          });
         }
-      })
-    );*/
+      )
+    );
   }
 
-  public getExtension(file: string): string {
-    return GetExtensionOfBase64(file);
+  public getMimeTypeofB64(file: string): string {
+    return GetMimeTypeOfBase64(file);
+  }
+
+  public selectMainOrAnnexe(file: string): void {
+    if (this.typeDoc === file) return;
+
+    if (file == 'document') {
+      this.typeDoc = file;
+      return;
+    }
+
+    this.typeDoc = 'annexes';
+    if (this.documentsAnnexes.length) this.showAnnexe = this.documentsAnnexes[0];
+
   }
 
 }

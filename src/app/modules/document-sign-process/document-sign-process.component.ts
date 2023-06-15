@@ -1,11 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {ToastService} from "ecapture-ng-ui";
 import {GetTokenExpirationDate, GetTokenUser, IsInvalidToken} from "@app/core/utils/validations/validations";
 import {Observable, Subscription, timer} from "rxjs";
 import {Time} from "@app/core/utils/constant/constant";
 import {Token} from "@app/core/models/token";
 import {SignService} from "@app/core/services/sign/sign.service";
+import {Message} from "@app/core/models/message";
+import {ToastService} from "@app/core/ui/services/toast/toast.service";
 
 @Component({
   selector: 'app-document-sign-process',
@@ -24,6 +25,8 @@ export class DocumentSignProcessComponent implements OnInit, OnDestroy {
   public seconds: number = 0;
   public tokenData!: Token;
   public isFinish: boolean = false;
+  public page: string = 'sign-user';
+  public message!: Message;
 
   constructor(
     private _routerParam: ActivatedRoute,
@@ -35,17 +38,29 @@ export class DocumentSignProcessComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if (!this.token) {
-      this._messageService.add({type: 'warning', message: 'No está autorizado para firmar este documento', life: 5000});
+      this._messageService.add({
+        type: 'warning',
+        message: 'No está autorizado para firmar este documento!',
+        life: 5000
+      });
+      this.message = {
+        icon: 'Warning',
+        Message: 'No está autorizado para firmar este documento!'
+      };
       this.isFinish = true;
       return;
     }
 
-    if (IsInvalidToken(this.token)) {
+    /*if (IsInvalidToken(this.token)) {
       this.isBlock = false;
       this._messageService.add({type: 'warning', message: 'El documento ha caducado!', life: 5000});
+      this.message = {
+        icon: 'Warning',
+        Message: 'El documento ha caducado!'
+      };
       this.isFinish = true;
       return;
-    }
+    }*/
 
     this.tokenData = GetTokenUser(this.token);
     this.initClock();
@@ -97,6 +112,14 @@ export class DocumentSignProcessComponent implements OnInit, OnDestroy {
       this.isFinish = true;
       return;
     }
+  }
+
+  public authenticated(): void {
+    this.page = 'document-review';
+  }
+
+  public nextPage(page: string): void {
+    this.page = page;
   }
 
 }

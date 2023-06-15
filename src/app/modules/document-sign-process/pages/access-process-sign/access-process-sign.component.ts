@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {Subscription} from "rxjs";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {HttpErrorResponse} from "@angular/common/http";
@@ -6,7 +6,7 @@ import {SignService} from "@app/core/services/sign/sign.service";
 import {GetTokenUser, onlyNumbers} from "@app/core/utils/validations/validations";
 import {Token} from "@app/core/models/token";
 import {Router} from "@angular/router";
-import {ToastService} from "ecapture-ng-ui";
+import {ToastService} from "@app/core/ui/services/toast/toast.service";
 
 @Component({
   selector: 'app-access-process-sign',
@@ -15,14 +15,10 @@ import {ToastService} from "ecapture-ng-ui";
 })
 export class AccessProcessSignComponent implements OnInit, OnDestroy {
 
-  @Input() signer: any;
-  @Output() nextStep: EventEmitter<number> = new EventEmitter<number>();
-  @Output() finished: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() authorized: EventEmitter<boolean> = new EventEmitter<boolean>();
   private _subscription: Subscription = new Subscription();
   public accessOtp: FormControl;
-  public validCode: boolean = false;
   public isBlocked: boolean = false;
-
   private tokenData!: Token;
 
   constructor(
@@ -34,11 +30,11 @@ export class AccessProcessSignComponent implements OnInit, OnDestroy {
     this.accessOtp = new FormControl('', Validators.required);
     const accessToken = sessionStorage.getItem('signature-token');
     if (!accessToken) {
-      // this._router.navigateByUrl('/sign/review-doc');
-      // return;
+      this._router.navigateByUrl('/sign');
+      return;
     }
 
-    this.tokenData = GetTokenUser(accessToken || '');
+    this.tokenData = GetTokenUser(accessToken);
   }
 
   ngOnDestroy(): void {
@@ -63,7 +59,7 @@ export class AccessProcessSignComponent implements OnInit, OnDestroy {
     this.isBlocked = true;
     this._subscription.add(
       this._signService.validateAccessCode(this.tokenData.signer, this.accessOtp.value).subscribe({
-        next: async (response) => {
+        next: (response) => {
           if (response.error) {
             this._messageService.add({type: 'error', message: response.msg, life: 5000});
             this.isBlocked = false;
@@ -71,14 +67,11 @@ export class AccessProcessSignComponent implements OnInit, OnDestroy {
           }
 
           if (response.data) {
-            /*this.finished.emit(true);
-            this.nextStep.emit(2);*/
+            this.authorized.emit(true);
             this.isBlocked = false;
-            await this._router.navigateByUrl('/sign/review-doc');
             return;
           }
 
-          this.validCode = !!response.data;
           this.isBlocked = false;
         },
         error: (err: HttpErrorResponse) => {

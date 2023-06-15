@@ -1,24 +1,21 @@
 import {JwtHelperService} from '@auth0/angular-jwt';
 
-export const onlyNumbers = (value: any) => {
+export const onlyNumbers = (value: any): boolean => {
   const key = value.charCode;
   return key >= 48 && key <= 57;
 };
 
-const helper = new JwtHelperService();
+const helper: JwtHelperService = new JwtHelperService();
 
-export const GetTokenUser = (token: string) => {
-  let user = null;
+export const GetTokenUser = (token: string): any => {
   if (token) return helper.decodeToken(token);
-  return user;
+  return null;
 }
 
-export const IsInvalidToken = (token: string) => {
-  if (token) {
-    return helper.isTokenExpired(token);
-  } else {
-    return true;
-  }
+export const IsInvalidToken = (token: string): boolean => {
+  if (token) return helper.isTokenExpired(token);
+
+  return true;
 }
 
 export const GetTokenExpirationDate = (token: string): Date | null => {

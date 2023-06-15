@@ -50,8 +50,8 @@ export class PdfViewerComponent implements OnInit, OnChanges {
 
   public initPDF(): void {
     pdfJsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfJsLib.version}/pdf.worker.js`;
-    //pdfJsLib.getDocument({data: atob(this.pdfBase64)}).promise.then((pdfDoc_: any) => {
-    pdfJsLib.getDocument('assets/pdf_formulario_solicitud_de_credito.pdf').promise.then((pdfDoc_) => {
+    pdfJsLib.getDocument({data: atob(this.pdfBase64)}).promise.then((pdfDoc_: any) => {
+    // pdfJsLib.getDocument('assets/pdf_formulario_solicitud_de_credito.pdf').promise.then((pdfDoc_) => {
       this.pdfDoc = pdfDoc_;
       this.totalPages = this.pdfDoc.numPages;
       this.totalPagesEmit.emit(this.totalPages);

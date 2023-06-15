@@ -12,8 +12,8 @@
           <app-steper class="lg:hidden" [steper]="['f','d','d']"></app-steper>
           <div>
             <div class="flex w-full h-fit space-x-2" style="max-width: 320px">
-              <button (click)="typeDoc = 'document'" class="flex-1 {{typeDoc === 'document' ? 'b-tab-on':'b-tab-off'}}">Documento principal</button>
-              <button (click)="typeDoc = 'annexes';" class="flex-1 {{typeDoc === 'annexes' ? 'b-tab-on':'b-tab-off'}}">Anexos</button>
+              <button (click)="selectMainOrAnnexe('document')" class="flex-1 {{typeDoc === 'document' ? 'b-tab-on':'b-tab-off'}}">Documento principal</button>
+              <button (click)="selectMainOrAnnexe('annexes')" class="flex-1 {{typeDoc === 'annexes' ? 'b-tab-on':'b-tab-off'}}">Anexos</button>
             </div>
           </div>
           <div>
@@ -34,7 +34,7 @@
               </div>
               <div *ngIf="documentsAnnexes.length">
                 <ng-container *ngFor="let annexe of documentsAnnexes; let position = index">
-                  <button class="bg-red-50 w-40 border {{position === indexAnnexeSelected ? 'border-red-500':'border-red-50 hover:border hover:border-red-500'}} rounded">
+                  <button (click)="showAnnexe = annexe" class="bg-red-50 w-40 border {{position === indexAnnexeSelected ? 'border-red-500':'border-red-50 hover:border hover:border-red-500'}} rounded">
                     <div class="flex items-center space-x-2 p-2">
                       <div>
                         <svg class="fill-current fill-red-500" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,7 +43,7 @@
                       </div>
                       <div class="flex flex-col text-left">
                         <span class="t-label text-zc-black">{{annexe.name_document}}</span>
-                        <span class="t-label text-zc-600 uppercase">{{getExtension(annexe.encoding)}}</span>
+                        <span class="t-label text-zc-600 uppercase">{{annexe.type}}</span>
                       </div>
                     </div>
                   </button>
@@ -56,12 +56,18 @@
           <ng-container *ngIf="typeDoc === 'document'">
             <app-pdf-viewer></app-pdf-viewer>
           </ng-container>
-          <ng-container *ngIf="typeDoc === 'annexes'">
-
+          <ng-container *ngIf="typeDoc === 'annexes' && documentsAnnexes.length">
+            <ng-template [ngIf]="this.showAnnexe.type === 'PDF'" [ngIfElse]="img">
+              <app-pdf-viewer [src]="showAnnexe.encoding"></app-pdf-viewer>
+            </ng-template>
+            <ng-template #img>
+              <img [src]="'data:' + getMimeTypeofB64(showAnnexe.encoding) + ';base64,' + showAnnexe.encoding" [alt]="showAnnexe.name_document">
+            </ng-template>
           </ng-container>
         </div>
-        <button routerLink="/sign/sign-user" class="b-nav-only absolute left-1/2 -translate-x-2/4 bottom-4">Siguiente</button>
+        <button class="b-nav-only absolute left-1/2 -translate-x-2/4 bottom-4" (click)="nextPage.emit('sign-user')">Siguiente</button>
       </div>
     </div>
   </div>
 </div>
+<app-block-page [show]="blockPage"></app-block-page>
