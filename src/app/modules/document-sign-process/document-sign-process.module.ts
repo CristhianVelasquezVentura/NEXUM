@@ -16,6 +16,7 @@ import {DocumentService} from "@app/core/services/document/document.service";
 import {UiModule} from "@app/core/ui/ui.module";
 import {SignatureInterceptor} from "@app/core/services/interceptors/sign/sign.interceptor";
 import {ToastService} from "@app/core/ui/services/toast/toast.service";
+import {OtpService} from "@app/core/services/otp/otp.service";
 
 @NgModule({
   declarations: [
@@ -35,11 +36,17 @@ import {ToastService} from "@app/core/ui/services/toast/toast.service";
     ReactiveFormsModule,
     UiModule
   ],
-  providers: [SignService, ToastService, DocumentService, {
-    provide: HTTP_INTERCEPTORS,
-    useClass: SignatureInterceptor,
-    multi: true
-  }]
+  providers: [
+    SignService,
+    ToastService,
+    DocumentService,
+    OtpService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SignatureInterceptor,
+      multi: true
+    }
+  ]
 })
 export class DocumentSignProcessModule {
 }

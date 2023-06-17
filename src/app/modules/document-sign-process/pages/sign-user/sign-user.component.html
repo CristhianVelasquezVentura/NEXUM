@@ -16,12 +16,12 @@
         </div>
         <div class="h-full lg:h-fit space-y-4 overflow-y-auto rounded-lg pb-16">
           <div class="flex flex-col space-y-6 w-full items-center">
-            <canvas #canvas class="sign-container border border-brand-c rounded-lg"></canvas>
+            <canvas #canvas class="sign-container border border-brand-c rounded-lg" width="664" height="339"></canvas>
             <button class="b-ghost-md" (click)="retry()">Reintentar</button>
           </div>
         </div>
         <div class="b-nav-dual absolute left-1/2 -translate-x-2/4 bottom-4">
-          <button routerLink="/sign/review-doc" class="secondary">Anterior</button>
+          <button (click)="backPage.emit('document-review')" class="secondary">Anterior</button>
           <div class="separador"></div>
           <button (click)="saveImage()" class="primary">Siguiente</button>
         </div>

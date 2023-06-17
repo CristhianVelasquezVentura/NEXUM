@@ -12,6 +12,7 @@ import {
 import * as pdfJsLib from 'pdfjs-dist';
 import {PdfDimensions} from "@app/core/models/pdf";
 import {PDFDocumentProxy} from "pdfjs-dist";
+import {PDFPageProxy} from "pdfjs-dist/types/src/display/api";
 
 
 @Component({
@@ -29,11 +30,11 @@ export class PdfViewerComponent implements OnInit, OnChanges {
   @Input('show-all') showAll: boolean = true;
   @Output('current-dimensions-page') dimensionsPage: EventEmitter<PdfDimensions> = new EventEmitter<PdfDimensions>();
   @Output('dimensions-pages') dimensionsAllPages: EventEmitter<PdfDimensions[]> = new EventEmitter<PdfDimensions[]>();
+  @Output('end-render') endRender: EventEmitter<PDFPageProxy> = new EventEmitter<PDFPageProxy>();
 
   public pdfDoc!: PDFDocumentProxy;
   public totalPages: number = 0;
-  public pageNumPending: number = 0;
-  public pageRendering: boolean = false;
+  public isFinishRender: boolean = false;
 
   constructor() {
   }
@@ -51,7 +52,7 @@ export class PdfViewerComponent implements OnInit, OnChanges {
   public initPDF(): void {
     pdfJsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfJsLib.version}/pdf.worker.js`;
     pdfJsLib.getDocument({data: atob(this.pdfBase64)}).promise.then((pdfDoc_: any) => {
-    // pdfJsLib.getDocument('assets/pdf_formulario_solicitud_de_credito.pdf').promise.then((pdfDoc_) => {
+      // pdfJsLib.getDocument('assets/pdf_formulario_solicitud_de_credito.pdf').promise.then((pdfDoc_) => {
       this.pdfDoc = pdfDoc_;
       this.totalPages = this.pdfDoc.numPages;
       this.totalPagesEmit.emit(this.totalPages);
@@ -61,7 +62,6 @@ export class PdfViewerComponent implements OnInit, OnChanges {
   }
 
   public renderPage(num: number): void {
-    this.pageRendering = true;
     this.pdfDoc.getPage(num).then((page: any) => {
       let viewport = page.getViewport({scale: 1});
       this.pdfLib.nativeElement.height = viewport.height;
@@ -76,11 +76,8 @@ export class PdfViewerComponent implements OnInit, OnChanges {
       this.dimensionsPage.emit({height: viewport.height, width: viewport.width});
 
       renderTask.promise.then(() => {
-        this.pageRendering = false;
-        if (this.pageNumPending !== 0) {
-          this.renderPage(this.pageNumPending);
-          this.pageNumPending = 0;
-        }
+        this.isFinishRender = true;
+        this.endRender.emit(page);
       });
     });
 
@@ -102,9 +99,13 @@ export class PdfViewerComponent implements OnInit, OnChanges {
       let renderTask = page.render(renderContext);
 
       renderTask.promise.then(() => {
-        this.pageRendering = false;
         this.pdfViewer.nativeElement.appendChild(canvas);
-        if (num < this.pdfDoc.numPages) this.renderAllPages(num + 1);
+        if (num < this.pdfDoc.numPages) {
+          this.renderAllPages(num + 1);
+          return;
+        }
+        this.isFinishRender = true;
+        this.endRender.emit(page);
       });
     });
 

@@ -16,7 +16,6 @@ import {
 export class DocumentService {
   private urlGetDocumentById: string;
   private urlGetFilesByDocumentId: string;
-  private urlPostSignature: string;
 
   private urlCreateDocument: string;
   private urlGetDocumentsFilter: string;
@@ -29,7 +28,7 @@ export class DocumentService {
 
     this.urlGetDocumentById = EnvServiceProvider.useFactory().API_DOCUMENT + '/api/v1/document/';
     this.urlGetFilesByDocumentId = EnvServiceProvider.useFactory().API_DOCUMENT + '/api/v1/files/document/';
-    this.urlPostSignature = EnvServiceProvider.useFactory().API_DOCUMENT + '/api/v1/signature/signer';
+
   }
 
   public getDocumentByID(id: number): Observable<ResponseDocumentById> {
@@ -38,10 +37,6 @@ export class DocumentService {
 
   public getFilesByDocumentID(id: number): Observable<ResponseFilesByDocumentId> {
     return this._htt.get<ResponseFilesByDocumentId>(this.urlGetFilesByDocumentId + id).pipe(map((res) => res));
-  }
-
-  public postSignature(data: any): Observable<any> {
-    return this._htt.post<any>(this.urlPostSignature, data).pipe(map((res) => res));
   }
 
   public createDocument(data: Document): Observable<ResponseCreateDocument> {

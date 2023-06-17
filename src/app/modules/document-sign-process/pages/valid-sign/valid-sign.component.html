@@ -8,13 +8,13 @@
         <app-steper [steper]="['s','s','f']"></app-steper>
       </div>
       <div class="body rounded-t-lg relative flex-1 flex flex-col lg:items-center lg:justify-center p-8 space-y-4 bg-white" style="height: calc(100vh - 100px)">
-        <div *ngIf="true" class="h-fit space-y-2">
+        <div *ngIf="!isFinish" class="h-fit space-y-2">
           <app-steper class="lg:hidden" [steper]="['s','s','f']"></app-steper>
           <div>
             <span class="t-body text-zc-400">El código de acceso de un solo uso (OTP), fue enviado por Correo y/o SMS, revise sus bandejas.</span>
           </div>
         </div>
-        <div *ngIf="true" class="h-full lg:h-fit space-y-4 overflow-y-auto rounded-lg pb-16">
+        <div *ngIf="!isFinish" class="h-full lg:h-fit space-y-4 overflow-y-auto rounded-lg pb-16">
           <div class="w-full flex items-center justify-center space-x-4">
             <div class="w-28 h-28 flex flex-col items-center justify-center rounded-lg bg-brand-l text-brand-c t-label-b">
               <div>
@@ -41,7 +41,8 @@
           <div class="border lg:w-[480px] border-zc-200 bg-white rounded-lg flex flex-col gap-4 p-6 md:flex-row md:items-center">
             <div class="i-outline w-full">
               <label>Código</label>
-              <input type="text" placeholder="Ingrese el código de acceso">
+              <input type="text" [formControl]="otpForm" placeholder="Ingrese el código de acceso">
+              <small *ngIf="otpForm?.invalid && otpForm?.touched">El código OTP es requerido</small>
             </div>
             <button class="b-solid" style="min-width: 160px;">Verificar</button>
           </div>
@@ -59,7 +60,7 @@
           <span class="text-alert-success t-subtitle">Verificado</span>
         </div>
 
-        <div *ngIf="false" class="notify-sign-send space-y-2 flex flex-col items-center justify-center">
+        <div *ngIf="isFinish" class="notify-sign-send space-y-2 flex flex-col items-center justify-center">
           <div>
             <svg width="240" height="120" viewBox="0 0 240 120" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M45 60.0001L55 70.0001L75 50.0001M103.089 29.9217C102.066 29.9736 101.036 29.9999 100 29.9999C84.6327 29.9999 70.6148 24.2227 59.9997 14.7217C49.3846 24.2223 35.3669 29.9992 20 29.9992C18.9639 29.9992 17.9339 29.973 16.9106 29.9211C15.6635 34.7392 15 39.7921 15 45.0001C15 72.9576 34.1216 96.4491 60 103.11C85.8784 96.4491 105 72.9576 105 45.0001C105 39.7923 104.337 34.7396 103.089 29.9217Z" stroke="url(#paint0_linear_20_941)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -79,10 +80,10 @@
           <span class="text-brand-c t-subtitle">Firma Enviada</span>
         </div>
 
-        <div *ngIf="true" class="b-nav-dual absolute left-1/2 -translate-x-2/4 bottom-4">
-          <button routerLink="/sign/sign-user" class="secondary">Anterior</button>
+        <div *ngIf="!isFinish" class="b-nav-dual absolute left-1/2 -translate-x-2/4 bottom-4">
+          <button (click)="backPage.emit('sign-user')" class="secondary">Anterior</button>
           <div class="separador"></div>
-          <button disabled class="primary">Enviar Firma</button>
+          <button disabled class="primary" (click)="validateOtp()">Enviar Firma</button>
         </div>
         <button *ngIf="false" class="b-nav-only absolute left-1/2 -translate-x-2/4 bottom-4">Enviar Firma</button>
         <button *ngIf="false" class="b-nav-only absolute left-1/2 -translate-x-2/4 bottom-4">Cerrar</button>

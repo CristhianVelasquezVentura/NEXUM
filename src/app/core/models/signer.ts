@@ -36,3 +36,10 @@ export interface Signer {
   updated_at: Date;
 }
 
+export interface Signature {
+  id_signer: number;
+  file_signature: string;
+  encode: string;
+  document_id: number;
+}
+

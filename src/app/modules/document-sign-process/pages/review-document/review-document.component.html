@@ -34,7 +34,7 @@
               </div>
               <div *ngIf="documentsAnnexes.length">
                 <ng-container *ngFor="let annexe of documentsAnnexes; let position = index">
-                  <button (click)="showAnnexe = annexe" class="bg-red-50 w-40 border {{position === indexAnnexeSelected ? 'border-red-500':'border-red-50 hover:border hover:border-red-500'}} rounded">
+                  <button (click)="showAnnexe = annexe" class="bg-red-50 border {{position === indexAnnexeSelected ? 'border-red-500':'border-red-50 hover:border hover:border-red-500'}} rounded">
                     <div class="flex items-center space-x-2 p-2">
                       <div>
                         <svg class="fill-current fill-red-500" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -53,8 +53,8 @@
           </div>
         </div>
         <div class="h-full space-y-4 overflow-y-auto bg-zc-200 flex justify-center py-4 rounded-lg pb-16">
-          <ng-container *ngIf="typeDoc === 'document'">
-            <app-pdf-viewer></app-pdf-viewer>
+          <ng-container *ngIf="typeDoc === 'document' && mainDocument">
+            <app-pdf-viewer [src]="mainDocument.encoding"></app-pdf-viewer>
           </ng-container>
           <ng-container *ngIf="typeDoc === 'annexes' && documentsAnnexes.length">
             <ng-template [ngIf]="this.showAnnexe.type === 'PDF'" [ngIfElse]="img">
@@ -70,4 +70,5 @@
     </div>
   </div>
 </div>
+
 <app-block-page [show]="blockPage"></app-block-page>

@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {HttpClient} from "@angular/common/http";
 import {EnvServiceProvider} from "@app/core/services/env/env.service.provider";
-import {ResponseSigners, ResponseSignersId, Signer} from "@app/core/models/signer";
+import {ResponseSigners, ResponseSignersId, Signature, Signer} from "@app/core/models/signer";
 import {Response} from "@app/core/models/response";
 
 @Injectable({
@@ -14,6 +14,7 @@ export class SignService {
   private readonly urlValidateCode: string = EnvServiceProvider.useFactory().API_DOCUMENT + '/api/v1/signers/validate/';
   private readonly urlGetSigner: string = EnvServiceProvider.useFactory().API_DOCUMENT + '/api/v1/signers/';
   private readonly urlSignersValidate: string = EnvServiceProvider.useFactory().API_DOCUMENT + '/api/v1/signers/';
+  private readonly urlSendSignature: string = EnvServiceProvider.useFactory().API_DOCUMENT + '/api/v1/signature/signer';
 
   constructor(
     private _http: HttpClient
@@ -31,4 +32,9 @@ export class SignService {
   public getSignersParams(signerId: number): Observable<Response<Signer>> {
     return this._http.get<Response<Signer>>(this.urlSignersValidate + signerId).pipe(map((res) => res));
   }
+
+  public sendSignature(data: Signature): Observable<Response> {
+    return this._http.post<Response>(this.urlSendSignature, data).pipe(map((res) => res));
+  }
+
 }

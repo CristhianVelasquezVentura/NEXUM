@@ -104,6 +104,7 @@ export class ReviewDocumentComponent implements OnInit, OnDestroy {
               if (document.file_id === 1) {
                 document.type = GetExtensionOfBase64(document.encoding);
                 this.mainDocument = document;
+                continue;
               }
 
               document.active = false;
@@ -154,4 +155,5 @@ export class ReviewDocumentComponent implements OnInit, OnDestroy {
 
   }
 
+  protected readonly transition = transition;
 }
