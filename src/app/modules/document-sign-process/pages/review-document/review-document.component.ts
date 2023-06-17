@@ -73,6 +73,14 @@ export class ReviewDocumentComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.getAllFiles();
+  }
+
+  /**
+   * Método que permite traer todos los archivos relacionados (Archivo principal - anexos) a la firma
+   * @private
+   */
+  private getAllFiles(): void {
     this.blockPage = true;
     this._subscription.add(
       this._documentService.getFilesByDocumentID(this.tokenData.document).subscribe({
@@ -121,10 +129,18 @@ export class ReviewDocumentComponent implements OnInit, OnDestroy {
     );
   }
 
+  /**
+   * Método que permite obtener el MimeType de un archivo en base64
+   * @param file - Base64 del archivo
+   */
   public getMimeTypeofB64(file: string): string {
     return GetMimeTypeOfBase64(file);
   }
 
+  /**
+   * Método qué permite cambiar el visor entre el documento principal o los anexos
+   * @param file - permite identificar entre el anexo y el documento principal
+   */
   public selectMainOrAnnexe(file: string): void {
     if (this.typeDoc === file) return;
 

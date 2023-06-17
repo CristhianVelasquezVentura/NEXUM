@@ -18,12 +18,18 @@ export class SignUserComponent implements OnInit {
     this.signaturePad = new SignaturePad(this.signatureCanvas.nativeElement);
   }
 
+  /**
+   * Método que permite reintentar la firma (limpia el lienzo)
+   */
   public retry(): void {
     this.signaturePad.clear();
   }
 
-  public saveImage() {
-    const newCanvas = TrimCanvas(this.signatureCanvas.nativeElement);
+  /**
+   * Método que permite guardar la rubrica de la firma y exportarlo en formato PNG
+   */
+  public saveImage(): void {
+    const newCanvas: HTMLCanvasElement = TrimCanvas(this.signatureCanvas.nativeElement);
     console.log(newCanvas.toDataURL('image/png'));
   }
 

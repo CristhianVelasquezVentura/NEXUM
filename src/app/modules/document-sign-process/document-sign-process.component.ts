@@ -18,7 +18,6 @@ export class DocumentSignProcessComponent implements OnInit, OnDestroy {
   private _source: Observable<number> = timer(0, 1000);
   private token: string = '';
 
-  public isBlock: boolean = false;
   public day: number = 0;
   public hours: number = 0;
   public minutes: number = 0;
@@ -37,6 +36,18 @@ export class DocumentSignProcessComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.initSession();
+  }
+
+  ngOnDestroy(): void {
+    this._subscriptions.unsubscribe();
+  }
+
+  /**
+   * Método que valida la existensia del token de sesión y si este es valido
+   * @private
+   */
+  private initSession(): void {
     if (!this.token) {
       this._messageService.add({
         type: 'warning',
@@ -52,7 +63,6 @@ export class DocumentSignProcessComponent implements OnInit, OnDestroy {
     }
 
     /*if (IsInvalidToken(this.token)) {
-      this.isBlock = false;
       this._messageService.add({type: 'warning', message: 'El documento ha caducado!', life: 5000});
       this.message = {
         icon: 'Warning',
@@ -64,13 +74,12 @@ export class DocumentSignProcessComponent implements OnInit, OnDestroy {
 
     this.tokenData = GetTokenUser(this.token);
     this.initClock();
-
   }
 
-  ngOnDestroy(): void {
-    this._subscriptions.unsubscribe();
-  }
-
+  /**
+   * Método que obtiene los parametros de la URL como el token y otros parametros
+   * @private
+   */
   private getParams(): void {
     const routeParam = this._routerParam.snapshot.queryParams;
     const token = routeParam['token'];
@@ -80,6 +89,10 @@ export class DocumentSignProcessComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * Inicia el contador que define el tiempo de vida del documento
+   * @private
+   */
   private initClock(): void {
     const ttl = GetTokenExpirationDate(this.token);
     if (!ttl) {
@@ -98,6 +111,12 @@ export class DocumentSignProcessComponent implements OnInit, OnDestroy {
     );
   }
 
+  /**
+   * Método que setea la fecha (día, hora, minutos y segundo) de expiración del documento y termina la sesión si ya expiro el documento
+   * @param ttl - fecha de expiración del token de sesión
+   * @private
+   * @type {(ttl: string): string}
+   */
   private showDate(ttl: Date): void {
     const now: any = Time.Now();
     const end: any = Time.setDate(ttl);
@@ -114,10 +133,17 @@ export class DocumentSignProcessComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * Método que valida la autenticación del access code del firmate
+   */
   public authenticated(): void {
     this.page = 'document-review';
   }
 
+  /**
+   * Método que permite ir a la siguiente pagina del proceso de firma
+   * @param page
+   */
   public nextPage(page: string): void {
     this.page = page;
   }

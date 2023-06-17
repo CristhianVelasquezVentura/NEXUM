@@ -44,8 +44,15 @@ export class AccessProcessSignComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
   }
 
+  /**
+   * Método que restringe a un capo de texto solo ingresar números
+   * @param value
+   */
   public onlyNumber = (value: any) => onlyNumbers(value);
 
+  /**
+   * Método que permite validar el código de acceso del firmante
+   */
   public validateAccessCode(): void {
     if (this.accessOtp.invalid) {
       this._messageService.add({
