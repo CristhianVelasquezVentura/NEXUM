@@ -1,6 +1,7 @@
 (function (window) {
   window.__env = window.__env || {};
   window.__env = window.__env || {};
+  
   window.__env.API_DOCUMENT = 'https://sandbox.btigersystem.net/nexum/dev/documents'; //8002
   window.__env.API_WORKFLOW = 'https://sandbox.btigersystem.net/nexum/dev/workflow'; //8003
   window.__env.API_BLION = 'https://simbaengine.nexumsign.com:60060'; //pendiente
