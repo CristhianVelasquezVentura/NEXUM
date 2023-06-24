@@ -30,7 +30,6 @@ import {OtpService} from "@app/core/services/otp/otp.service";
     imports: [
         CommonModule,
         DocumentSignProcessRoutingModule,
-        HttpClientModule,
         ReactiveFormsModule,
         UiModule
     ],

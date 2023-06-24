@@ -1,0 +1,38 @@
+<div>
+  <div *ngIf="label !==''" class="mb-2">
+    <label class="inp-txt text-neutral_gray-70 dark:text-neutral_gray-30">{{label}}</label>
+  </div>
+  <input #upload type="file" hidden class="w-full" accept="{{accept}}" (change)="newValue($event)" multiple="off"/>
+  <!--<label
+    class="file-upload text-outline-gray-3 border-2 border-outline-gray-3 hover:bg-neutral_gray-30 dark:hover:bg-neutral_gray-70">
+    <div class="flex justify-between">
+      <span>{{inputLabel}}</span>
+      <span appIcon [iconName]="icon"></span>
+    </div>
+  </label>-->
+  <div class="file-upload text-outline-gray-3 border-2 border-outline-gray-3 hover:bg-neutral_gray-30 dark:hover:bg-neutral_gray-70" (click)="upload.click()">
+    <div class="flex justify-between">
+      <span>{{inputLabel}}</span>
+      <!--<span appIcon [iconName]="icon"></span>-->
+      <span>ICON</span>
+    </div>
+  </div>
+  <div [ngClass]="infoText === '' ? 'text-outline-alert-info' : 'text-outline-alert-success'"
+       class="font-inter help-text">
+    <span>
+      {{infoText === '' ? 'Ninguna imagen seleccionada' : infoText}}
+    </span>
+  </div>
+
+  <div class="text-outline-alert-info font-inter help-text" *ngIf="helpText !== ''">
+    <span>
+      {{helpText}}
+    </span>
+  </div>
+
+  <div *ngIf="error" class="alerts-container">
+    <span class="w-full dark:text-alert_light-60 text-alert_dark-60">
+      {{message}}
+    </span>
+  </div>
+</div>

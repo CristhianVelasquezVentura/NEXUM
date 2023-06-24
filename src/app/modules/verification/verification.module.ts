@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { VerificationRoutingModule } from './verification-routing.module';
 import { VerificationComponent } from './verification.component';
-import { TrackingDocumentComponent } from './pages/tracking-document/tracking-document.component';
 import {UiModule} from "@app/core/ui/ui.module";
-import { ValidateDocumentComponent } from './pages/validate-document/validate-document.component';
-import {DropdownModule} from "ecapture-ng-ui";
-import {FormsModule} from "@angular/forms";
+import {DropdownModule, ToastModule} from "ecapture-ng-ui";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {TrackingDocumentComponent, ValidateDocumentComponent} from "@app/modules/verification/pages";
+import {ToastService} from "@app/core/ui/services/toast/toast.service";
 
 
 @NgModule({
@@ -21,7 +21,9 @@ import {FormsModule} from "@angular/forms";
     VerificationRoutingModule,
     UiModule,
     DropdownModule,
-    FormsModule
-  ]
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  providers: [ToastService]
 })
 export class VerificationModule { }

@@ -4,6 +4,7 @@ import {PdfViewerComponent} from './pdf-viewer/pdf-viewer.component';
 import {ToastItemComponent} from './toast-item/toast-item.component';
 import {BlockPageComponent} from "@app/core/ui/block-page/block-page.component";
 import {ToastComponent} from "@app/core/ui/toast/toast.component";
+import {FileUploadComponent} from "@app/core/ui/file-upload/file-upload.component";
 
 
 @NgModule({
@@ -11,12 +12,19 @@ import {ToastComponent} from "@app/core/ui/toast/toast.component";
     PdfViewerComponent,
     ToastItemComponent,
     BlockPageComponent,
-    ToastComponent
+    ToastComponent,
+    FileUploadComponent
   ],
   imports: [
     CommonModule
   ],
-  exports: [PdfViewerComponent, ToastItemComponent, BlockPageComponent, ToastComponent]
+  exports: [
+    PdfViewerComponent,
+    ToastItemComponent,
+    BlockPageComponent,
+    ToastComponent,
+    FileUploadComponent
+  ]
 })
 export class UiModule {
 }

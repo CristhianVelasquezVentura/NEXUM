@@ -24,12 +24,12 @@
 </div>
 
 <div class="m-12 tabs flex">
-  <button (click)="optionTabName='Validation'"
+  <button routerLink="/verification/document"
           class="text-black rounded-l-lg focus:outline-none {{optionTabName==='Validation' ? 'button-tab-active': 'button-tab-not-activate'}}
                 h-12 border-solid border-4 border-outline-orange-3 px-4">
     Validación de documento
   </button>
-  <button (click)="optionTabName='Tracking'"
+  <button routerLink="/verification/tracking"
           class="text-black rounded-r-lg focus:outline-none {{optionTabName==='Tracking' ? 'button-tab-active': 'button-tab-not-activate'}}
                 h-12 border-solid border-4 border-outline-orange-3 px-4">
     Trazabilidad de documento

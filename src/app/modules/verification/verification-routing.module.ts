@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {VerificationComponent} from "@app/modules/verification/verification.component";
+import {TrackingDocumentComponent, ValidateDocumentComponent} from "@app/modules/verification/pages";
 
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
-    redirectTo: 'document'
+    redirectTo: 'document',
+    pathMatch: "full"
   },
   {
     path: 'document',
-    component: VerificationComponent,
-    pathMatch: 'full'
+    component: ValidateDocumentComponent
+  },
+  {
+    path: 'tracking',
+    component: TrackingDocumentComponent
   }
 ];
 

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormControl, UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {VerificationService} from "@app/core/services/verification/verification.service";
 import {ToastService} from "@app/core/ui/services/toast/toast.service";
 import {Response} from "@app/core/models/global.model";
-import * as CryptoJS  from 'crypto-js';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-validate-document',
@@ -11,20 +11,23 @@ import * as CryptoJS  from 'crypto-js';
   styleUrls: ['./validate-document.component.scss']
 })
 export class ValidateDocumentComponent implements OnInit {
-  public formValidateDocument: UntypedFormGroup ;
+  public formValidateDocument: UntypedFormGroup;
   public file64: string;
   public hashFile: string;
   public isActiveLoad: boolean;
   public optionTabName: string = 'Validation'
 
-  constructor(private _formBuilder: UntypedFormBuilder, private _verificationService: VerificationService, private messageToastService: ToastService,) {
+  constructor(
+    private _formBuilder: FormBuilder,
+    private _verificationService: VerificationService,
+    private _messageToastService: ToastService,) {
     this.formValidateDocument = this._formBuilder.group(
       {
-        name: [{value: '', disabled: false}, [Validators.required]],
-        size: [{value: '', disabled: false}, [Validators.required]],
-        file_extension: [{value: '', disabled: false}, [Validators.required]],
-        verification_code: [{value: '', disabled: false}, [Validators.required]],
-        transaction_id: [{value: '', disabled: false}, [Validators.required]],
+        name: [{value: '', disabled: true}, [Validators.required]],
+        size: [{value: '', disabled: true,}, [Validators.required]],
+        file_extension: [{value: '', disabled: true}, [Validators.required],],
+        verification_code: ['', [Validators.required]],
+        transaction_id: ['', [Validators.required]],
       }
     )
     this.file64 = '';
@@ -52,6 +55,7 @@ export class ValidateDocumentComponent implements OnInit {
     };
     reader.readAsDataURL(file);
   }
+
   private _handleReaderLoaded(e: any) {
     // @ts-ignore
     const docToSend = e.target.result;
@@ -60,7 +64,6 @@ export class ValidateDocumentComponent implements OnInit {
     const hash = CryptoJS.SHA256(this.file64);
     this.hashFile = hash.toString(CryptoJS.enc.Hex)
   }
-
 
 
   validateType(type: string) {
@@ -72,9 +75,22 @@ export class ValidateDocumentComponent implements OnInit {
     }
   }
 
-  public sendData(): void {
-    if (this.formValidateDocument?.valid) {
-      /*if (this.formValidateDocument.get('verification_code')?.value === this.hashFile) {
+  public submitForm(): void {
+    if (this.formValidateDocument?.invalid) {
+      this.formValidateDocument.markAllAsTouched();
+      this._messageToastService.add({
+        type: 'error',
+        message: 'Complete todos los campos correctamente!',
+        life: 5000,
+      });
+      return
+    }
+
+    this.validateDocument();
+  }
+
+  private validateDocument() {
+    /*if (this.formValidateDocument.get('verification_code')?.value === this.hashFile) {
         this.messageToastService.add({
           type: 'success',
           message: 'Los documentos coinciden!',
@@ -94,42 +110,33 @@ export class ValidateDocumentComponent implements OnInit {
         life: 5000,
       });*/
 
-      this.isActiveLoad = true;
+    this.isActiveLoad = true;
 
-      const data = {
-        "file_encode": this.file64,
-        "hash": this.formValidateDocument.get('verification_code')?.value,
-        "id_transaction": this.formValidateDocument.get('transaction_id')?.value,
-        "block_id": 0
-      }
-
-      this._verificationService.validateDataFile(data).subscribe({
-        next: (res: Response) => {
-          this.messageToastService.add({
-            type: res.type,
-            message: res.msg,
-            life: 5000,
-          });
-          this.isActiveLoad = false;
-        },
-        error: (err: Error) => {
-          this.messageToastService.add({
-            type: 'error',
-            message: 'Conexión perdida con el servidor!',
-            life: 5000,
-          });
-          this.isActiveLoad = false;
-        }
-      })
-
-    }else {
-      this.messageToastService.add({
-        type: 'error',
-        message: 'Complete todos los campos correctamente!',
-        life: 5000,
-      });
-      this.isActiveLoad = false;
+    const data = {
+      "file_encode": this.file64,
+      "hash": this.formValidateDocument.get('verification_code')?.value,
+      "id_transaction": this.formValidateDocument.get('transaction_id')?.value,
+      "block_id": 0
     }
+
+    this._verificationService.validateDataFile(data).subscribe({
+      next: (res: Response) => {
+        this._messageToastService.add({
+          type: res.type,
+          message: res.msg,
+          life: 5000,
+        });
+        this.isActiveLoad = false;
+      },
+      error: (err: Error) => {
+        this._messageToastService.add({
+          type: 'error',
+          message: 'Conexión perdida con el servidor!',
+          life: 5000,
+        });
+        this.isActiveLoad = false;
+      }
+    })
   }
 
 }
