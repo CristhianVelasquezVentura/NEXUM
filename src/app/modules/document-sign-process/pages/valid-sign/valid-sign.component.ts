@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
-import {FormControl, Validators} from "@angular/forms";
+import {UntypedFormControl, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ToastService} from "@app/core/ui/services/toast/toast.service";
 import {Subscription} from "rxjs";
@@ -20,7 +20,7 @@ export class ValidSignComponent implements OnInit, OnDestroy {
   @Output('back-page') backPage: EventEmitter<string> = new EventEmitter<string>();
   private _subscriptions: Subscription = new Subscription();
   private _tokenData!: Token;
-  public otpForm: FormControl;
+  public otpForm: UntypedFormControl;
   public isFinish: boolean = false;
   public isBlock: boolean = false;
 
@@ -29,7 +29,7 @@ export class ValidSignComponent implements OnInit, OnDestroy {
     private _messageService: ToastService,
     private _otpService: OtpService
   ) {
-    this.otpForm = new FormControl('', Validators.required);
+    this.otpForm = new UntypedFormControl('', Validators.required);
     const token = sessionStorage.getItem('signature-token');
     if (!token) {
       this._router.navigateByUrl('/sign');

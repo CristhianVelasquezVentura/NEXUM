@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {VerificationService} from "@app/core/services/verification/verification.service";
 import {ToastService} from "@app/core/ui/services/toast/toast.service";
 import {Response} from "@app/core/models/global.model";
@@ -11,13 +11,13 @@ import * as CryptoJS  from 'crypto-js';
   styleUrls: ['./validate-document.component.scss']
 })
 export class ValidateDocumentComponent implements OnInit {
-  public formValidateDocument: FormGroup ;
+  public formValidateDocument: UntypedFormGroup ;
   public file64: string;
   public hashFile: string;
   public isActiveLoad: boolean;
   public optionTabName: string = 'Validation'
 
-  constructor(private _formBuilder: FormBuilder, private _verificationService: VerificationService, private messageToastService: ToastService,) {
+  constructor(private _formBuilder: UntypedFormBuilder, private _verificationService: VerificationService, private messageToastService: ToastService,) {
     this.formValidateDocument = this._formBuilder.group(
       {
         name: [{value: '', disabled: false}, [Validators.required]],

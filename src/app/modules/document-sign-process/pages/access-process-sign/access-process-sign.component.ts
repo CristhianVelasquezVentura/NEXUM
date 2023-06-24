@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {Subscription} from "rxjs";
-import {FormBuilder, FormControl, Validators} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormControl, Validators} from "@angular/forms";
 import {HttpErrorResponse} from "@angular/common/http";
 import {SignService} from "@app/core/services/sign/sign.service";
 import {GetTokenUser, onlyNumbers} from "@app/core/utils/validations/validations";
@@ -17,17 +17,17 @@ export class AccessProcessSignComponent implements OnInit, OnDestroy {
 
   @Output() authorized: EventEmitter<boolean> = new EventEmitter<boolean>();
   private _subscription: Subscription = new Subscription();
-  public accessOtp: FormControl;
+  public accessOtp: UntypedFormControl;
   public isBlocked: boolean = false;
   private tokenData!: Token;
 
   constructor(
     private _signService: SignService,
-    private _fb: FormBuilder,
+    private _fb: UntypedFormBuilder,
     private _router: Router,
     private _messageService: ToastService
   ) {
-    this.accessOtp = new FormControl('', Validators.required);
+    this.accessOtp = new UntypedFormControl('', Validators.required);
     const accessToken = sessionStorage.getItem('signature-token');
     if (!accessToken) {
       this._router.navigateByUrl('/sign');
