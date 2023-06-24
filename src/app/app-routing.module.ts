@@ -11,6 +11,10 @@ const routes: Routes = [
     path: 'sign',
     loadChildren: () => import('./modules/document-sign-process/document-sign-process.module').then((m) => m.DocumentSignProcessModule)
   },
+  {
+    path: 'verification',
+    loadChildren: () => import('./modules/verification/verification.module').then((m) => m.VerificationModule)
+  },
 ];
 
 @NgModule({

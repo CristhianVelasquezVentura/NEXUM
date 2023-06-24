@@ -1,0 +1,38 @@
+<div class="text-outline-gray-3 sm:text-center lg:text-left my-4">
+  <span>{{ 'CODIGO DE VERIFICACIÓN'  }}</span>
+</div>
+
+<div class="flex items-center">
+  <app-file-upload label="{{ 'SELECT THE DOCUMENT'  }}" icon="document copy-lg-white-base"
+                   inputLabel="{{ 'UPLOAD DOCUMENT' }}" class="w-full pr-2"
+                   (change)="uploadFile($event)"></app-file-upload>
+</div>
+<div>
+  <label>{{ 'DOCUMENT NAME' }}</label>
+  <input type="text" formControlName="name" disabled="true"/>
+</div>
+
+<div>
+  <label>{{ 'SIZE' }}</label>
+  <input type="text" formControlName="size" disabled="true"/>
+</div>
+
+<div>
+  <label>{{ 'FILE EXTENSION' }}</label>
+  <input type="text" formControlName="file_extension" disabled="true"/>
+</div>
+<div>
+  <label>{{ 'VERIFICATION CODE' }}</label>
+  <input type="text" formControlName="verification_code" disabled="true"/>
+</div>
+<div>
+  <label>{{ 'Transaction Id' }}</label>
+  <input type="text" formControlName="transaction_id" disabled="true"/>
+</div>
+
+<div class="actions mt-12">
+  <button type="button" (click)="sendData()"
+          class="focus:outline-none focus:ring-4 focus:ring-outline-gray-4 focus:ring-opacity-50  border-container-orange-3 flex justify-between items-center text-white text-left px-4 rounded-lg focus:outline-none bg-container-orange-3 w-full h-12 border-solid border-4 border-outline-orange-3 hover:border-outline-gray-4">
+    <span>{{ 'VALIDATE'  }}</span>
+  </button>
+</div>

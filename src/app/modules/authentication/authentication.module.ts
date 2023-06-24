@@ -5,6 +5,7 @@ import { AuthenticationRoutingModule} from "@app/modules/authentication/authenti
 import { LoginComponent } from './pages/login/login.component';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
@@ -13,10 +14,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     RecoveryComponent
   ],
-  imports: [
-    CommonModule,
-    AuthenticationRoutingModule,
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        AuthenticationRoutingModule,
+        ReactiveFormsModule,
+        RouterModule
+    ]
 })
 export class AuthenticationModule { }
