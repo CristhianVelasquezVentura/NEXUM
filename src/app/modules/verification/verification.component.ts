@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VerificationComponent implements OnInit {
 
-  public optionTabName: string = 'Validation';
+  public tabSelect: string = 'tracking';
   constructor() { }
 
   ngOnInit(): void {

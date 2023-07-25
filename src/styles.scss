@@ -126,6 +126,9 @@
     background: linear-gradient(90deg, #F66100 0%, #F4BC2C 100%);
     @apply p-3 flex items-center justify-center text-white t-body rounded-lg hover:t-body-b;
   }
+  .b-small {
+    @apply flex items-center space-x-1 px-2 py-1 rounded-lg border border-zc-200 hover:bg-zc-50 t-body text-zc-600;
+  }
 
   .b-ghost-sm {
     @apply p-2 rounded-lg hover:bg-zc-50;
@@ -173,6 +176,19 @@
     }
     span {
       @apply text-alert-error t-label;
+    }
+  }
+
+  .table-default {
+    @apply w-full whitespace-nowrap;
+    thead th {
+      @apply p-2 t-label text-zc-400 text-left;
+    }
+    tbody tr {
+      @apply border-t border-zc-200;
+      td {
+        @apply p-2 t-body text-zc-800;
+      }
     }
   }
 

@@ -1,252 +1,72 @@
-<div class="header-container bg-container-gray-1 h-16 px-12 flex items-center">
-  <div class="flex justify-between w-full">
-    <div>
-    <span routerLink="/auth/login">
-      <svg width="25" height="22" viewBox="0 0 25 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M10.7272 21.288C11.2518 21.8049 12.096 21.7986 12.6128 21.2741C13.1296 20.7495 13.1234 19.9053 12.5988 19.3885L5.43834 12.3333H23.6666C24.403 12.3333 24.9999 11.7364 24.9999 11C24.9999 10.2636 24.403 9.66665 23.6666 9.66665H5.44715L12.5988 2.62014C13.1234 2.10331 13.1296 1.25911 12.6128 0.734569C12.096 0.210027 11.2518 0.203776 10.7272 0.720604L1.49496 9.81712C0.832409 10.4699 0.832408 11.5387 1.49496 12.1915L10.7272 21.288Z"
-          fill="#F4F5F6"/>
-        </svg>
-    </span>
+<div class="w-full space-y-6">
+
+  <div class="w-full space-y-2 flex flex-col items-center">
+    <div class="i-outline w-full">
+      <label>ID Document</label>
+      <input type="text">
     </div>
+    <button class="b-small">
+      <span>Consultar</span>
+      <div class="text-brand-c">
+        <svg class="stroke-current" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 14L10 10M11.3333 6.66667C11.3333 9.244 9.244 11.3333 6.66667 11.3333C4.08934 11.3333 2 9.244 2 6.66667C2 4.08934 4.08934 2 6.66667 2C9.244 2 11.3333 4.08934 11.3333 6.66667Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </button>
+  </div>
+
+  <div class="title-section flex items-center space-x-2">
+    <div class="w-1 h-4 rounded bg-brand-c"></div>
+    <span class="t-body text-brand-c">Resultados</span>
+  </div>
+  <div class="w-full overflow-x-auto border border-zc-200 rounded-lg bg-white p-6">
+    <table class="table-default">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Document ID</th>
+          <th>Event</th>
+          <th>Transaction ID</th>
+          <th>User ID</th>
+          <th>URL BLion</th>
+          <th>Created</th>
+          <th>Updated</th>
+          <th>Active</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ID</td>
+          <td>Document ID</td>
+          <td>Event</td>
+          <td>Transaction ID</td>
+          <td>User ID</td>
+          <td><a class="underline" href="http://blion:4200/#/verification">http://blion:4200/#/verification</a></td>
+          <td>24/07/2023</td>
+          <td>24/07/2023</td>
+          <td>
+            {{true ? 'Sí':'No'}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert-no-traza bg-amber-50 text-amber-500 p-4 rounded-lg flex items-center space-x-4">
     <div>
-      <svg width="79" height="29" viewBox="0 0 79 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0.563532 23.4715C0.406995 23.4715 0.273939 23.4176 0.164363 23.31C0.0547878 23.2024 0 23.0717 0 22.918V7.90514C0 7.73603 0.046961 7.59766 0.140883 7.49004C0.250459 7.38242 0.391342 7.32861 0.563532 7.32861H2.39501C2.69243 7.32861 2.91941 7.45929 3.07595 7.72065L9.79137 17.9598V7.90514C9.79137 7.73603 9.83833 7.59766 9.93225 7.49004C10.0418 7.38242 10.1827 7.32861 10.3549 7.32861H12.3742C12.5464 7.32861 12.6873 7.38242 12.7969 7.49004C12.9064 7.59766 12.9612 7.73603 12.9612 7.90514V22.8949C12.9612 23.064 12.9064 23.2024 12.7969 23.31C12.6873 23.4176 12.5542 23.4715 12.3977 23.4715H10.5427C10.2297 23.4715 9.99486 23.3408 9.83833 23.0794L3.14639 13.0709V22.918C3.14639 23.0717 3.0916 23.2024 2.98202 23.31C2.8881 23.4176 2.75505 23.4715 2.58285 23.4715H0.563532Z" fill="#F4F5F6"/>
-        <path d="M30.2919 23.4718C30.1667 23.4718 30.0493 23.4249 29.9397 23.331C29.8458 23.237 29.7988 23.1196 29.7988 22.9788C29.7988 22.9275 29.8198 22.8553 29.8618 22.762C29.8815 22.7183 29.9065 22.6772 29.9339 22.6378L33.2968 17.8003C33.6953 17.2271 34.5437 17.2283 34.9406 17.8026L35.6679 18.8551C35.9086 19.2034 35.9038 19.6655 35.6561 20.0088L33.4618 23.0492C33.2583 23.331 33.0157 23.4718 32.7339 23.4718H30.2919Z" fill="#F4F5F6"/>
-        <path d="M43.7081 23.4718C43.8333 23.4718 43.9507 23.4249 44.0603 23.331C44.1542 23.237 44.2012 23.1196 44.2012 22.9788C44.2012 22.9275 44.1802 22.8553 44.1382 22.762C44.1185 22.7183 44.0935 22.6772 44.0661 22.6378L40.7032 17.8003C40.3047 17.2271 39.4563 17.2283 39.0594 17.8026L38.3321 18.8551C38.0914 19.2034 38.0962 19.6655 38.3439 20.0088L40.5382 23.0492C40.7417 23.331 40.9843 23.4718 41.2661 23.4718H43.7081Z" fill="#F4F5F6"/>
-        <path d="M37.0207 18.5486C36.7512 18.5486 36.5449 18.1817 36.5449 18.1817L30.008 8.11251C29.9454 8.01859 29.9141 7.92467 29.9141 7.83075C29.9141 7.68986 29.961 7.57246 30.0549 7.47854C30.1645 7.38462 30.2819 7.33765 30.4072 7.33765H32.8726C33.1544 7.33765 33.397 7.48636 33.6005 7.78378L37.0287 12.8086L45.6166 0.446129C45.7888 0.14871 46.0315 0 46.3445 0H48.6691C48.7943 0 48.9039 0.0469613 48.9978 0.140884C49.1074 0.234806 49.1622 0.352208 49.1622 0.493091C49.1622 0.555706 49.1309 0.649627 49.0683 0.774856L37.4965 18.1817C37.4965 18.1817 37.2901 18.5486 37.0207 18.5486Z" fill="#F66100"/>
-        <path d="M17.1651 23.4715C17.0086 23.4715 16.8755 23.4176 16.7659 23.31C16.6563 23.2024 16.6016 23.0717 16.6016 22.918V7.90514C16.6016 7.73603 16.6485 7.59766 16.7424 7.49004C16.852 7.38242 16.9929 7.32861 17.1651 7.32861H27.52C27.6922 7.32861 27.8331 7.38242 27.9426 7.49004C28.0522 7.59766 28.107 7.73603 28.107 7.90514V9.45024C28.107 9.61936 28.0522 9.75773 27.9426 9.86535C27.8331 9.95759 27.6922 10.0037 27.52 10.0037H19.8184V14.0394H27.0034C27.1756 14.0394 27.3165 14.0932 27.4261 14.2009C27.5356 14.3085 27.5904 14.4468 27.5904 14.616V16.0688C27.5904 16.2379 27.5356 16.3763 27.4261 16.4839C27.3165 16.5762 27.1756 16.6223 27.0034 16.6223H19.8184V20.7964H27.7078C27.88 20.7964 28.0209 20.8502 28.1305 20.9578C28.2401 21.05 28.2948 21.1807 28.2948 21.3498V22.918C28.2948 23.0871 28.2401 23.2255 28.1305 23.3331C28.0209 23.4253 27.88 23.4715 27.7078 23.4715H17.1651Z" fill="#F4F5F6"/>
-        <path d="M53.3062 23.9998C51.1773 23.9998 49.5259 23.4597 48.3519 22.3796C47.1778 21.2995 46.5908 19.6637 46.5908 17.4722V7.91563C46.5908 7.74344 46.6378 7.60255 46.7317 7.49298C46.8413 7.3834 46.9822 7.32861 47.1544 7.32861H49.3146C49.4867 7.32861 49.6276 7.3834 49.7372 7.49298C49.8468 7.60255 49.9016 7.74344 49.9016 7.91563V17.4722C49.9016 18.7088 50.1912 19.6402 50.7703 20.2664C51.3652 20.8925 52.2027 21.2056 53.2828 21.2056C54.3629 21.2056 55.1925 20.8925 55.7717 20.2664C56.3665 19.6402 56.664 18.7088 56.664 17.4722V7.91563C56.664 7.74344 56.7187 7.60255 56.8283 7.49298C56.9379 7.3834 57.0788 7.32861 57.251 7.32861H59.4112C59.5834 7.32861 59.7164 7.3834 59.8103 7.49298C59.9199 7.60255 59.9747 7.74344 59.9747 7.91563V17.4722C59.9747 19.6637 59.3877 21.2995 58.2137 22.3796C57.0553 23.4597 55.4195 23.9998 53.3062 23.9998Z" fill="#F4F5F6"/>
-        <path d="M64.0567 23.4715C63.9002 23.4715 63.7671 23.4176 63.6575 23.31C63.548 23.2024 63.4932 23.0717 63.4932 22.918V7.90514C63.4932 7.73603 63.5401 7.59766 63.634 7.49004C63.7436 7.38242 63.8845 7.32861 64.0567 7.32861H65.9586C66.256 7.32861 66.4908 7.47467 66.663 7.76678L71.1948 16.0227L75.7265 7.76678C75.8987 7.47467 76.1335 7.32861 76.4309 7.32861H78.3094C78.4815 7.32861 78.6224 7.38242 78.732 7.49004C78.8416 7.59766 78.8964 7.73603 78.8964 7.90514V22.918C78.8964 23.0871 78.8416 23.2255 78.732 23.3331C78.6224 23.4253 78.4815 23.4715 78.3094 23.4715H76.29C76.1335 23.4715 76.0004 23.4176 75.8909 23.31C75.7813 23.2024 75.7265 23.0717 75.7265 22.918V13.0017L72.4627 19.0898C72.2905 19.4281 72.0322 19.5972 71.6879 19.5972H70.7017C70.3729 19.5972 70.1068 19.4281 69.9033 19.0898L66.6396 13.0017V22.918C66.6396 23.0717 66.5848 23.2024 66.4752 23.31C66.3813 23.4176 66.2482 23.4715 66.076 23.4715H64.0567Z" fill="#F4F5F6"/>
+      <svg class="stroke-current" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11.9998 9.00006V12.7501M2.69653 16.1257C1.83114 17.6257 2.91371 19.5001 4.64544 19.5001H19.3541C21.0858 19.5001 22.1684 17.6257 21.303 16.1257L13.9487 3.37819C13.0828 1.87736 10.9167 1.87736 10.0509 3.37819L2.69653 16.1257ZM11.9998 15.7501H12.0073V15.7576H11.9998V15.7501Z" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
+    <span class="t-body">Este documento no existe o no tiene trazabilidad.</span>
   </div>
-</div>
-
-<div class="m-12 tabs flex">
-  <button routerLink="/verification/document"
-          class="text-black rounded-r-lg focus:outline-none b-ghost-sm h-12 border border-outline-orange-3 px-4">
-    Validación de documento
-  </button>
-  <button class="text-black rounded-l-lg focus:outline-none b-solid h-12 border-solid border border-outline-orange-3 px-4">
-    Trazabilidad de documento
-  </button>
-</div>
-
-
-<div class="p-4 contenedor">
-  <div class="flex  items-center rounded h-12 flex-grow">
-    <div class="i-outline w-full">
-      <input
-        class="text-outline-gray-3 px-4 w-full h-12 focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent bg-container-gray-1"
-        placeholder="Buscar por id de documento" type="search" (keydown.enter)="searchTracking()"
-        (keypress)="onlyNumbers($event)" [(ngModel)]="documentId">
+  <div class="alert-error-traza bg-red-50 text-red-500 p-4 rounded-lg flex items-center space-x-4">
+    <div>
+      <svg class="stroke-current" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 14L12 12M12 12L14 10M12 12L10 10M12 12L14 14M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </div>
-
-    <div class="b-solid" (click)="searchTracking()">
-      Consultar
-    </div>
+    <span class="t-body">Error al consultar, intente nuevamente.</span>
   </div>
+
 </div>
-
-<div class="flex flex-1 flex-col overflow-hidden theme-light dark:theme-dark contenedor">
-  <div *ngIf="false"
-       class="bg-container-gray-2 p-4 flex flex-col space-y-1 border-b border-container-gray-2 rounded-t-lg">
-    <span class="t-h5 text-outline-gray-3">Trazabilidad</span>
-  </div>
-
-  <div *ngIf="false" class="bg-container-gray-2 p-4 flex flex-col space-y-1 border-b border-mono-30">
-    <span class="t-body-2 text-outline-gray-3">
-      <ol>
-        <li>{{traceability.length}} registros de trazabilidad</li>
-        <li
-          *ngIf="traceability.length > 0">Último registro: {{traceability[traceability.length - 1].created_at | date: 'medium':'UTC'}}</li>
-      </ol>
-    </span>
-  </div>
-
-  <div *ngIf="traceability.length" style="height:100%" class="pt-4">
-    <div
-      class="w-full h-full p-4 flex flex-col justify-start border border-container-gray-1 bg-container-gray-1 rounded">
-      <div *ngFor="let tracking of trackingValue; let position = index">
-        <div *ngIf="!tracking.active" class="hover:bg-container-gray-2 item"
-             (click)="activeTracking(position)">
-          <div class="flex flex-row items-center">
-            <div class="w-full flex flex-row flex-1 space-x-2">
-              <div class="rounded-full w-12 flex justify-center items-center bg-container-gray-2">
-                <div class="icon text-white">
-                  <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                       viewBox="0 0 20 20" fill="none">
-                    <path
-                      d="M15.3129 19.6004C12.9491 19.6004 11.0254 17.6766 11.0254 15.3129V10.6254C11.0254 10.501 11.126 10.4004 11.2504 10.4004H19.3754C19.4998 10.4004 19.6004 10.501 19.6004 10.6254V15.3129C19.6004 17.6766 17.6766 19.6004 15.3129 19.6004ZM11.4754 10.8504V15.3129C11.4754 17.4291 13.1966 19.1504 15.3129 19.1504C17.4291 19.1504 19.1504 17.4291 19.1504 15.3129V10.8504H11.4754ZM10.0004 19.6004H0.625391C0.501016 19.6004 0.400391 19.4998 0.400391 19.3754V0.625391C0.400391 0.501016 0.501016 0.400391 0.625391 0.400391H11.8754C11.9354 0.400391 11.9929 0.424141 12.0348 0.466016L15.7848 4.21602C15.8266 4.25852 15.8504 4.31539 15.8504 4.37539V8.75039H15.4004V4.60039H11.8754C11.751 4.60039 11.6504 4.49977 11.6504 4.37539V0.850391H0.850391V19.1504H10.0004V19.6004ZM12.1004 4.15039H15.0823L12.1004 1.16852V4.15039ZM9.37539 17.1004H3.12539V16.6504H9.37539V17.1004ZM9.37539 14.6004H3.12539V14.1504H9.37539V14.6004ZM9.37539 12.1004H3.12539V11.6504H9.37539V12.1004ZM3.12539 9.60039V9.15039H9.37539V9.60039H3.12539ZM13.1254 7.10039H3.12539V6.65039H13.1254V7.10039Z"/>
-                  </svg>
-                </div>
-              </div>
-              <div class="flex items-center flex-1">
-                <div class="flex-1">
-                  <div class="flex flex-1 flex-col">
-                    <span class="t-subtitle-1 text-outline-gray-3 capitalize">Id: {{tracking.id}}</span>
-                    <span class="t-caption-2 text-outline-gray-3">By user id: {{tracking.id_user}}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="flex flex-col items-end pr-4">
-              <div title="Presiona para ver Detalles" class="w-6 h-6 flex justify-center items-center text-blue-600">
-                <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
-                     fill="none">
-                  <path
-                    d="M8 2C4.68629 2 2 4.68629 2 8C2 11.3137 4.68629 14 8 14C11.3137 14 14 11.3137 14 8C14 4.68629 11.3137 2 8 2ZM8.74905 5.50003C8.74905 5.91371 8.41369 6.24907 8.00001 6.24907C7.58633 6.24907 7.25098 5.91371 7.25098 5.50003C7.25098 5.08635 7.58633 4.751 8.00001 4.751C8.41369 4.751 8.74905 5.08635 8.74905 5.50003ZM8 7C8.27614 7 8.5 7.22386 8.5 7.5V10.5C8.5 10.7761 8.27614 11 8 11C7.72386 11 7.5 10.7761 7.5 10.5V7.5C7.5 7.22386 7.72386 7 8 7Z"/>
-                </svg>
-              </div>
-              <span
-                class="text-outline-gray-3 t-caption-2 break-all text-right">{{tracking.created_at | date: 'medium':'UTC'}}</span>
-            </div>
-          </div>
-          <div class="hidden t-body-2">
-            <div>
-              <span class="text-mono-70 t-caption-2">Id</span>
-              <span>{{tracking.id}}</span>
-            </div>
-            <div>
-              <span class="text-mono-70 t-caption-2">Document Id</span>
-              <span>{{tracking.document_id}}</span>
-            </div>
-            <div>
-              <span class="text-mono-70 t-caption-2">Queue Id</span>
-              <span>{{tracking.queue_id}}</span>
-            </div>
-            <div class="col-span-2">
-              <span class="text-mono-70 t-caption-2 capitalize">Transaction Id</span>
-              <span>{{tracking.transaction_id}}</span>
-            </div>
-            <div class="col-span-2">
-              <span class="text-mono-70 t-caption-2 capitalize">User Id</span>
-              <span>{{tracking.id_user}}</span>
-            </div>
-            <div class="col-span-2">
-              <span class="text-mono-70 t-caption-2 capitalize">Url Lion</span>
-              <span>{{tracking.url_lion}}</span>
-            </div>
-            <div class="col-span-2">
-              <span class="text-mono-70 t-caption-2 capitalize">Descripción</span>
-              <span>{{tracking.created_at}}</span>
-            </div>
-            <div class="col-span-2">
-              <span class="text-mono-70 t-caption-2 capitalize">Descripción</span>
-              <span>{{tracking.updated_at}}</span>
-            </div>
-          </div>
-        </div>
-        <div *ngIf="tracking.active"
-             class="overflow-hidden border rounded bg-mono-10 hover:bg-container-gray-2 hover:cursor-pointer hover:rounded"
-             (click)="closeTracking(position)">
-          <div class="flex flex-row items-center">
-            <div class="w-full flex flex-row flex-1 space-x-2">
-              <div class="rounded-br-full w-12 flex justify-center items-center bg-container-orange-3 text-white">
-                <div class="icon">
-                  <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                       viewBox="0 0 20 20" fill="none">
-                    <path
-                      d="M15.3129 19.6004C12.9491 19.6004 11.0254 17.6766 11.0254 15.3129V10.6254C11.0254 10.501 11.126 10.4004 11.2504 10.4004H19.3754C19.4998 10.4004 19.6004 10.501 19.6004 10.6254V15.3129C19.6004 17.6766 17.6766 19.6004 15.3129 19.6004ZM11.4754 10.8504V15.3129C11.4754 17.4291 13.1966 19.1504 15.3129 19.1504C17.4291 19.1504 19.1504 17.4291 19.1504 15.3129V10.8504H11.4754ZM10.0004 19.6004H0.625391C0.501016 19.6004 0.400391 19.4998 0.400391 19.3754V0.625391C0.400391 0.501016 0.501016 0.400391 0.625391 0.400391H11.8754C11.9354 0.400391 11.9929 0.424141 12.0348 0.466016L15.7848 4.21602C15.8266 4.25852 15.8504 4.31539 15.8504 4.37539V8.75039H15.4004V4.60039H11.8754C11.751 4.60039 11.6504 4.49977 11.6504 4.37539V0.850391H0.850391V19.1504H10.0004V19.6004ZM12.1004 4.15039H15.0823L12.1004 1.16852V4.15039ZM9.37539 17.1004H3.12539V16.6504H9.37539V17.1004ZM9.37539 14.6004H3.12539V14.1504H9.37539V14.6004ZM9.37539 12.1004H3.12539V11.6504H9.37539V12.1004ZM3.12539 9.60039V9.15039H9.37539V9.60039H3.12539ZM13.1254 7.10039H3.12539V6.65039H13.1254V7.10039Z"/>
-                  </svg>
-                </div>
-              </div>
-              <div class="flex items-center flex-1">
-                <div class="flex-1">
-                  <div class="flex flex-1 flex-col">
-                    <span class="t-subtitle-1 text-outline-gray-3 capitalize">Id: {{tracking.id}}</span>
-                    <span class="t-caption-2 text-outline-gray-3">By user id: {{tracking.id_user}}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="flex flex-col items-end pr-4">
-              <div title="Presiona para cerrar los detalles"
-                   class="icon w-6 h-6 flex justify-center items-center text-blue-600">
-                <svg class="fill-current text-alert-info" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                     viewBox="0 0 16 16" fill="none">
-                  <path
-                    d="M8 2C4.68629 2 2 4.68629 2 8C2 11.3137 4.68629 14 8 14C11.3137 14 14 11.3137 14 8C14 4.68629 11.3137 2 8 2ZM8.74905 5.50003C8.74905 5.91371 8.41369 6.24907 8.00001 6.24907C7.58633 6.24907 7.25098 5.91371 7.25098 5.50003C7.25098 5.08635 7.58633 4.751 8.00001 4.751C8.41369 4.751 8.74905 5.08635 8.74905 5.50003ZM8 7C8.27614 7 8.5 7.22386 8.5 7.5V10.5C8.5 10.7761 8.27614 11 8 11C7.72386 11 7.5 10.7761 7.5 10.5V7.5C7.5 7.22386 7.72386 7 8 7Z"/>
-                </svg>
-              </div>
-              <span
-                class="text-outline-gray-3 t-caption-2 break-all text-right">{{tracking.created_at | date: 'medium':'UTC'}}</span>
-            </div>
-          </div>
-          <div class="px-4 py-2 grid grid-cols-2 gap-2 break-all text-black t-body-2">
-            <div class="flex flex-col">
-              <span class="text-outline-orange-1 t-caption-2">Document ID</span>
-              <span class="text-outline-gray-3">{{tracking.document_id}}</span>
-            </div>
-            <div class="flex flex-col">
-              <span class="text-outline-orange-1 t-caption-2 capitalize">Transaction ID</span>
-              <a href="{{urlBjungle+tracking.transaction_id}}" target="_blank" class="text-outline-gray-3">{{tracking.transaction_id}}</a>
-            </div>
-            <div class="flex flex-col">
-              <span class="text-outline-orange-1 t-caption-2">User ID</span>
-              <span class="text-outline-gray-3">{{tracking.id_user}}</span>
-            </div>
-            <div class="flex flex-col">
-              <span class="text-outline-orange-1 t-caption-2">Event</span>
-              <span class="text-outline-gray-3">{{tracking.event}}</span>
-            </div>
-          </div>
-        </div>
-        <div *ngIf="position !== trackingValue.length -1" class="border-r border-mono-30 w-6 h-6"></div>
-      </div>
-    </div>
-  </div>
-
-  <div *ngIf="false" class="pagination p-4 border-t bg-container-gray-2">
-    <div class="flex flex-row justify-between space-x-4 items-center">
-      <div class="flex flex-row relative group cursor-pointer pl-2 items-center border-input w-20 bg-mono-10 rounded">
-        <span class="text-outline-gray-3 w-full truncate">{{paginationValue}}</span>
-        <div class="p-3 flex items-center justify-center text-outline-gray-3">
-          <svg class="fill-current text-outline-gray-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-               viewBox="0 0 16 16">
-            <path
-              d="M2.81319 5.64645C3.00846 5.45118 3.32504 5.45118 3.5203 5.64645L8.00008 10.1262L12.4799 5.64645C12.6751 5.45118 12.9917 5.45118 13.187 5.64645C13.3822 5.84171 13.3822 6.15829 13.187 6.35355L8.35363 11.1869C8.15837 11.3821 7.84179 11.3821 7.64653 11.1869L2.81319 6.35355C2.61793 6.15829 2.61793 5.84171 2.81319 5.64645Z"/>
-          </svg>
-        </div>
-        <div class="border rounded absolute bottom-10 left-0 w-full hidden group-hover:block">
-          <div class="option-combo" (click)="paginationValue = 5; changePaginationValue()">5</div>
-          <div class="option-combo" (click)="paginationValue = 10; changePaginationValue()">10</div>
-          <div class="option-combo" (click)="paginationValue = 15; changePaginationValue()">15</div>
-          <div class="option-combo" (click)="paginationValue = 20; changePaginationValue()">20</div>
-        </div>
-        <ec-dropdown [dropStyle]="phoneStyle" [icon]="false" [(ngModel)]="paginationNumberCurrency"
-                     [data]="optionPagination" optionLabel="value" [filter]="true" placeholder="+00"
-                     [showClear]="false"></ec-dropdown>
-      </div>
-
-      <div class="flex flex-row space-x-1 text-outline-gray-3">
-        <button class="border-input flex flex-row items-center justify-center w-10 h-10 hover:bg-container-gray-3"
-                (click)="beforePage()" [disabled]="paginationIndex === 1">
-          <div class="transform rotate-90">
-            <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-              <path
-                d="M2.81319 5.64645C3.00846 5.45118 3.32504 5.45118 3.5203 5.64645L8.00008 10.1262L12.4799 5.64645C12.6751 5.45118 12.9917 5.45118 13.187 5.64645C13.3822 5.84171 13.3822 6.15829 13.187 6.35355L8.35363 11.1869C8.15837 11.3821 7.84179 11.3821 7.64653 11.1869L2.81319 6.35355C2.61793 6.15829 2.61793 5.84171 2.81319 5.64645Z"/>
-            </svg>
-          </div>
-        </button>
-        <div class="border-input cursor-default flex flex-row items-center justify-center h-10 bg-mono-10 px-2">
-          <span>{{paginationIndex}}/{{lengthTracking}}</span>
-        </div>
-        <button class="border-input flex flex-row items-center justify-center w-10 h-10 hover:bg-container-gray-3"
-                (click)="nextPage()" [disabled]="paginationIndex === lengthTracking">
-          <div class="transform -rotate-90">
-            <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-              <path
-                d="M2.81319 5.64645C3.00846 5.45118 3.32504 5.45118 3.5203 5.64645L8.00008 10.1262L12.4799 5.64645C12.6751 5.45118 12.9917 5.45118 13.187 5.64645C13.3822 5.84171 13.3822 6.15829 13.187 6.35355L8.35363 11.1869C8.15837 11.3821 7.84179 11.3821 7.64653 11.1869L2.81319 6.35355C2.61793 6.15829 2.61793 5.84171 2.81319 5.64645Z"/>
-            </svg>
-          </div>
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--<app-block-page [show]="isLoading"></app-block-page>-->
-
-<app-toast></app-toast>
