@@ -13,7 +13,7 @@ export class TrackingDocumentComponent implements OnInit {
 
   public urlBjungle = 'http://bjungle.net.s3-website-us-east-1.amazonaws.com/explorer/viewer?info=transaction&id='
 
-  public documentId!: number;
+  public documentId: string = '';
   public traceability: any[] = [];
   public trackingValue: any[] = [];
   public trackingTemp: any[] = [];
@@ -23,6 +23,10 @@ export class TrackingDocumentComponent implements OnInit {
   public leftLimit: number = 0;
   public rightLimit: number = 5;
   public paginationIndex: number = 1;
+  public isError: boolean = false;
+  public isVoid: boolean = false;
+
+  public isActiveLoad:boolean =  false;
 
   public phoneStyle: DropdownModel ={
     textColor: 'text-outline-gray-3 text-label-01',
@@ -66,15 +70,23 @@ export class TrackingDocumentComponent implements OnInit {
     // this.getInitData();
   }
 
-  private getInitData(): void {
-    this.traceability = [];
-    if (this.documentId) {
-      this.isLoading = true;
-      this._verificationService.getTrackingDocument(this.documentId).subscribe(
+  public getDataTrazability(): void {
+    this.isVoid = false;
+    this.isLoading = true;
+    this.isError = false;
+    if (this.documentId !== null && this.documentId !== undefined && this.documentId !== '') {
+      this.traceability = [];
+      this._verificationService.getTrackingDocument(Number(this.documentId)).subscribe(
         {
           next: (res) => {
-            if (res.data === null) {
-              this._messageService.add({type: 'error', message: 'No se encontraron resultados', life: 5000});
+            if(res.error) {
+              this.isLoading = false;
+              this._messageService.add({type: 'error', message: res.msg, life: 5000});
+            }
+            if (res.data === null || res.data.length === 0) {
+              this._messageService.add({type: 'warning', message: 'No se encontraron resultados', life: 5000});
+              this.isVoid = true;
+              this.isLoading = false;
             } else {
               this.traceability = res.data
                 ?.map((tc: any) => {
@@ -90,14 +102,16 @@ export class TrackingDocumentComponent implements OnInit {
                   tc['active'] = false;
                   return tc;
                 });
-              // this.traceability = [...this.traceability,...this.traceability]
+              this.traceability = [...this.traceability,...this.traceability]
               this.lengthTracking = Math.ceil(this.traceability.length / this.paginationValue);
               this.trackingValue = this.traceability.slice(this.leftLimit, this.rightLimit);
+
             }
             this.isLoading = false;
           },
           error: (err: Error) => {
             this.isLoading = false;
+            this.isError = true;
             this._messageService.add({
               type: 'error',
               message: 'Conexión perdida, intente de nuevo y revise su conexión a internet!',
@@ -106,6 +120,9 @@ export class TrackingDocumentComponent implements OnInit {
           }
         }
       );
+    } else {
+      this.isLoading = false;
+      this._messageService.add({type: 'warning', message: 'Ingrese el ID del Documento', life: 5000});
     }
   }
 
@@ -143,7 +160,7 @@ export class TrackingDocumentComponent implements OnInit {
   }
 
   public searchTracking(): void {
-    this.getInitData()
+    this.getDataTrazability()
   }
 
   public onlyNumbers = (value: KeyboardEvent) => onlyNumbers(value);

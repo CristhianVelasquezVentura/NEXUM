@@ -1,5 +1,5 @@
-<div class="w-full space-y-6">
-  <div class="alert-doc-valid bg-emerald-50 text-emerald-500 p-4 rounded-lg flex items-center space-x-4">
+<div class="w-full space-y-6" >
+  <div *ngIf="isValid === 'valid'" class="alert-doc-valid bg-emerald-50 text-emerald-500 p-4 rounded-lg flex items-center space-x-4">
     <div>
       <svg class="stroke-current" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -7,7 +7,7 @@
     </div>
     <span class="t-body">Documento válido</span>
   </div>
-  <div class="alert-doc-invalid bg-red-50 text-red-500 p-4 rounded-lg flex items-center space-x-4">
+  <div *ngIf="isValid === 'invalid'" class="alert-doc-invalid bg-red-50 text-red-500 p-4 rounded-lg flex items-center space-x-4">
     <div>
       <svg class="stroke-current" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M10 14L12 12M12 12L14 10M12 12L10 10M12 12L14 14M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -19,9 +19,11 @@
   <div class="i-outline w-full">
     <label>Documento a Validar</label>
     <div class="h-2"></div>
-    <input type="file">
+    <input type="file" (change)="uploadFile($event)" accept="{{accept}}">
+    <!-- <app-file-upload label="{{ 'SELECT THE DOCUMENT'  }}" icon="document copy-lg-white-base"
+    inputLabel="{{ 'UPLOAD DOCUMENT' }}" class="w-full pr-2"
+    (change)="uploadFile($event)"></app-file-upload> -->
   </div>
-
   <div class="title-section flex items-center space-x-2">
     <div class="w-1 h-4 rounded bg-brand-c"></div>
     <span class="t-body text-brand-c">Datos Capturados</span>
@@ -29,15 +31,11 @@
   <div class="w-full flex flex-wrap gap-4">
     <div class="flex flex-col">
       <span class="t-label text-zc-400">Nombre del documento</span>
-      <span class="t-body text-zc-600">{{'document-name'}}</span>
+      <span class="t-body text-zc-600" >{{fileName ?fileName:'-'}}</span>
     </div>
     <div class="flex flex-col">
       <span class="t-label text-zc-400">Tamaño</span>
-      <span class="t-body text-zc-600">{{'document-size'+' mb'}}</span>
-    </div>
-    <div class="flex flex-col">
-      <span class="t-label text-zc-400">Extensión</span>
-      <span class="t-body text-zc-600">{{'.'+'document-format'}}</span>
+      <span class="t-body text-zc-600">{{fileSize?fileSize+' mb':'-'}}</span>
     </div>
   </div>
 
@@ -45,18 +43,25 @@
     <div class="w-1 h-4 rounded bg-brand-c"></div>
     <span class="t-body text-brand-c">Datos Complementarios</span>
   </div>
-  <div class="grid md:grid-cols-2 gap-2">
+  <div [formGroup]="formValidateDocument" class="grid md:grid-cols-2 gap-2">
     <div class="i-outline w-full">
       <label>Código de Verificación</label>
-      <input type="text">
+      <input type="text" formControlName="verification_code">
+      <span *ngIf="formValidateDocument?.get('verification_code')?.invalid && formValidateDocument?.get('verification_code')?.touched">
+        Requerido
+      </span>
     </div>
     <div class="i-outline w-full">
       <label>Transaction ID</label>
-      <input type="text">
+      <input type="text" formControlName="transaction_id">
+      <span *ngIf="formValidateDocument?.get('transaction_id')?.invalid && formValidateDocument?.get('transaction_id')?.touched">
+        Requerido
+      </span>
     </div>
   </div>
-
   <div class="w-full">
-    <button class="b-solid w-full md:w-fit" style="min-width: 120px">Validar</button>
+    <button class="b-solid w-full md:w-fit" style="min-width: 120px" (click)="submitForm()">Validar</button>
   </div>
 </div>
+<app-block-page [show]="isActiveLoad"></app-block-page>
+<app-toast></app-toast>

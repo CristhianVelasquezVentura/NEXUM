@@ -16,6 +16,11 @@ export class ValidateDocumentComponent implements OnInit {
   public hashFile: string;
   public isActiveLoad: boolean;
   public optionTabName: string = 'Validation'
+  public isValid: string = '';
+  public accept: string = '.pdf';
+
+  public fileName;
+  public fileSize;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -23,9 +28,9 @@ export class ValidateDocumentComponent implements OnInit {
     private _messageToastService: ToastService,) {
     this.formValidateDocument = this._formBuilder.group(
       {
-        name: [{value: '', disabled: true}, [Validators.required]],
-        size: [{value: '', disabled: true,}, [Validators.required]],
-        file_extension: [{value: '', disabled: true}, [Validators.required],],
+        name: [{value: '', disabled: true}],
+        size: [{value: '', disabled: true,}],
+        file_extension: [{value: '', disabled: true},],
         verification_code: ['', [Validators.required]],
         transaction_id: ['', [Validators.required]],
       }
@@ -33,6 +38,10 @@ export class ValidateDocumentComponent implements OnInit {
     this.file64 = '';
     this.isActiveLoad = false;
     this.hashFile = '';
+
+    this.fileName = '';
+    this.fileSize = '';
+
   }
 
   ngOnInit(): void {
@@ -41,10 +50,17 @@ export class ValidateDocumentComponent implements OnInit {
   uploadFile(doc: any): void {
     let file = null;
     file = doc.target.files[0];
-    this.formValidateDocument.get('name')?.setValue(file.name);
-    this.formValidateDocument.get('size')?.setValue(file.size);
-    this.validateType(file.type);
-    this.getBase64(file);
+    this.fileName = '';
+    this.fileSize = '';
+    if(file) {
+      this.fileName = file.name;
+      this.fileSize = Number(file.size) > 0? ((Number(file.size)/10485760)).toFixed(3):'0' ;
+      this.formValidateDocument.get('name')?.setValue(file.name);
+      this.formValidateDocument.get('size')?.setValue(file.size);
+      this.formValidateDocument.get('file_extension')?.setValue(file.extension);
+      this.validateType(file.type);
+      this.getBase64(file);
+    }
   }
 
   private getBase64(file: File) {
@@ -127,6 +143,7 @@ export class ValidateDocumentComponent implements OnInit {
           life: 5000,
         });
         this.isActiveLoad = false;
+        this.isValid = res.data;
       },
       error: (err: Error) => {
         this._messageToastService.add({
