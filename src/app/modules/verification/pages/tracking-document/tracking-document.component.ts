@@ -35,10 +35,12 @@ export class TrackingDocumentComponent implements OnDestroy{
       return
     }
 
+    this.isBlockPage = true;
     this.traceability = [];
     this._subscriptions.add(
       this._verificationService.getTrackingDocument(Number(this.documentId)).subscribe({
           next: (res) => {
+            this.isBlockPage = false;
             if (res.error) {
               this._messageService.add({type: 'error', message: res.msg, life: 5000});
               return
