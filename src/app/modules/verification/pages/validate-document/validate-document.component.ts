@@ -17,7 +17,7 @@ export class ValidateDocumentComponent implements OnInit {
   public isActiveLoad: boolean;
   public optionTabName: string = 'Validation'
   public isValid: string = '';
-  public accept: string = '.pdf';
+  public accept: string = '.pdf, .png';
 
   public fileName;
   public fileSize;
@@ -47,7 +47,7 @@ export class ValidateDocumentComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  uploadFile(doc: any): void {
+  public uploadFile(doc: any): void {
     let file = null;
     file = doc.target.files[0];
     this.fileName = '';
@@ -82,7 +82,7 @@ export class ValidateDocumentComponent implements OnInit {
   }
 
 
-  validateType(type: string) {
+  private validateType(type: string) {
     if (type === 'application/pdf') {
       this.formValidateDocument.get('file_extension')?.setValue('.pdf')
     }

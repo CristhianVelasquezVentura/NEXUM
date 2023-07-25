@@ -3,9 +3,9 @@
   <div class="w-full space-y-2 flex flex-col items-center">
     <div class="i-outline w-full">
       <label>ID Document</label>
-      <input type="text" [(ngModel)]="documentId">
+      <input type="text" (keypress)="onlyNumbers($event)" [(ngModel)]="documentId">
     </div>
-    <button class="b-small" (click)="searchTracking()">
+    <button class="b-small" (click)="getTrackingDocument()">
       <span>Consultar</span>
       <div class="text-brand-c">
         <svg class="stroke-current" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,7 +31,6 @@
           <th>URL BLion</th>
           <th>Created</th>
           <th>Updated</th>
-          <th>Active</th>
         </tr>
       </thead>
       <tbody>
@@ -44,32 +43,12 @@
           <td><a class="underline" href="{{item.url_lion}}">{{item.url_lion}}</a></td>
           <td>{{item.created_at}}</td>
           <td>{{item.updated_at}}</td>
-          <td>
-            {{item.active? 'Sí':'No'}}
-          </td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div *ngIf="isVoid" class="alert-no-traza bg-amber-50 text-amber-500 p-4 rounded-lg flex items-center space-x-4">
-    <div>
-      <svg class="stroke-current" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M11.9998 9.00006V12.7501M2.69653 16.1257C1.83114 17.6257 2.91371 19.5001 4.64544 19.5001H19.3541C21.0858 19.5001 22.1684 17.6257 21.303 16.1257L13.9487 3.37819C13.0828 1.87736 10.9167 1.87736 10.0509 3.37819L2.69653 16.1257ZM11.9998 15.7501H12.0073V15.7576H11.9998V15.7501Z" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-    <span class="t-body">Este documento no existe o no tiene trazabilidad.</span>
-  </div>
-  <div *ngIf="isError" class="alert-error-traza bg-red-50 text-red-500 p-4 rounded-lg flex items-center space-x-4">
-    <div>
-      <svg class="stroke-current" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M10 14L12 12M12 12L14 10M12 12L10 10M12 12L14 14M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-    <span class="t-body">Error al consultar, intente nuevamente.</span>
-  </div>
-
 </div>
-<app-block-page [show]="isActiveLoad"></app-block-page>
+<app-block-page [show]="isBlockPage"></app-block-page>
 <app-toast></app-toast>
 
