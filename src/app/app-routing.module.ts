@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'verification',
     loadChildren: () => import('./modules/verification/verification.module').then((m) => m.VerificationModule)
   },
+  {
+    path: 'send-document',
+    loadChildren: () => import('./modules/send-document/send-document.module').then((m) => m.SendDocumentModule)
+  },
 ];
 
 @NgModule({

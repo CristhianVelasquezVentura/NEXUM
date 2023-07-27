@@ -1,0 +1,84 @@
+<div class="flex bg-zc-50 justify-center w-full h-screen">
+  <div class="w-full relative h-screen pt-8 space-y-6 flex flex-col" style="max-width: 640px">
+    <div>
+      <app-header-nexum [router]="'onboarding'" [icon]="'close'" [title]="'Envío de Documento'"></app-header-nexum>
+    </div>
+    <form class="body space-y-6 bg-white w-full overflow-y-auto h-full rounded-t-lg p-8">
+
+      <div class="step w-full flex items-center space-x-4">
+        <div class="flex items-center justify-center w-14 h-14 relative rounded-full bg-zc-50">
+
+          <span class="t-body text-brand-c">4/5</span>
+
+          <svg class="absolute top-0 left-0" width="56" height="56" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 2C35.913 2 41.6743 3.87194 46.458 7.34752C51.2417 10.8231 54.8024 15.7239 56.6296 21.3475C58.4568 26.9711 58.4568 33.0289 56.6296 38.6525C54.8024 44.2761 51.2417 49.1769 46.458 52.6525C41.6743 56.1281 35.913 58 30 58C24.087 58 18.3257 56.1281 13.542 52.6525C8.75828 49.1769 5.19764 44.2761 3.37042 38.6525C1.54319 33.0289 1.54319 26.9711 3.37042 21.3475" stroke="url(#paint0_linear_674_679)" stroke-width="4" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="paint0_linear_674_679" x1="2" y1="30.6512" x2="58" y2="30.6512" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#F66100"/>
+                <stop offset="1" stop-color="#F4BC2C"/>
+              </linearGradient>
+            </defs>
+          </svg>
+
+        </div>
+        <div class="flex flex-col">
+          <span class="t-body text-zc-800">Organización Firmas</span>
+          <span class="t-label text-brand-c">Sigue: Revisión Final</span>
+        </div>
+      </div>
+
+      <div>
+        <span class="t-body text-zc-400">Seleccione la sección que desea organizar:</span>
+      </div>
+
+      <div class="w-full flex flex-col overflow-x-auto gap-4">
+        <div class="flex items-center space-x-2 justify-between border border-zc-200 rounded-lg p-4">
+          <div class="flex flex-col space-y-1 text-brand-c">
+            <span class="t-body">Sección 1</span>
+            <div class="t-label px-2 flex items-center h-5 bg-brand-l rounded-full">
+              {{'3'}} Firmantes
+            </div>
+          </div>
+
+          <div class="border-l h-6 border-zc-200"></div>
+
+          <div class="flex space-x-2">
+            <div class="flex flex-col items-center">
+              <span class="t-body text-zc-600">2</span>
+              <span class="t-label text-zc-400">Ordenadas</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <span class="t-body text-zc-600">1</span>
+              <span class="t-label text-zc-400">Pendientes</span>
+            </div>
+          </div>
+
+          <div class="border-l h-6 border-zc-200"></div>
+
+          <div *ngIf="true" class="stroke-alert-info">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 8V12L15 15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div *ngIf="false" class="stroke-alert-warning">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.9998 9.00006V12.7501M2.69653 16.1257C1.83114 17.6257 2.91371 19.5001 4.64544 19.5001H19.3541C21.0858 19.5001 22.1684 17.6257 21.303 16.1257L13.9487 3.37819C13.0828 1.87736 10.9167 1.87736 10.0509 3.37819L2.69653 16.1257ZM11.9998 15.7501H12.0073V15.7576H11.9998V15.7501Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div *ngIf="false" class="stroke-alert-success">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="h-16"></div>
+    </form>
+    <div class="b-nav-dual absolute left-1/2 -translate-x-2/4 bottom-4">
+      <button routerLink="/send-document/signatures-sections" class="secondary">Anterior</button>
+      <div class="separador"></div>
+      <button routerLink="/send-document/final-revision" class="primary">Siguiente</button>
+    </div>
+  </div>
+</div>

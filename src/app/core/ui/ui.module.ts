@@ -5,6 +5,8 @@ import {ToastItemComponent} from './toast-item/toast-item.component';
 import {BlockPageComponent} from "@app/core/ui/block-page/block-page.component";
 import {ToastComponent} from "@app/core/ui/toast/toast.component";
 import {FileUploadComponent} from "@app/core/ui/file-upload/file-upload.component";
+import { HeaderNexumComponent } from './header-nexum/header-nexum.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import {FileUploadComponent} from "@app/core/ui/file-upload/file-upload.componen
     ToastItemComponent,
     BlockPageComponent,
     ToastComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    HeaderNexumComponent,
+    ToolbarComponent
   ],
   imports: [
     CommonModule
@@ -23,7 +27,9 @@ import {FileUploadComponent} from "@app/core/ui/file-upload/file-upload.componen
     ToastItemComponent,
     BlockPageComponent,
     ToastComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    HeaderNexumComponent,
+    ToolbarComponent
   ]
 })
 export class UiModule {

@@ -129,9 +129,16 @@
   .b-small {
     @apply flex items-center space-x-1 px-2 py-1 rounded-lg border border-zc-200 hover:bg-zc-50 t-body text-zc-600 hover:t-body-b;
   }
+  .b-toolbar {
+    @apply rounded-full flex items-center justify-center h-12 w-12 stroke-zc-400 hover:stroke-brand-c hover:bg-brand-l
+  }
+  .b-toolbar-primary {
+    background: linear-gradient(90deg, #F66100 0%, #F4BC2C 100%);
+    @apply rounded-full flex items-center justify-center h-12 w-12 stroke-white hover:drop-shadow-lg
+  }
 
   .b-ghost-sm {
-    @apply t-body text-zc-600 p-2 rounded-lg hover:bg-zc-50 hover:t-body-b;
+    @apply t-body text-zc-400 stroke-zc-400 p-2 rounded-lg hover:bg-brand-l hover:text-brand-c hover:stroke-brand-c;
   }
 
   .b-ghost-md {
@@ -171,8 +178,11 @@
     label {
       @apply t-label text-zc-400;
     }
-    input {
+    input, select {
       @apply t-body text-black outline-none placeholder-zc-200 h-10;
+    }
+    textarea {
+      @apply t-body text-black outline-none placeholder-zc-200;
     }
     span {
       @apply text-alert-error t-label;
