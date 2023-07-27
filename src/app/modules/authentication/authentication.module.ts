@@ -6,13 +6,15 @@ import { LoginComponent } from './pages/login/login.component';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {RouterModule} from "@angular/router";
+import { RestartPasswordComponent } from './pages/restart-password/restart-password.component';
 
 
 @NgModule({
   declarations: [
     AuthenticationComponent,
     LoginComponent,
-    RecoveryComponent
+    RecoveryComponent,
+    RestartPasswordComponent
   ],
     imports: [
         CommonModule,

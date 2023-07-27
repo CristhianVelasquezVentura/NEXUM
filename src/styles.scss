@@ -127,11 +127,11 @@
     @apply p-3 flex items-center justify-center text-white t-body rounded-lg hover:t-body-b;
   }
   .b-small {
-    @apply flex items-center space-x-1 px-2 py-1 rounded-lg border border-zc-200 hover:bg-zc-50 t-body text-zc-600;
+    @apply flex items-center space-x-1 px-2 py-1 rounded-lg border border-zc-200 hover:bg-zc-50 t-body text-zc-600 hover:t-body-b;
   }
 
   .b-ghost-sm {
-    @apply p-2 rounded-lg hover:bg-zc-50;
+    @apply t-body text-zc-600 p-2 rounded-lg hover:bg-zc-50 hover:t-body-b;
   }
 
   .b-ghost-md {
