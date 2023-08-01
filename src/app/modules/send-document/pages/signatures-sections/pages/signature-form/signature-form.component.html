@@ -1,100 +1,82 @@
 <div class="flex bg-zc-50 justify-center w-full h-screen">
   <div class="w-full relative h-screen pt-8 space-y-6 flex flex-col" style="max-width: 640px">
     <div>
-      <app-header-nexum [router]="'onboarding'" [icon]="'close'" [title]="'Envío de Documento'"></app-header-nexum>
+      <app-header-nexum [router]="'onboarding'" [icon]="'close'" [title]="'Agregar Firmante'"></app-header-nexum>
     </div>
     <div class="body space-y-6 bg-white w-full overflow-y-auto h-full rounded-t-lg p-8">
 
-      <div class="step w-full flex items-center space-x-4">
-        <div class="flex items-center justify-center w-14 h-14 relative rounded-full bg-zc-50">
+      <div class="title-section flex items-center space-x-2">
+        <div class="w-1 h-4 rounded bg-brand-c"></div>
+        <span class="t-body text-brand-c">Datos Personales</span>
+      </div>
 
-          <span class="t-body text-brand-c">1/5</span>
-
-          <svg class="absolute top-0 left-0" width="56" height="56" viewBox="0 0 57 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M28 2C33.913 2 39.6743 3.87194 44.458 7.34752C49.2417 10.8231 52.8024 15.7239 54.6296 21.3475" stroke="url(#paint0_linear_674_679)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-            <defs>
-              <linearGradient id="paint0_linear_674_679" x1="28" y1="11.8987" x2="54.6296" y2="11.8987" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#F66100"/>
-                <stop offset="1" stop-color="#F4BC2C"/>
-              </linearGradient>
-            </defs>
-          </svg>
+      <div class="grid gap-2 w-full">
+        <div class="i-outline">
+          <label>Rol de firmante</label>
+          <select class="w-full"></select>
         </div>
-        <div class="flex flex-col">
-          <span class="t-body text-zc-800">Información General</span>
-          <span class="t-label text-brand-c">Sigue: Revisión de Documentos</span>
+        <div class="i-outline">
+          <label>Correo electrónico</label>
+          <input type="email" class="w-full">
+        </div>
+        <div class="i-outline">
+          <label>Nombre</label>
+          <input type="text" class="w-full">
+        </div>
+        <div class="i-outline">
+          <label>Apellidos</label>
+          <input type="text" class="w-full">
+        </div>
+        <div class="i-outline">
+          <label>Tipo de documento (opcional)</label>
+          <select class="w-full"></select>
+        </div>
+        <div class="i-outline">
+          <label>Número de documento (opcional)</label>
+          <input type="text" class="w-full">
+        </div>
+        <div class="i-outline">
+          <label>Código de país</label>
+          <select class="w-full"></select>
+        </div>
+        <div class="i-outline">
+          <label>Número de teléfono</label>
+          <input type="number" class="w-full">
         </div>
       </div>
 
       <div class="title-section flex items-center space-x-2">
         <div class="w-1 h-4 rounded bg-brand-c"></div>
-        <span class="t-body text-brand-c">Datos Principales</span>
+        <span class="t-body text-brand-c">Seguridad</span>
       </div>
 
       <div class="grid gap-2 w-full">
-        <div class="i-outline">
-          <label>Flujo de trabajo</label>
-          <select class="w-full"></select>
+        <div class="flex items-center space-x-2">
+          <input type="checkbox" class="w-4 h-4">
+          <span class="flex-1 text-zc-800 t-body">Solicitar código</span>
         </div>
         <div class="i-outline">
-          <label>Documento a firmar</label>
-          <div class="h-2"></div>
-          <input type="file" class="w-full">
-        </div>
-      </div>
-
-      <div class="grid gap-2 w-full">
-        <div class="i-outline">
-          <label>Asunto para el envío</label>
+          <label>Código de acceso</label>
           <input type="text" class="w-full">
         </div>
-        <div class="i-outline">
-          <label>Descripción del envío</label>
-          <div class="h-2"></div>
-          <textarea rows="3" class="w-full"></textarea>
-        </div>
       </div>
 
-      <div class="space-y-2">
-        <div class="title-section flex items-center space-x-2">
-          <div class="w-1 h-4 rounded bg-brand-c"></div>
-          <span class="t-body text-brand-c">Documentos Adjuntos</span>
-        </div>
-        <span class="t-body text-zc-400">Estos documentos son anexos del documento principal:</span>
+
+      <div class="title-section flex items-center space-x-2">
+        <div class="w-1 h-4 rounded bg-brand-c"></div>
+        <span class="t-body text-brand-c">Solicitudes de anexos extra</span>
       </div>
 
-      <div class="grid gap-2 w-full">
-        <div class="i-outline">
-          <label>Nombre Anexo ngFor*</label>
-          <div class="h-2"></div>
-          <input type="file" class="w-full">
-        </div>
-      </div>
-
-      <div class="space-y-2">
-        <div class="title-section flex items-center space-x-2">
-          <div class="w-1 h-4 rounded bg-brand-c"></div>
-          <span class="t-body text-brand-c">Documentos a solicitar</span>
-        </div>
-        <span class="t-body text-zc-400">Estos documentos se deberán subir por los firmantes, adicional a la firma del documento principal.</span>
-      </div>
-
-      <div class="w-full p-4 space-x-4 flex items-center text-amber-500 stroke-amber-500 bg-amber-50 rounded-lg">
+      <div class="w-full p-4 space-x-4 flex items-center text-blue-500 stroke-blue-500 bg-blue-50 rounded-lg">
         <div>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 8.99999V12.75M2.697 16.126C1.831 17.626 2.914 19.5 4.645 19.5H19.355C21.085 19.5 22.168 17.626 21.303 16.126L13.949 3.37799C13.083 1.87799 10.917 1.87799 10.051 3.37799L2.697 16.126ZM12 15.75H12.007V15.758H12V15.75Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <span class="t-body">Nota: Los documentos seleccionados serán solicitados a los firmantes, algunos son de subida obligatoria por parte del firmante, según la configuración que se le haya dado.</span>
+        <span class="t-body">Nota: Los documentos agregados serán solicitados al firmante de forma obligatoria o no, de acuerdo a la configuración que se le dé.</span>
       </div>
 
       <div class="w-full flex flex-col">
-        <!--Solicitudes del workflow-->
-        <div class="flex items-center space-x-2 py-2 border-b border-zc-200">
-          <input type="checkbox" class="w-4 h-4">
-          <span class="flex-1 text-zc-800 t-body">Libreta Militar</span>
-          <div class="t-label text-brand-c bg-brand-l rounded-full px-1 py-0.5">Obligatorio</div>
-        </div>
         <!--Solicitudes agregadas-->
         <div class="flex items-center space-x-2 py-2 border-b border-zc-200">
           <input type="checkbox" class="w-4 h-4">
@@ -123,9 +105,9 @@
       <div class="h-16"></div>
     </div>
     <div class="b-nav-dual absolute left-1/2 -translate-x-2/4 bottom-4">
-      <!--<button class="secondary">Anterior</button>
-      <div class="separador"></div>-->
-      <button routerLink="/send-document/document-review" class="primary">Siguiente</button>
+      <button routerLink="/send-document/signatures-sections/signatures" class="secondary">Cancelar</button>
+      <div class="separador"></div>
+      <button class="primary">Agregar Firmante</button>
     </div>
   </div>
 </div>

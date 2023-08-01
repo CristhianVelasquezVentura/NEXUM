@@ -3,7 +3,7 @@
     <div>
       <app-header-nexum [router]="'onboarding'" [icon]="'close'" [title]="'Envío de Documento'"></app-header-nexum>
     </div>
-    <form class="body space-y-6 bg-white w-full overflow-y-auto h-full rounded-t-lg p-8">
+    <div class="body space-y-6 bg-white w-full overflow-y-auto h-full rounded-t-lg p-8">
 
       <div class="step w-full flex items-center space-x-4">
         <div class="flex items-center justify-center w-14 h-14 relative rounded-full bg-zc-50">
@@ -29,14 +29,14 @@
 
       <div class="h-fit space-y-2">
         <div class="flex w-full h-fit space-x-2">
-          <button class="flex-1 {{true ? 'b-tab-on':'b-tab-off'}}">Documento principal</button><!--Documento-->
-          <button class="flex-1 {{false ? 'b-tab-on':'b-tab-off'}}">Anexos</button><!--Anexos-->
+          <button (click)="tabSelect = 'document'" class="flex-1 {{tabSelect === 'document' ? 'b-tab-on':'b-tab-off'}}">Documento principal</button><!--Documento-->
+          <button (click)="tabSelect = 'annexes'" class="flex-1 {{tabSelect === 'annexes' ? 'b-tab-on':'b-tab-off'}}">Anexos</button><!--Anexos-->
         </div>
         <div>
-          <span *ngIf="true" class="t-label text-zc-400">El siguiente documento es el que debe firmar:</span><!--Documento-->
-          <span *ngIf="false" class="t-label text-zc-400">Los siguientes archivos son anexos del documento a firmar:</span><!--Anexos-->
+          <span *ngIf="tabSelect === 'document'" class="t-label text-zc-400">El siguiente documento es el que debe firmar:</span><!--Documento-->
+          <span *ngIf="tabSelect === 'annexes'" class="t-label text-zc-400">Los siguientes archivos son anexos del documento a firmar:</span><!--Anexos-->
         </div>
-        <div *ngIf="true"><!--Anexos-->
+        <div *ngIf="tabSelect === 'annexes'"><!--Anexos-->
           <div class="flex-1 flex space-x-2 overflow-x-auto w-full" style="max-width: calc(100vw - 64px)">
             <div *ngIf="true"><!--Sin Anexos-->
               <div class="bg-zc-50 w-40 border border-zc-200 rounded">
@@ -71,7 +71,7 @@
       </div>
 
       <div class="h-16"></div>
-    </form>
+    </div>
     <div class="b-nav-dual absolute left-1/2 -translate-x-2/4 bottom-4">
       <button routerLink="/send-document/general-information" class="secondary">Anterior</button>
       <div class="separador"></div>

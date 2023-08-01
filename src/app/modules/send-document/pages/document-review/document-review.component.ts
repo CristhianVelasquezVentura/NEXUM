@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class DocumentReviewComponent {
 
+  public tabSelect = 'document';//document - annexes
+
 }

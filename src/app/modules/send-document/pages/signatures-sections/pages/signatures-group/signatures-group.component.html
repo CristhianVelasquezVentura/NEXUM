@@ -1,0 +1,175 @@
+<div class="flex bg-zc-50 justify-center w-full h-screen">
+  <div class="w-full h-screen pt-8 space-y-6 flex flex-col" style="max-width: 640px">
+    <div>
+      <app-header-nexum [router]="'onboarding'" [icon]="'back'" [title]="'Firmantes'"></app-header-nexum>
+    </div>
+    <div class="body space-y-6 bg-white w-full overflow-y-auto h-full rounded-t-lg p-8">
+
+      <div class="w-full">
+        <button class="b-outline w-full">
+          <span>Agregar Firmante</span>
+          <div>
+            <svg class="text-brand-c stroke-current" width="24" height="24" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.5 3.75V16.25M16.75 10H4.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </button>
+      </div>
+      <div class="w-full">
+        <div class="flex items-center space-x-2">
+          <input type="checkbox" class="w-4 h-4">
+          <span class="flex-1 text-zc-800 t-body">Establecer Orden de Firma</span>
+        </div>
+      </div>
+
+      <div class="w-full flex flex-col divide-y divide-zc-200">
+        <div class="signature py-4 flex items-center space-x-4">
+          <div class="flex-1 flex items-center space-x-2">
+            <div>
+              <button class="b-ghost-sm">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                  </svg>
+                </div>
+              </button>
+            </div>
+            <div class="w-1 h-6 rounded bg-brand-c"></div>
+            <span class="text-zc-600 t-body">Carlos Cárdenas</span>
+          </div>
+          <div>
+            <button class="b-ghost-sm">
+              <div>
+                <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.8333 5.83333L15.1105 15.9521C15.0482 16.8243 14.3225 17.5 13.4481 17.5H6.55184C5.67745 17.5 4.95171 16.8243 4.88941 15.9521L4.16665 5.83333M8.33331 9.16667V14.1667M11.6666 9.16667V14.1667M12.5 5.83333V3.33333C12.5 2.8731 12.1269 2.5 11.6666 2.5H8.33331C7.87308 2.5 7.49998 2.8731 7.49998 3.33333V5.83333M3.33331 5.83333H16.6666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </button>
+          </div>
+          <div>
+            <button class="b-ghost-sm">
+              <div>
+                <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.6935 4.36019L15.6398 7.30647M13.9435 3.11019C14.7571 2.2966 16.0762 2.2966 16.8898 3.11019C17.7034 3.92379 17.7034 5.24288 16.8898 6.05647L5.41673 17.5296H2.50006V14.5537L13.9435 3.11019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="signature py-4 flex items-center space-x-4">
+          <div class="flex-1 flex items-center space-x-2">
+            <div>
+              <button class="b-ghost-sm">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                  </svg>
+                </div>
+              </button>
+            </div>
+            <div class="w-1 h-6 rounded bg-brand-c"></div>
+            <span class="text-zc-600 t-body">Carlos Cárdenas</span>
+          </div>
+          <div>
+            <button class="b-ghost-sm">
+              <div>
+                <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.8333 5.83333L15.1105 15.9521C15.0482 16.8243 14.3225 17.5 13.4481 17.5H6.55184C5.67745 17.5 4.95171 16.8243 4.88941 15.9521L4.16665 5.83333M8.33331 9.16667V14.1667M11.6666 9.16667V14.1667M12.5 5.83333V3.33333C12.5 2.8731 12.1269 2.5 11.6666 2.5H8.33331C7.87308 2.5 7.49998 2.8731 7.49998 3.33333V5.83333M3.33331 5.83333H16.6666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </button>
+          </div>
+          <div>
+            <button class="b-ghost-sm">
+              <div>
+                <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.6935 4.36019L15.6398 7.30647M13.9435 3.11019C14.7571 2.2966 16.0762 2.2966 16.8898 3.11019C17.7034 3.92379 17.7034 5.24288 16.8898 6.05647L5.41673 17.5296H2.50006V14.5537L13.9435 3.11019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="signature py-4 flex items-center space-x-4">
+          <div class="flex-1 flex items-center space-x-2">
+            <div>
+              <button class="b-ghost-sm">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                  </svg>
+                </div>
+              </button>
+            </div>
+            <div class="w-1 h-6 rounded bg-brand-c"></div>
+            <span class="text-zc-600 t-body">Carlos Cárdenas</span>
+          </div>
+          <div>
+            <button class="b-ghost-sm">
+              <div>
+                <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.8333 5.83333L15.1105 15.9521C15.0482 16.8243 14.3225 17.5 13.4481 17.5H6.55184C5.67745 17.5 4.95171 16.8243 4.88941 15.9521L4.16665 5.83333M8.33331 9.16667V14.1667M11.6666 9.16667V14.1667M12.5 5.83333V3.33333C12.5 2.8731 12.1269 2.5 11.6666 2.5H8.33331C7.87308 2.5 7.49998 2.8731 7.49998 3.33333V5.83333M3.33331 5.83333H16.6666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </button>
+          </div>
+          <div>
+            <button class="b-ghost-sm">
+              <div>
+                <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.6935 4.36019L15.6398 7.30647M13.9435 3.11019C14.7571 2.2966 16.0762 2.2966 16.8898 3.11019C17.7034 3.92379 17.7034 5.24288 16.8898 6.05647L5.41673 17.5296H2.50006V14.5537L13.9435 3.11019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="signature py-4 flex items-center space-x-4">
+          <div class="flex-1 flex items-center space-x-2">
+            <div>
+              <button class="b-ghost-sm">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                  </svg>
+                </div>
+              </button>
+            </div>
+            <div class="w-1 h-6 rounded bg-brand-c"></div>
+            <span class="text-zc-600 t-body">Carlos Cárdenas</span>
+          </div>
+          <div>
+            <button class="b-ghost-sm">
+              <div>
+                <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.8333 5.83333L15.1105 15.9521C15.0482 16.8243 14.3225 17.5 13.4481 17.5H6.55184C5.67745 17.5 4.95171 16.8243 4.88941 15.9521L4.16665 5.83333M8.33331 9.16667V14.1667M11.6666 9.16667V14.1667M12.5 5.83333V3.33333C12.5 2.8731 12.1269 2.5 11.6666 2.5H8.33331C7.87308 2.5 7.49998 2.8731 7.49998 3.33333V5.83333M3.33331 5.83333H16.6666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </button>
+          </div>
+          <div>
+            <button class="b-ghost-sm">
+              <div>
+                <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.6935 4.36019L15.6398 7.30647M13.9435 3.11019C14.7571 2.2966 16.0762 2.2966 16.8898 3.11019C17.7034 3.92379 17.7034 5.24288 16.8898 6.05647L5.41673 17.5296H2.50006V14.5537L13.9435 3.11019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full flex justify-center">
+        <button class="b-ghost-sm underline">Agregar Firmantes Masivamente</button>
+      </div>
+
+      <div class="mt-10 alert-warning w-full bg-amber-50 text-amber-500 p-6 flex flex-col items-center text-center">
+        <div>
+          <svg class="stroke-current" width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M60.0002 45V55M60.0002 75H60.0502M25.3592 95H94.6412C102.339 95 107.15 86.6667 103.301 80L68.6604 20C64.8114 13.3333 55.1889 13.3333 51.3399 20L16.6989 80C12.8499 86.6667 17.6612 95 25.3592 95Z" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="t-bbody">Se requiere por lo menos un firmante para continuar al siguiente paso para el envío del documento.</span>
+      </div>
+
+    </div>
+  </div>
+</div>

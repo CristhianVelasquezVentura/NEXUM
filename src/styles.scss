@@ -124,7 +124,10 @@
 
   .b-solid {
     background: linear-gradient(90deg, #F66100 0%, #F4BC2C 100%);
-    @apply p-3 flex items-center justify-center text-white t-body rounded-lg hover:t-body-b;
+    @apply p-3 flex items-center justify-center text-white t-body rounded-lg hover:t-body-b space-x-2;
+  }
+  .b-outline {
+    @apply p-3 flex items-center justify-center text-zc-600 t-body rounded-lg hover:t-body-b border border-zc-200 space-x-2;
   }
   .b-small {
     @apply flex items-center space-x-1 px-2 py-1 rounded-lg border border-zc-200 hover:bg-zc-50 t-body text-zc-600 hover:t-body-b;
@@ -138,12 +141,11 @@
   }
 
   .b-ghost-sm {
-    @apply t-body text-zc-400 stroke-zc-400 p-2 rounded-lg hover:bg-brand-l hover:text-brand-c hover:stroke-brand-c;
+    @apply t-body text-zc-400 stroke-zc-400 p-2 rounded-lg hover:bg-brand-l hover:text-brand-c;
   }
 
   .b-ghost-md {
-    @apply py-2 px-4 t-body text-zc-600 rounded-lg bg-zc-50 hover:bg-zc-200;
-    min-width: 160px;
+    @apply py-2 px-4 t-body text-zc-600 rounded-lg hover:bg-zc-50;
   }
 
   .b-tab-on {
@@ -197,7 +199,7 @@
     tbody tr {
       @apply border-t border-zc-200;
       td {
-        @apply p-2 t-body text-zc-800;
+        @apply p-2 t-body text-zc-600;
       }
     }
   }

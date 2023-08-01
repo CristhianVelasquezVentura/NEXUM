@@ -7,7 +7,6 @@ import {SendDocumentComponent} from "@app/modules/send-document/send-document.co
 import {GeneralInformationComponent} from "@app/modules/send-document/pages/general-information/general-information.component";
 import {DocumentReviewComponent} from "@app/modules/send-document/pages/document-review/document-review.component";
 import { SignatureOrganizationComponent } from "./pages/signature-organization/signature-organization.component";
-import {SignaturesSectionsComponent} from "@app/modules/send-document/pages/signatures-sections/signatures-sections.component";
 import {FinalRevisionComponent} from "@app/modules/send-document/pages/final-revision/final-revision.component";
 import {FinalMessangeComponent} from "@app/modules/send-document/pages/final-messange/final-messange.component";
 
@@ -31,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: 'signatures-sections',
-    component: SignaturesSectionsComponent
+    loadChildren: () => import('./pages/signatures-sections/signatures-sections.module').then((m) => m.SignaturesSectionsModule)
   },
   {
     path: 'signature-organization',
