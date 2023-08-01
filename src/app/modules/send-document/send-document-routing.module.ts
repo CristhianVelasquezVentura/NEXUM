@@ -34,7 +34,7 @@ const routes: Routes = [
   },
   {
     path: 'signature-organization',
-    component: SignatureOrganizationComponent
+    loadChildren: () => import('./pages/signature-organization/signature-organization.module').then((m) => m.SignatureOrganizationModule)
   },
   {
     path: 'final-revision',

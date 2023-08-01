@@ -11,6 +11,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {UiModule} from "@app/core/ui/ui.module";
 import { FinalMessangeComponent } from './pages/final-messange/final-messange.component';
+import { OrderSignListComponent } from './pages/signature-organization/pages/order-sign-list/order-sign-list.component';
+import { OrderSignDocComponent } from './pages/signature-organization/pages/order-sign-doc/order-sign-doc.component';
 
 
 
@@ -21,7 +23,9 @@ import { FinalMessangeComponent } from './pages/final-messange/final-messange.co
     SignaturesSectionsComponent,
     SignatureOrganizationComponent,
     FinalRevisionComponent,
-    FinalMessangeComponent
+    FinalMessangeComponent,
+    OrderSignListComponent,
+    OrderSignDocComponent
   ],
   imports: [
     CommonModule,
