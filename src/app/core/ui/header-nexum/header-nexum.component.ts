@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-nexum',
@@ -11,4 +12,9 @@ export class HeaderNexumComponent {
   @Input() icon: string = 'back';
   @Input() title: string = '';
 
+  constructor(private _router: Router) { }
+
+  public navigateToRoute(): void {
+    this._router.navigateByUrl(this.router);
+  }
 }

@@ -13,7 +13,7 @@ import {UiModule} from "@app/core/ui/ui.module";
 import { FinalMessangeComponent } from './pages/final-messange/final-messange.component';
 import { OrderSignListComponent } from './pages/signature-organization/pages/order-sign-list/order-sign-list.component';
 import { OrderSignDocComponent } from './pages/signature-organization/pages/order-sign-doc/order-sign-doc.component';
-
+import {ToastService} from "@app/core/ui/services/toast/toast.service";
 
 
 @NgModule({
@@ -33,6 +33,9 @@ import { OrderSignDocComponent } from './pages/signature-organization/pages/orde
     ReactiveFormsModule,
     RouterModule,
     UiModule
+  ],
+  providers: [
+    ToastService
   ]
 })
 export class SendDocumentModule { }
