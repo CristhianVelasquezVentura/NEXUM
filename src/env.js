@@ -7,6 +7,7 @@
   window.__env.API_STRIPE = "http://localhost:4200";
   window.__env.STIPE_PK = "http://localhost:4200";
 
+  window.__env.GOOGLE_RECAPTCHA_SITEKEY = "6LfGknsnAAAAAL74ewfwxkfVTPGQpgKCEQtBvU8g";
+
   window.__env.enableDebug = true;
 })(this);
-

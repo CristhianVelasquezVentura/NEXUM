@@ -16,6 +16,7 @@ import {UiModule} from "@app/core/ui/ui.module";
 import {SignatureInterceptor} from "@app/core/services/interceptors/sign/sign.interceptor";
 import {ToastService} from "@app/core/ui/services/toast/toast.service";
 import {OtpService} from "@app/core/services/otp/otp.service";
+import {NgxCaptchaModule} from "ngx-captcha";
 
 @NgModule({
     declarations: [
@@ -31,7 +32,8 @@ import {OtpService} from "@app/core/services/otp/otp.service";
         CommonModule,
         DocumentSignProcessRoutingModule,
         ReactiveFormsModule,
-        UiModule
+        UiModule,
+        NgxCaptchaModule
     ],
     providers: [
         SignService,
