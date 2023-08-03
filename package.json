@@ -24,7 +24,6 @@
     "@types/offscreencanvas": "^2019.7.0",
     "@types/ws": "^8.5.4",
     "crypto-js": "^4.1.1",
-    "ecapture-ng-ui": "^0.0.83",
     "pdfjs-dist": "^3.7.107",
     "rxjs": "~7.5.0",
     "signature_pad": "^4.1.5",

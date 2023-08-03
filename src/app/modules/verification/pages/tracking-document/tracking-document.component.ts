@@ -1,7 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ToastService} from "@app/core/ui/services/toast/toast.service";
 import {VerificationService} from "@app/core/services/verification/verification.service";
-import {DropdownModel} from "ecapture-ng-ui";
 import {onlyNumbers} from "@app/core/utils/validations/validations";
 import {Subscription} from "rxjs";
 

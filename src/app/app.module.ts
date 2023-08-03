@@ -5,11 +5,12 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {RouterModule} from "@angular/router";
 import { SendDocumentComponent } from './modules/send-document/send-document.component';
 import {UiModule} from "@app/core/ui/ui.module";
+import {SignatureInterceptor} from "@app/core/services/interceptors/sign/sign.interceptor";
 
 export function createTranslateLoader(http: HttpClient): any {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -34,7 +35,13 @@ export function createTranslateLoader(http: HttpClient): any {
         }),
         UiModule,
     ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SignatureInterceptor,
+      multi: true
+    }
+  ],
   exports: [],
   bootstrap: [AppComponent]
 })

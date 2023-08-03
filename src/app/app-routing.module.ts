@@ -8,7 +8,7 @@ const routes: Routes = [
     loadChildren: () => import('./modules/authentication/authentication.module').then(m => m.AuthenticationModule)
   },
   {
-    path: 'sign',
+    path: 'signature',
     loadChildren: () => import('./modules/document-sign-process/document-sign-process.module').then((m) => m.DocumentSignProcessModule)
   },
   {
