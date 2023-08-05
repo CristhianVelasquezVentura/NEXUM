@@ -19,24 +19,27 @@
       <span class="t-title text-zc-800">Hola!</span>
       <span class="t-body text-zc-400">Ingresa tus credenciales para comenzar con esta nueva experiencia de firma electrónica.</span>
     </div>
-    <div class="w-full space-y-2 flex flex-col h-fit items-end">
+    <form [formGroup]="formLogin" class="w-full space-y-2 flex flex-col h-fit items-end">
       <div class="w-full grid md:grid-cols-2 gap-2">
         <div class="i-outline w-full">
           <label>Correo electrónico</label>
-          <input type="email">
+          <input type="email" formControlName="email">
         </div>
         <div class="i-outline w-full">
           <label>Contraseña</label>
-          <input type="password">
+          <input type="password" formControlName="password">
         </div>
       </div>
       <button routerLink="/recovery" class="b-ghost-sm underline">Recuperar cuenta</button>
-    </div>
+    </form>
     <div class="flex flex-col space-y-2 items-center">
-      <button class="b-solid w-full">Ingresar</button>
+      <button class="b-solid w-full" (click)="login()">Ingresar</button>
       <button routerLink="/verification" class="b-ghost-sm">
         <span class="text-brand-c">Validar Documento</span>
       </button>
     </div>
   </div>
 </div>
+
+<app-block-page [show]="isBlockPage"></app-block-page>
+<app-toast></app-toast>

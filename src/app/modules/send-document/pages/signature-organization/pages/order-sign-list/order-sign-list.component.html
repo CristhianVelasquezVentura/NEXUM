@@ -1,0 +1,108 @@
+<div class="flex bg-zc-50 justify-center w-full h-screen">
+  <div class="w-full h-screen pt-8 space-y-6 flex flex-col" style="max-width: 640px">
+    <div>
+      <app-header-nexum [router]="'onboarding'" [icon]="'back'" [title]="'Organización Sección 2'"></app-header-nexum>
+    </div>
+    <div class="body space-y-6 bg-white w-full overflow-y-auto h-full rounded-t-lg p-8">
+
+      <div class="w-full">
+        <div class="flex items-center space-x-2">
+          <input type="checkbox" class="w-4 h-4">
+          <span class="flex-1 text-zc-800 t-body">Ordenar firmantes automáticamente</span>
+        </div>
+      </div>
+
+      <div class="i-outline">
+        <label>¿En que página auto-organizar las firmas?</label>
+        <select>
+          <option>Página 1</option>
+        </select>
+      </div>
+
+      <div class="w-full text-left t-body text-zc-400">
+        <span>La firma de las siguientes personas se ordenarán automáticamente en esta sección:</span>
+        <span>Ordene a los firmantes para que todos estén con el check verde:</span>
+      </div>
+
+      <div class="w-full flex flex-col divide-y divide-zc-200">
+        <div class="signature py-4 flex items-center space-x-4">
+          <div class="flex-1 flex items-center space-x-2">
+            <div class="w-1 h-6 rounded bg-brand-c"></div>
+            <span class="text-zc-600 t-body">Carlos Cárdenas</span>
+          </div>
+          <div>
+            <div *ngIf="false" class="stroke-alert-info">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 8V12L15 15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div *ngIf="false" class="stroke-alert-warning">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.9998 9.00006V12.7501M2.69653 16.1257C1.83114 17.6257 2.91371 19.5001 4.64544 19.5001H19.3541C21.0858 19.5001 22.1684 17.6257 21.303 16.1257L13.9487 3.37819C13.0828 1.87736 10.9167 1.87736 10.0509 3.37819L2.69653 16.1257ZM11.9998 15.7501H12.0073V15.7576H11.9998V15.7501Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div *ngIf="true" class="stroke-alert-success">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="signature py-4 flex items-center space-x-4">
+          <div class="flex-1 flex items-center space-x-2">
+            <div class="w-1 h-6 rounded bg-brand-c"></div>
+            <span class="text-zc-600 t-body">Carlos Cárdenas</span>
+          </div>
+          <div>
+            <div *ngIf="true" class="stroke-alert-info">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 8V12L15 15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div *ngIf="false" class="stroke-alert-warning">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.9998 9.00006V12.7501M2.69653 16.1257C1.83114 17.6257 2.91371 19.5001 4.64544 19.5001H19.3541C21.0858 19.5001 22.1684 17.6257 21.303 16.1257L13.9487 3.37819C13.0828 1.87736 10.9167 1.87736 10.0509 3.37819L2.69653 16.1257ZM11.9998 15.7501H12.0073V15.7576H11.9998V15.7501Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div *ngIf="false" class="stroke-alert-success">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="signature py-4 flex items-center space-x-4">
+          <div class="flex-1 flex items-center space-x-2">
+            <div class="w-1 h-6 rounded bg-brand-c"></div>
+            <span class="text-zc-600 t-body">Carlos Cárdenas</span>
+          </div>
+          <div>
+            <div *ngIf="false" class="stroke-alert-info">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 8V12L15 15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div *ngIf="true" class="stroke-alert-warning">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.9998 9.00006V12.7501M2.69653 16.1257C1.83114 17.6257 2.91371 19.5001 4.64544 19.5001H19.3541C21.0858 19.5001 22.1684 17.6257 21.303 16.1257L13.9487 3.37819C13.0828 1.87736 10.9167 1.87736 10.0509 3.37819L2.69653 16.1257ZM11.9998 15.7501H12.0073V15.7576H11.9998V15.7501Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div *ngIf="false" class="stroke-alert-success">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full">
+        <button class="b-outline w-full" routerLink="/send-document/signature-organization/doc">
+          <span *ngIf="true" class="text-brand-c">Ver firmas Organizadas</span>
+          <span *ngIf="false" class="text-brand-c">Organizar</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
