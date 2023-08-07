@@ -17,6 +17,7 @@ import {SignatureInterceptor} from "@app/core/services/interceptors/sign/sign.in
 import {ToastService} from "@app/core/ui/services/toast/toast.service";
 import {OtpService} from "@app/core/services/otp/otp.service";
 import {NgxCaptchaModule} from "ngx-captcha";
+import { AttachDocumentsComponent } from './pages/attach-documents/attach-documents.component';
 
 @NgModule({
     declarations: [
@@ -27,6 +28,7 @@ import {NgxCaptchaModule} from "ngx-captcha";
         SignUserComponent,
         ValidSignComponent,
         SteperComponent,
+        AttachDocumentsComponent,
     ],
     imports: [
         CommonModule,

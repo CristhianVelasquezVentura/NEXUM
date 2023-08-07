@@ -5,11 +5,11 @@
     </div>
     <div class="flex lg:space-x-6 w-full" style="height: calc(100vh - 100px)">
       <div class="hidden lg:block w-60">
-        <app-steper [steper]="['f','d','d']"></app-steper>
+        <app-steper [steper]="['f','d','d','d']"></app-steper>
       </div>
       <div class="body rounded-t-lg relative flex-1 flex flex-col p-8 space-y-4 bg-white" style="height: calc(100vh - 100px)">
         <div class="h-fit space-y-2">
-          <app-steper class="lg:hidden" [steper]="['f','d','d']"></app-steper>
+          <app-steper class="lg:hidden" [title]="'Revisar Documentos'" [subtitle]="'Sigue: Adjuntar Documentos'" [steper]="['f','d','d','d']"></app-steper>
           <div>
             <div class="flex w-full h-fit space-x-2" style="max-width: 320px">
               <button (click)="selectMainOrAnnexe('document')" class="flex-1 {{typeDoc === 'document' ? 'b-tab-on':'b-tab-off'}}">Documento principal</button>
