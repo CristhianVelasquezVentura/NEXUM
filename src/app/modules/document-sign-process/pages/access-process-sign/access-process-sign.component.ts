@@ -23,6 +23,7 @@ export class AccessProcessSignComponent implements OnInit, OnDestroy {
   public isBlocked: boolean = false;
   private tokenData!: Token;
   public siteKey: string = '';
+  public hour: string = 'Días';
 
   constructor(
     private _signService: SignService,
@@ -47,6 +48,16 @@ export class AccessProcessSignComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    let dateHour = new Date().getHours();
+    if(dateHour >= 24 && dateHour < 12){
+      this.hour = 'Días';
+    }
+    if(dateHour >= 12 && dateHour < 18){
+      this.hour = 'Tardes';
+    }
+    if(dateHour >= 18 && dateHour < 24){
+      this.hour = 'Noches';
+    }
   }
 
   /**
