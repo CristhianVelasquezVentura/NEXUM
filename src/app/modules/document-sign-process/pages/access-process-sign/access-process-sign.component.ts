@@ -80,7 +80,7 @@ export class AccessProcessSignComponent implements OnInit, OnDestroy {
 
     this.isBlocked = true;
     this._subscription.add(
-      this._signService.validateAccessCode(this.tokenData.signer, this.accessOtp.value).subscribe({
+      this._signService.validateAccessCode(this.tokenData.signer, this.accessOtp.value, this.tokenData.document).subscribe({
         next: (response) => {
           if (response.error) {
             this._messageService.add({type: 'error', message: response.msg, life: 5000});

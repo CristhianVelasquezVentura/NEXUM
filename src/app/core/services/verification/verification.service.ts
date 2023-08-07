@@ -35,6 +35,18 @@ export class VerificationService {
     // return new Observable<any>(observer => observer.next(this.obj))
   }
 
+  public validateDownloadFile(document_id: number, password: string) {
+    const url = `${EnvServiceProvider.useFactory().API_DOCUMENT}/api/v1/document/tracking/${document_id}`;
+
+    return this.http.get<any>(url)
+      .pipe(map((res: any) => {
+          return res;
+        }),
+        catchError((err) => this.handlerError(err))
+      );
+    // return new Observable<any>(observer => observer.next(this.obj))
+  }
+
   private handlerError(err: any): Observable<never> {
     let errorMessage = 'An error ocured retrienving data';
     if (err) {
