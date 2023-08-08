@@ -4,6 +4,7 @@ import {VerificationService} from "@app/core/services/verification/verification.
 import {onlyNumbers} from "@app/core/utils/validations/validations";
 import {Subscription} from "rxjs";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Trazabilidad } from '@app/core/models/traza.model';
 
 @Component({
   selector: 'app-tracking-document',
@@ -15,7 +16,7 @@ export class TrackingDocumentComponent implements OnDestroy, OnInit{
   public urlBjungle = 'http://bjungle.net.s3-website-us-east-1.amazonaws.com/explorer/viewer?info=transaction&id='
 
   public documentId: string = '';
-  public traceability: any[] = [];
+  public traceability: Trazabilidad[] = [];
   public urlValidationForm: FormGroup;
 
   public isBlockPage: boolean = false;
@@ -24,7 +25,7 @@ export class TrackingDocumentComponent implements OnDestroy, OnInit{
   public typeNotification = 0;
 
   public isValidateDowndloadFile:boolean = false;
-  public urlSelectedFileBlion: string = '';
+  public documentSelectedToDownload: number = 0;
 
   constructor(
     private _verificationService: VerificationService,
@@ -36,7 +37,7 @@ export class TrackingDocumentComponent implements OnDestroy, OnInit{
     });
   }
   ngOnInit(): void {
-    this.traceability.push({id: 0, document_id: 0, event: 123, transaction_id: '90-184781m-23m234892tm', user: 'James', url_lion: 'https://google.com', created_at: new Date(), updated_at: new Date()});
+    //this.traceability.push({id: 0, document_id: 0, event: 123, transaction_id: '90-184781m-23m234892tm', id_user: 'axaxax', url_lion: 'https://google.com', created_at: '2023-08-07', updated_at: '2023-08-07'});
   }
 
   ngOnDestroy() {
@@ -91,14 +92,14 @@ export class TrackingDocumentComponent implements OnDestroy, OnInit{
     this.typeNotification = 0;
   }
 
-  public startProcessDownload(uri: string): void {
+  public startProcessDownload(document: number): void {
     this.isValidateDowndloadFile = true;
-    this.urlSelectedFileBlion = uri;
+    this.documentSelectedToDownload = document;
   }
 
   public cancelProcessDOwnload(): void {
     this.urlValidationForm.reset();
-    this.urlSelectedFileBlion = '';
+    this.documentSelectedToDownload = 0;
   }
 
   public validateDownloadDocument(): void {
@@ -116,8 +117,16 @@ export class TrackingDocumentComponent implements OnDestroy, OnInit{
               }
 
               //this.typeNotification = 0;
+
+              if(!res.data) {
+                this._messageService.add({type:'warning',message:'No se encontró un archivo con la información proporcionada', life: 5000});
+                return
+              }
+
               if(res.data) {
-                window.location.href = this.urlSelectedFileBlion;
+                const data = res.data;
+                //const extension = res.data.split(';')[0].split('/')[1];
+                this.downloadPDFFromBase64(data.file_encode, data.filename + data.extension);
                 return
               }
             },
@@ -139,4 +148,26 @@ export class TrackingDocumentComponent implements OnDestroy, OnInit{
     }
 
   }
+
+  //Método que descarga el PDF desde una cadena base64
+  private downloadPDFFromBase64(base64Data: string, filename: string) {
+    const byteCharacters = atob(base64Data);
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    const blob = new Blob([byteArray], { type: 'application/pdf' });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+
+    // Liberar el objeto URL después de la descarga
+    URL.revokeObjectURL(url);
+  }
+
 }

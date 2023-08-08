@@ -58,7 +58,7 @@
           <th>ID</th>
           <th>Document ID</th>
           <th>Event</th>
-          <th>Transaction ID</th>
+          <!-- <th>Transaction ID</th> -->
           <th>User ID</th>
           <th>URL BLion</th>
           <th>Created</th>
@@ -70,12 +70,11 @@
           <td>{{item.id}}</td>
           <td>{{item.document_id}}</td>
           <td>{{item.event}}</td>
-          <td>{{item.transaction_id}}</td>
-          <td>{{item.id_user}}</td>
+          <td>{{item.user}}</td>
           <!-- <td><a class="underline" href="{{item.url_lion}}">{{item.url_lion}}</a></td> -->
-          <td><a class="underline cursor-pointer" (click)="startProcessDownload(item.url_lion)" (click)="isValidateDowndloadFile = true">{{item.url_lion}}</a></td>
-          <td>{{item.created_at}}</td>
-          <td>{{item.updated_at}}</td>
+          <td><a class="cursor-pointer" (click)="startProcessDownload(item.document_id)" (click)="isValidateDowndloadFile = true">{{'Descargar'}}</a></td>
+          <td>{{item.created_at | date: 'MM/dd/yyyy hh:mm:ss'}}</td>
+          <td>{{item.updated_at | date: 'MM/dd/yyyy hh:mm:ss'}}</td>
         </tr>
       </tbody>
     </table>

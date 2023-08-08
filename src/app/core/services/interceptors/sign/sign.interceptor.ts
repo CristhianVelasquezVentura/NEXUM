@@ -14,7 +14,7 @@ export class SignatureInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     const token = sessionStorage.getItem('signature-token');
-    debugger
+    //debugger
     let req = request;
     if (token) {
       req = request.clone({

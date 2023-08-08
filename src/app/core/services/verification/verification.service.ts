@@ -36,7 +36,7 @@ export class VerificationService {
   }
 
   public validateDownloadFile(document_id: number, password: string) {
-    const url = `${EnvServiceProvider.useFactory().API_DOCUMENT}/api/v1/document/tracking/${document_id}`;
+    const url = `${EnvServiceProvider.useFactory().API_DOCUMENT}/api/v1/file/validate-download/${document_id}/${password}`;
 
     return this.http.get<any>(url)
       .pipe(map((res: any) => {

@@ -50,4 +50,12 @@ export class DocumentService {
   public getDocumentsByFilters(dataFilter: DocumentFilter): Observable<ResponseDocumentsStatus> {
     return this._htt.post<ResponseDocumentsStatus>(this.urlGetDocumentsFilter, dataFilter).pipe(map(res => res));
   }
+
+  public uploadAttachedDocument(dataFilter: string): Observable<ResponseDocumentsStatus> {
+    return this._htt.post<ResponseDocumentsStatus>(this.urlGetDocumentsFilter, dataFilter).pipe(map(res => res));
+  }
+
+  public uploadRequestedDocument(dataFilter: string): Observable<ResponseDocumentsStatus> {
+    return this._htt.post<ResponseDocumentsStatus>(this.urlGetDocumentsFilter, dataFilter).pipe(map(res => res));
+  }
 }

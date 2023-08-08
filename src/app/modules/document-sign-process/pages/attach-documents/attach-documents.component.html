@@ -18,10 +18,10 @@
         </div>
 
         <div class="grid gap-2 w-full">
-          <div class="i-outline">
-            <label>Nombre adjunto *</label>
+          <div *ngFor="let _annexe of attachedDocuments; let psition = index" class="i-outline">
+            <label>{{_annexe.doctype_name}}</label>
             <div class="h-2"></div>
-            <input type="file" class="w-full" accept=".pdf">
+            <input type="file" class="w-full" accept=".pdf" (change)="setAttachedAnnexe($event)">
             <span></span>
           </div>
         </div>
@@ -31,19 +31,19 @@
           <span class="t-body text-brand-c">Adjuntos Opcionales</span>
         </div>
 
-        <div class="grid gap-2 w-full">
+        <div *ngFor="let _annexe of requestedDocument; let psition = index" class="grid gap-2 w-full">
           <div class="i-outline">
-            <label>Nombre adjunto</label>
+            <label>{{_annexe.doctype_name}}</label>
             <div class="h-2"></div>
-            <input type="file" class="w-full" accept=".pdf">
+            <input type="file" class="w-full" accept=".pdf" (change)="setRequestedAnnexe($event)">
             <span></span>
           </div>
         </div>
 
         <div class="b-nav-dual absolute left-1/2 -translate-x-2/4 bottom-4">
-          <button class="secondary">Anterior</button>
+          <button class="secondary" (click)="backPage.emit('document-review')">Anterior</button>
           <div class="separador"></div>
-          <button class="primary">Siguiente</button>
+          <button class="primary" (click)="nextPage.emit('sign-user')">Siguiente</button>
         </div>
 
       </div>
