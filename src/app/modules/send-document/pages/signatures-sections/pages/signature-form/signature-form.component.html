@@ -1,0 +1,140 @@
+<div class="flex bg-zc-50 justify-center w-full h-screen">
+  <div class="w-full relative h-screen pt-8 space-y-6 flex flex-col" style="max-width: 640px">
+    <div>
+      <app-header-nexum [router]="'onboarding'" [icon]="'close'" [title]="'Agregar Firmante'"></app-header-nexum>
+    </div>
+    <div class="body space-y-6 bg-white w-full overflow-y-auto h-full rounded-t-lg p-8">
+
+      <div class="title-section flex items-center space-x-2">
+        <div class="w-1 h-4 rounded bg-brand-c"></div>
+        <span class="t-body text-brand-c">Datos Personales</span>
+      </div>
+
+      <div class="grid gap-2 w-full">
+        <div class="i-outline">
+          <label>Rol de firmante</label>
+          <select class="w-full"></select>
+        </div>
+        <div class="i-outline">
+          <label>Correo electrónico</label>
+          <input type="email" class="w-full">
+        </div>
+        <div class="i-outline">
+          <label>Nombre</label>
+          <input type="text" class="w-full">
+        </div>
+        <div class="i-outline">
+          <label>Apellidos</label>
+          <input type="text" class="w-full">
+        </div>
+        <div class="i-outline">
+          <label>Tipo de documento (opcional)</label>
+          <select class="w-full"></select>
+        </div>
+        <div class="i-outline">
+          <label>Número de documento (opcional)</label>
+          <input type="text" class="w-full">
+        </div>
+        <div class="i-outline">
+          <label>Código de país</label>
+          <select class="w-full"></select>
+        </div>
+        <div class="i-outline">
+          <label>Número de teléfono</label>
+          <input type="number" class="w-full">
+        </div>
+      </div>
+
+      <div class="title-section flex items-center space-x-2">
+        <div class="w-1 h-4 rounded bg-brand-c"></div>
+        <span class="t-body text-brand-c">Seguridad</span>
+      </div>
+
+      <div class="grid gap-2 w-full">
+        <div class="flex items-center space-x-2">
+          <input type="checkbox" class="w-4 h-4">
+          <span class="flex-1 text-zc-800 t-body">Solicitar código</span>
+        </div>
+        <div class="i-outline">
+          <label>Código de acceso</label>
+          <input type="text" class="w-full">
+        </div>
+      </div>
+
+
+      <div class="title-section flex items-center space-x-2">
+        <div class="w-1 h-4 rounded bg-brand-c"></div>
+        <span class="t-body text-brand-c">Solicitudes de anexos extra</span>
+      </div>
+
+      <div class="w-full p-4 space-x-4 flex items-center text-blue-500 stroke-blue-500 bg-blue-50 rounded-lg">
+        <div>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 8.99999V12.75M2.697 16.126C1.831 17.626 2.914 19.5 4.645 19.5H19.355C21.085 19.5 22.168 17.626 21.303 16.126L13.949 3.37799C13.083 1.87799 10.917 1.87799 10.051 3.37799L2.697 16.126ZM12 15.75H12.007V15.758H12V15.75Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="t-body">Nota: Los documentos agregados serán solicitados al firmante de forma obligatoria o no, de acuerdo a la configuración que se le dé.</span>
+      </div>
+
+      <div class="w-full flex flex-col">
+        <!--Solicitudes agregadas-->
+        <div class="flex items-center space-x-2 py-2 border-b border-zc-200">
+          <input type="checkbox" class="w-4 h-4">
+          <span class="flex-1 text-zc-800 t-body">Libreta Militar</span>
+          <div class="t-label text-brand-c bg-brand-l rounded-full px-1 py-0.5">Obligatorio</div>
+          <button class="b-ghost-sm">
+            <div class="stroke-alert-error">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.2833 7.50001L11.995 15M8.005 15L7.71667 7.50001M16.0233 4.82501C16.3083 4.86834 16.5917 4.91417 16.875 4.96334M16.0233 4.82501L15.1333 16.3942C15.097 16.8652 14.8842 17.3051 14.5375 17.626C14.1908 17.9469 13.7358 18.1251 13.2633 18.125H6.73667C6.26425 18.1251 5.80919 17.9469 5.46248 17.626C5.11578 17.3051 4.90299 16.8652 4.86667 16.3942L3.97667 4.82501M16.0233 4.82501C15.0616 4.6796 14.0948 4.56925 13.125 4.49417M3.97667 4.82501C3.69167 4.86751 3.40833 4.91334 3.125 4.96251M3.97667 4.82501C4.93844 4.67961 5.9052 4.56926 6.875 4.49417M13.125 4.49417V3.73084C13.125 2.74751 12.3667 1.92751 11.3833 1.89667C10.4613 1.86721 9.53865 1.86721 8.61667 1.89667C7.63333 1.92751 6.875 2.74834 6.875 3.73084V4.49417M13.125 4.49417C11.0448 4.33341 8.95523 4.33341 6.875 4.49417" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </button>
+        </div>
+        <div class="flex pt-4 justify-center">
+          <button class="b-small" (click)="modalAddSolicitude = true">
+            <span>Agregar solicitud</span>
+            <div class="stroke-brand-c">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 3V13M13 8H3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div class="h-16"></div>
+    </div>
+    <div class="b-nav-dual absolute left-1/2 -translate-x-2/4 bottom-4">
+      <button routerLink="/send-document/signatures-sections/signatures" class="secondary">Cancelar</button>
+      <div class="separador"></div>
+      <button class="primary">Agregar Firmante</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="modalAddSolicitude" class="fixed top-0 left-0 w-full h-screen flex p-8 flex items-center justify-center" style="background-color: rgba(0,0,0,0.2)">
+  <div class="space-y-6 p-6 rounded-lg border-zc-200 bg-white drop-shadow-lg w-full h-fit" style="max-width: 350px;">
+    <div class="title-section flex items-center space-x-2">
+      <div class="w-1 h-4 rounded bg-brand-c"></div>
+      <span class="t-body text-brand-c">Agregar solicitud</span>
+    </div>
+
+    <div class="grid gap-2 w-full">
+      <div class="i-outline">
+        <label>Documento</label>
+        <input type="text" class="w-full">
+      </div>
+      <div class="flex items-center space-x-2">
+        <input type="checkbox" class="w-4 h-4">
+        <span class="flex-1 text-zc-800 t-body">Obligatorio</span>
+      </div>
+    </div>
+    <div class="w-full flex items-center space-x-2">
+      <button (click)="modalAddSolicitude = false" class="b-ghost-md w-full">Cancelar</button>
+      <div class="separador h-6 border-l border-zc-200"></div>
+      <button class="b-ghost-md w-full">
+        <span class="text-brand-c">Agregar</span>
+      </button>
+    </div>
+  </div>
+</div>

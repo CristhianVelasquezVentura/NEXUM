@@ -1,0 +1,71 @@
+<div class="flex bg-zc-50 justify-center w-full h-screen">
+  <div class="w-full relative h-screen pt-8 space-y-6 flex flex-col" style="max-width: 640px">
+    <div>
+      <app-header-nexum [router]="'onboarding'" [icon]="'close'" [title]="'Envío de Documento'"></app-header-nexum>
+    </div>
+    <form class="body space-y-6 bg-white w-full overflow-y-auto h-full rounded-t-lg p-8">
+
+      <div class="step w-full flex items-center space-x-4">
+        <div class="flex items-center justify-center w-14 h-14 relative rounded-full bg-zc-50">
+
+          <span class="t-body text-brand-c">5/5</span>
+
+          <svg class="absolute top-0 left-0" width="56" height="56" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="28" stroke="url(#paint0_linear_678_698)" stroke-width="4"/>
+            <defs>
+              <linearGradient id="paint0_linear_678_698" x1="2" y1="30.6512" x2="58" y2="30.6512" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#F66100"/>
+                <stop offset="1" stop-color="#F4BC2C"/>
+              </linearGradient>
+            </defs>
+          </svg>
+
+
+        </div>
+        <div class="flex flex-col">
+          <span class="t-body text-zc-800">Revisión Final</span>
+          <span class="t-label text-brand-c">Anterior: Organización Firmas</span>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-2 w-full overflow-x-auto">
+        <div class="flex-1 justify-center py-2 space-x-2 rounded-lg text-brand-c flex items-center">
+          <div>
+            <svg class="fill-current" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12.75 15.5C14.0585 15.5 14.5682 16.0825 14.9553 17.3743L15.0231 17.6115C15.2056 18.2688 15.3147 18.4657 15.5358 18.5568C15.7949 18.6636 15.9676 18.6484 16.2392 18.5088L16.3861 18.4265C16.439 18.3947 16.4966 18.3581 16.5617 18.3151L17.225 17.8637C17.8408 17.4586 18.3942 17.1908 19.0681 17.0224C19.4699 16.9219 19.8771 17.1662 19.9776 17.5681C20.078 17.9699 19.8337 18.3771 19.4319 18.4776C19.0248 18.5794 18.6737 18.7334 18.2866 18.967L17.988 19.1578L17.5089 19.4858C17.2792 19.6421 17.1057 19.7499 16.925 19.8428C16.2821 20.1733 15.6552 20.2284 14.9642 19.9436C14.2194 19.6367 13.919 19.1637 13.6379 18.222L13.4821 17.6802C13.3007 17.0908 13.1771 17 12.75 17C12.4406 17 12.1204 17.1548 11.6816 17.523L11.4969 17.6839L10.576 18.5592C9.16784 19.8828 7.96738 20.5255 6.24862 20.5255C4.56233 20.5255 3.10393 20.2715 1.87967 19.7567L4.82726 18.9524C5.27453 19.0011 5.74823 19.0255 6.24862 19.0255C7.43136 19.0255 8.28036 18.6106 9.33484 17.6629L9.59305 17.4242L10.1249 16.9131C10.3615 16.6863 10.5388 16.5238 10.7174 16.3739C11.401 15.8003 12.0223 15.5 12.75 15.5ZM17.0303 1.96967C18.4278 3.36713 18.4278 5.63286 17.0303 7.03033L16.7421 7.31904C17.8936 8.72038 17.852 10.2055 16.7811 11.2796L14.7798 13.2808C14.4867 13.5734 14.0118 13.573 13.7192 13.2799C13.4265 12.9867 13.427 12.5118 13.7201 12.2192L15.7189 10.2204C16.2039 9.734 16.26 9.1301 15.6791 8.38208L7.06198 16.9987C6.7851 17.2755 6.44076 17.4754 6.063 17.5784L0.947312 18.9736C0.387438 19.1263 -0.126292 18.6125 0.0264009 18.0527L1.42159 12.937C1.52462 12.5592 1.72444 12.2149 2.00132 11.938L11.9696 1.96967C13.3671 0.572204 15.6328 0.572204 17.0303 1.96967ZM13.0303 3.03033L3.06198 12.9987C2.96969 13.0909 2.90308 13.2057 2.86874 13.3316L1.81889 17.1811L5.66833 16.1312C5.79425 16.0969 5.90903 16.0303 6.00132 15.938L15.9696 5.96967C16.7813 5.15799 16.7813 3.842 15.9696 3.03033C15.158 2.21865 13.842 2.21865 13.0303 3.03033Z"/>
+            </svg>
+          </div>
+          <span>Firmantes</span>
+          <div class="flex items-center h-5 px-2 rounded-full bg-brand-l">
+            12
+          </div>
+        </div>
+        <div class="border-l border-zc-200 h-6"></div>
+        <div class="flex-1 justify-center py-2 space-x-2 rounded-lg text-brand-c flex items-center">
+          <div>
+            <svg class="stroke-current" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 5C4 4.44772 4.44772 4 5 4H19C19.5523 4 20 4.44772 20 5V7C20 7.55228 19.5523 8 19 8H5C4.44772 8 4 7.55228 4 7V5Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M4 13C4 12.4477 4.44772 12 5 12H11C11.5523 12 12 12.4477 12 13V19C12 19.5523 11.5523 20 11 20H5C4.44772 20 4 19.5523 4 19V13Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M16 13C16 12.4477 16.4477 12 17 12H19C19.5523 12 20 12.4477 20 13V19C20 19.5523 19.5523 20 19 20H17C16.4477 20 16 19.5523 16 19V13Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span>Secciones</span>
+          <div class="flex items-center h-5 px-2 rounded-full bg-brand-l">
+            4
+          </div>
+        </div>
+      </div>
+
+      <div class="h-full space-y-4 overflow-y-auto bg-zc-200 flex justify-center py-4 rounded-lg pb-16">
+
+      </div>
+
+      <div class="h-16"></div>
+    </form>
+    <div class="b-nav-dual absolute left-1/2 -translate-x-2/4 bottom-4">
+      <button class="secondary" routerLink="/send-document/signature-organization">Anterior</button>
+      <div class="separador"></div>
+      <button class="primary" routerLink="/send-document/final-message">Enviar</button>
+    </div>
+  </div>
+</div>

@@ -21,8 +21,8 @@ export class SignService {
   ) {
   }
 
-  public validateAccessCode(id_signer: number, access_code: string): Observable<Response> {
-    return this._http.get<Response>(this.urlValidateCode + `${access_code}/${id_signer}`).pipe(map(res => res));
+  public validateAccessCode(id_signer: number, access_code: string, document_id: number): Observable<Response> {
+    return this._http.get<Response>(this.urlValidateCode + `${access_code}/${id_signer}/${document_id}`).pipe(map(res => res));
   }
 
   public getSignersById(signerId: number): Observable<Response<Signer>> {

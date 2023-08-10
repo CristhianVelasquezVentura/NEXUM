@@ -158,7 +158,7 @@ export class DocumentSignProcessComponent implements OnInit, OnDestroy {
    * @param image
    */
   public saveSignature(image: string): void {
-    this._signatureImg = image.split(',')[0];
+    this._signatureImg = image.split(',')[1];
     this.page = 'otp-finish';
   }
 

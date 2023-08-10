@@ -6,6 +6,7 @@ export class EnvService {
   public API_BLION: string = '';
   public API_STRIPE: string = '';
   public STIPE_PK: string = '';
+  public GOOGLE_RECAPTCHA_SITEKEY: string = '';
 
   public enableDebug = true;
 

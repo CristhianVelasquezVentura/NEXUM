@@ -1,0 +1,89 @@
+<div class="flex bg-zc-50 justify-center w-full h-screen">
+  <div class="w-full relative h-screen pt-8 space-y-6 flex flex-col" style="max-width: 640px">
+    <div>
+      <app-header-nexum [router]="'onboarding'" [icon]="'close'" [title]="'Envío de Documento'"></app-header-nexum>
+    </div>
+    <div class="body space-y-6 bg-white w-full overflow-y-auto h-full rounded-t-lg p-8">
+
+      <div class="step w-full flex items-center space-x-4">
+        <div class="flex items-center justify-center w-14 h-14 relative rounded-full bg-zc-50">
+
+          <span class="t-body text-brand-c">3/5</span>
+
+          <svg class="absolute top-0 left-0" width="56" height="56" viewBox="0 0 59 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M28.458 2C32.8767 2 37.2326 3.04577 41.1697 5.05182C45.1068 7.05786 48.5132 9.96722 51.1105 13.542C53.7077 17.1168 55.422 21.2555 56.1133 25.6198C56.8045 29.9841 56.453 34.45 55.0876 38.6525C53.7221 42.8549 51.3815 46.6745 48.257 49.799C45.1325 52.9235 41.3129 55.2641 37.1105 56.6296C32.908 57.995 28.4421 58.3465 24.0778 57.6553C19.7135 56.964 15.5748 55.2497 12 52.6525" stroke="url(#paint0_linear_674_679)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="paint0_linear_674_679" x1="12" y1="30.6512" x2="56.458" y2="30.6512" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#F66100"/>
+                <stop offset="1" stop-color="#F4BC2C"/>
+              </linearGradient>
+            </defs>
+          </svg>
+
+        </div>
+        <div class="flex flex-col">
+          <span class="t-body text-zc-800">Firmas y Secciones</span>
+          <span class="t-label text-brand-c">Sigue: Organización de Firmas</span>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-2 w-full overflow-x-auto">
+        <button routerLink="/send-document/signatures-sections/signatures" class="flex-1 justify-center px-4 py-2 space-x-2 rounded-lg hover:bg-brand-l text-brand-c flex items-center">
+          <div>
+            <svg class="fill-current" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12.75 15.5C14.0585 15.5 14.5682 16.0825 14.9553 17.3743L15.0231 17.6115C15.2056 18.2688 15.3147 18.4657 15.5358 18.5568C15.7949 18.6636 15.9676 18.6484 16.2392 18.5088L16.3861 18.4265C16.439 18.3947 16.4966 18.3581 16.5617 18.3151L17.225 17.8637C17.8408 17.4586 18.3942 17.1908 19.0681 17.0224C19.4699 16.9219 19.8771 17.1662 19.9776 17.5681C20.078 17.9699 19.8337 18.3771 19.4319 18.4776C19.0248 18.5794 18.6737 18.7334 18.2866 18.967L17.988 19.1578L17.5089 19.4858C17.2792 19.6421 17.1057 19.7499 16.925 19.8428C16.2821 20.1733 15.6552 20.2284 14.9642 19.9436C14.2194 19.6367 13.919 19.1637 13.6379 18.222L13.4821 17.6802C13.3007 17.0908 13.1771 17 12.75 17C12.4406 17 12.1204 17.1548 11.6816 17.523L11.4969 17.6839L10.576 18.5592C9.16784 19.8828 7.96738 20.5255 6.24862 20.5255C4.56233 20.5255 3.10393 20.2715 1.87967 19.7567L4.82726 18.9524C5.27453 19.0011 5.74823 19.0255 6.24862 19.0255C7.43136 19.0255 8.28036 18.6106 9.33484 17.6629L9.59305 17.4242L10.1249 16.9131C10.3615 16.6863 10.5388 16.5238 10.7174 16.3739C11.401 15.8003 12.0223 15.5 12.75 15.5ZM17.0303 1.96967C18.4278 3.36713 18.4278 5.63286 17.0303 7.03033L16.7421 7.31904C17.8936 8.72038 17.852 10.2055 16.7811 11.2796L14.7798 13.2808C14.4867 13.5734 14.0118 13.573 13.7192 13.2799C13.4265 12.9867 13.427 12.5118 13.7201 12.2192L15.7189 10.2204C16.2039 9.734 16.26 9.1301 15.6791 8.38208L7.06198 16.9987C6.7851 17.2755 6.44076 17.4754 6.063 17.5784L0.947312 18.9736C0.387438 19.1263 -0.126292 18.6125 0.0264009 18.0527L1.42159 12.937C1.52462 12.5592 1.72444 12.2149 2.00132 11.938L11.9696 1.96967C13.3671 0.572204 15.6328 0.572204 17.0303 1.96967ZM13.0303 3.03033L3.06198 12.9987C2.96969 13.0909 2.90308 13.2057 2.86874 13.3316L1.81889 17.1811L5.66833 16.1312C5.79425 16.0969 5.90903 16.0303 6.00132 15.938L15.9696 5.96967C16.7813 5.15799 16.7813 3.842 15.9696 3.03033C15.158 2.21865 13.842 2.21865 13.0303 3.03033Z"/>
+            </svg>
+          </div>
+          <span>Firmantes</span>
+          <div class="flex items-center h-5 px-2 rounded-full bg-brand-l">
+            12
+          </div>
+        </button>
+        <div class="border-l border-zc-200 h-6"></div>
+        <button routerLink="/send-document/signatures-sections/sections-sign" class="flex-1 justify-center px-4 py-2 space-x-2 rounded-lg hover:bg-brand-l text-brand-c flex items-center">
+          <div>
+            <svg class="stroke-current" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 5C4 4.44772 4.44772 4 5 4H19C19.5523 4 20 4.44772 20 5V7C20 7.55228 19.5523 8 19 8H5C4.44772 8 4 7.55228 4 7V5Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M4 13C4 12.4477 4.44772 12 5 12H11C11.5523 12 12 12.4477 12 13V19C12 19.5523 11.5523 20 11 20H5C4.44772 20 4 19.5523 4 19V13Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M16 13C16 12.4477 16.4477 12 17 12H19C19.5523 12 20 12.4477 20 13V19C20 19.5523 19.5523 20 19 20H17C16.4477 20 16 19.5523 16 19V13Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span>Secciones</span>
+          <div class="flex items-center h-5 px-2 rounded-full bg-brand-l">
+            4
+          </div>
+        </button>
+      </div>
+
+      <div class="relative h-full space-y-4 overflow-y-auto bg-zc-200 flex justify-center py-4 rounded-lg pb-16">
+        <div class="absolute flex items-center top-0 left-0 p-2 space-x-1">
+          <div class="px-2 h-5 rounded-full flex items-center space-x-1 border border-zc-200 bg-zc-50 text-zc-600">
+            <div>
+              <svg class="stroke-current" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2.5C2 2.22386 2.22386 2 2.5 2H9.5C9.77614 2 10 2.22386 10 2.5V3.5C10 3.77614 9.77614 4 9.5 4H2.5C2.22386 4 2 3.77614 2 3.5V2.5Z" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 6.5C2 6.22386 2.22386 6 2.5 6H5.5C5.77614 6 6 6.22386 6 6.5V9.5C6 9.77614 5.77614 10 5.5 10H2.5C2.22386 10 2 9.77614 2 9.5V6.5Z" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8 6.5C8 6.22386 8.22386 6 8.5 6H9.5C9.77614 6 10 6.22386 10 6.5V9.5C10 9.77614 9.77614 10 9.5 10H8.5C8.22386 10 8 9.77614 8 9.5V6.5Z" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="t-label-b">{{'1'}}°</span>
+          </div>
+          <div class="px-2 h-5 rounded-full flex items-center space-x-1 border border-zc-200 bg-zc-50 text-zc-600">
+            <div>
+              <svg class="fill-current" width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.65001 9.7C8.43513 9.7 8.74092 10.0495 8.9732 10.8246L9.01389 10.9669C9.12339 11.3613 9.18886 11.4794 9.32148 11.5341C9.47695 11.5981 9.5806 11.589 9.74354 11.5053L9.83169 11.4559C9.8634 11.4368 9.89797 11.4149 9.93707 11.389L10.335 11.1182C10.7045 10.8751 11.0366 10.7145 11.4409 10.6134C11.682 10.5532 11.9263 10.6997 11.9866 10.9409C12.0469 11.182 11.9003 11.4263 11.6592 11.4866C11.4149 11.5476 11.2042 11.64 10.972 11.7802L10.7928 11.8947L10.5054 12.0915C10.3675 12.1853 10.2635 12.25 10.155 12.3057C9.76931 12.504 9.39312 12.537 8.97854 12.3662C8.53166 12.182 8.35143 11.8982 8.18276 11.3332L8.08926 11.0081C7.98046 10.6545 7.9063 10.6 7.65001 10.6C7.46438 10.6 7.27226 10.6929 7.00899 10.9138L6.89813 11.0103L6.34561 11.5355C5.50073 12.3297 4.78045 12.7153 3.74919 12.7153C2.73742 12.7153 1.86238 12.5629 1.12783 12.254L2.89638 11.7715C3.16474 11.8006 3.44897 11.8153 3.74919 11.8153C4.45884 11.8153 4.96824 11.5663 5.60093 10.9978L5.75586 10.8545L6.07495 10.5478C6.21694 10.4118 6.32333 10.3143 6.43045 10.2244C6.84061 9.88018 7.2134 9.7 7.65001 9.7ZM10.2182 1.5818C11.0567 2.42028 11.0567 3.77972 10.2182 4.6182L10.0453 4.79142C10.7362 5.63223 10.7112 6.52332 10.0687 7.16773L8.86793 8.36847C8.69204 8.54406 8.40712 8.54381 8.23153 8.36792C8.05595 8.19203 8.0562 7.9071 8.23209 7.73152L9.43135 6.53226C9.72236 6.2404 9.756 5.87806 9.40746 5.42925L4.23721 10.5992C4.07109 10.7653 3.86448 10.8852 3.63783 10.947L0.568412 11.7841C0.232487 11.8758 -0.0757508 11.5675 0.015865 11.2316L0.852978 8.16218C0.914794 7.93552 1.03469 7.72892 1.20082 7.5628L7.18181 1.5818C8.02029 0.743322 9.37973 0.743322 10.2182 1.5818ZM7.81821 2.2182L1.83721 8.19919C1.78184 8.25457 1.74187 8.32344 1.72127 8.39899L1.09136 10.7086L3.40102 10.0787C3.47657 10.0581 3.54544 10.0182 3.60082 9.9628L9.58181 3.9818C10.0688 3.49479 10.0688 2.7052 9.58181 2.2182C9.0948 1.73119 8.30521 1.73119 7.81821 2.2182Z"/>
+              </svg>
+            </div>
+            <span class="t-label-b">{{'3'}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="h-16"></div>
+    </div>
+    <div class="b-nav-dual absolute left-1/2 -translate-x-2/4 bottom-4">
+      <button routerLink="/send-document/document-review" class="secondary">Anterior</button>
+      <div class="separador"></div>
+      <button routerLink="/send-document/signature-organization" class="primary">Siguiente</button>
+    </div>
+  </div>
+</div>

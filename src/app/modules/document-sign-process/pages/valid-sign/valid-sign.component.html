@@ -5,11 +5,11 @@
     </div>
     <div class="flex lg:space-x-6 w-full" style="height: calc(100vh - 100px)">
       <div class="hidden lg:block w-60">
-        <app-steper [steper]="['s','s','f']"></app-steper>
+        <app-steper [steper]="['s','s','s','f']"></app-steper>
       </div>
       <div class="body rounded-t-lg relative flex-1 flex flex-col lg:items-center lg:justify-center p-8 space-y-4 bg-white" style="height: calc(100vh - 100px)">
         <div *ngIf="!isFinish" class="h-fit space-y-2">
-          <app-steper class="lg:hidden" [steper]="['s','s','f']"></app-steper>
+          <app-steper class="lg:hidden" [title]="'Validar Firma'" [subtitle]="'Anterior: Firmar'" [steper]="['s','s','s','f']"></app-steper>
           <div>
             <span class="t-body text-zc-400">El código de acceso de un solo uso (OTP), fue enviado por Correo y/o SMS, revise sus bandejas.</span>
           </div>
@@ -44,7 +44,6 @@
               <input type="text" [formControl]="otpForm" placeholder="Ingrese el código de acceso">
               <small *ngIf="otpForm?.invalid && otpForm?.touched">El código OTP es requerido</small>
             </div>
-            <button class="b-solid" style="min-width: 160px;">Verificar</button>
           </div>
           <div class="text-center">
             <span class="t-label text-zc-400">En caso omiso revise las bandejas de SPAM.</span>
@@ -83,7 +82,7 @@
         <div *ngIf="!isFinish" class="b-nav-dual absolute left-1/2 -translate-x-2/4 bottom-4">
           <button (click)="backPage.emit('sign-user')" class="secondary">Anterior</button>
           <div class="separador"></div>
-          <button disabled class="primary" (click)="validateOtp()">Enviar Firma</button>
+          <button [disabled]="otpForm.invalid" class="primary" (click)="validateOtp()">Enviar Firma</button>
         </div>
         <button *ngIf="false" class="b-nav-only absolute left-1/2 -translate-x-2/4 bottom-4">Enviar Firma</button>
         <button *ngIf="false" class="b-nav-only absolute left-1/2 -translate-x-2/4 bottom-4">Cerrar</button>

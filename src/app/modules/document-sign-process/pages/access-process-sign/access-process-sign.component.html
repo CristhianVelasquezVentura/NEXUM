@@ -3,7 +3,7 @@
     <app-header-document-sign></app-header-document-sign>
     <div class="space-y-10">
       <div class="flex flex-col gap-4">
-        <span class="t-title text-zc-800">Buenas tardes</span>
+        <span class="t-title text-zc-800">Buenas {{hour}}</span>
         <span class="t-body text-zc-400">Ingrese el código que recibió en su correo para iniciar con el proceso de firma.</span>
       </div>
       <div class="w-full flex items-center justify-center space-x-4">
@@ -36,12 +36,21 @@
           <span>Ingrese el código</span>
         </div>
       </div>
+      <div class=" h-28 flex flex-col items-center justify-center">
+        <ngx-recaptcha2
+          [siteKey]="siteKey"
+          [useGlobalDomain]="false"
+          [formControl]="recaptcha">
+        </ngx-recaptcha2>
+        <small class="text-alert-error" *ngIf="recaptcha?.invalid && recaptcha?.touched">El captcha es requerido</small>
+      </div>
       <div class="border border-zc-200 bg-white rounded-lg flex flex-col gap-4 p-6 md:flex-row md:items-center">
         <div class="i-outline w-full">
           <label>Código</label>
           <input type="text" [formControl]="accessOtp" placeholder="Ingrese el código de acceso" (keypress)="onlyNumber($event)">
           <small class="text-alert-error" *ngIf="accessOtp?.invalid && accessOtp?.touched">El código OTP es requerido</small>
         </div>
+
         <button class="b-solid" style="min-width: 160px;" (click)="validateAccessCode()">Verificar</button>
       </div>
     </div>
