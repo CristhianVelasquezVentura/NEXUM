@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'send-document',
     loadChildren: () => import('./modules/send-document/send-document.module').then((m) => m.SendDocumentModule)
   },
+  {
+    path: 'workflow',
+    loadChildren: () => import('./modules/workflow/workflow.module').then((m) => m.WorkflowModule)
+  },
 ];
 
 @NgModule({

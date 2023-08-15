@@ -1,13 +1,14 @@
 <div class="flex bg-zc-50 justify-center w-full h-screen">
   <div class="w-full h-screen pt-8 space-y-6 flex flex-col" style="max-width: 640px">
     <div>
-      <app-header-nexum></app-header-nexum>
+      <app-header-nexum [router]="'step-1-create-workflow'" [icon]="'back'" [title]="'Nuevo Flujo de Trabajo'"></app-header-nexum>
     </div>
-    <div class="body space-y-12 w-full overflow-y-auto h-full rounded-t-lg p-8">
+    <div class="body space-y-8 w-full overflow-y-auto h-full rounded-t-lg p-8">
       <div class="w-full flex flex-col space-y-4">
-        <span class="t-title text-zc-800">Envío de Documento</span>
-        <span class="t-body text-zc-400">Para enviar un documento a los firmantes, debe seguír los siguientes pasos:</span>
+        <span class="t-subtitle text-zc-800">Crear Flujos de Trabajo</span>
+        <span class="t-body text-zc-400">Para crear un flujo de trabajo, debe seguír los siguientes pasos:</span>
       </div>
+
       <div class="space-y-2 w-full">
         <div class="flex items-center w-full space-x-2 p-4 rounded-lg bg-white">
           <div class="w-5 h-5 rounded-full bg-brand-l flex items-center justify-center text-brand-c">
@@ -41,7 +42,7 @@
               </defs>
             </svg>
           </div>
-          <span class="t-body text-zc-800">Revisión de Documentos</span>
+          <span class="t-body text-zc-800">Apariencia de la Firma</span>
         </div>
         <div class="flex items-center w-full space-x-2 p-4 rounded-lg bg-white">
           <div class="w-5 h-5 rounded-full bg-brand-l flex items-center justify-center text-brand-c">
@@ -68,7 +69,7 @@
               </defs>
             </svg>
           </div>
-          <span class="t-body text-zc-800">Firmas y Secciones</span>
+          <span class="t-body text-zc-800">Notificaciones para Firmantes</span>
         </div>
         <div class="flex items-center w-full space-x-2 p-4 rounded-lg bg-white">
           <div class="w-5 h-5 rounded-full bg-brand-l flex items-center justify-center text-brand-c">
@@ -85,7 +86,7 @@
               </defs>
             </svg>
           </div>
-          <span class="t-body text-zc-800">Organización de Firmas</span>
+          <span class="t-body text-zc-800">Configuración de OTP</span>
         </div>
         <div class="flex items-center w-full space-x-2 p-4 rounded-lg bg-white">
           <div class="w-5 h-5 rounded-full bg-brand-l flex items-center justify-center text-brand-c">
@@ -102,13 +103,12 @@
               </defs>
             </svg>
           </div>
-          <span class="t-body text-zc-800">Revisión Final</span>
+          <span class="t-body text-zc-800">Aviso para los Firmantes</span>
         </div>
       </div>
-      <button routerLink="/send-document/general-information" class="w-full b-solid">Iniciar Proceso de Envío</button>
+
+      <button routerLink="/workflow/create" class="w-full b-solid">Iniciar Proceso de Creación</button>
       <div class="h-16"></div>
     </div>
   </div>
 </div>
-
-<app-toolbar [module]="'send-doc'"></app-toolbar>
