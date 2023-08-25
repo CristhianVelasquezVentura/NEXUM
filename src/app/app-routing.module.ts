@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'send-document',
     loadChildren: () => import('./modules/send-document/send-document.module').then((m) => m.SendDocumentModule)
   },
+  {
+    path: 'query-docs',
+    loadChildren: () => import('./modules/query-docs/query-docs.module').then((m) => m.QueryDocsModule)
+  }
 ];
 
 @NgModule({

@@ -1,0 +1,107 @@
+<div class="flex bg-zc-50 justify-center w-full h-screen">
+  <div class="w-full h-screen pt-8 space-y-6 flex flex-col" style="max-width: 640px">
+    <div>
+      <app-header-nexum [router]="'query-docs'" [icon]="'back'" [title]="'Consulta de documentos'"></app-header-nexum>
+    </div>
+    <div class="body space-y-8 w-full overflow-y-auto h-full rounded-t-lg p-8">
+      <div class="w-full flex flex-col space-y-4">
+        <span class="t-subtitle text-zc-800">Consulta por {{true ? 'Documentos' : 'Tablero de Control'}}</span>
+        <span class="t-body text-zc-400">Ingrese los criterios de búsqueda:</span>
+      </div>
+
+      <form *ngIf="true" class="parameter-query-docs grid md:grid-cols-2 gap-4">
+        <div class="i-outline">
+          <label>Flujo de trabajo</label>
+          <input type="text">
+        </div>
+        <div class="i-outline">
+          <label>Rango de fecha</label>
+          <div class="flex items-center space-x-4">
+            <input type="date">
+            <small class="t-body text-zc-800">-</small>
+            <input type="date">
+          </div>
+        </div>
+        <div class="border border-zc-200 rounded-lg flex flex-col p-3 md:col-span-2 bg-white">
+          <label class="t-label text-zc-400">Estado</label>
+          <div class="h-2"></div>
+          <div class="flex items-center gap-4 flex-wrap">
+            <div class="status text-center flex flex-col items-center gap-2">
+              <button class="b-status {{true ? 'text-white bg-status-signed':'text-status-signed border border-zc-200'}}">
+                <div>
+                  <svg class="fill-current" width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.87982 16C4.87982 9.63772 10.0375 4.48004 16.3998 4.48004C22.7621 4.48004 27.9198 9.63772 27.9198 16C27.9198 22.3624 22.7621 27.52 16.3998 27.52C10.0375 27.52 4.87982 22.3624 4.87982 16ZM16.3998 1.92004C8.62366 1.92004 2.31982 8.22388 2.31982 16C2.31982 23.7762 8.62366 30.08 16.3998 30.08C24.176 30.08 30.4798 23.7762 30.4798 16C30.4798 8.22388 24.176 1.92004 16.3998 1.92004ZM23.7049 12.1051C24.2048 11.6053 24.2048 10.7948 23.7049 10.2949C23.205 9.79508 22.3946 9.79508 21.8947 10.2949L13.1998 18.9899L10.9049 16.6949C10.4051 16.1951 9.5946 16.1951 9.09473 16.6949C8.59486 17.1948 8.59486 18.0053 9.09473 18.5051L12.2947 21.7051C12.5348 21.9452 12.8603 22.08 13.1998 22.08C13.5393 22.08 13.8649 21.9452 14.1049 21.7051L23.7049 12.1051Z"/>
+                  </svg>
+                </div>
+              </button>
+              <span class="t-body text-zc-800">Firmado</span>
+            </div>
+            <div class="status text-center flex flex-col items-center gap-2">
+              <button class="b-status {{false ? 'text-white bg-status-pending':'text-status-pending border border-zc-200'}}">
+                <div>
+                  <svg class="fill-current" width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.67987 16C4.67987 9.63772 9.83755 4.48004 16.1999 4.48004C22.5622 4.48004 27.7199 9.63772 27.7199 16C27.7199 22.3624 22.5622 27.52 16.1999 27.52C9.83755 27.52 4.67987 22.3624 4.67987 16ZM16.1999 1.92004C8.4237 1.92004 2.11987 8.22388 2.11987 16C2.11987 23.7762 8.4237 30.08 16.1999 30.08C23.976 30.08 30.2799 23.7762 30.2799 16C30.2799 8.22388 23.976 1.92004 16.1999 1.92004ZM17.4799 8.64003C17.4799 7.93311 16.9068 7.36003 16.1999 7.36003C15.4929 7.36003 14.9199 7.93311 14.9199 8.64003V16C14.9199 16.707 15.4929 17.28 16.1999 17.28H20.9999C21.7068 17.28 22.2799 16.707 22.2799 16C22.2799 15.2931 21.7068 14.72 20.9999 14.72H17.4799V8.64003Z"/>
+                  </svg>
+                </div>
+              </button>
+              <span class="t-body text-zc-800">Pendiente</span>
+            </div>
+            <div class="status text-center flex flex-col items-center gap-2">
+              <button class="b-status {{false ? 'text-white bg-status-error':'text-status-error border border-zc-200'}}">
+                <div>
+                  <svg class="fill-current" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M15.9999 4.48004C9.6376 4.48004 4.47992 9.63772 4.47992 16C4.47992 22.3624 9.6376 27.52 15.9999 27.52C22.3622 27.52 27.5199 22.3624 27.5199 16C27.5199 9.63772 22.3622 4.48004 15.9999 4.48004ZM1.91992 16C1.91992 8.22388 8.22375 1.92004 15.9999 1.92004C23.7761 1.92004 30.0799 8.22388 30.0799 16C30.0799 23.7762 23.7761 30.08 15.9999 30.08C8.22375 30.08 1.91992 23.7762 1.91992 16ZM15.9999 9.92004C16.7068 9.92004 17.2799 10.4931 17.2799 11.2V16.32C17.2799 17.027 16.7068 17.6 15.9999 17.6C15.293 17.6 14.7199 17.027 14.7199 16.32V11.2C14.7199 10.4931 15.293 9.92004 15.9999 9.92004ZM17.2799 20.1601C17.2799 19.4531 16.7068 18.8801 15.9999 18.8801C15.293 18.8801 14.7199 19.4531 14.7199 20.1601V20.8001C14.7199 21.507 15.293 22.0801 15.9999 22.0801C16.7068 22.0801 17.2799 21.507 17.2799 20.8001V20.1601Z"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M15.9999 4.48004C9.6376 4.48004 4.47992 9.63772 4.47992 16C4.47992 22.3624 9.6376 27.52 15.9999 27.52C22.3622 27.52 27.5199 22.3624 27.5199 16C27.5199 9.63772 22.3622 4.48004 15.9999 4.48004ZM1.91992 16C1.91992 8.22388 8.22375 1.92004 15.9999 1.92004C23.7761 1.92004 30.0799 8.22388 30.0799 16C30.0799 23.7762 23.7761 30.08 15.9999 30.08C8.22375 30.08 1.91992 23.7762 1.91992 16ZM15.9999 9.92004C16.7068 9.92004 17.2799 10.4931 17.2799 11.2V16.32C17.2799 17.027 16.7068 17.6 15.9999 17.6C15.293 17.6 14.7199 17.027 14.7199 16.32V11.2C14.7199 10.4931 15.293 9.92004 15.9999 9.92004ZM17.2799 20.1601C17.2799 19.4531 16.7068 18.8801 15.9999 18.8801C15.293 18.8801 14.7199 19.4531 14.7199 20.1601V20.8001C14.7199 21.507 15.293 22.0801 15.9999 22.0801C16.7068 22.0801 17.2799 21.507 17.2799 20.8001V20.1601Z"/>
+                  </svg>
+                </div>
+              </button>
+              <span class="t-body text-zc-800">Errado</span>
+            </div>
+            <div class="status text-center flex flex-col items-center gap-2">
+              <button class="b-status {{false ? 'text-white bg-status-explained':'text-status-explained border border-zc-200'}}">
+                <div>
+                  <svg class="fill-current" width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.27973 16C5.27973 9.63772 10.4374 4.48004 16.7997 4.48004C23.162 4.48004 28.3197 9.63772 28.3197 16C28.3197 22.3624 23.162 27.52 16.7997 27.52C10.4374 27.52 5.27973 22.3624 5.27973 16ZM16.7997 1.92004C9.02356 1.92004 2.71973 8.22388 2.71973 16C2.71973 23.7762 9.02356 30.08 16.7997 30.08C24.5759 30.08 30.8797 23.7762 30.8797 16C30.8797 8.22388 24.5759 1.92004 16.7997 1.92004ZM11.9997 14.72C11.2928 14.72 10.7197 15.2931 10.7197 16C10.7197 16.707 11.2928 17.28 11.9997 17.28H16.7997H21.5997C22.3067 17.28 22.8797 16.707 22.8797 16C22.8797 15.2931 22.3067 14.72 21.5997 14.72H16.7997H11.9997Z"/>
+                  </svg>
+                </div>
+              </button>
+              <span class="t-body text-zc-800">Expirado</span>
+            </div>
+            <div class="status text-center flex flex-col items-center gap-2">
+              <button class="b-status {{false ? 'text-white bg-status-pending':'text-status-pending border border-zc-200'}}">
+                <div>
+                  <svg class="fill-current" width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.07978 16C5.07978 9.63772 10.2375 4.48004 16.5998 4.48004C22.9621 4.48004 28.1198 9.63772 28.1198 16C28.1198 22.3624 22.9621 27.52 16.5998 27.52C10.2375 27.52 5.07978 22.3624 5.07978 16ZM16.5998 1.92004C8.82361 1.92004 2.51978 8.22388 2.51978 16C2.51978 23.7762 8.82361 30.08 16.5998 30.08C24.3759 30.08 30.6798 23.7762 30.6798 16C30.6798 8.22388 24.3759 1.92004 16.5998 1.92004ZM12.7049 10.2949C12.205 9.79508 11.3945 9.79508 10.8947 10.2949C10.3948 10.7948 10.3948 11.6053 10.8947 12.1051L14.7896 16L10.8947 19.8949C10.3948 20.3948 10.3948 21.2053 10.8947 21.7051C11.3945 22.205 12.205 22.205 12.7049 21.7051L16.5998 17.8102L20.4947 21.7051C20.9946 22.205 21.805 22.205 22.3049 21.7051C22.8047 21.2053 22.8047 20.3948 22.3049 19.8949L18.41 16L22.3049 12.1051C22.8047 11.6053 22.8047 10.7948 22.3049 10.2949C21.805 9.79508 20.9946 9.79508 20.4947 10.2949L16.5998 14.1899L12.7049 10.2949Z"/>
+                  </svg>
+                </div>
+              </button>
+              <span class="t-body text-zc-800">Firmado</span>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <form *ngIf="false" class="parameter-query-dashboard grid md:grid-cols-2 gap-4">
+        <div class="i-outline md:col-span-2">
+          <label>Rango de fecha</label>
+          <div class="flex items-center space-x-4">
+            <input type="date">
+            <small class="t-body text-zc-800">-</small>
+            <input type="date">
+          </div>
+        </div>
+        <div class="i-outline">
+          <label>Tipo</label>
+          <select></select>
+        </div>
+        <div class="i-outline">
+          <label>Tipo de manifestación</label>
+          <select></select>
+        </div>
+      </form>
+
+      <button routerLink="/workflow/create" class="w-full b-solid">Realizar Búsqueda</button>
+      <div class="h-16"></div>
+    </div>
+  </div>
+</div>
