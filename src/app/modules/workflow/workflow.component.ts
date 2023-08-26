@@ -27,7 +27,7 @@ export class WorkflowComponent  implements OnInit, OnDestroy {
     throw new Error('Method not implemented.');
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.getWorkflows();
   }
   private getWorkflows(): void {
     this.isBlockPage = true;
@@ -45,7 +45,7 @@ export class WorkflowComponent  implements OnInit, OnDestroy {
               this.workflows = response.data;
               this.workflowsPagination = this.workflows.slice(this.leftLimit, this.rightLimit);
               this.totalWorkflowsPagination = Math.ceil(this.workflows.length / this.paginationValue);
-              console.error(this.workflows)
+              console.log(this.workflows)
             }
 
           }
