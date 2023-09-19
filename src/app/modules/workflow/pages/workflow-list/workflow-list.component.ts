@@ -1,14 +1,14 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { Workflow } from '../../models/steps';
-import { WorkflowService } from '../../services/workflow.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Subscription} from 'rxjs';
+import {Workflow} from '../../models/steps';
+import {WorkflowService} from '../../services/workflow.service';
 
 @Component({
-  selector: 'app-list-workflow',
-  templateUrl: './list-workflow.component.html',
-  styleUrls: ['./list-workflow.component.scss']
+  selector: 'app-workflow-list',
+  templateUrl: './workflow-list.component.html',
+  styleUrls: ['./workflow-list.component.scss']
 })
-export class ListWorkflowComponent implements OnInit, OnDestroy {
+export class WorkflowListComponent implements OnInit, OnDestroy {
   public isBlockPage: boolean = false;
   private _subscription = new Subscription();
   public workflows: Workflow[] = [];
@@ -18,40 +18,50 @@ export class ListWorkflowComponent implements OnInit, OnDestroy {
   public leftLimit: number = 0;
   public paginationValue: number = 5;
   public rightLimit: number = 5;
+
   constructor(
     private _workflowService: WorkflowService,
-
   ) {
   }
+
   ngOnDestroy(): void {
     throw new Error('Method not implemented.');
   }
+
   ngOnInit(): void {
     this.getWorkflows();
   }
+
   private getWorkflows(): void {
     this.isBlockPage = true;
     this._subscription.add(
-      this._workflowService.getWorkflows().subscribe(
-        (response) => {
+      this._workflowService.getWorkflows().subscribe({
+        next: (response) => {
           if (response.error) {
             // this._messageService.add({
             //   type: 'error',
             //   message: response.msg,
             //   life: 5000
             // });
-          } else {
-            if (response.data) {
-              this.workflows = response.data;
-              this.workflowsPagination = this.workflows.slice(this.leftLimit, this.rightLimit);
-              this.totalWorkflowsPagination = Math.ceil(this.workflows.length / this.paginationValue);
-              console.log(this.workflows)
-            }
-
+            return
           }
+
+          if (!response.data) {
+            // this._messageService.add({
+            //   type: 'warning',
+            //   message: response.msg,
+            //   life: 5000
+            // });
+            return
+          }
+
+          this.workflows = response.data;
+          this.workflowsPagination = this.workflows.slice(this.leftLimit, this.rightLimit);
+          this.totalWorkflowsPagination = Math.ceil(this.workflows.length / this.paginationValue);
+          console.log(this.workflows)
           this.isBlockPage = false;
         },
-        (error: Error) => {
+        error: (error: Error) => {
           console.error(error.message);
           // this._messageService.add({
           //   type: 'error',
@@ -60,7 +70,7 @@ export class ListWorkflowComponent implements OnInit, OnDestroy {
           // });
           this.isBlockPage = false;
         }
-      )
+      })
     );
   }
 }

@@ -1,8 +1,8 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 import {FinalRevisionComponent} from "@app/modules/send-document/pages/final-revision/final-revision.component";
-import { ListWorkflowComponent } from "@app/modules/workflow/pages/list-workflow/list-workflow.component";
-import {CreateWorkflowComponent} from "@app/modules/workflow/pages/create-workflow/create-workflow.component";
+import { WorkflowListComponent } from "@app/modules/workflow/pages/workflow-list/workflow-list.component";
+import {WorkflowCreateComponent} from "@app/modules/workflow/pages/workflow-create/workflow-create.component";
 import {GeneralInfoWorkflowComponent} from "@app/modules/workflow/pages/general-info-workflow/general-info-workflow.component";
 import {SignStyleComponent} from "@app/modules/workflow/pages/sign-style/sign-style.component";
 import {NotifySignersComponent} from "@app/modules/workflow/pages/notify-signers/notify-signers.component";
@@ -18,11 +18,11 @@ const routes: Routes = [
   },
   {
     path: 'list',
-    component: ListWorkflowComponent
+    component: WorkflowListComponent
   },
   {
     path: 'create',
-    component: CreateWorkflowComponent
+    component: WorkflowCreateComponent
   },
   {
     path: 'create/general-information',
