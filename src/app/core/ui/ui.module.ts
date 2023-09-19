@@ -7,6 +7,7 @@ import {ToastComponent} from "@app/core/ui/toast/toast.component";
 import {FileUploadComponent} from "@app/core/ui/file-upload/file-upload.component";
 import { HeaderNexumComponent } from './header-nexum/header-nexum.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import {RouterLink} from "@angular/router";
 
 
 @NgModule({
@@ -19,9 +20,10 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     HeaderNexumComponent,
     ToolbarComponent
   ],
-  imports: [
-    CommonModule
-  ],
+    imports: [
+        CommonModule,
+        RouterLink
+    ],
   exports: [
     PdfViewerComponent,
     ToastItemComponent,

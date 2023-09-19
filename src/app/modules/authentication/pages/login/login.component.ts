@@ -1,12 +1,19 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { LoginService } from '@app/core/services/auth/login.service';
-import { UserModel } from '@app/modules/workflow/models/steps';
-import { ToastService } from 'ecapture-ng-ui';
+import {HttpErrorResponse} from '@angular/common/http';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  Validators
+} from '@angular/forms';
+import {LoginService} from '@app/core/services/auth/login.service';
+import {UserModel} from '@app/modules/workflow/models/steps';
+import {ToastService} from 'ecapture-ng-ui';
 import {Subscription} from "rxjs";
 //import {Store} from "@ngrx/store";
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -32,14 +39,14 @@ export class LoginComponent implements OnInit, OnDestroy {
   ) {
     this.token = '';
     this.formLogin = this._fb.group({
-      'email':['', [Validators.required, Validators.email, Validators.minLength(4)]],
+      'email': ['', [Validators.required, Validators.email, Validators.minLength(4)]],
       'password': ['', [Validators.required]],
     });
     // todo
     /* this.subscription.add(appStore.select('app').subscribe(state => {
       this.appStore$ = state;
     })); */
-   }
+  }
 
   ngOnInit(): void {
     this.checkLogin();
@@ -60,58 +67,58 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   private getNewForm(): UntypedFormGroup {
     return this._fb.group({
-      'email':['', [Validators.required, Validators.email, Validators.minLength(4)]],
+      'email': ['', [Validators.required, Validators.email, Validators.minLength(4)]],
       'password': ['', [Validators.required]],
     });
   }
 
   public login(): void {
-    debugger
-    if (this.formLogin.valid) {
-      this.isBlockPage = true;
-
-        this._loginService.login(this.formLogin.value).subscribe(
-          async (resp) => {
-            if (resp.error) {
-              this._messageService.add({
-                type: 'error',
-                message: resp.msg,
-                life: 5000,
-              });
-            } else {
-              this.isLogged = true;
-              this.token = resp.data.access_token;
-              this.user = this._loginService.getUserByToke();
-              //this.Store.dispatch(reloadedProfile({user: this.user}));
-              const data = {
-                isLogged: this.isLogged,
-                token: this.token,
-                user: this.user
-              };
-              //this.appStore.dispatch(updateSession({dataValue: data}));
-              this.router.navigate(['send-document']).then(() => {
-                this.getUserPictureProfile();
-              });
-            }
-            this.isBlockPage = false;
-          },
-          (err: Error) => {
-            console.error(err.message);
-            this._messageService.add({
-              type: 'error',
-              message: 'Conexión perdida con el servidor!',
-              life: 5000,
-            });
-            this.isBlockPage = false;
-          })
-
-    } else {
+    if (this.formLogin.invalid) {
       this._messageService.add({
         type: 'warning',
         message: 'Rellene todos los campos por favor!',
         life: 5000,
       });
+      return
     }
+
+    this.isBlockPage = true;
+    this._loginService.login(this.formLogin.value).subscribe({
+      next: async (resp) => {
+        this.isBlockPage = false;
+        if (resp.error) {
+          this._messageService.add({
+            type: 'error',
+            message: resp.msg,
+            life: 5000,
+          });
+          return
+        }
+
+        this.isLogged = true;
+        this.token = resp.data.access_token;
+        this.user = this._loginService.getUserByToke();
+        //this.Store.dispatch(reloadedProfile({user: this.user}));
+        const data = {
+          isLogged: this.isLogged,
+          token: this.token,
+          user: this.user
+        };
+        //this.appStore.dispatch(updateSession({dataValue: data}));
+        this.router.navigate(['send-document']).then(() => {
+          this.getUserPictureProfile();
+        });
+      },
+      error: (err: Error) => {
+        console.error(err.message);
+        this._messageService.add({
+          type: 'error',
+          message: 'Conexión perdida con el servidor!',
+          life: 5000,
+        });
+        this.isBlockPage = false;
+      }
+    })
   }
 
   public getMessageEmailError(): string {
@@ -170,7 +177,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   get passwordFieldIsValid(): boolean {
     return this.passwordField.touched && this.passwordField.valid;
   }
-
 
 
   private getUserPictureProfile(): void {

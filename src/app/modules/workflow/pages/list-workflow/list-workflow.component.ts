@@ -4,11 +4,11 @@ import { Workflow } from '../../models/steps';
 import { WorkflowService } from '../../services/workflow.service';
 
 @Component({
-  selector: 'app-list-workflows',
-  templateUrl: './list-workflows.component.html',
-  styleUrls: ['./list-workflows.component.scss']
+  selector: 'app-list-workflow',
+  templateUrl: './list-workflow.component.html',
+  styleUrls: ['./list-workflow.component.scss']
 })
-export class ListWorkflowsComponent  implements OnInit, OnDestroy {
+export class ListWorkflowComponent implements OnInit, OnDestroy {
   public isBlockPage: boolean = false;
   private _subscription = new Subscription();
   public workflows: Workflow[] = [];
@@ -20,7 +20,7 @@ export class ListWorkflowsComponent  implements OnInit, OnDestroy {
   public rightLimit: number = 5;
   constructor(
     private _workflowService: WorkflowService,
-  
+
   ) {
   }
   ngOnDestroy(): void {

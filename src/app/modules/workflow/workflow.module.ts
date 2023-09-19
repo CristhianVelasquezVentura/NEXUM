@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WorkflowComponent } from './workflow.component';
-import { ListWorkflowsComponent } from './pages/list-workflows/list-workflows.component';
+import { ListWorkflowComponent } from '@app/modules/workflow/pages/list-workflow/list-workflow.component';
 import {WorkflowRoutingModule} from "@app/modules/workflow/workflow-routing.module";
 import {UiModule} from "@app/core/ui/ui.module";
 import { CreateWorkflowComponent } from './pages/create-workflow/create-workflow.component';
@@ -17,7 +17,7 @@ import { FinalMessangeWorkflowComponent } from './pages/final-messange-workflow/
 @NgModule({
   declarations: [
     WorkflowComponent,
-    ListWorkflowsComponent,
+    ListWorkflowComponent,
     CreateWorkflowComponent,
     GeneralInfoWorkflowComponent,
     SignStyleComponent,
