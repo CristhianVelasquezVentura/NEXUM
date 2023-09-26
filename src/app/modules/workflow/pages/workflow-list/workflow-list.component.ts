@@ -1,12 +1,12 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from 'rxjs';
-import {Workflow} from '../../models/steps';
-import {WorkflowService} from '../../services/workflow.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Workflow } from '../../models/steps';
+import { WorkflowService } from '../../services/workflow.service';
 
 @Component({
   selector: 'app-workflow-list',
   templateUrl: './workflow-list.component.html',
-  styleUrls: ['./workflow-list.component.scss']
+  styleUrls: ['./workflow-list.component.scss'],
 })
 export class WorkflowListComponent implements OnInit, OnDestroy {
   public isBlockPage: boolean = false;
@@ -19,10 +19,7 @@ export class WorkflowListComponent implements OnInit, OnDestroy {
   public paginationValue: number = 5;
   public rightLimit: number = 5;
 
-  constructor(
-    private _workflowService: WorkflowService,
-  ) {
-  }
+  constructor(private _workflowService: WorkflowService) {}
 
   ngOnDestroy(): void {
     throw new Error('Method not implemented.');
@@ -52,13 +49,18 @@ export class WorkflowListComponent implements OnInit, OnDestroy {
             //   message: response.msg,
             //   life: 5000
             // });
-            return
+            return;
           }
 
           this.workflows = response.data;
-          this.workflowsPagination = this.workflows.slice(this.leftLimit, this.rightLimit);
-          this.totalWorkflowsPagination = Math.ceil(this.workflows.length / this.paginationValue);
-          console.log(this.workflows)
+          this.workflowsPagination = this.workflows.slice(
+            this.leftLimit,
+            this.rightLimit
+          );
+          this.totalWorkflowsPagination = Math.ceil(
+            this.workflows.length / this.paginationValue
+          );
+          console.log(this.workflows);
           this.isBlockPage = false;
         },
         error: (error: Error) => {
@@ -69,8 +71,20 @@ export class WorkflowListComponent implements OnInit, OnDestroy {
           //   life: 5000
           // });
           this.isBlockPage = false;
-        }
+        },
       })
+    );
+  }
+
+  public filterWorkflows({ target }: any): void {
+    const workflowValue: string = target.value.toLowerCase().trim();
+    console.log(workflowValue);
+    if (workflowValue == '') {
+      this.workflowsPagination = this.workflows;
+      return;
+    }
+    this.workflowsPagination = this.workflows?.filter(
+      (workflow: any) => workflow.name.toLowerCase().includes(workflowValue)
     );
   }
 }
