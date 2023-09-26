@@ -78,7 +78,6 @@ export class WorkflowListComponent implements OnInit, OnDestroy {
 
   public filterWorkflows({ target }: any): void {
     const workflowValue: string = target.value.toLowerCase().trim();
-    console.log(workflowValue);
     if (workflowValue == '') {
       this.workflowsPagination = this.workflows;
       return;
