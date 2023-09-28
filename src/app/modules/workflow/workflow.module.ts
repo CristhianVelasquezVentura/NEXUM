@@ -13,6 +13,7 @@ import { AlertSignersComponent } from './pages/alert-signers/alert-signers.compo
 import { FinalMessangeWorkflowComponent } from './pages/final-messange-workflow/final-messange-workflow.component';
 import { WorkflowItemComponent } from './components/workflow-summary-card/workflow-item.component';
 import { RouterLink } from '@angular/router';
+import { WorkflowStepListComponent } from './components/workflow-step-list/workflow-step-list.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { RouterLink } from '@angular/router';
     AlertSignersComponent,
     FinalMessangeWorkflowComponent,
     WorkflowItemComponent,
+    WorkflowStepListComponent
   ],
   imports: [CommonModule, WorkflowRoutingModule, UiModule, RouterLink],
 })

@@ -1,113 +1,19 @@
 <div class="flex bg-zc-50 justify-center w-full h-screen">
-  <div class="w-full h-screen pt-8 space-y-6 flex flex-col" style="max-width: 640px">
+  <div
+    class="w-full h-screen pt-8 space-y-6 flex flex-col"
+    style="max-width: 640px"
+  >
     <div>
-      <app-header-nexum [router]="'step-1-workflow-create'" [icon]="'back'" [title]="'Nuevo Flujo de Trabajo'"></app-header-nexum>
+      <app-header-nexum  [router]="'/workflow'"  [icon]="'back'"  [title]="'Nuevo Flujo de Trabajo'" ></app-header-nexum>
     </div>
     <div class="body space-y-8 w-full overflow-y-auto h-full rounded-t-lg p-8">
       <div class="w-full flex flex-col space-y-4">
         <span class="t-subtitle text-zc-800">Crear Flujos de Trabajo</span>
-        <span class="t-body text-zc-400">Para crear un flujo de trabajo, debe seguír los siguientes pasos:</span>
+        <span class="t-body text-zc-400"
+          >Para crear un flujo de trabajo, debe seguír los siguientes pasos:</span>
       </div>
-
-      <div class="space-y-2 w-full">
-        <div class="flex items-center w-full space-x-2 p-4 rounded-lg bg-white">
-          <div class="w-5 h-5 rounded-full bg-brand-l flex items-center justify-center text-brand-c">
-            <span class="t-body">1</span>
-          </div>
-          <div>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7 8L17 8M7 12H11M12 20L8 16H5C3.89543 16 3 15.1046 3 14L3 6C3 4.89543 3.89543 4 5 4L19 4C20.1046 4 21 4.89543 21 6V14C21 15.1046 20.1046 16 19 16H16L12 20Z" stroke="url(#paint0_linear_506_1291)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <defs>
-                <linearGradient id="paint0_linear_506_1291" x1="3" y1="12.186" x2="21" y2="12.186" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#F66100"/>
-                  <stop offset="1" stop-color="#F4BC2C"/>
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-          <span class="t-body text-zc-800">Información General</span>
-        </div>
-        <div class="flex items-center w-full space-x-2 p-4 rounded-lg bg-white">
-          <div class="w-5 h-5 rounded-full bg-brand-l flex items-center justify-center text-brand-c">
-            <span class="t-body">2</span>
-          </div>
-          <div>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 21L17 21C18.1046 21 19 20.1046 19 19V9.41421C19 9.149 18.8946 8.89464 18.7071 8.70711L13.2929 3.29289C13.1054 3.10536 12.851 3 12.5858 3L7 3C5.89543 3 5 3.89543 5 5L5 16M5 21L9.87868 16.1213M9.87868 16.1213C10.4216 16.6642 11.1716 17 12 17C13.6569 17 15 15.6569 15 14C15 12.3431 13.6569 11 12 11C10.3431 11 9 12.3431 9 14C9 14.8284 9.33579 15.5784 9.87868 16.1213Z" stroke="url(#paint0_linear_506_1296)" stroke-width="2" stroke-linecap="round"/>
-              <defs>
-                <linearGradient id="paint0_linear_506_1296" x1="5" y1="12.2093" x2="19" y2="12.2093" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#F66100"/>
-                  <stop offset="1" stop-color="#F4BC2C"/>
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-          <span class="t-body text-zc-800">Apariencia de la Firma</span>
-        </div>
-        <div class="flex items-center w-full space-x-2 p-4 rounded-lg bg-white">
-          <div class="w-5 h-5 rounded-full bg-brand-l flex items-center justify-center text-brand-c">
-            <span class="t-body">3</span>
-          </div>
-          <div>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 5C4 4.44772 4.44772 4 5 4L19 4C19.5523 4 20 4.44772 20 5V7C20 7.55228 19.5523 8 19 8L5 8C4.44772 8 4 7.55228 4 7L4 5Z" stroke="url(#paint0_linear_506_1301)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M4 13C4 12.4477 4.44772 12 5 12H11C11.5523 12 12 12.4477 12 13V19C12 19.5523 11.5523 20 11 20H5C4.44772 20 4 19.5523 4 19L4 13Z" stroke="url(#paint1_linear_506_1301)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M16 13C16 12.4477 16.4477 12 17 12L19 12C19.5523 12 20 12.4477 20 13L20 19C20 19.5523 19.5523 20 19 20H17C16.4477 20 16 19.5523 16 19V13Z" stroke="url(#paint2_linear_506_1301)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <defs>
-                <linearGradient id="paint0_linear_506_1301" x1="4" y1="12.186" x2="20" y2="12.186" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#F66100"/>
-                  <stop offset="1" stop-color="#F4BC2C"/>
-                </linearGradient>
-                <linearGradient id="paint1_linear_506_1301" x1="4" y1="12.186" x2="20" y2="12.186" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#F66100"/>
-                  <stop offset="1" stop-color="#F4BC2C"/>
-                </linearGradient>
-                <linearGradient id="paint2_linear_506_1301" x1="4" y1="12.186" x2="20" y2="12.186" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#F66100"/>
-                  <stop offset="1" stop-color="#F4BC2C"/>
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-          <span class="t-body text-zc-800">Notificaciones para Firmantes</span>
-        </div>
-        <div class="flex items-center w-full space-x-2 p-4 rounded-lg bg-white">
-          <div class="w-5 h-5 rounded-full bg-brand-l flex items-center justify-center text-brand-c">
-            <span class="t-body">4</span>
-          </div>
-          <div>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M11 5L6 5C4.89543 5 4 5.89543 4 7L4 18C4 19.1046 4.89543 20 6 20L17 20C18.1046 20 19 19.1046 19 18V13M17.5858 3.58578C18.3668 2.80473 19.6332 2.80473 20.4142 3.58578C21.1953 4.36683 21.1953 5.63316 20.4142 6.41421L11.8284 15L9 15L9 12.1716L17.5858 3.58578Z" stroke="url(#paint0_linear_506_1306)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <defs>
-                <linearGradient id="paint0_linear_506_1306" x1="4" y1="11.6977" x2="21" y2="11.6977" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#F66100"/>
-                  <stop offset="1" stop-color="#F4BC2C"/>
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-          <span class="t-body text-zc-800">Configuración de OTP</span>
-        </div>
-        <div class="flex items-center w-full space-x-2 p-4 rounded-lg bg-white">
-          <div class="w-5 h-5 rounded-full bg-brand-l flex items-center justify-center text-brand-c">
-            <span class="t-body">5</span>
-          </div>
-          <div>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M14 10H18.7639C20.2507 10 21.2177 11.5646 20.5528 12.8944L17.0528 19.8944C16.714 20.572 16.0215 21 15.2639 21H11.2462C11.0827 21 10.9198 20.9799 10.7611 20.9403L7 20M14 10V5C14 3.89543 13.1046 3 12 3H11.9045C11.405 3 11 3.40497 11 3.90453C11 4.61883 10.7886 5.31715 10.3923 5.91149L7 11V20M14 10H12M7 20H5C3.89543 20 3 19.1046 3 18V12C3 10.8954 3.89543 10 5 10H7.5" stroke="url(#paint0_linear_506_1311)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <defs>
-                <linearGradient id="paint0_linear_506_1311" x1="3" y1="12.2093" x2="20.7665" y2="12.2093" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#F66100"/>
-                  <stop offset="1" stop-color="#F4BC2C"/>
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-          <span class="t-body text-zc-800">Aviso para los Firmantes</span>
-        </div>
-      </div>
-
-      <button routerLink="/workflow/create" class="w-full b-solid">Iniciar Proceso de Creación</button>
+      <workflow-step-list></workflow-step-list> 
+      <button routerLink="/workflow/create/general-information" class="w-full b-solid">Iniciar Proceso de Creación</button>
       <div class="h-16"></div>
     </div>
   </div>

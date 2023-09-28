@@ -22,7 +22,7 @@ export class WorkflowListComponent implements OnInit, OnDestroy {
   constructor(private _workflowService: WorkflowService) {}
 
   ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
+    
   }
 
   ngOnInit(): void {
