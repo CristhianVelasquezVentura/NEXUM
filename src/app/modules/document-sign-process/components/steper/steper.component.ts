@@ -7,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class SteperComponent implements OnInit {
 
-  @Input() steper: string[] = ['d','d','d','d'];
+  @Input() steper: string[] = ['d','d','d','d','d'];
   @Input() title: string = '';
   @Input() subtitle: string = '';
   //d - default, f - focus, s - success

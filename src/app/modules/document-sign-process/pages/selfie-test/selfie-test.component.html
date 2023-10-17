@@ -1,0 +1,108 @@
+<div class="flex w-full space-x-4 h-screen flex-row justify-center bg-zc-50 lg:px-8">
+  <div class="flex h-screen w-full flex-col" style="max-width: 1000px;">
+    <div class="header h-fit w-full p-8 lg:px-0">
+      <app-header-document-sign [title]="'Proceso de Firma'"></app-header-document-sign>
+    </div>
+    <div class="flex lg:space-x-6 w-full" style="height: calc(100vh - 100px)">
+      <div class="hidden lg:block w-60">
+        <app-steper [steper]="['f','d','d','d','d']"></app-steper>
+      </div>
+      <div class="body rounded-t-lg relative flex-1 flex flex-col p-8 space-y-4 bg-white" style="height: calc(100vh - 100px)">
+        <div class="h-fit space-y-4">
+          <app-steper class="lg:hidden" [title]="'Validación de Identidad'" [subtitle]="'Sigue: Revisión de documentos'" [steper]="['f','d','d','d','d']"></app-steper>
+          <!-- Code -->
+          <div class="mt-8 flex items-center justify-center">
+            <ng-template [ngIf]="cameraStarted" [ngIfElse]="mask">
+              <ng-template [ngIf]="imageSrc" [ngIfElse]="videoTemp">
+                <div class='flex flex-col gap-4 items-center'>
+                  <img *ngIf="imageSrc" [src]="imageSrc" alt="Captured Smile" class="rounded-md"/>
+                  <button (click)="restartLifeTest()" class='w-40 px-4 text-brand-c rounded-md border-2 flex items-center gap-2 flex-1 border-solid border-c t-body-b'>
+                    <svg class="text-brand-c" width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8.34247 7C9.88875 5.74851 11.8569 5 14 5C18.9706 5 23 9.02944 23 14C23 18.9706 18.9706 23 14 23C9.02944 23 5 18.9706 5 14C5 13.6955 5.01508 13.3949 5.04448 13.0988C5.09905 12.5492 4.69776 12.0595 4.14818 12.0049C3.59859 11.9503 3.10883 12.3516 3.05427 12.9012C3.01836 13.2629 3 13.6295 3 14C3 20.0751 7.92487 25 14 25C20.0751 25 25 20.0751 25 14C25 7.92487 20.0751 3 14 3C11.3405 3 8.90133 3.94442 7 5.51448V4C7 3.44772 6.55228 3 6 3C5.44772 3 5 3.44772 5 4V7.98746C4.99985 8.00129 4.99999 8.01511 5.00041 8.02892C5.01571 8.56783 5.45739 9 6 9H10C10.5523 9 11 8.55228 11 8C11 7.44772 10.5523 7 10 7H8.34247Z"/>
+                    </svg>
+                    <span>Intentar de nuevo</span>
+                  </button>
+                </div>
+              </ng-template>
+              <ng-template #videoTemp>
+                <video #video height="480" width="640" id="camera" autoplay class="rounded-md"></video>
+              </ng-template>
+            </ng-template>
+            <ng-template #mask>
+              <div (click)="startCamera()"
+                   class="border-2 border-dashed border-c rounded-lg w-40 h-60 flex items-center px-5 py-14 justify-center text-c bg-white-p">
+                <svg width="96" height="96" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M47.9984 7.99585C70.0932 7.99585 88.0046 25.9072 88.0046 48.0021C88.0046 70.0969 70.0932 88.0082 47.9984 88.0082C25.9036 88.0082 7.99219 70.0969 7.99219 48.0021C7.99219 25.9072 25.9036 7.99585 47.9984 7.99585ZM33.8454 59.1353C32.82 57.8339 30.9337 57.6101 29.6323 58.6355C28.3308 59.6609 28.1071 61.5472 29.1325 62.8486C33.6549 68.5884 40.5478 72.0083 47.9983 72.0083C55.4389 72.0083 62.3236 68.5976 66.8467 62.8708C67.8736 61.5706 67.6521 59.6841 66.3518 58.6572C65.0516 57.6302 63.1651 57.8518 62.1381 59.152C58.7411 63.4531 53.5832 66.0083 47.9983 66.0083C42.406 66.0083 37.2419 63.4462 33.8454 59.1353ZM36.0002 35.0046C33.2403 35.0046 31.003 37.2419 31.003 40.0018C31.003 42.7616 33.2403 44.9989 36.0002 44.9989C38.76 44.9989 40.9973 42.7616 40.9973 40.0018C40.9973 37.2419 38.76 35.0046 36.0002 35.0046ZM60.0002 35.0046C57.2403 35.0046 55.003 37.2419 55.003 40.0018C55.003 42.7616 57.2403 44.9989 60.0002 44.9989C62.76 44.9989 64.9973 42.7616 64.9973 40.0018C64.9973 37.2419 62.76 35.0046 60.0002 35.0046Z"/>
+                </svg>
+              </div>
+            </ng-template>
+          </div>
+          <div class="w-full p-6 flex flex-col gap-4 rounded-lg border-2 border-brand-c mt-8">
+            <div class="t-subtitle text-brand-c">
+              <span>Sugerencias:</span>
+            </div>
+            <div class="flex gap-2">
+              <div v>
+                <svg class="text-c" width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.5 16.5858L4.70711 12.7929C4.31658 12.4024 3.68342 12.4024 3.29289 12.7929C2.90237 13.1834 2.90237 13.8166 3.29289 14.2071L7.79289 18.7071C8.18342 19.0976 8.81658 19.0976 9.20711 18.7071L20.2071 7.70711C20.5976 7.31658 20.5976 6.68342 20.2071 6.29289C19.8166 5.90237 19.1834 5.90237 18.7929 6.29289L8.5 16.5858Z"/>
+                </svg>
+              </div>
+              <div>
+                <span class="t-body text-st-80">Mira directamente a la cámara.</span>
+              </div>
+            </div>
+
+            <div class="flex gap-2">
+              <div>
+                <svg class="text-c" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.5 16.5858L4.70711 12.7929C4.31658 12.4024 3.68342 12.4024 3.29289 12.7929C2.90237 13.1834 2.90237 13.8166 3.29289 14.2071L7.79289 18.7071C8.18342 19.0976 8.81658 19.0976 9.20711 18.7071L20.2071 7.70711C20.5976 7.31658 20.5976 6.68342 20.2071 6.29289C19.8166 5.90237 19.1834 5.90237 18.7929 6.29289L8.5 16.5858Z"/>
+                </svg>
+              </div>
+              <div>
+                <span class="t-body text-st-80">Siga todas las instrucciones que aparecen en la pantalla.</span>
+              </div>
+            </div>
+
+            <div class="flex gap-2">
+              <div>
+                <svg class="text-c" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.5 16.5858L4.70711 12.7929C4.31658 12.4024 3.68342 12.4024 3.29289 12.7929C2.90237 13.1834 2.90237 13.8166 3.29289 14.2071L7.79289 18.7071C8.18342 19.0976 8.81658 19.0976 9.20711 18.7071L20.2071 7.70711C20.5976 7.31658 20.5976 6.68342 20.2071 6.29289C19.8166 5.90237 19.1834 5.90237 18.7929 6.29289L8.5 16.5858Z"/>
+                </svg>
+              </div>
+              <div>
+                <span class="t-body text-st-80">Quítese las gafas u otros elementos que pudieran cubrir su rostro.</span>
+              </div>
+            </div>
+
+            <div class="flex gap-2">
+              <div>
+                <svg class="text-c" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.5 16.5858L4.70711 12.7929C4.31658 12.4024 3.68342 12.4024 3.29289 12.7929C2.90237 13.1834 2.90237 13.8166 3.29289 14.2071L7.79289 18.7071C8.18342 19.0976 8.81658 19.0976 9.20711 18.7071L20.2071 7.70711C20.5976 7.31658 20.5976 6.68342 20.2071 6.29289C19.8166 5.90237 19.1834 5.90237 18.7929 6.29289L8.5 16.5858Z"/>
+                </svg>
+              </div>
+              <div>
+                    <span
+                      class="t-body text-st-80">Activar herramientas de accesibilidad (en caso de ser necesario).</span>
+              </div>
+            </div>
+
+            <div class="flex gap-2">
+              <div>
+                <svg class="text-c" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.5 16.5858L4.70711 12.7929C4.31658 12.4024 3.68342 12.4024 3.29289 12.7929C2.90237 13.1834 2.90237 13.8166 3.29289 14.2071L7.79289 18.7071C8.18342 19.0976 8.81658 19.0976 9.20711 18.7071L20.2071 7.70711C20.5976 7.31658 20.5976 6.68342 20.2071 6.29289C19.8166 5.90237 19.1834 5.90237 18.7929 6.29289L8.5 16.5858Z"/>
+                </svg>
+              </div>
+              <div>
+                    <span class="t-body text-st-80">No tenga nada privado a la vista, ya que la cámara también capta todo lo que está fuera del círculo de reconociimiento facial.</span>
+              </div>
+            </div>
+          <!-- Code end -->
+        </div>
+        <button class="b-nav-only absolute left-1/2 -translate-x-2/4 bottom-4" (click)="sendValidation()">Siguiente</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-block-page [show]="blockPage"></app-block-page>
+

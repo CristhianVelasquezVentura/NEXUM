@@ -18,6 +18,7 @@ import {ToastService} from "@app/core/ui/services/toast/toast.service";
 import {OtpService} from "@app/core/services/otp/otp.service";
 import {NgxCaptchaModule} from "ngx-captcha";
 import { AttachDocumentsComponent } from './pages/attach-documents/attach-documents.component';
+import { SelfieTestComponent } from './pages/selfie-test/selfie-test.component';
 
 @NgModule({
     declarations: [
@@ -29,6 +30,7 @@ import { AttachDocumentsComponent } from './pages/attach-documents/attach-docume
         ValidSignComponent,
         SteperComponent,
         AttachDocumentsComponent,
+        SelfieTestComponent,
     ],
     imports: [
         CommonModule,
