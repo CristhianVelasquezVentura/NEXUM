@@ -1,7 +1,7 @@
 <div class="flex bg-zc-50 justify-center w-full h-screen">
   <div class="w-full relative h-screen pt-8 space-y-6 flex flex-col" style="max-width: 640px">
     <div>
-      <app-header-nexum [router]="'workflow-create'" [icon]="'close'"
+      <app-header-nexum [router]="'/workflow'" [icon]="'close'"
                         [title]="'Creación de Flujo'"></app-header-nexum>
     </div>
     <div class="body space-y-6 bg-white w-full overflow-y-auto h-full rounded-t-lg p-8">
@@ -29,7 +29,7 @@
       </div>
 
       <ng-container>
-        <form class="space-y-6 w-full">
+        <form class="space-y-6 w-full" [formGroup]="formStyleFirm">
           <div class="title-section flex items-center space-x-2">
             <div class="w-1 h-4 rounded bg-brand-c"></div>
             <span class="t-body text-brand-c">Vista Previa</span>
@@ -69,24 +69,22 @@
             <div class="i-outline">
               <label>Color de firma</label>
               <div class="flex items-center space-x-2">
-                <input type="color">
-                <p class="t-body text-zc-800">#212121</p>
+                <input type="color" #color formControlName="color">
+                <p class="t-body text-zc-800">{{color.value}}</p>
               </div>
             </div>
             <div class="i-outline">
               <label>Color de texto</label>
               <div class="flex items-center space-x-2">
-                <input type="color">
-                <p class="t-body text-zc-800">#212121</p>
+                <input type="color" #color_text formControlName="color_text">
+                <p class="t-body text-zc-800">{{color_text.value}}</p>
               </div>
             </div>
             <div class="i-outline">
               <label>Tipo de fuente</label>
-              <select>
-                <option selected hidden value="">{{'Seleccione una opción'}}</option>
-                <option>Inter</option>
-                <option>Lora</option>
-                <option>Poppins</option>
+              <select formControlName="font">
+               <option selected hidden value="">{{'Seleccione una opción'}}</option>
+                <option *ngFor="let font of fontText" [value]="font.value">{{font.label}}
               </select>
             </div>
           </div>
@@ -98,27 +96,27 @@
 
           <div class="grid gap-2 w-full">
             <div class="flex items-center space-x-2">
-              <input type="checkbox" class="w-4 h-4">
+              <input type="checkbox" formControlName="include_names" class="w-4 h-4">
               <span class="flex-1 text-zc-800 t-body">Incluir nombre y apellido</span>
             </div>
             <div class="flex items-center space-x-2">
-              <input type="checkbox" class="w-4 h-4">
+              <input type="checkbox" formControlName="include_id_number" class="w-4 h-4">
               <span class="flex-1 text-zc-800 t-body">Incluir número de identificación</span>
             </div>
             <div class="flex items-center space-x-2">
-              <input type="checkbox" class="w-4 h-4">
+              <input type="checkbox" formControlName="include_role" class="w-4 h-4">
               <span class="flex-1 text-zc-800 t-body">Incluir rol del firmante</span>
             </div>
             <div class="flex items-center space-x-2">
-              <input type="checkbox" class="w-4 h-4">
+              <input type="checkbox" formControlName="include_initials" class="w-4 h-4">
               <span class="flex-1 text-zc-800 t-body">Incluir iniciales</span>
             </div>
             <div class="flex items-center space-x-2">
-              <input type="checkbox" class="w-4 h-4">
+              <input type="checkbox" formControlName="include_rubric" class="w-4 h-4">
               <span class="flex-1 text-zc-800 t-body">Incluir rúbica</span>
             </div>
             <div class="flex items-center space-x-2">
-              <input type="checkbox" class="w-4 h-4">
+              <input type="checkbox" formControlName="show_signature_line" class="w-4 h-4">
               <span class="flex-1 text-zc-800 t-body">Mostrar línea de firma</span>
             </div>
           </div>
@@ -128,9 +126,9 @@
       <div class="h-16"></div>
     </div>
     <div class="b-nav-dual absolute left-1/2 -translate-x-2/4 bottom-4">
-      <button class="secondary">Anterior</button>
+      <button class="secondary" routerLink="/workflow/create/general-information">Anterior</button>
       <div class="separador"></div>
-      <button class="primary">Siguiente</button>
+      <button class="primary"(click)="nextStep()" >Siguiente</button>
     </div>
   </div>
 </div>

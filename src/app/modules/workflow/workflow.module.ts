@@ -11,9 +11,11 @@ import { NotifySignersComponent } from './pages/notify-signers/notify-signers.co
 import { OtpConfigComponent } from './pages/otp-config/otp-config.component';
 import { AlertSignersComponent } from './pages/alert-signers/alert-signers.component';
 import { FinalMessangeWorkflowComponent } from './pages/final-messange-workflow/final-messange-workflow.component';
-import { WorkflowItemComponent } from './components/workflow-summary-card/workflow-item.component';
+import { WorkflowItemComponent } from './components/workflow-item/workflow-item.component';
 import { RouterLink } from '@angular/router';
 import { WorkflowStepListComponent } from './components/workflow-step-list/workflow-step-list.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalModule, ToastModule } from 'ecapture-ng-ui';
 
 @NgModule({
   declarations: [
@@ -27,8 +29,9 @@ import { WorkflowStepListComponent } from './components/workflow-step-list/workf
     AlertSignersComponent,
     FinalMessangeWorkflowComponent,
     WorkflowItemComponent,
-    WorkflowStepListComponent
+    WorkflowStepListComponent,
   ],
-  imports: [CommonModule, WorkflowRoutingModule, UiModule, RouterLink],
+  imports: [CommonModule, WorkflowRoutingModule, UiModule, RouterLink, FormsModule,
+    ReactiveFormsModule,ToastModule,ModalModule,    ],
 })
 export class WorkflowModule {}

@@ -1,7 +1,7 @@
 <div class="flex bg-zc-50 justify-center w-full h-screen">
   <div class="w-full relative h-screen pt-8 space-y-6 flex flex-col" style="max-width: 640px">
     <div>
-      <app-header-nexum [router]="'workflow-create'" [icon]="'close'"
+      <app-header-nexum [router]="'/workflow'" [icon]="'close'"
                         [title]="'Creación de Flujo'"></app-header-nexum>
     </div>
     <div class="body space-y-6 bg-white w-full overflow-y-auto h-full rounded-t-lg p-8">
@@ -29,20 +29,20 @@
       </div>
 
       <div class="flex w-full h-fit space-x-2" style="max-width: 320px">
-        <button class="flex-1 {{false ? 'b-tab-on':'b-tab-off'}}">SMS</button>
-        <button class="flex-1 {{true ? 'b-tab-on':'b-tab-off'}}">Correo</button>
+        <button class="flex-1 {{!showEmailOption ? 'b-tab-on':'b-tab-off'}}" (click)="setShowEmailOption(false)">SMS</button>
+        <button class="flex-1 {{showEmailOption ? 'b-tab-on':'b-tab-off'}}" (click)="setShowEmailOption(true)">Correo</button>
       </div>
 
-      <ng-container class="sms-section" *ngIf="false">
+      <ng-container class="sms-section" *ngIf="!showEmailOption">
         <div class="flex items-center space-x-1">
           <button class="b-ghost-md">
-            <div class="flex items-center space-x-2">
-              <div *ngIf="true" class="toggle-on">
+            <div class="flex items-center space-x-2" (click)="toggleActiveSMS()">
+              <div *ngIf="activeSMS" class="toggle-on">
                 <svg class="fill-current text-brand-c stroke-none" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M7 7C4.23858 7 2 9.23858 2 12C2 14.7614 4.23858 17 7 17H17C19.7614 17 22 14.7614 22 12C22 9.23858 19.7614 7 17 7H7ZM16.75 14.5C15.3693 14.5 14.25 13.3807 14.25 12C14.25 10.6193 15.3693 9.5 16.75 9.5C18.1307 9.5 19.25 10.6193 19.25 12C19.25 13.3807 18.1307 14.5 16.75 14.5Z"/>
                 </svg>
               </div>
-              <div *ngIf="false" class="toggle-off">
+              <div *ngIf="!activeSMS" class="toggle-off">
                 <svg class="fill-current text-zc-400 stroke-none" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M7.25 14.5C5.86929 14.5 4.75 13.3807 4.75 12C4.75 10.6193 5.86929 9.5 7.25 9.5C8.63071 9.5 9.75 10.6193 9.75 12C9.75 13.3807 8.63071 14.5 7.25 14.5Z"/>
                   <path d="M22 12C22 9.23858 19.7614 7 17 7H7C4.23858 7 2 9.23858 2 12C2 14.7614 4.23858 17 7 17H17C19.7614 17 22 14.7614 22 12ZM17 8.5C18.933 8.5 20.5 10.067 20.5 12C20.5 13.933 18.933 15.5 17 15.5H7C5.067 15.5 3.5 13.933 3.5 12C3.5 10.067 5.067 8.5 7 8.5H17Z"/>
@@ -53,7 +53,7 @@
           </button>
         </div>
 
-        <form class="space-y-6 w-full">
+        <form class="space-y-6 w-full" [formGroup]="notifySignersSMSForm">
           <div class="title-section flex items-center space-x-2">
             <div class="w-1 h-4 rounded bg-brand-c"></div>
             <span class="t-body text-brand-c">Datos básicos</span>
@@ -62,20 +62,20 @@
           <div class="grid gap-2 w-full">
             <div class="i-outline">
               <label>Título del envío</label>
-              <input type="text">
+              <input type="text" formControlName="title">
             </div>
             <div class="i-outline">
               <label>Nombre del remitente</label>
-              <input type="text">
+              <input type="text" formControlName="sender_name">
             </div>
             <div class="i-outline">
               <label>Teléfono del remitente</label>
               <div class="flex items-center space-x-2">
-                <select>
-                  <option selected>+57</option>
-                  <option>+51</option>
+                <select formControlName="sender_cellphone_code">
+                  <option *ngFor="let code of codeCountries" [value]="code.value">{{code.label}}
+
                 </select>
-                <input class="flex-1" type="number">
+                <input class="flex-1" type="number" formControlName="sender_cellphone">
               </div>
             </div>
           </div>
@@ -96,8 +96,8 @@
             </div>
             <div class="i-outline">
               <label>Texto del SMS</label>
-              <textarea rows="3">Hola [nombre], espero que esté teniendo un buen día, aquí le entrego el documento habilitado por [tiempo_activo], [url].</textarea>
-              <small class="t-label text-blue-600">97/100</small>
+              <textarea #textSMS formControlName="text" rows="3"(ngModelChange)="onChangeTextSMS($event.target)" ></textarea>
+              <small class="t-label text-blue-600">{{textSMS.value.length}}/100</small>
             </div>
           </div>
 
@@ -110,22 +110,22 @@
             <span class="text-blue-600 t-body">El tamaño del SMS dependerá de los parámetros incluidos en la personalización de su mensaje. Informe de envío SMS, si lo desea puede recibirlo en su correo electrónico las estadísticas de su envío.</span>
           </div>
           <div class="flex items-center space-x-2">
-            <input type="checkbox" class="w-4 h-4">
+            <input type="checkbox" class="w-4 h-4" formControlName="activate_reminder">
             <span class="flex-1 text-zc-800 t-body">Activar recordatorio para recibir informe.</span>
           </div>
         </form>
       </ng-container>
 
-      <ng-container class="email-section" *ngIf="true">
+      <ng-container class="email-section" *ngIf="showEmailOption">
         <div class="flex items-center space-x-1">
           <button class="b-ghost-md">
-            <div class="flex items-center space-x-2">
-              <div *ngIf="true" class="toggle-on">
+            <div class="flex items-center space-x-2" (click)="toggleActiveEmail()">
+              <div *ngIf="activeEmail" class="toggle-on">
                 <svg class="fill-current text-brand-c stroke-none" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M7 7C4.23858 7 2 9.23858 2 12C2 14.7614 4.23858 17 7 17H17C19.7614 17 22 14.7614 22 12C22 9.23858 19.7614 7 17 7H7ZM16.75 14.5C15.3693 14.5 14.25 13.3807 14.25 12C14.25 10.6193 15.3693 9.5 16.75 9.5C18.1307 9.5 19.25 10.6193 19.25 12C19.25 13.3807 18.1307 14.5 16.75 14.5Z"/>
                 </svg>
               </div>
-              <div *ngIf="false" class="toggle-off">
+              <div *ngIf="!activeEmail" class="toggle-off">
                 <svg class="fill-current text-zc-400 stroke-none" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M7.25 14.5C5.86929 14.5 4.75 13.3807 4.75 12C4.75 10.6193 5.86929 9.5 7.25 9.5C8.63071 9.5 9.75 10.6193 9.75 12C9.75 13.3807 8.63071 14.5 7.25 14.5Z"/>
                   <path d="M22 12C22 9.23858 19.7614 7 17 7H7C4.23858 7 2 9.23858 2 12C2 14.7614 4.23858 17 7 17H17C19.7614 17 22 14.7614 22 12ZM17 8.5C18.933 8.5 20.5 10.067 20.5 12C20.5 13.933 18.933 15.5 17 15.5H7C5.067 15.5 3.5 13.933 3.5 12C3.5 10.067 5.067 8.5 7 8.5H17Z"/>
@@ -136,7 +136,7 @@
           </button>
         </div>
 
-        <form class="space-y-6 w-full">
+        <form class="space-y-6 w-full" [formGroup]="notifySignersEmailForm">
           <div class="title-section flex items-center space-x-2">
             <div class="w-1 h-4 rounded bg-brand-c"></div>
             <span class="t-body text-brand-c">Datos de envío</span>
@@ -144,25 +144,25 @@
 
           <div class="i-outline">
             <label>Idioma</label>
-            <select>
-              <option selected>Español</option>
-              <option>Inglés</option>
+            <select formControlName="language">
+              <option selected hidden value="">{{'Seleccione una opción'}}</option>
+              <option *ngFor="let language of languages" [value]="language.value">{{language.label}}
             </select>
           </div>
 
           <div class="grid gap-2 w-full">
             <div class="i-outline">
               <label>Asunto</label>
-              <input type="text">
-              <small class="t-label text-blue-600">23/30</small>
+              <input #subject type="text" formControlName="subject">
+              <small class="t-label text-blue-600">{{subject.value.length}}/30</small>
             </div>
             <div class="i-outline">
               <label>Con Copia (C.C.)</label>
-              <input type="text">
+              <input type="text" formControlName="cc">
             </div>
             <div class="i-outline">
               <label>Con Copia Oculta a (B.C.C.)</label>
-              <input type="text">
+              <input type="text" formControlName="bcc">
             </div>
           </div>
 
@@ -174,8 +174,8 @@
           <div class="grid gap-2 w-full">
             <div class="i-outline">
               <label>Texto del SMS</label>
-              <textarea rows="3">Hola [nombre], espero que esté teniendo un buen día, aquí le eentrego el documento habilitado por [tiempo_activo], [url].</textarea>
-              <small class="t-label text-blue-600">97/100</small>
+              <textarea rows="3" #textEmail formControlName="text"></textarea>
+              <small class="t-label text-blue-600">{{textEmail.value.length}}/100</small>
             </div>
           </div>
 
@@ -188,7 +188,7 @@
             <span class="text-blue-600 t-body">El tamaño del E-Mail dependerá de los parámetros incluidos en la personalización de su mensaje. Informe de envío E-Mail, si lo desea puede recibirlo en su correo electrónico las estadísticas de su envío.</span>
           </div>
           <div class="flex items-center space-x-2">
-            <input type="checkbox" class="w-4 h-4">
+            <input type="checkbox" class="w-4 h-4" formControlName="activate_reminder">
             <span class="flex-1 text-zc-800 t-body">Activar recordatorio para recibir informe.</span>
           </div>
         </form>
@@ -197,9 +197,9 @@
       <div class="h-16"></div>
     </div>
     <div class="b-nav-dual absolute left-1/2 -translate-x-2/4 bottom-4">
-      <button class="secondary">Anterior</button>
+      <button class="secondary" routerLink="/workflow/create/sign-style" >Anterior</button>
       <div class="separador"></div>
-      <button class="primary">Siguiente</button>
+      <button class="primary" (click)="nextStep()">Siguiente</button>
     </div>
   </div>
 </div>

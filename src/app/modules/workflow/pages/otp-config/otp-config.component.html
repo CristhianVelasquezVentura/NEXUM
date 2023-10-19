@@ -1,7 +1,7 @@
 <div class="flex bg-zc-50 justify-center w-full h-screen">
   <div class="w-full relative h-screen pt-8 space-y-6 flex flex-col" style="max-width: 640px">
     <div>
-      <app-header-nexum [router]="'workflow-create'" [icon]="'close'"
+      <app-header-nexum [router]="'/workflow'" [icon]="'close'"
                         [title]="'Creación de Flujo'"></app-header-nexum>
     </div>
     <div class="body space-y-6 bg-white w-full overflow-y-auto h-full rounded-t-lg p-8">
@@ -38,7 +38,7 @@
       </div>
 
       <ng-container>
-        <form class="space-y-6 w-full">
+        <form class="space-y-6 w-full" [formGroup]="otpForm">
           <div class="title-section flex items-center space-x-2">
             <div class="w-1 h-4 rounded bg-brand-c"></div>
             <span class="t-body text-brand-c">Configurar OTP</span>
@@ -47,21 +47,21 @@
           <div class="grid grid-cols-2 gap-2 w-full">
             <div class="i-outline">
               <label>Número de caracteres</label>
-              <input type="number">
+              <input formControlName="characters" type="number" min="0">
             </div>
             <div class="i-outline">
               <label>Número de intentos</label>
-              <input type="number">
+              <input type="number" formControlName="attempts"  min="0">
             </div>
           </div>
 
           <div class="grid gap-2 w-full">
             <div class="flex items-center space-x-2">
-              <input type="radio" class="w-4 h-4">
+              <input type="radio" class="w-4 h-4" name="options_request_code" checked formControlName="options_request_code" value="1">
               <span class="flex-1 text-zc-800 t-body">Perdir el código cuando entra al porfal de firma</span>
             </div>
             <div class="flex items-center space-x-2">
-              <input type="radio" class="w-4 h-4">
+              <input type="radio" class="w-4 h-4" name="options_request_code" formControlName="options_request_code" value="2"> 
               <span class="flex-1 text-zc-800 t-body">Pedir el código cuando se firma el documento</span>
             </div>
           </div>
@@ -69,9 +69,9 @@
           <div class="i-outline">
             <label>Tiempo de vida del OTP</label>
             <div class="flex items-center space-x-2">
-              <input class="flex-1" type="number">
-              <select>
-                <option selected>Minutos</option>
+              <input class="flex-1" type="number" formControlName="ttl"  min="0">
+              <select formControlName="frequency_time">
+                <option selected f>Minutos</option>
                 <option>Horas</option>
                 <option>Días</option>
               </select>
@@ -85,33 +85,33 @@
 
           <div class="i-outline">
             <div class="flex items-center space-x-2">
-              <input type="checkbox" class="w-4 h-4">
-              <p class="flex-1 text-zc-800 t-body">Notificar por SMS</p>
+              <input type="checkbox" class="w-4 h-4" formControlName="active_notifications_SMS">
+              <p class="flex-1 text-zc-800 t-body" >Notificar por SMS</p>
             </div>
             <div class="h-2"></div>
             <div class="i-outline">
               <label>Texto del SMS</label>
-              <textarea rows="3">Hola [nombre], espero que esté teniendo un buen día, aquí le entrego el documento habilitado por [tiempo_activo], [url].</textarea>
-              <small class="t-label text-blue-600">97/100</small>
+              <textarea rows="3" formControlName="SMS_text"  #SMS_text></textarea>
+              <small class="t-label text-blue-600">{{SMS_text.value.length}}/100</small>
             </div>
           </div>
 
           <div class="i-outline">
             <div class="flex items-center space-x-2">
-              <input type="checkbox" class="w-4 h-4">
-              <p class="flex-1 text-zc-800 t-body">Notificar por Correo</p>
+              <input type="checkbox" class="w-4 h-4" formControlName="active_notifications_email">
+              <p class="flex-1 text-zc-800 t-body" >Notificar por Correo</p>
             </div>
             <div class="h-2"></div>
             <div class="i-outline">
               <label>Asunto</label>
-              <input type="text">
-              <small class="t-label text-blue-600">23/30</small>
+              <input type="text" formControlName="email_subject" #email_subject>
+              <small class="t-label text-blue-600">{{email_subject.value.length}}/30</small>
             </div>
             <div class="h-2"></div>
             <div class="i-outline">
               <label>Texto del Correo</label>
-              <textarea rows="3">Hola [nombre], espero que esté teniendo un buen día, aquí le entrego el documento habilitado por [tiempo_activo], [url].</textarea>
-              <small class="t-label text-blue-600">97/100</small>
+              <textarea rows="3" formControlName="email_text" #email_text></textarea>
+              <small class="t-label text-blue-600">{{email_text.value.length}}/100</small>
             </div>
           </div>
 
@@ -121,9 +121,9 @@
       <div class="h-16"></div>
     </div>
     <div class="b-nav-dual absolute left-1/2 -translate-x-2/4 bottom-4">
-      <button class="secondary">Anterior</button>
+      <button class="secondary" routerLink="/workflow/create/notify-signers">Anterior</button>
       <div class="separador"></div>
-      <button class="primary">Siguiente</button>
+      <button class="primary" (click)="nextStep()">Siguiente</button>
     </div>
   </div>
 </div>

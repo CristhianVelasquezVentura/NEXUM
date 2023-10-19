@@ -1,7 +1,7 @@
 <div class="flex bg-zc-50 justify-center w-full h-screen">
   <div class="w-full relative h-screen pt-8 space-y-6 flex flex-col" style="max-width: 640px">
     <div>
-      <app-header-nexum [router]="'workflow-create'" [icon]="'close'"
+      <app-header-nexum [router]="'/workflow'" [icon]="'close'"
                         [title]="'Creación de Flujo'"></app-header-nexum>
     </div>
     <div class="body space-y-6 bg-white w-full overflow-y-auto h-full rounded-t-lg p-8">
@@ -31,12 +31,12 @@
       </div>
 
       <div class="flex w-full h-fit space-x-2" style="max-width: 320px">
-        <button class="flex-1 {{false ? 'b-tab-on':'b-tab-off'}}">Datos básicos</button>
-        <button class="flex-1 {{true ? 'b-tab-on':'b-tab-off'}}">Branding</button>
+        <button class="flex-1 {{showBasicData ? 'b-tab-on':'b-tab-off'}}" (click)="setShowBasicData(true)">Datos básicos</button>
+        <button class="flex-1 {{!showBasicData ? 'b-tab-on':'b-tab-off'}}"  (click)="setShowBasicData(false)">Branding</button>
       </div>
 
-      <ng-container class="basic-data-section" *ngIf="false">
-        <form class="space-y-6 w-full">
+      <ng-container class="basic-data-section" *ngIf="showBasicData">
+        <form class="space-y-6 w-full" [formGroup]="generalInfoForm">
           <div class="title-section flex items-center space-x-2">
             <div class="w-1 h-4 rounded bg-brand-c"></div>
             <span class="t-body text-brand-c">Datos del documento</span>
@@ -45,20 +45,21 @@
           <div class="grid gap-2 w-full">
             <div class="i-outline">
               <label>Nombre del flujo de trabajo</label>
-              <input type="text">
+              <input type="text"  formControlName="name">
             </div>
             <div class="i-outline">
               <label>Idioma de la mensajería</label>
-              <select class="w-full">
+              <select class="w-full" formControlName="language">
                 <option selected hidden value="">{{'Seleccione una opción'}}</option>
+                <option *ngFor="let language of languages" [value]="language.value">{{language.label}}
               </select>
             </div>
             <div class="i-outline">
               <label>Caducidad del documento</label>
               <div class="flex items-center space-x-2">
-                <input class="flex-1" type="number">
-                <select>
-                  <option selected>Minutos</option>
+                <input class="flex-1" type="number" formControlName="document_expiration" min="0">
+                <select formControlName="expiration_frequency" >
+                  <option>Minutos</option>
                   <option>Horas</option>
                   <option>Días</option>
                 </select>
@@ -73,25 +74,24 @@
 
           <div class="grid gap-2 w-full">
             <div class="i-outline">
-              <label>Nombre y apellido</label>
-              <input type="text">
+              <label >Nombre y apellido</label>
+              <input formControlName="sender_name" type="text">
             </div>
             <div class="i-outline">
-              <label>Correo electrónico</label>
-              <input type="email">
+              <label >Correo electrónico</label>
+              <input formControlName="sender_email" type="email">
             </div>
             <div class="i-outline">
               <label>Número de celular</label>
               <div class="flex items-center space-x-2">
-                <select>
-                  <option selected>+57</option>
-                  <option>+51</option>
+                <select formControlName="sender_cellphone_code">
+                  <option *ngFor="let code of codeCountries" [value]="code.value">{{code.label}}
                 </select>
-                <input class="flex-1" type="number">
+                <input formControlName="sender_cellphone" class="flex-1" type="number">
               </div>
             </div>
           </div>
-        </form>
+       
 
         <div class="space-y-2">
           <div class="title-section flex items-center space-x-2">
@@ -103,11 +103,11 @@
         <div class="grid gap-2 w-full">
           <div class="i-outline">
             <label>URL (Opcional)</label>
-            <input type="text">
+            <input formControlName="url_page_redirect" type="text">
           </div>
           <div class="i-outline">
             <label>API (Opcional)</label>
-            <input type="text">
+            <input formControlName="url_api_redirect" type="text">
           </div>
         </div>
 
@@ -132,11 +132,11 @@
 
         <div class="w-full flex flex-col">
           <!--Solicitudes agregadas-->
-          <div class="flex items-center space-x-2 py-2 border-b border-zc-200">
-            <input type="checkbox" class="w-4 h-4">
-            <span class="flex-1 text-zc-800 t-body">{{'item.name'}}</span>
+          <div *ngFor="let annexe of annexes; let index = index" class="flex items-center space-x-2 py-2 border-b border-zc-200" >
+            <input type="checkbox"  class="w-4 h-4" [checked]="annexe.isRequired" (change)="onChangeIsRequiredAnnexe(index,$event.target)">
+            <span class="flex-1 text-zc-800 t-body">{{annexe.name}}</span>
             <div
-              class="t-label text-brand-c bg-brand-l rounded-full px-1 py-0.5">{{true ? 'Obligatorio' : ''}}</div>
+              class="t-label text-brand-c bg-brand-l rounded-full px-1 py-0.5">{{annexe.isRequired ? 'Obligatorio' : ''}}</div>
             <button class="b-ghost-sm">
               <div class="stroke-alert-error">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -147,8 +147,9 @@
               </div>
             </button>
           </div>
+          
           <div class="flex pt-4 justify-center">
-            <button class="b-small">
+            <button class="b-small" (click)="setShowAddRequest(true)">
               <span>Agregar solicitud</span>
               <div class="stroke-brand-c">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -158,10 +159,11 @@
             </button>
           </div>
         </div>
+      </form>
       </ng-container>
 
-      <ng-container class="branding-section" *ngIf="true">
-        <form class="space-y-6 w-full">
+      <ng-container class="branding-section" *ngIf="!showBasicData">
+        <form [formGroup]="generalInfoForm" class="space-y-6 w-full" >
           <div class="title-section flex items-center space-x-2">
             <div class="w-1 h-4 rounded bg-brand-c"></div>
             <span class="t-body text-brand-c">Datos del documento</span>
@@ -169,9 +171,11 @@
           <div class="i-outline">
             <label>Logotipo</label>
             <div class="h-2"></div>
-            <input type="file" class="w-full"><!--png,jpg,jpeg-->
+            <input type="file" class="w-full" [files]="logo" (change)="onChangeLogo($event.target)"><!--png,jpg,jpeg-->
           </div>
-
+          <!-- <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
+            <img [src]="imageURL">
+          </div> -->
           <div class="title-section flex items-center space-x-2">
             <div class="w-1 h-4 rounded bg-brand-c"></div>
             <span class="t-body text-brand-c">Cuerpo del mensaje</span>
@@ -179,26 +183,29 @@
           <div class="grid gap-2 w-full">
             <div class="i-outline">
               <label>Tipografía</label>
-              <select class="w-full">
+              <select class="w-full" formControlName="body_font">
                 <option selected hidden value="">{{'Seleccione una opción'}}</option>
+                <option *ngFor="let font of fontText" [value]="font.value">{{font.label}}
+
               </select>
+              
             </div>
             <div class="i-outline">
               <label>Tamaño de fuente (px)</label>
-              <input type="number">
+              <input type="number" formControlName="body_font_size"  min="1">
             </div>
             <div class="i-outline">
               <label>Color de texto</label>
               <div class="flex items-center space-x-2">
-                <input type="color">
-                <p class="t-body text-zc-800">#212121</p>
+                <input type="color" #body_color_font formControlName="body_color_font">
+                <p class="t-body text-zc-800">{{body_color_font.value}}</p>
               </div>
             </div>
             <div class="i-outline">
               <label>Color de fondo</label>
               <div class="flex items-center space-x-2">
-                <input type="color">
-                <p class="t-body text-zc-800">#212121</p>
+                <input type="color" #body_color_bg formControlName="body_color_bg">
+                <p class="t-body text-zc-800">{{body_color_bg.value}}</p>
               </div>
             </div>
 
@@ -209,26 +216,27 @@
             <div class="grid gap-2 w-full">
               <div class="i-outline">
                 <label>Tipografía</label>
-                <select class="w-full">
+                <select class="w-full" formControlName="button_font">
                   <option selected hidden value="">{{'Seleccione una opción'}}</option>
+                <option *ngFor="let font of fontText" [value]="font.value">{{font.label}}
                 </select>
               </div>
               <div class="i-outline">
                 <label>Tamaño de fuente (px)</label>
-                <input type="number">
+                <input type="number" formControlName="button_font_size"  min="1">
               </div>
               <div class="i-outline">
                 <label>Color de texto</label>
                 <div class="flex items-center space-x-2">
-                  <input type="color">
-                  <p class="t-body text-zc-800">#212121</p>
+                  <input type="color" #button_color_font formControlName="button_color_font">
+                  <p class="t-body text-zc-800">{{button_color_font.value}}</p>
                 </div>
               </div>
               <div class="i-outline">
                 <label>Color de fondo</label>
                 <div class="flex items-center space-x-2">
-                  <input type="color">
-                  <p class="t-body text-zc-800">#212121</p>
+                  <input type="color" #button_color_bg formControlName="button_color_bg">
+                  <p class="t-body text-zc-800">{{button_color_bg.value}}</p>
                 </div>
               </div>
             </div>
@@ -242,12 +250,12 @@
       <!--<button class="secondary">Anterior</button>
       <div class="separador"></div>-->
       <!-- <button routerLink="/send-document/document-review" class="primary">Siguiente</button> -->
-      <button class="primary">Siguiente</button>
+      <button class="primary"  (click)="nextStep()">Siguiente</button>
     </div>
   </div>
 </div>
 
-<div *ngIf="false" class="fixed top-0 left-0 w-full h-screen flex p-8 flex items-center justify-center"
+<div *ngIf="showAddRequest" class="fixed top-0 left-0 w-full h-screen flex p-8 flex items-center justify-center"
      style="background-color: rgba(0,0,0,0.2)">
   <div class="space-y-6 p-6 rounded-lg border-zc-200 bg-white drop-shadow-lg w-full h-fit" style="max-width: 350px;">
     <div class="title-section flex items-center space-x-2">
@@ -255,20 +263,24 @@
       <span class="t-body text-brand-c">Agregar solicitud</span>
     </div>
 
-    <form class="grid gap-2 w-full">
+    <form class="grid gap-2 w-full" [formGroup]="annexesForm">
       <div class="i-outline">
         <label>Documento</label>
-        <input type="text" class="w-full" formControlName="name">
+        <!-- <input type="text" class="w-full" formControlName="name"> -->
+        <input formControlName="name" type="text" class="w-full">
+
       </div>
       <div class="flex items-center space-x-2">
-        <input type="checkbox" class="w-4 h-4" formControlName="requiredAnnexe">
+        <!-- <input type="checkbox" class="w-4 h-4" formControlName="requiredAnnexe"> -->
+        <input #isRequired type="checkbox" class="w-4 h-4">
+
         <span class="flex-1 text-zc-800 t-body">Obligatorio</span>
       </div>
     </form>
     <div class="w-full flex items-center space-x-2">
-      <button class="b-ghost-md w-full">Cancelar</button>
+      <button class="b-ghost-md w-full" (click)="setShowAddRequest(false)">Cancelar</button>
       <div class="separador h-6 border-l border-zc-200"></div>
-      <button class="b-ghost-md w-full">
+      <button class="b-ghost-md w-full" (click)="addAnnex(isRequired.checked)">
         <span class="text-brand-c">Agregar</span>
       </button>
     </div>

@@ -1,7 +1,7 @@
 <div class="flex bg-zc-50 justify-center w-full h-screen">
   <div class="w-full relative h-screen pt-8 space-y-6 flex flex-col" style="max-width: 640px">
     <div>
-      <app-header-nexum [router]="'workflow-list'" [icon]="'close'" [title]="'Creación de Flujo'"></app-header-nexum>
+      <app-header-nexum [router]="'/workflow'" [icon]="'close'" [title]="'Creación de Flujo'"></app-header-nexum>
     </div>
     <form class="body space-y-6 bg-white w-full overflow-y-auto h-full rounded-t-lg p-8">
 
@@ -28,7 +28,7 @@
       <div class="h-16"></div>
     </form>
     <div class="b-nav-dual absolute left-1/2 -translate-x-2/4 bottom-4">
-      <button routerLink="/workflow/create" class="secondary">Cerrar</button>
+      <button routerLink="/workflow" class="secondary">Cerrar</button>
     </div>
   </div>
 </div>
