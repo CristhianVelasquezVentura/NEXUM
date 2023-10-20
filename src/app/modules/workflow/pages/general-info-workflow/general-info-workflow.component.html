@@ -91,7 +91,7 @@
               </div>
             </div>
           </div>
-       
+
 
         <div class="space-y-2">
           <div class="title-section flex items-center space-x-2">
@@ -147,7 +147,7 @@
               </div>
             </button>
           </div>
-          
+
           <div class="flex pt-4 justify-center">
             <button class="b-small" (click)="setShowAddRequest(true)">
               <span>Agregar solicitud</span>
@@ -166,29 +166,40 @@
         <form [formGroup]="generalInfoForm" class="space-y-6 w-full" >
           <div class="title-section flex items-center space-x-2">
             <div class="w-1 h-4 rounded bg-brand-c"></div>
-            <span class="t-body text-brand-c">Datos del documento</span>
+            <span class="t-body text-brand-c">Branding de interfaz del firmante</span>
           </div>
+          <div class="imagePreview w-full p-10 rounded border border-zc-200 bg-white flex items-center justify-center flex-col" *ngIf="imageURL && imageURL !== ''">
+            <img class="w-12">
+            <span class="{{'inter'}} t-body text-black">Texto de prueba</span>
+          </div>
+
           <div class="i-outline">
             <label>Logotipo</label>
             <div class="h-2"></div>
             <input type="file" class="w-full" [files]="logo" (change)="onChangeLogo($event.target)"><!--png,jpg,jpeg-->
           </div>
-          <!-- <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
-            <img [src]="imageURL">
-          </div> -->
-          <div class="title-section flex items-center space-x-2">
-            <div class="w-1 h-4 rounded bg-brand-c"></div>
-            <span class="t-body text-brand-c">Cuerpo del mensaje</span>
+          <div class="i-outline">
+            <label>Color de marca</label>
+            <div class="flex items-center space-x-2">
+              <input type="color" #body_color_font formControlName="body_color_font">
+              <p class="t-body text-zc-800">{{body_color_font.value}}</p>
+            </div>
           </div>
-          <div class="grid gap-2 w-full">
+          <div class="i-outline">
+            <label>Tipografía</label>
+            <select class="w-full" formControlName="body_font">
+              <option selected hidden value="">{{'Seleccione una opción'}}</option>
+              <option *ngFor="let font of fontText" [value]="font.value">{{font.label}}</option>
+            </select>
+          </div>
+          <!-- quitar-->
+          <!--<div class="grid gap-2 w-full">
             <div class="i-outline">
               <label>Tipografía</label>
               <select class="w-full" formControlName="body_font">
                 <option selected hidden value="">{{'Seleccione una opción'}}</option>
-                <option *ngFor="let font of fontText" [value]="font.value">{{font.label}}
-
+                <option *ngFor="let font of fontText" [value]="font.value">{{font.label}}</option>
               </select>
-              
             </div>
             <div class="i-outline">
               <label>Tamaño de fuente (px)</label>
@@ -208,7 +219,6 @@
                 <p class="t-body text-zc-800">{{body_color_bg.value}}</p>
               </div>
             </div>
-
             <div class="title-section flex items-center space-x-2">
               <div class="w-1 h-4 rounded bg-brand-c"></div>
               <span class="t-body text-brand-c">Botón</span>
@@ -240,7 +250,8 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div>-->
+          <!-- quitar-->
         </form>
       </ng-container>
 
