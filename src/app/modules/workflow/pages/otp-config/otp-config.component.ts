@@ -1,18 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import { FormDataWorkflowService } from '../../services/form-data-workflow.service';
 import { ToastService } from 'ecapture-ng-ui';
-import { Router } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
+import {UiModule} from "@app/core/ui/ui.module";
 
 @Component({
   selector: 'app-otp-config',
   templateUrl: './otp-config.component.html',
-  styleUrls: ['./otp-config.component.scss']
+  styleUrls: ['./otp-config.component.scss'],
+  imports: [
+    UiModule,
+    ReactiveFormsModule,
+    RouterLink
+  ],
+  standalone: true
 })
 export class OtpConfigComponent implements OnInit {
   otpForm:FormGroup;
 constructor(  private _fb: FormBuilder,
-  private formDataService: FormDataWorkflowService,    
+  private formDataService: FormDataWorkflowService,
   private _messageService: ToastService,
   private _router: Router){
     this.otpForm = _fb.group(formDataService.OtpFormControl);
@@ -22,7 +29,7 @@ constructor(  private _fb: FormBuilder,
     if(otpFormJSON){
       this.otpForm.patchValue(JSON.parse(otpFormJSON));
     }
-   
+
   }
 
   nextStep() {

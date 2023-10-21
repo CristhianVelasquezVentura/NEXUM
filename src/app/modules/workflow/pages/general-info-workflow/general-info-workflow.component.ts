@@ -2,15 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { FormDataWorkflowService } from '../../services/form-data-workflow.service';
 import { DocInfoStep1 } from '@app/core/models/signature.model';
 import { Annexes, DtoWorkflow } from '../../models/steps';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import { codeCountries, fontText, languages } from '@app/core/utils/data/constant';
 import { ToastService } from 'ecapture-ng-ui';
 import { Router } from '@angular/router';
 import { Renderer2, ElementRef } from '@angular/core';
+import {UiModule} from "@app/core/ui/ui.module";
+import {NgForOf, NgIf} from "@angular/common";
 @Component({
   selector: 'app-general-info-workflow',
   templateUrl: './general-info-workflow.component.html',
   styleUrls: ['./general-info-workflow.component.scss'],
+  imports: [
+    UiModule,
+    ReactiveFormsModule,
+    NgIf,
+    NgForOf
+  ],
+  standalone: true
 })
 export class GeneralInfoWorkflowComponent implements OnInit {
   public readonly languages = languages;

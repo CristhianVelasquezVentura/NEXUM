@@ -21,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'workflow',
-    loadChildren: () => import('./modules/workflow/workflow.module').then((m) => m.WorkflowModule)
+    loadChildren: () => import('./modules/workflow/workflow.routes').then((m) => m.routes)
   },
 ];
 

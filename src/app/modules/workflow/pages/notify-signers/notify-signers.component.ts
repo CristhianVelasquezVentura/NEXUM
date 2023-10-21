@@ -1,14 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import { codeCountries, languages } from '@app/core/utils/data/constant';
 import { FormDataWorkflowService } from '../../services/form-data-workflow.service';
 import { ToastService } from 'ecapture-ng-ui';
 import { Router } from '@angular/router';
+import {UiModule} from "@app/core/ui/ui.module";
+import {NgForOf, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-notify-signers',
   templateUrl: './notify-signers.component.html',
-  styleUrls: ['./notify-signers.component.scss']
+  styleUrls: ['./notify-signers.component.scss'],
+  imports: [
+    UiModule,
+    ReactiveFormsModule,
+    NgIf,
+    NgForOf
+  ],
+  standalone: true
 })
 export class NotifySignersComponent implements OnInit  {
   codeCountries=codeCountries;
@@ -19,7 +28,7 @@ export class NotifySignersComponent implements OnInit  {
   notifySignersSMSForm:FormGroup;
   notifySignersEmailForm:FormGroup;
   constructor(    private _fb: FormBuilder,
-    private formDataService: FormDataWorkflowService,    
+    private formDataService: FormDataWorkflowService,
     private _messageService: ToastService,
     private _router: Router ){
       this.notifySignersSMSForm = _fb.group(formDataService.notifySignersSMSFormControl)
@@ -64,7 +73,7 @@ export class NotifySignersComponent implements OnInit  {
     this._router.navigateByUrl('/workflow/create/otp-config');
   }
   saveNotifySignersSMS(){
-   
+
     if (!this.notifySignersSMSForm.valid) {
       console.log('Complete todos los campos correctamente');
       this._messageService.add({

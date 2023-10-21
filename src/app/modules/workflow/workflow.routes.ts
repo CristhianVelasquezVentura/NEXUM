@@ -8,9 +8,9 @@ import {SignStyleComponent} from "@app/modules/workflow/pages/sign-style/sign-st
 import {NotifySignersComponent} from "@app/modules/workflow/pages/notify-signers/notify-signers.component";
 import {OtpConfigComponent} from "@app/modules/workflow/pages/otp-config/otp-config.component";
 import {AlertSignersComponent} from "@app/modules/workflow/pages/alert-signers/alert-signers.component";
-import {FinalMessangeWorkflowComponent} from "@app/modules/workflow/pages/final-messange-workflow/final-messange-workflow.component";
+import {FinalMessageWorkflowComponent} from "@app/modules/workflow/pages/final-message-workflow/final-message-workflow.component";
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     redirectTo: 'list',
@@ -46,7 +46,7 @@ const routes: Routes = [
   },
   {
     path: 'create/finish',
-    component: FinalMessangeWorkflowComponent
+    component: FinalMessageWorkflowComponent
   }
 ];
 

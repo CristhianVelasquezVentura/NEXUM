@@ -18,6 +18,7 @@ import {ToastService} from "@app/public/services/toast/toast.service";
 import {OtpService} from "@app/core/services/otp/otp.service";
 import {NgxCaptchaModule} from "ngx-captcha";
 import { AttachDocumentsComponent } from './pages/attach-documents/attach-documents.component';
+import {ToastComponent} from "@app/public/toast/toast.component";
 
 @NgModule({
     declarations: [
@@ -30,13 +31,14 @@ import { AttachDocumentsComponent } from './pages/attach-documents/attach-docume
         SteperComponent,
         AttachDocumentsComponent,
     ],
-    imports: [
-        CommonModule,
-        DocumentSignProcessRoutingModule,
-        ReactiveFormsModule,
-        UiModule,
-        NgxCaptchaModule
-    ],
+  imports: [
+    CommonModule,
+    DocumentSignProcessRoutingModule,
+    ReactiveFormsModule,
+    UiModule,
+    NgxCaptchaModule,
+    ToastComponent
+  ],
     providers: [
         SignService,
         ToastService,

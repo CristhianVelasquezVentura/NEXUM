@@ -1,14 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import { FormDataWorkflowService } from '../../services/form-data-workflow.service';
 import { fontText } from '@app/core/utils/data/constant';
 import { ToastService } from 'ecapture-ng-ui';
-import { Router } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
+import {UiModule} from "@app/core/ui/ui.module";
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-sign-style',
   templateUrl: './sign-style.component.html',
   styleUrls: ['./sign-style.component.scss'],
+  imports: [
+    UiModule,
+    ReactiveFormsModule,
+    RouterLink,
+    NgForOf
+  ],
+  standalone: true
 })
 export class SignStyleComponent implements OnInit {
   public readonly fontText = fontText;

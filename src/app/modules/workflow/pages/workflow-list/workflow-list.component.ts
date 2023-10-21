@@ -2,11 +2,23 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Workflow } from '../../models/steps';
 import { WorkflowService } from '../../services/workflow.service';
-
+import {UiModule} from "@app/core/ui/ui.module";
+import {RouterLink} from "@angular/router";
+import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
+import {WorkflowItemComponent} from "@app/modules/workflow/components/workflow-item/workflow-item.component";
 @Component({
   selector: 'app-workflow-list',
   templateUrl: './workflow-list.component.html',
   styleUrls: ['./workflow-list.component.scss'],
+  imports: [
+    UiModule,
+    RouterLink,
+    NgOptimizedImage,
+    WorkflowItemComponent,
+    NgForOf,
+    NgIf
+  ],
+  standalone: true
 })
 export class WorkflowListComponent implements OnInit, OnDestroy {
   public isBlockPage: boolean = false;
@@ -22,7 +34,7 @@ export class WorkflowListComponent implements OnInit, OnDestroy {
   constructor(private _workflowService: WorkflowService) {}
 
   ngOnDestroy(): void {
-    
+
   }
 
   ngOnInit(): void {
