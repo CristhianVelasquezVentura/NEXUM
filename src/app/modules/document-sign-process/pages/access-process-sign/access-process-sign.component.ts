@@ -6,7 +6,7 @@ import {SignService} from "@app/core/services/sign/sign.service";
 import {GetTokenUser, onlyNumbers} from "@app/core/utils/validations/validations";
 import {Token} from "@app/core/models/token";
 import {Router} from "@angular/router";
-import {ToastService} from "@app/core/ui/services/toast/toast.service";
+import {ToastService} from "@app/public/services/toast/toast.service";
 import {EnvServiceProvider} from "@app/core/services/env/env.service.provider";
 
 @Component({

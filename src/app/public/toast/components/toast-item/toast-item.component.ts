@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import {Message} from "@app/core/models/toast";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {NgSwitch, NgSwitchCase, NgSwitchDefault} from "@angular/common";
 
 @Component({
   selector: 'app-toast-item',
@@ -26,7 +27,10 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
           opacity: 1
         })
       ),
-      transition('void => *', [style({ transform: '{{showTransformParams}}', opacity: 0 }), animate('{{showTransitionParams}}')]),
+      transition('void => *', [style({
+        transform: '{{showTransformParams}}',
+        opacity: 0
+      }), animate('{{showTransitionParams}}')]),
       transition('* => void', [
         animate(
           '{{hideTransitionParams}}',
@@ -39,6 +43,12 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
       ])
     ])
   ],
+  imports: [
+    NgSwitch,
+    NgSwitchCase,
+    NgSwitchDefault
+  ],
+  standalone: true
 })
 export class ToastItemComponent implements OnInit, AfterViewInit, OnDestroy {
 

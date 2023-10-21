@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {VerificationService} from "@app/core/services/verification/verification.service";
-import {ToastService} from "@app/core/ui/services/toast/toast.service";
+import {ToastService} from "@app/public/services/toast/toast.service";
 import {Response} from "@app/core/models/global.model";
 import * as CryptoJS from 'crypto-js';
 import {Subscription} from "rxjs";

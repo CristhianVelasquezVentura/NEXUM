@@ -5,7 +5,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'auth', pathMatch: 'prefix'},
   {
     path: 'auth',
-    loadChildren: () => import('./modules/authentication/authentication.module').then(m => m.AuthenticationModule)
+    loadChildren: () => import('./modules/auth/auth.routes').then(m => m.routes)
   },
   {
     path: 'signature',

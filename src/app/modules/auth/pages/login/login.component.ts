@@ -3,22 +3,31 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
-  FormGroup,
+  FormGroup, ReactiveFormsModule,
   UntypedFormBuilder,
   UntypedFormGroup,
   Validators
 } from '@angular/forms';
 import {LoginService} from '@app/core/services/auth/login.service';
 import {UserModel} from '@app/modules/workflow/models/steps';
-import {ToastService} from 'ecapture-ng-ui';
 import {Subscription} from "rxjs";
-//import {Store} from "@ngrx/store";
-import {Router} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
+import {ToastService} from "@app/public/services/toast/toast.service";
+import {UiModule} from "@app/core/ui/ui.module";
+import {ToastComponent} from "@app/public/toast/toast.component";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  providers: [ToastService],
+  imports: [
+    ReactiveFormsModule,
+    RouterLink,
+    UiModule,
+    ToastComponent
+  ],
+  standalone: true
 })
 export class LoginComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();

@@ -23,9 +23,10 @@ export class GeneralInfoWorkflowComponent implements OnInit {
   public annexesForm:FormGroup;
   public annexes: Annexes[] = [];
   public logo:FileList= new DataTransfer().files;
+  public imageURL: string = '';
   constructor(
     private _fb: FormBuilder,
-    private formDataService: FormDataWorkflowService,    
+    private formDataService: FormDataWorkflowService,
     private _messageService: ToastService,
     private _router: Router
   ) {
@@ -37,7 +38,7 @@ export class GeneralInfoWorkflowComponent implements OnInit {
     if(generalInfoJSON){
       this.generalInfoForm.patchValue(JSON.parse(generalInfoJSON));
     }
-   
+
 
     const annexesJSON = sessionStorage.getItem('generalInfo_annexes');
     if(annexesJSON){
@@ -52,12 +53,12 @@ export class GeneralInfoWorkflowComponent implements OnInit {
       var base64Parts = logoBase64.split(",");
       var fileFormat = base64Parts[0].split(";")[0].split(":")[1];
       var fileContent = base64Parts[1];
-      let container = new DataTransfer(); 
+      let container = new DataTransfer();
       const imageBlob = this.dataURItoBlob(fileContent);
       container.items.add(new File([imageBlob], fileName,  {type: fileFormat}));
       this.logo = container.files
     }
-   
+
   }
   setShowBasicData(value: boolean) {
     this.showBasicData = value;
@@ -69,7 +70,7 @@ export class GeneralInfoWorkflowComponent implements OnInit {
     if (!this.annexesForm.valid) {
       this._messageService.add({type: 'warning', message: 'Complete todos los campos correctamente!', life: 5000})
       return;
-    } 
+    }
     this.annexes.push({name: this.annexesForm.value.name, isRequired});
     this.annexesForm.reset();
     this.setShowAddRequest(false);
@@ -87,7 +88,7 @@ export class GeneralInfoWorkflowComponent implements OnInit {
     for (let i = 0; i < byteString.length; i++) {
       int8Array[i] = byteString.charCodeAt(i);
     }
-    const blob = new Blob([int8Array], { type: 'image/png' });    
+    const blob = new Blob([int8Array], { type: 'image/png' });
     return blob;
  }
   nextStep(){

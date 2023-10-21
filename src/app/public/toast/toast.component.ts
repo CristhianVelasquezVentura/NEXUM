@@ -7,15 +7,22 @@ import {
   OnInit,
   Output, ViewChild
 } from '@angular/core';
-import {ToastService} from "@app/core/ui/services/toast/toast.service";
+import {ToastService} from "@app/public/services/toast/toast.service";
 import {Subscription} from "rxjs";
 import {Message, ToastCloseEvent} from "@app/core/models/toast";
+import {ToastItemComponent} from "@app/public/toast/components/toast-item/toast-item.component";
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-toast',
   templateUrl: './toast.component.html',
   styleUrls: ['./toast.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    ToastItemComponent,
+    NgForOf
+  ]
 })
 export class ToastComponent implements OnInit {
 
