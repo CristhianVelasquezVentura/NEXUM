@@ -1,23 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import { FormDataWorkflowService } from '../../services/form-data-workflow.service';
+import {AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import { FormWorkflowService } from '@app/core/forms/workflow/form-workflow.service';
 import { fontText } from '@app/core/utils/data/constant';
-import { ToastService } from 'ecapture-ng-ui';
 import {Router, RouterLink} from '@angular/router';
 import {UiModule} from "@app/core/ui/ui.module";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
+import {getFormControlError} from "@app/public/control-error/utils/functions-form";
+import {ToastComponent} from "@app/public/toast/toast.component";
+import {ToastService} from "@app/public/services/toast/toast.service";
+import {IFormStyleSignStep2} from "@app/core/models/workflow/workflow.model";
 
 @Component({
   selector: 'app-sign-style',
   templateUrl: './sign-style.component.html',
   styleUrls: ['./sign-style.component.scss'],
+  standalone: true,
   imports: [
     UiModule,
     ReactiveFormsModule,
     RouterLink,
-    NgForOf
+    NgForOf,
+    NgIf,
+    ToastComponent
   ],
-  standalone: true
+  providers: [ToastService]
 })
 export class SignStyleComponent implements OnInit {
   public readonly fontText = fontText;
@@ -25,24 +31,29 @@ export class SignStyleComponent implements OnInit {
   formStyleFirm: FormGroup;
   constructor(
     private _fb: FormBuilder,
-    private formDataService: FormDataWorkflowService,
+    private _formService: FormWorkflowService,
     private _messageService: ToastService,
     private _router: Router
   ) {
-    this.formStyleFirm = _fb.group(formDataService.signStyleFormControl);
+    this.formStyleFirm = this._formService.signStyleForm;
   }
-  ngOnInit(): void {
-    const signStyleJSON = sessionStorage.getItem('signStyle');
-    if (signStyleJSON) {
-      this.formStyleFirm.patchValue(JSON.parse(signStyleJSON));
+  ngOnInit() {
+    if (sessionStorage.getItem('signStyle')) {
+      this.mapValuesForm()
     }
   }
 
-  nextStep() {
-    console.log(this.formStyleFirm.value);
+  private mapValuesForm() {
 
-    if (!this.formStyleFirm.valid) {
-      console.log('Complete todos los campos correctamente');
+    const styleSignInfoJSON = sessionStorage.getItem('signStyle')
+    const valuesForm: IFormStyleSignStep2 = JSON.parse(styleSignInfoJSON!)
+    this.formStyleFirm.patchValue(valuesForm);
+
+  }
+
+  public async nextStep() {
+    if (this.formStyleFirm.invalid) {
+      this.formStyleFirm.markAllAsTouched()
       this._messageService.add({
         type: 'warning',
         message: 'Complete todos los campos correctamente',
@@ -50,11 +61,20 @@ export class SignStyleComponent implements OnInit {
       });
       return;
     }
+
     sessionStorage.setItem(
       'signStyle',
       JSON.stringify(this.formStyleFirm.value)
     );
 
-    this._router.navigateByUrl('/workflow/create/notify-signers');
+    await this._router.navigateByUrl('/workflow/create/notify-signers');
+  }
+
+  public isErrorControl(formControl: AbstractControl) {
+    return formControl.invalid && formControl.touched
+  }
+
+  public getError(formControl: AbstractControl) {
+    return getFormControlError(formControl)
   }
 }

@@ -35,7 +35,7 @@
             <span class="t-body text-brand-c">Vista Previa</span>
           </div>
 
-          <div class="overflow-x-auto">
+          <div class="overflow-x-auto flex justify-center">
             <div class="sign-style-box rounded-lg p-6 flex items-center justify-center flex-col space-y-4 border border-brand-c" style="width: 360px; height: 240px">
               <div>
                 <svg class="fill-current text-zc-800" width="80" height="37" viewBox="0 0 80 37" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -70,22 +70,25 @@
               <label>Color de firma</label>
               <div class="flex items-center space-x-2">
                 <input type="color" #color formControlName="color">
-                <p class="t-body text-zc-800">{{color.value}}</p>
+                <p class="t-body text-zc-800">{{formStyleFirm.controls['color'].value}}</p>
+                <span *ngIf="isErrorControl(formStyleFirm.controls['color'])">{{getError(formStyleFirm.controls['color'])}}</span>
               </div>
             </div>
             <div class="i-outline">
               <label>Color de texto</label>
               <div class="flex items-center space-x-2">
                 <input type="color" #color_text formControlName="color_text">
-                <p class="t-body text-zc-800">{{color_text.value}}</p>
+                <p class="t-body text-zc-800">{{formStyleFirm.controls['color_text'].value}}</p>
+                <span *ngIf="isErrorControl(formStyleFirm.controls['color_text'])">{{getError(formStyleFirm.controls['color_text'])}}</span>
               </div>
             </div>
             <div class="i-outline">
               <label>Tipo de fuente</label>
-              <select formControlName="font">
+              <select formControlName="id_font">
                <option selected hidden value="">{{'Seleccione una opción'}}</option>
                 <option *ngFor="let font of fontText" [value]="font.value">{{font.label}}
               </select>
+              <span *ngIf="isErrorControl(formStyleFirm.controls['id_font'])">{{getError(formStyleFirm.controls['id_font'])}}</span>
             </div>
           </div>
 
@@ -105,7 +108,7 @@
             </div>
             <div class="flex items-center space-x-2">
               <input type="checkbox" formControlName="include_role" class="w-4 h-4">
-              <span class="flex-1 text-zc-800 t-body">Incluir rol del firmante</span>
+              <span class="flex-1 text-zc-800 t-body">Incluir rol del firmante: FALTA DISEÑO</span>
             </div>
             <div class="flex items-center space-x-2">
               <input type="checkbox" formControlName="include_initials" class="w-4 h-4">
@@ -132,3 +135,5 @@
     </div>
   </div>
 </div>
+
+<app-toast></app-toast>

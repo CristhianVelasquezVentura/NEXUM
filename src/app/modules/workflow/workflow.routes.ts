@@ -2,7 +2,7 @@ import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 import {FinalRevisionComponent} from "@app/modules/send-document/pages/final-revision/final-revision.component";
 import { WorkflowListComponent } from "@app/modules/workflow/pages/workflow-list/workflow-list.component";
-import {WorkflowCreateComponent} from "@app/modules/workflow/pages/workflow-create/workflow-create.component";
+import {WorkflowInfoCreateComponent} from "@app/modules/workflow/pages/workflow-info-create/workflow-info-create.component";
 import {GeneralInfoWorkflowComponent} from "@app/modules/workflow/pages/general-info-workflow/general-info-workflow.component";
 import {SignStyleComponent} from "@app/modules/workflow/pages/sign-style/sign-style.component";
 import {NotifySignersComponent} from "@app/modules/workflow/pages/notify-signers/notify-signers.component";
@@ -21,8 +21,8 @@ export const routes: Routes = [
     component: WorkflowListComponent
   },
   {
-    path: 'create',
-    component: WorkflowCreateComponent
+    path: 'info-create',
+    component: WorkflowInfoCreateComponent
   },
   {
     path: 'create/general-information',

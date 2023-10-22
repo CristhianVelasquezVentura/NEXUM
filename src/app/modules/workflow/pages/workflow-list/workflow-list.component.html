@@ -8,20 +8,20 @@
         <span class="t-title text-zc-800">Flujos de Trabajo</span>
         <span class="t-body text-zc-400">El flujo de trabajo determina el circuito de firma que será usado para enviar los documentos a los firmantes.</span>
       </div>
-      <button class="w-full b-solid" routerLink="/workflow/create">Crear Flujo de Trabajo</button>
+      <button class="w-full b-solid" routerLink="/workflow/info-create">Crear Flujo de Trabajo</button>
       <div class="i-outline">
         <label>Búsqueda</label>
         <input placeholder="Nombre de Flujo" type="text" (input)="filterWorkflows($event)">
       </div>
       <div class="w-full border-t border-zc-200"></div>
       <div class="w-full space-y-2">
-        <div *ngIf="workflows.length===0" class="alert-workflow-void flex flex-col items-center w-full h-fit p-4 space-y-6">
-          <img ngSrc="/assets/icon-system/pictograms/workflow.png" height="64" width="64">
+        <div *ngIf="workflows.length===0"
+             class="alert-workflow-void flex flex-col items-center w-full h-fit p-4 space-y-6">
+          <img ngSrc="/assets/icon-system/pictograms/workflow.png" height="64" width="64" alt="no-workflow">
           <span class="text-zc-600 t-body text-center">No tiene flujos registrados, por favor cree uno.</span>
         </div>
-        <!-- {{workflows | json}} -->
-        <!--ng-for-->
-       <workflow-item *ngFor="let workflow of workflowsPagination" [workflow]="workflow"></workflow-item>
+        <workflow-item *ngFor="let workflow of workflowsPagination" [workflow]="workflow"
+                       (selectItem)="showDetailWorkflow($event)"></workflow-item>
       </div>
       <div class="h-16"></div>
     </div>

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import { codeCountries, languages } from '@app/core/utils/data/constant';
-import { FormDataWorkflowService } from '../../services/form-data-workflow.service';
+import { FormWorkflowService } from '../../../../core/forms/workflow/form-workflow.service';
 import { ToastService } from 'ecapture-ng-ui';
-import { Router } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {UiModule} from "@app/core/ui/ui.module";
 import {NgForOf, NgIf} from "@angular/common";
 
@@ -15,7 +15,8 @@ import {NgForOf, NgIf} from "@angular/common";
     UiModule,
     ReactiveFormsModule,
     NgIf,
-    NgForOf
+    NgForOf,
+    RouterLink
   ],
   standalone: true
 })
@@ -28,11 +29,11 @@ export class NotifySignersComponent implements OnInit  {
   notifySignersSMSForm:FormGroup;
   notifySignersEmailForm:FormGroup;
   constructor(    private _fb: FormBuilder,
-    private formDataService: FormDataWorkflowService,
+    private _formService: FormWorkflowService,
     private _messageService: ToastService,
     private _router: Router ){
-      this.notifySignersSMSForm = _fb.group(formDataService.notifySignersSMSFormControl)
-      this.notifySignersEmailForm = _fb.group(formDataService.notifySignersEmailFormControl)
+      this.notifySignersSMSForm = this._formService.notifySignersSMSForm
+      this.notifySignersEmailForm = this._formService.notifySignersEmailForm
 
   }
   ngOnInit(): void {

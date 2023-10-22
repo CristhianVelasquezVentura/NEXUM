@@ -4,16 +4,18 @@
     style="max-width: 640px"
   >
     <div>
-      <app-header-nexum  [router]="'/workflow'"  [icon]="'back'"  [title]="'Nuevo Flujo de Trabajo'" ></app-header-nexum>
+      <app-header-nexum [router]="'/workflow'" [icon]="'back'" [title]="'Nuevo Flujo de Trabajo'"></app-header-nexum>
     </div>
     <div class="body space-y-8 w-full overflow-y-auto h-full rounded-t-lg p-8">
       <div class="w-full flex flex-col space-y-4">
         <span class="t-subtitle text-zc-800">Crear Flujos de Trabajo</span>
         <span class="t-body text-zc-400"
-          >Para crear un flujo de trabajo, debe seguír los siguientes pasos:</span>
+        >Para crear un flujo de trabajo, debe seguír los siguientes pasos:</span>
       </div>
-      <workflow-step-list></workflow-step-list> 
-      <button routerLink="/workflow/create/general-information" class="w-full b-solid" (click)="clearData()">Iniciar Proceso de Creación</button>
+      <workflow-step-details></workflow-step-details>
+      <button routerLink="/workflow/create/general-information" class="w-full b-solid" (click)="startCreateProcess()">
+        Iniciar Proceso de Creación
+      </button>
       <div class="h-16"></div>
     </div>
   </div>

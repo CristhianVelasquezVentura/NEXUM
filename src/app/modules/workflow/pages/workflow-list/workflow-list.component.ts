@@ -1,11 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { Workflow } from '../../models/steps';
-import { WorkflowService } from '../../services/workflow.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Subscription} from 'rxjs';
+import {Workflow} from '../../models/steps';
+import {WorkflowService} from '../../services/workflow.service';
 import {UiModule} from "@app/core/ui/ui.module";
 import {RouterLink} from "@angular/router";
 import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {WorkflowItemComponent} from "@app/modules/workflow/components/workflow-item/workflow-item.component";
+
 @Component({
   selector: 'app-workflow-list',
   templateUrl: './workflow-list.component.html',
@@ -31,7 +32,8 @@ export class WorkflowListComponent implements OnInit, OnDestroy {
   public paginationValue: number = 5;
   public rightLimit: number = 5;
 
-  constructor(private _workflowService: WorkflowService) {}
+  constructor(private _workflowService: WorkflowService) {
+  }
 
   ngOnDestroy(): void {
 
@@ -88,7 +90,7 @@ export class WorkflowListComponent implements OnInit, OnDestroy {
     );
   }
 
-  public filterWorkflows({ target }: any): void {
+  public filterWorkflows({target}: any): void {
     const workflowValue: string = target.value.toLowerCase().trim();
     if (workflowValue == '') {
       this.workflowsPagination = this.workflows;
@@ -97,5 +99,9 @@ export class WorkflowListComponent implements OnInit, OnDestroy {
     this.workflowsPagination = this.workflows?.filter(
       (workflow: any) => workflow.name.toLowerCase().includes(workflowValue)
     );
+  }
+
+  public showDetailWorkflow(workflow: Workflow) {
+
   }
 }

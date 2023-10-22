@@ -2,15 +2,15 @@ import {Component, Input, OnInit} from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
 
 @Component({
-  selector: 'workflow-step-list',
-  templateUrl: 'workflow-step-list.component.html',
+  selector: 'workflow-step-details',
+  templateUrl: 'workflow-step-details.component.html',
   imports: [
     NgOptimizedImage
   ],
   standalone: true
 })
 
-export class WorkflowStepListComponent implements OnInit {
+export class WorkflowStepDetailsComponent implements OnInit {
 
   constructor() {
   }

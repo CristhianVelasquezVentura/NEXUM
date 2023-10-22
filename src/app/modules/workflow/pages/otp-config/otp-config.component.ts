@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import { FormDataWorkflowService } from '../../services/form-data-workflow.service';
+import { FormWorkflowService } from '../../../../core/forms/workflow/form-workflow.service';
 import { ToastService } from 'ecapture-ng-ui';
 import {Router, RouterLink} from '@angular/router';
 import {UiModule} from "@app/core/ui/ui.module";
@@ -19,10 +19,10 @@ import {UiModule} from "@app/core/ui/ui.module";
 export class OtpConfigComponent implements OnInit {
   otpForm:FormGroup;
 constructor(  private _fb: FormBuilder,
-  private formDataService: FormDataWorkflowService,
+  private formDataService: FormWorkflowService,
   private _messageService: ToastService,
   private _router: Router){
-    this.otpForm = _fb.group(formDataService.OtpFormControl);
+    this.otpForm = _fb.group(formDataService.initOtpForm);
   }
   ngOnInit(): void {
     const otpFormJSON = sessionStorage.getItem('otpConfig');

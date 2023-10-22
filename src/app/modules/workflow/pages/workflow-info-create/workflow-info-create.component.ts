@@ -1,25 +1,30 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {UiModule} from "@app/core/ui/ui.module";
 import {
-  WorkflowStepListComponent
-} from "@app/modules/workflow/components/workflow-step-list/workflow-step-list.component";
+  WorkflowStepDetailsComponent
+} from "@app/modules/workflow/components/workflow-step-details/workflow-step-details.component";
 import {RouterLink} from "@angular/router";
 
 @Component({
-  selector: 'app-workflow-create',
-  templateUrl: './workflow-create.component.html',
-  styleUrls: ['./workflow-create.component.scss'],
+  selector: 'app-workflow-info-create',
+  templateUrl: './workflow-info-create.component.html',
+  styleUrls: ['./workflow-info-create.component.scss'],
   imports: [
     UiModule,
-    WorkflowStepListComponent,
+    WorkflowStepDetailsComponent,
     RouterLink
   ],
   standalone: true
 })
-export class WorkflowCreateComponent {
+export class WorkflowInfoCreateComponent {
 
-  clearData(){
+  public startCreateProcess() {
 
+    this.restart()
+
+  }
+
+  private restart() {
     sessionStorage.removeItem('generalInfo');
     sessionStorage.removeItem('generalInfo_annexes');
     sessionStorage.removeItem('generalInfo_logo_base64');
@@ -31,6 +36,5 @@ export class WorkflowCreateComponent {
     sessionStorage.removeItem('notifySignersEmail');
 
     sessionStorage.removeItem('otpConfig');
-
   }
 }

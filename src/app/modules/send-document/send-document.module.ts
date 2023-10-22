@@ -13,6 +13,7 @@ import { FinalMessangeComponent } from './pages/final-messange/final-messange.co
 import { OrderSignListComponent } from './pages/signature-organization/pages/order-sign-list/order-sign-list.component';
 import { OrderSignDocComponent } from './pages/signature-organization/pages/order-sign-doc/order-sign-doc.component';
 import {ToastService} from "@app/public/services/toast/toast.service";
+import {ToastComponent} from "@app/public/toast/toast.component";
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {ToastService} from "@app/public/services/toast/toast.service";
     SendDocumentRoutingModule,
     ReactiveFormsModule,
     RouterModule,
-    UiModule
+    UiModule,
+    ToastComponent
   ],
   providers: [
     ToastService
