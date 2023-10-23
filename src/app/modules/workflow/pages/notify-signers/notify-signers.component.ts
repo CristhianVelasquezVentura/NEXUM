@@ -6,6 +6,9 @@ import { ToastService } from 'ecapture-ng-ui';
 import {Router, RouterLink} from '@angular/router';
 import {UiModule} from "@app/core/ui/ui.module";
 import {NgForOf, NgIf} from "@angular/common";
+import {
+  NotifySignersSmsFormComponent
+} from "@app/modules/workflow/components/notify-signers-sms-form/notify-signers-sms-form.component";
 
 @Component({
   selector: 'app-notify-signers',
@@ -16,7 +19,8 @@ import {NgForOf, NgIf} from "@angular/common";
     ReactiveFormsModule,
     NgIf,
     NgForOf,
-    RouterLink
+    RouterLink,
+    NotifySignersSmsFormComponent
   ],
   standalone: true
 })

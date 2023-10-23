@@ -63,7 +63,7 @@ export class SignStyleComponent implements OnInit {
         }
 
         sessionStorage.setItem(
-            'signStyle',
+            'workflow-create-step-2',
             JSON.stringify(this.formStyleSign.value)
         );
 

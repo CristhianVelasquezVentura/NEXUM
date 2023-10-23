@@ -17,9 +17,12 @@ export class FormWorkflowService {
   public annexesForm = this.initAnnexesForm();
 
   public brandingForm = this.initBrandingForm();
+
   public signStyleForm = this.initSignStyleForm();
+
   public notifySignersSMSForm = this.initNotifySignersSMSForm();
   public notifySignersEmailForm = this.initNotifySignersEmailForm();
+
   public OtpFormControl = this.initOtpForm();
 
 
@@ -86,24 +89,24 @@ export class FormWorkflowService {
   }
 
   public initNotifySignersSMSForm() {
-    return this._fb.group({
-      title: [''],
-      sender_name: [''],
-      sender_cellphone_code: [''],
-      sender_cellphone: [''],
-      text: ['Hola [nombre], espero que esté teniendo un buen día, aquí le entrego el documento habilitado por [tiempo_activo], [url].'],
-      activate_reminder: [false]
+    return new FormGroup({
+      title: new FormControl<string>(''),
+      sender_name: new FormControl<string>(''),
+      sender_cellphone_code: new FormControl<string>(''),
+      sender_cellphone: new FormControl<string>(''),
+      text: new FormControl<string>('Hola [nombre], espero que esté teniendo un buen día, aquí le entrego el documento habilitado por [tiempo_activo], [url].'),
+      activate_reminder: new FormControl<boolean>(false),
     })
   }
 
   public initNotifySignersEmailForm() {
-    return this._fb.group({
-      language: [''],
-      subject: [''],
-      cc: [''],
-      bcc: [''],
-      text: ['Hola [nombre], espero que esté teniendo un buen día, aquí le entrego el documento habilitado por [tiempo_activo], [url].'],
-      activate_reminder: [false]
+    return new FormGroup({
+      language:  new FormControl<string>(''),
+      subject:  new FormControl<string>(''),
+      cc:  new FormControl<string>(''),
+      bcc:  new FormControl<string>(''),
+      text: new FormControl<string>('Hola [nombre], espero que esté teniendo un buen día, aquí le entrego el documento habilitado por [tiempo_activo], [url].'),
+      activate_reminder: new FormControl<boolean>(false),
 
     })
   }
