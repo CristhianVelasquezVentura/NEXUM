@@ -60,8 +60,8 @@ export class FormWorkflowService {
   public initBrandingForm() {
     return new FormGroup<IFormBrand>({
       brand: new FormControl<string>('', {validators: [NgxValidators.required], nonNullable: true}),
+      body_color_font: new FormControl<string>('#000000', {validators: [NgxValidators.required], nonNullable: true}),
       body_font: new FormControl<string>('', {validators: [NgxValidators.required], nonNullable: true}),
-      body_color_font: new FormControl<string>('', {validators: [NgxValidators.required], nonNullable: true}),
       //body_font_size: ['', NgxValidators.required],
       //body_color_bg: ['#000000', NgxValidators.required],
       //button_font: ['', NgxValidators.required],

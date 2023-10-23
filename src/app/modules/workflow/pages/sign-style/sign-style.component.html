@@ -29,7 +29,7 @@
       </div>
 
       <ng-container>
-        <form class="space-y-6 w-full" [formGroup]="formStyleFirm">
+        <form class="space-y-6 w-full" [formGroup]="formStyleSign">
           <div class="title-section flex items-center space-x-2">
             <div class="w-1 h-4 rounded bg-brand-c"></div>
             <span class="t-body text-brand-c">Vista Previa</span>
@@ -70,16 +70,16 @@
               <label>Color de firma</label>
               <div class="flex items-center space-x-2">
                 <input type="color" #color formControlName="color">
-                <p class="t-body text-zc-800">{{formStyleFirm.controls['color'].value}}</p>
-                <span *ngIf="isErrorControl(formStyleFirm.controls['color'])">{{getError(formStyleFirm.controls['color'])}}</span>
+                <p class="t-body text-zc-800">{{formStyleSign.controls['color'].value}}</p>
+                <span *ngIf="isErrorControl(formStyleSign.controls['color'])">{{getError(formStyleSign.controls['color'])}}</span>
               </div>
             </div>
             <div class="i-outline">
               <label>Color de texto</label>
               <div class="flex items-center space-x-2">
                 <input type="color" #color_text formControlName="color_text">
-                <p class="t-body text-zc-800">{{formStyleFirm.controls['color_text'].value}}</p>
-                <span *ngIf="isErrorControl(formStyleFirm.controls['color_text'])">{{getError(formStyleFirm.controls['color_text'])}}</span>
+                <p class="t-body text-zc-800">{{formStyleSign.controls['color_text'].value}}</p>
+                <span *ngIf="isErrorControl(formStyleSign.controls['color_text'])">{{getError(formStyleSign.controls['color_text'])}}</span>
               </div>
             </div>
             <div class="i-outline">
@@ -88,7 +88,7 @@
                <option selected hidden value="">{{'Seleccione una opción'}}</option>
                 <option *ngFor="let font of fontText" [value]="font.value">{{font.label}}
               </select>
-              <span *ngIf="isErrorControl(formStyleFirm.controls['id_font'])">{{getError(formStyleFirm.controls['id_font'])}}</span>
+              <span *ngIf="isErrorControl(formStyleSign.controls['id_font'])">{{getError(formStyleSign.controls['id_font'])}}</span>
             </div>
           </div>
 
