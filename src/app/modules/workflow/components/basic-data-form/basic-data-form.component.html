@@ -1,0 +1,184 @@
+<form [formGroup]="generalInfoForm" class="basic-data-section space-y-6 w-full">
+  <div class="title-section flex items-center space-x-2">
+    <div class="w-1 h-4 rounded bg-brand-c"></div>
+    <span class="t-body text-brand-c">Datos del documento</span>
+  </div>
+
+  <div class="grid gap-2 w-full">
+    <div class="i-outline">
+      <label>Nombre del flujo de trabajo</label>
+      <input type="text" formControlName="name">
+      <span
+        *ngIf="isErrorControl(generalInfoForm.controls['name'])">{{getError(generalInfoForm.controls['name'])}}</span>
+    </div>
+    <div class="i-outline">
+      <label>Idioma de la mensajería</label>
+      <select class="w-full" formControlName="id_language">
+        <option selected hidden value="">{{'Seleccione una opción'}}</option>
+        <option *ngFor="let language of languages" [value]="language.value">{{language.label}}</option>
+      </select>
+      <span
+        *ngIf="isErrorControl(generalInfoForm.controls['id_language'])">{{getError(generalInfoForm.controls['id_language'])}}</span>
+    </div>
+    <div class="i-outline">
+      <label>Caducidad del documento</label>
+      <div class="flex items-center space-x-2">
+        <input class="flex-1" type="number" formControlName="document_expiration" min="0">
+        <select class="w-full" formControlName="id_expiration_frequency">
+          <option selected hidden value="">{{'Seleccione una opción'}}</option>
+          <option *ngFor="let time of timeData" [value]="time.value">{{time.label}}</option>
+        </select>
+      </div>
+      <span
+        *ngIf="isErrorControl(generalInfoForm.controls['id_expiration_frequency'])">{{getError(generalInfoForm.controls['id_expiration_frequency'])}}</span>
+    </div>
+  </div>
+
+  <div class="title-section flex items-center space-x-2">
+    <div class="w-1 h-4 rounded bg-brand-c"></div>
+    <span class="t-body text-brand-c">Datos del remitente</span>
+  </div>
+
+  <div class="grid gap-2 w-full">
+    <div class="i-outline">
+      <label>Nombre y apellido</label>
+      <input formControlName="sender_name" type="text">
+      <span
+        *ngIf="isErrorControl(generalInfoForm.controls['sender_name'])">{{getError(generalInfoForm.controls['sender_name'])}}</span>
+    </div>
+    <div class="i-outline">
+      <label>Correo electrónico</label>
+      <input formControlName="sender_email" type="email">
+      <span
+        *ngIf="isErrorControl(generalInfoForm.controls['sender_email'])">{{getError(generalInfoForm.controls['sender_email'])}}</span>
+    </div>
+    <div class="i-outline">
+      <label>Número de celular</label>
+      <div class="flex items-center space-x-2">
+        <div>
+          <select formControlName="sender_cellphone_code">
+            <option *ngFor="let code of codeCountries" [value]="code.value">{{code.label}}</option>
+          </select>
+          <span
+            *ngIf="isErrorControl(generalInfoForm.controls['sender_cellphone_code'])">{{getError(generalInfoForm.controls['sender_cellphone_code'])}}</span>
+        </div>
+        <div>
+          <input formControlName="sender_cellphone" class="flex-1" type="number">
+          <span
+            *ngIf="isErrorControl(generalInfoForm.controls['sender_cellphone'])">{{getError(generalInfoForm.controls['sender_cellphone'])}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="space-y-2">
+    <div class="title-section flex items-center space-x-2">
+      <div class="w-1 h-4 rounded bg-brand-c"></div>
+      <span class="t-body text-brand-c">Redirección de firmante</span>
+    </div>
+    <span class="t-body text-zc-400">Redirección al finalizar el proceso de firma.</span>
+  </div>
+  <div class="grid gap-2 w-full">
+    <div class="i-outline">
+      <label>URL (Opcional)</label>
+      <input formControlName="url_page_redirect" type="text">
+      <span
+        *ngIf="isErrorControl(generalInfoForm.controls['url_page_redirect'])">{{getError(generalInfoForm.controls['url_page_redirect'])}}</span>
+    </div>
+    <div class="i-outline">
+      <label>API (Opcional)</label>
+      <input formControlName="url_api_redirect" type="text">
+      <span
+        *ngIf="isErrorControl(generalInfoForm.controls['url_api_redirect'])">{{getError(generalInfoForm.controls['url_api_redirect'])}}</span>
+    </div>
+  </div>
+
+  <div class="space-y-2">
+    <div class="title-section flex items-center space-x-2">
+      <div class="w-1 h-4 rounded bg-brand-c"></div>
+      <span class="t-body text-brand-c">Anexos</span>
+    </div>
+    <span class="t-body text-zc-400">Estos documentos acompañarán al documento principal a firmar.</span>
+  </div>
+
+  <div class="w-full p-4 space-x-4 flex items-center text-amber-500 stroke-amber-500 bg-amber-50 rounded-lg">
+    <div>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+           xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M12 8.99999V12.75M2.697 16.126C1.831 17.626 2.914 19.5 4.645 19.5H19.355C21.085 19.5 22.168 17.626 21.303 16.126L13.949 3.37799C13.083 1.87799 10.917 1.87799 10.051 3.37799L2.697 16.126ZM12 15.75H12.007V15.758H12V15.75Z"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <span class="t-body">Nota: Los documentos registrados serán solicitados a los firmantes, algunos son de subida obligatoria por parte del firmante, según su configuración.</span>
+  </div>
+
+  <div class="w-full flex flex-col">
+    <!--Solicitudes agregadas-->
+    <div *ngFor="let annexe of annexes; let index = index"
+         class="flex items-center space-x-2 py-2 border-b border-zc-200">
+      <input type="checkbox" class="w-4 h-4" [checked]="annexe.isRequired"
+             (change)="onChangeIsRequiredAnnexe(index,$event.target)">
+      <span class="flex-1 text-zc-800 t-body">{{annexe.name}}</span>
+      <div
+        class="t-label text-brand-c bg-brand-l rounded-full px-1 py-0.5">{{annexe.isRequired ? 'Obligatorio' : ''}}</div>
+      <button class="b-ghost-sm">
+        <div class="stroke-alert-error">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+               xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M12.2833 7.50001L11.995 15M8.005 15L7.71667 7.50001M16.0233 4.82501C16.3083 4.86834 16.5917 4.91417 16.875 4.96334M16.0233 4.82501L15.1333 16.3942C15.097 16.8652 14.8842 17.3051 14.5375 17.626C14.1908 17.9469 13.7358 18.1251 13.2633 18.125H6.73667C6.26425 18.1251 5.80919 17.9469 5.46248 17.626C5.11578 17.3051 4.90299 16.8652 4.86667 16.3942L3.97667 4.82501M16.0233 4.82501C15.0616 4.6796 14.0948 4.56925 13.125 4.49417M3.97667 4.82501C3.69167 4.86751 3.40833 4.91334 3.125 4.96251M3.97667 4.82501C4.93844 4.67961 5.9052 4.56926 6.875 4.49417M13.125 4.49417V3.73084C13.125 2.74751 12.3667 1.92751 11.3833 1.89667C10.4613 1.86721 9.53865 1.86721 8.61667 1.89667C7.63333 1.92751 6.875 2.74834 6.875 3.73084V4.49417M13.125 4.49417C11.0448 4.33341 8.95523 4.33341 6.875 4.49417"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </button>
+    </div>
+
+    <div class="flex pt-4 justify-center">
+      <button class="b-small" (click)="setShowAddRequest(true)">
+        <span>Agregar solicitud</span>
+        <div class="stroke-brand-c">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+               xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 3V13M13 8H3" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </button>
+    </div>
+  </div>
+</form>
+
+<div *ngIf="showAddRequest" class="fixed top-0 left-0 w-full h-screen flex p-8 flex items-center justify-center z-10"
+     style="background-color: rgba(0,0,0,0.2)">
+  <div class="space-y-6 p-6 rounded-lg border-zc-200 bg-white drop-shadow-lg w-full h-fit" style="max-width: 350px;">
+    <div class="title-section flex items-center space-x-2">
+      <div class="w-1 h-4 rounded bg-brand-c"></div>
+      <span class="t-body text-brand-c">Agregar solicitud</span>
+    </div>
+
+    <form class="grid gap-2 w-full" [formGroup]="annexesForm">
+      <div class="i-outline">
+        <label>Documento</label>
+        <input formControlName="name" type="text" class="w-full">
+        <span *ngIf="isErrorControl(annexesForm.controls['name'])">{{getError(annexesForm.controls['name'])}}</span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <input formControlName="isRequired" type="checkbox" class="w-4 h-4">
+
+        <span class="flex-1 text-zc-800 t-body">Obligatorio</span>
+      </div>
+    </form>
+    <div class="w-full flex items-center space-x-2">
+      <button class="b-ghost-md w-full" (click)="cancelFormAnnexe()">Cancelar</button>
+      <div class="separador h-6 border-l border-zc-200"></div>
+      <button class="b-ghost-md w-full" (click)="addAnnexe()">
+        <span class="text-brand-c">Agregar</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<app-toast></app-toast>
