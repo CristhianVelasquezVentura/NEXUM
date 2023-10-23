@@ -19,6 +19,8 @@ import {OtpService} from "@app/core/services/otp/otp.service";
 import {NgxCaptchaModule} from "ngx-captcha";
 import { AttachDocumentsComponent } from './pages/attach-documents/attach-documents.component';
 import { SelfieTestComponent } from './pages/selfie-test/selfie-test.component';
+import { SelfieCaptureComponent } from './components/selfie-capture/selfie-capture.component';
+import { DocumentCaptureComponent } from './components/document-capture/document-capture.component';
 
 @NgModule({
     declarations: [
@@ -31,6 +33,8 @@ import { SelfieTestComponent } from './pages/selfie-test/selfie-test.component';
         SteperComponent,
         AttachDocumentsComponent,
         SelfieTestComponent,
+        SelfieCaptureComponent,
+        DocumentCaptureComponent
     ],
     imports: [
         CommonModule,

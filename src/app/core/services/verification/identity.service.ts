@@ -4,6 +4,7 @@ import {catchError, map} from "rxjs/operators";
 import {Observable, throwError} from "rxjs";
 import {environment} from "@env/environment";
 import {EnvServiceProvider} from "@app/core/services/env/env.service.provider";
+import { ValidationUserTest } from '@app/core/models/test-validation';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +13,7 @@ export class IdentityService {
   constructor(private http: HttpClient) {
 
   }
-  public identityValidation(data: any) {
+  public identityValidation(data: ValidationUserTest) {
     const url = `${EnvServiceProvider.useFactory().API_DOCUMENT}/api/v1/files/validate`;
 
     return this.http.post<any>(url, data)

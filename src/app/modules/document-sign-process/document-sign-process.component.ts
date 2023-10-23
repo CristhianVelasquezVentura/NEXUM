@@ -142,7 +142,7 @@ export class DocumentSignProcessComponent implements OnInit, OnDestroy {
    * Método que valida la autenticación del access code del firmate
    */
   public authenticated(): void {
-    this.page = 'document-review';
+    this.page = 'selfie-test';
   }
 
   /**
