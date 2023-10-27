@@ -1,14 +1,19 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {FinalRevisionComponent} from "@app/modules/send-document/pages/final-revision/final-revision.component";
-import { WorkflowListComponent } from "@app/modules/workflow/pages/workflow-list/workflow-list.component";
-import {WorkflowInfoCreateComponent} from "@app/modules/workflow/pages/workflow-info-create/workflow-info-create.component";
-import {GeneralInfoWorkflowComponent} from "@app/modules/workflow/pages/general-info-workflow/general-info-workflow.component";
+import {WorkflowListComponent} from "@app/modules/workflow/pages/workflow-list/workflow-list.component";
+import {
+  WorkflowInfoCreateComponent
+} from "@app/modules/workflow/pages/workflow-info-create/workflow-info-create.component";
+import {
+  GeneralInfoWorkflowComponent
+} from "@app/modules/workflow/pages/general-info-workflow/general-info-workflow.component";
 import {SignStyleComponent} from "@app/modules/workflow/pages/sign-style/sign-style.component";
 import {NotifySignersComponent} from "@app/modules/workflow/pages/notify-signers/notify-signers.component";
 import {OtpConfigComponent} from "@app/modules/workflow/pages/otp-config/otp-config.component";
 import {AlertSignersComponent} from "@app/modules/workflow/pages/alert-signers/alert-signers.component";
-import {FinalMessageWorkflowComponent} from "@app/modules/workflow/pages/final-message-workflow/final-message-workflow.component";
+import {
+  FinalMessageWorkflowComponent
+} from "@app/modules/workflow/pages/final-message-workflow/final-message-workflow.component";
 
 export const routes: Routes = [
   {

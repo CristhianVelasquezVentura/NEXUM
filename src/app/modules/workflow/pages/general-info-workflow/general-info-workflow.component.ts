@@ -81,9 +81,10 @@ export class GeneralInfoWorkflowComponent implements OnInit {
         const valuesStep: unknown = {
             formBasic: {
                 ...this._formService.generalInfoForm.value,
-                attached_document: this._formService.attachedDocuments
+                attached_document: this._formService.attachedDocuments,
+                roleSigners: this._formService.roleSigners
             },
-            formBranding: this._formService.brandingForm.value
+            formBranding: this._formService.brandingForm.value,
         }
 
         this._sessionStorageService.setItem(

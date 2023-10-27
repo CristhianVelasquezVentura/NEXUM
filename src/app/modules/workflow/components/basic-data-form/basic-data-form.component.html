@@ -123,7 +123,7 @@
       <span class="flex-1 text-zc-800 t-body">{{annexe.name}}</span>
       <div
         class="t-label text-brand-c bg-brand-l rounded-full px-1 py-0.5">{{annexe.isRequired ? 'Obligatorio' : ''}}</div>
-      <button class="b-ghost-sm">
+      <button class="b-ghost-sm" (click)="deleteAnnexe(annexe.name)">
         <div class="stroke-alert-error">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                xmlns="http://www.w3.org/2000/svg">
@@ -172,11 +172,10 @@
 
   <div class="w-full flex flex-col">
     <!--Solicitudes agregadas-->
-    <div class="flex items-center space-x-2 py-2 border-b border-zc-200">
-      <input type="checkbox" class="w-4 h-4">
-      <span class="flex-1 text-zc-800 t-body">{{'rol.name'}}</span>
+    <div *ngFor="let role of rolesSigner" class="flex items-center space-x-2 py-2 border-b border-zc-200">
+      <span class="flex-1 text-zc-800 t-body">{{role.name}}</span>
 
-      <button class="b-ghost-sm">
+      <button class="b-ghost-sm" (click)="deleteRole(role.name)">
         <div class="stroke-alert-error">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                xmlns="http://www.w3.org/2000/svg">
@@ -189,7 +188,7 @@
     </div>
 
     <div class="flex pt-4 justify-center">
-      <button class="b-small">
+      <button class="b-small" (click)="showModalRole = true">
         <span>Agregar rol</span>
         <div class="stroke-brand-c">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
@@ -204,7 +203,7 @@
   <!--Agregar rol-->
 </form>
 
-<div *ngIf="showAddRequest" class="fixed top-0 left-0 w-full h-screen flex p-8 flex items-center justify-center z-10"
+<div *ngIf="showModalAnnexe" class="fixed top-0 left-0 w-full h-screen flex p-8 flex items-center justify-center z-10"
      style="background-color: rgba(0,0,0,0.2)">
   <div class="space-y-6 p-6 rounded-lg border-zc-200 bg-white drop-shadow-lg w-full h-fit" style="max-width: 350px;">
     <div class="title-section flex items-center space-x-2">
@@ -234,30 +233,30 @@
   </div>
 </div>
 
-<div *ngIf="false" class="fixed top-0 left-0 w-full h-screen flex p-8 flex items-center justify-center z-10"
-     style="background-color: rgba(0,0,0,0.2)">
-  <div class="space-y-6 p-6 rounded-lg border-zc-200 bg-white drop-shadow-lg w-full h-fit" style="max-width: 350px;">
-    <div class="title-section flex items-center space-x-2">
-      <div class="w-1 h-4 rounded bg-brand-c"></div>
-      <span class="t-body text-brand-c">Agregar rol</span>
-    </div>
-
-    <form class="grid gap-2 w-full">
-      <div class="i-outline">
-        <label>Rol</label>
-        <input type="text" class="w-full">
-        <!--<span *ngIf="isErrorControl(annexesForm.controls['name'])">{{getError(annexesForm.controls['name'])}}</span>-->
+<ec-block-ui [blocked]="showModalRole">
+  <div class="flex justify-center items-center w-full h-full">
+    <div class=" space-y-6 p-6 rounded-lg border-zc-200 bg-white drop-shadow-lg w-full h-fit" style="max-width: 350px;">
+      <div class="title-section flex items-center space-x-2">
+        <div class="w-1 h-4 rounded bg-brand-c"></div>
+        <span class="t-body text-brand-c">Agregar rol</span>
       </div>
-    </form>
-    <div class="w-full flex items-center space-x-2">
-      <button class="b-ghost-md w-full">Cancelar</button>
-      <div class="separador h-6 border-l border-zc-200"></div>
-      <button class="b-ghost-md w-full">
-        <span class="text-brand-c">Agregar</span>
-      </button>
+
+      <form class="grid gap-2 w-full" [formGroup]="roleForm">
+        <div class="i-outline">
+          <label>Rol</label>
+          <input type="text" class="w-full" formControlName="name">
+          <span *ngIf="isErrorControl(roleForm.controls['name'])">{{getError(roleForm.controls['name'])}}</span>
+        </div>
+      </form>
+      <div class="w-full flex items-center space-x-2">
+        <button class="b-ghost-md w-full" (click)="cancelFormRole()">Cancelar</button>
+        <div class="separador h-6 border-l border-zc-200"></div>
+        <button class="b-ghost-md w-full" (click)="addRole()">
+          <span class="text-brand-c">Agregar</span>
+        </button>
+      </div>
     </div>
   </div>
-</div>
-
+</ec-block-ui>
 
 <app-toast></app-toast>

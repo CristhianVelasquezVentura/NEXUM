@@ -292,7 +292,7 @@ export interface Workflow {
   updated_at: string;
 }
 
-export interface Roles {
+export interface IRoleSigner {
   name: string;
 }
 

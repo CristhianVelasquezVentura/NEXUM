@@ -1,3 +1,5 @@
+import {IRoleSigner} from "@app/modules/workflow/models/steps";
+
 export interface IValuesStep1 {
   formBasic: IFormBasicDataValues;
   formBranding: IFormBrandingValues;
@@ -18,6 +20,7 @@ export interface IFormBasicDataValues {
   url_api_redirect: string;
 
   attached_document: IFormAnnexesStep1[]
+  roleSigners: IRoleSigner[]
 
   //logo_path: string;
   //id_body_font: number;
