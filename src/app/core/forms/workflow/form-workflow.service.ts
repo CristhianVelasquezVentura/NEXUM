@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, NonNullableFormBuilder} from '@angular/forms';
-import {IFormBrand} from "@app/core/forms/workflow/form-workflow.model";
+import {FormBuilder, FormControl, FormGroup, NonNullableFormBuilder, Validators} from '@angular/forms';
+import {IFormBrand, IFormNotifySignerEMAIL, IFormNotifySignerSMS} from "@app/core/forms/workflow/form-workflow.model";
 import {IFormAnnexesStep1} from "@app/core/models/workflow/workflow.model";
 import {NgxValidators} from "@app/public/control-error/utils/ngx-validators";
 import {IRoleSigner} from "@app/modules/workflow/models/steps";
@@ -23,10 +23,18 @@ export class FormWorkflowService {
 
   public signStyleForm = this.initSignStyleForm();
 
-  public notifySignersSMSForm = this.initNotifySignersSMSForm();
-  public notifySignersEmailForm = this.initNotifySignersEmailForm();
+  public notifySignersSMSForm:FormGroup<IFormNotifySignerSMS>;
+  public notifySignersEmailForm: FormGroup<IFormNotifySignerEMAIL>;
 
   public OtpFormControl = this.initOtpForm();
+
+  constructor() {
+  this.notifySignersSMSForm = this.initNotifySignersSMSForm();
+  this.notifySignersEmailForm = this.initNotifySignersEmailForm();
+
+  this.notifySignersSMSForm.disable()
+  this.notifySignersEmailForm.disable()
+  }
 
 
   private initGeneralInfoForm() {
@@ -41,8 +49,8 @@ export class FormWorkflowService {
       sender_cellphone_code: ['', NgxValidators.required],
       sender_cellphone: ['', [NgxValidators.required, NgxValidators.minLength(9), NgxValidators.maxLength(12)]],
 
-      url_page_redirect: ['', NgxValidators.required],
-      url_api_redirect: ['', NgxValidators.required],
+      url_page_redirect: [''],
+      url_api_redirect: [''],
 
       //body_font: ['', NgxValidators.required],
       //body_font_size: ['', NgxValidators.required],
@@ -83,6 +91,7 @@ export class FormWorkflowService {
     })
   };
 
+  //STEP 2
   public initSignStyleForm() {
     return this._fbNonNull.group({
       color: ['#000000', NgxValidators.required],
@@ -97,29 +106,33 @@ export class FormWorkflowService {
     })
   }
 
+  //STEP 3
   public initNotifySignersSMSForm() {
-    return new FormGroup({
-      title: new FormControl<string>(''),
-      sender_name: new FormControl<string>(''),
-      sender_cellphone_code: new FormControl<string>(''),
-      sender_cellphone: new FormControl<string>(''),
-      text: new FormControl<string>('Hola [nombre], espero que esté teniendo un buen día, aquí le entrego el documento habilitado por [tiempo_activo], [url].'),
-      activate_reminder: new FormControl<boolean>(false),
+    return new FormGroup<IFormNotifySignerSMS>({
+      title: new FormControl<string>('', {validators: Validators.required, nonNullable: true}),
+      sender_name: new FormControl<string>('', {validators: Validators.required, nonNullable: true}),
+      sender_cellphone_code: new FormControl<string>('', {validators: Validators.required, nonNullable: true}),
+      sender_cellphone: new FormControl<string>('', {validators: Validators.required, nonNullable: true}),
+      text: new FormControl<string>('', {
+        validators: [Validators.required, NgxValidators.maxLength(100)],
+        nonNullable: true
+      }),
+      activate_reminder: new FormControl<boolean>(false, {nonNullable: true}),
     })
   }
 
   public initNotifySignersEmailForm() {
-    return new FormGroup({
-      language:  new FormControl<string>(''),
-      subject:  new FormControl<string>(''),
-      cc:  new FormControl<string>(''),
-      bcc:  new FormControl<string>(''),
-      text: new FormControl<string>('Hola [nombre], espero que esté teniendo un buen día, aquí le entrego el documento habilitado por [tiempo_activo], [url].'),
-      activate_reminder: new FormControl<boolean>(false),
-
+    return new FormGroup<IFormNotifySignerEMAIL>({
+      language: new FormControl<string>('', {validators: Validators.required, nonNullable: true}),
+      subject: new FormControl<string>('', {validators: Validators.required, nonNullable: true}),
+      cc: new FormControl<string>('', {validators: Validators.required, nonNullable: true}),
+      bcc: new FormControl<string>('', {validators: Validators.required, nonNullable: true}),
+      text: new FormControl<string>('', {validators: [Validators.required, NgxValidators.maxLength(100)], nonNullable: true}),
+      activate_reminder: new FormControl<boolean>(false,{nonNullable: true}),
     })
   }
 
+  // STEP 4
   public initOtpForm() {
     return this._fb.group({
       characters: ['0', NgxValidators.required],

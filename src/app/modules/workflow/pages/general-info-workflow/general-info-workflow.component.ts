@@ -10,6 +10,7 @@ import {ToastComponent} from "@app/public/toast/toast.component";
 import {ToastService} from "@app/public/services/toast/toast.service";
 import {BasicDataFormComponent, BrandingFormComponent} from "@app/modules/workflow/components";
 import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
+import {IValuesStep1} from "@app/core/models/workflow/workflow.model";
 
 @Component({
     selector: 'app-general-info-workflow',
@@ -34,7 +35,6 @@ export class GeneralInfoWorkflowComponent implements OnInit {
     public readonly fontText = fontText;
 
     public showBasicData: boolean = true;
-    public annexes: Annexes[] = [];
 
     constructor(
         private _formService: FormWorkflowService,
@@ -44,12 +44,7 @@ export class GeneralInfoWorkflowComponent implements OnInit {
     ) {
     }
 
-    ngOnInit(): void {
-        const annexesJSON = sessionStorage.getItem('generalInfo_annexes');
-        if (annexesJSON) {
-            this.annexes = JSON.parse(annexesJSON);
-        }
-    }
+    ngOnInit(): void {}
 
     setShowBasicData(value: boolean) {
         this.showBasicData = value;
@@ -88,7 +83,7 @@ export class GeneralInfoWorkflowComponent implements OnInit {
         }
 
         this._sessionStorageService.setItem(
-            'workflow-create-step-1', valuesStep
+            'workflow-create-step-1', valuesStep as IValuesStep1
         )
 
         await this._router.navigateByUrl("/workflow/create/sign-style")

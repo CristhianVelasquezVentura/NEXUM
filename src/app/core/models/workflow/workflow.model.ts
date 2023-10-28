@@ -1,4 +1,6 @@
 import {IRoleSigner} from "@app/modules/workflow/models/steps";
+import {FormControl, Validators} from "@angular/forms";
+import {NgxValidators} from "@app/public/control-error/utils/ngx-validators";
 
 export interface IValuesStep1 {
   formBasic: IFormBasicDataValues;
@@ -64,4 +66,30 @@ export interface IFormStyleSignValues {
   include_role: boolean;
   include_initials: boolean;
   include_rubric: boolean;
+}
+
+/**
+ * STEP 3
+ */
+export interface IValuesStep3 {
+  formSignerNotifySMS: IFormSignerNotifySMSValues;
+  formSignerNotifyEMAIL: IFormSignerNotifyEMAILValues;
+}
+
+export interface IFormSignerNotifySMSValues {
+  title: string,
+  sender_name: string,
+  sender_cellphone_code: string,
+  sender_cellphone: string,
+  text: string,
+  activate_reminder: boolean
+}
+
+export interface IFormSignerNotifyEMAILValues {
+  language: string,
+  subject: string,
+  cc: string,
+  bcc: string,
+  text: string,
+  activate_reminder: boolean,
 }
