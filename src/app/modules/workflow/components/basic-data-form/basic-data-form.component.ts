@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForOf, NgIf} from '@angular/common';
-import {codeCountries, fontText, languages, time} from "@app/core/utils/data/constant";
+import {codeCountries, fontText, languages, timeOptions} from "@app/core/utils/data/constant";
 import {AbstractControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {FormWorkflowService} from "@app/core/forms/workflow/form-workflow.service";
 import {Annexes, IRoleSigner} from "@app/modules/workflow/models/steps";
@@ -8,7 +8,7 @@ import {ToastService} from "@app/public/services/toast/toast.service";
 import {ToastComponent} from "@app/public/toast/toast.component";
 import {getFormControlError} from "@app/public/control-error/utils/functions-form";
 import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
-import {IFormBasicDataValues, IValuesStep1} from "@app/core/models/workflow/workflow.model";
+import {IFormAnnexesStep1, IFormBasicDataValues, IValuesStep1} from "@app/core/models/workflow/workflow.model";
 import {UiModule} from "@app/core/ui/ui.module";
 import {BlockUiComponent} from "@app/core/ui/block-ui/block-ui.component";
 import {RoleSignerFormComponent} from "@app/modules/workflow/components/role-signer-form/role-signer-form.component";
@@ -25,7 +25,7 @@ export class BasicDataFormComponent implements OnInit {
   public generalInfoForm: FormGroup;
   public annexesForm: FormGroup;
   public roleForm: FormGroup;
-  public annexes: Annexes[] = [];
+  public annexes: IFormAnnexesStep1[] = [];
   public rolesSigner: IRoleSigner[] = [];
   public showModalAnnexe: boolean = false;
   public showModalRole: boolean = false;
@@ -35,7 +35,7 @@ export class BasicDataFormComponent implements OnInit {
 
   protected readonly codeCountries = codeCountries;
   protected readonly languages = languages;
-  public readonly timeData = time;
+  public readonly timeData = timeOptions;
 
   constructor(
     private _formService: FormWorkflowService,
@@ -78,13 +78,13 @@ export class BasicDataFormComponent implements OnInit {
   }
 
   public onChangeIsRequiredAnnexe(index: number, target: any) {
-    this.annexes[index].isRequired = target.checked;
-    this._formService.attachedDocuments[index].isRequired = target.checked;
+    this.annexes[index].required = target.checked;
+    this._formService.attachedDocuments[index].required = target.checked;
   }
 
   public deleteAnnexe(annexeName: string){
-    this.annexes = this.annexes.filter(annexe => annexe.name !== annexeName)
-    this._formService.attachedDocuments = this._formService.attachedDocuments.filter(annexe => annexe.name !== annexeName)
+    this.annexes = this.annexes.filter(annexe => annexe.doctype_name !== annexeName)
+    this._formService.attachedDocuments = this._formService.attachedDocuments.filter(annexe => annexe.doctype_name !== annexeName)
   }
 
   public addAnnexe(): void {

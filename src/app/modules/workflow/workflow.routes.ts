@@ -10,10 +10,13 @@ import {
 import {SignStyleComponent} from "@app/modules/workflow/pages/sign-style/sign-style.component";
 import {NotifySignersComponent} from "@app/modules/workflow/pages/notify-signers/notify-signers.component";
 import {OtpConfigComponent} from "@app/modules/workflow/pages/otp-config/otp-config.component";
-import {AlertSignersComponent} from "@app/modules/workflow/pages/alert-signers/alert-signers.component";
+import {ReminderSignersComponent} from "@app/modules/workflow/pages/reminder-signers/reminder-signers.component";
 import {
   FinalMessageWorkflowComponent
 } from "@app/modules/workflow/pages/final-message-workflow/final-message-workflow.component";
+import {
+  PreCreationSummaryComponent
+} from "@app/modules/workflow/pages/pre-creation-summary/pre-creation-summary.component";
 
 export const routes: Routes = [
   {
@@ -46,8 +49,12 @@ export const routes: Routes = [
     component: OtpConfigComponent
   },
   {
-    path: 'create/alert-signers',
-    component: AlertSignersComponent
+    path: 'create/reminder-signers',
+    component: ReminderSignersComponent
+  },
+  {
+    path: 'create/summary',
+    component: PreCreationSummaryComponent
   },
   {
     path: 'create/finish',

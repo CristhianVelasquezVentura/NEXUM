@@ -32,8 +32,8 @@ export class NotifySignersSmsFormComponent {
 
   ngOnInit() {
 
-    const workflowCreateStep1 = this._sessionStorageService.getItem<IValuesStep3>('workflow-create-step-3')
-    if (workflowCreateStep1?.formSignerNotifySMS) this.mapValuesForm(workflowCreateStep1.formSignerNotifySMS)
+    const workflowCreateStep3 = this._sessionStorageService.getItem<IValuesStep3>('workflow-create-step-3')
+    if (workflowCreateStep3?.formSignerNotifySMS) this.mapValuesForm(workflowCreateStep3.formSignerNotifySMS)
   }
 
   private mapValuesForm(generalSignerNotifySMSValues: IFormSignerNotifySMSValues) {

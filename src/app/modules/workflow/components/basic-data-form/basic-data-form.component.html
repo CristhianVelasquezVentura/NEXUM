@@ -118,12 +118,12 @@
     <!--Solicitudes agregadas-->
     <div *ngFor="let annexe of annexes; let index = index"
          class="flex items-center space-x-2 py-2 border-b border-zc-200">
-      <input type="checkbox" class="w-4 h-4" [checked]="annexe.isRequired"
+      <input type="checkbox" class="w-4 h-4" [checked]="annexe.required"
              (change)="onChangeIsRequiredAnnexe(index,$event.target)">
-      <span class="flex-1 text-zc-800 t-body">{{annexe.name}}</span>
+      <span class="flex-1 text-zc-800 t-body">{{annexe.doctype_name}}</span>
       <div
-        class="t-label text-brand-c bg-brand-l rounded-full px-1 py-0.5">{{annexe.isRequired ? 'Obligatorio' : ''}}</div>
-      <button class="b-ghost-sm" (click)="deleteAnnexe(annexe.name)">
+        class="t-label text-brand-c bg-brand-l rounded-full px-1 py-0.5">{{annexe.required ? 'Obligatorio' : ''}}</div>
+      <button class="b-ghost-sm" (click)="deleteAnnexe(annexe.doctype_name)">
         <div class="stroke-alert-error">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                xmlns="http://www.w3.org/2000/svg">
@@ -214,11 +214,11 @@
     <form class="grid gap-2 w-full" [formGroup]="annexesForm">
       <div class="i-outline">
         <label>Documento</label>
-        <input formControlName="name" type="text" class="w-full">
-        <span *ngIf="isErrorControl(annexesForm.controls['name'])">{{getError(annexesForm.controls['name'])}}</span>
+        <input formControlName="doctype_name" type="text" class="w-full">
+        <span *ngIf="isErrorControl(annexesForm.controls['doctype_name'])">{{getError(annexesForm.controls['doctype_name'])}}</span>
       </div>
       <div class="flex items-center space-x-2">
-        <input formControlName="isRequired" type="checkbox" class="w-4 h-4">
+        <input formControlName="required" type="checkbox" class="w-4 h-4">
 
         <span class="flex-1 text-zc-800 t-body">Obligatorio</span>
       </div>

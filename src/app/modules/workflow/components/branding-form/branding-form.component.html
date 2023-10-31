@@ -7,13 +7,13 @@
   <div class="i-outline cursor-pointer" (click)="file.click()">
     <label>Logotipo</label>
     <div class="p-10 flex justify-center items-center">
-      <div *ngIf="!formBrand.controls.brand.value" class="inter t-body text-brand-c">Carga tu imagen de marca</div>
-      <img *ngIf="formBrand.controls.brand.value" class="w-12" alt="brand-img" [src]="formBrand.controls.brand.value" fill="">
+      <div *ngIf="!formBrand.controls.logo_path.value" class="inter t-body text-brand-c">Carga tu imagen de marca</div>
+      <img *ngIf="formBrand.controls.logo_path.value" class="w-12" alt="brand-img" [src]="formBrand.controls.logo_path.value" fill="">
       <input #file type="file" class="hidden" accept="image/png, image/jpg, image/jpeg"
              (change)="onChangeLogo($event.target)">
       <!--png,jpg,jpeg-->
     </div>
-    <span *ngIf="isErrorControl(formBrand.controls['brand'])">{{getError(formBrand.controls['brand'])}}</span>
+    <span *ngIf="isErrorControl(formBrand.controls['logo_path'])">{{getError(formBrand.controls['logo_path'])}}</span>
   </div>
 
   <div class="i-outline">
@@ -27,10 +27,10 @@
   </div>
   <div class="i-outline">
     <label>Tipografía</label>
-    <select class="w-full" formControlName="body_font">
+    <select class="w-full" formControlName="id_body_font">
       <option selected hidden value="">{{'Seleccione una opción'}}</option>
       <option *ngFor="let font of fontText" [value]="font.value">{{font.label}}</option>
     </select>
-    <span *ngIf="isErrorControl(formBrand.controls['body_font'])">{{getError(formBrand.controls['body_font'])}}</span>
+    <span *ngIf="isErrorControl(formBrand.controls['id_body_font'])">{{getError(formBrand.controls['id_body_font'])}}</span>
   </div>
 </form>

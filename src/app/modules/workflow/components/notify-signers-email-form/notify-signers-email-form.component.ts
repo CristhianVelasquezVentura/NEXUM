@@ -5,9 +5,7 @@ import {AbstractControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {FormWorkflowService} from "@app/core/forms/workflow/form-workflow.service";
 import {getFormControlError} from "@app/public/control-error/utils/functions-form";
 import {
-  IFormBasicDataValues,
   IFormSignerNotifyEMAILValues,
-  IFormSignerNotifySMSValues,
   IValuesStep3
 } from "@app/core/models/workflow/workflow.model";
 import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
@@ -33,8 +31,8 @@ export class NotifySignersEmailFormComponent {
 
   ngOnInit() {
 
-    const workflowCreateStep1 = this._sessionStorageService.getItem<IValuesStep3>('workflow-create-step-3')
-    if (workflowCreateStep1?.formSignerNotifyEMAIL) this.mapValuesForm(workflowCreateStep1.formSignerNotifyEMAIL)
+    const workflowCreateStep3 = this._sessionStorageService.getItem<IValuesStep3>('workflow-create-step-3')
+    if (workflowCreateStep3?.formSignerNotifyEMAIL) this.mapValuesForm(workflowCreateStep3.formSignerNotifyEMAIL)
   }
 
   private mapValuesForm(generalSignerNotifyEMAILValues: IFormSignerNotifyEMAILValues) {

@@ -265,7 +265,7 @@ export const ecRoleStyle: DropdownModel = {
 };
 
 export const languages = [
-  {value: "ab", label: "Abkhaz"},
+  /*{value: "ab", label: "Abkhaz"},
   {value: "aa", label: "Afar"},
   {value: "af", label: "Afrikaans"},
   {value: "ak", label: "Akan"},
@@ -411,9 +411,9 @@ export const languages = [
   {value: "sk", label: "Slovak"},
   {value: "sl", label: "Slovene"},
   {value: "so", label: "Somali"},
-  {value: "st", label: "Southern Sotho"},
-  {value: "4", label: "Spanish; Castilian"},
-  {value: "su", label: "Sundanese"},
+  {value: "st", label: "Southern Sotho"},*/
+  {value: 4, label: "Spanish; Castilian"},
+  /*{value: "su", label: "Sundanese"},
   {value: "sw", label: "Swahili"},
   {value: "ss", label: "Swati"},
   {value: "sv", label: "Swedish"},
@@ -446,22 +446,22 @@ export const languages = [
   {value: "xh", label: "Xhosa"},
   {value: "yi", label: "Yiddish"},
   {value: "yo", label: "Yoruba"},
-  {value: "za", label: "Zhuang, Chuang"}
+  {value: "za", label: "Zhuang, Chuang"}*/
 ];
 
-export const time = [
-  {label: 'Segundos', value: '7'},
-  {label: 'Minutos', value: '8'},
-  {label: 'Horas', value: '9'},
-  {label: 'Días', value: '10'},
-  {label: 'Semanas', value: '11'},
-  {label: 'Meses', value: '12'},
-  {label: 'Años', value: '13'},
+export const timeOptions = [
+  {label: 'Segundos', value: 7},
+  {label: 'Minutos', value: 8},
+  {label: 'Horas', value: 9},
+  {label: 'Días', value: 10},
+  {label: 'Semanas', value: 11},
+  {label: 'Meses', value: 12},
+  {label: 'Años', value: 13},
 ];
 
 export const fontText = [
-  {label: 'Arial', value: '1'},
-  {label: 'Times New Roman', value: '2'},
+  {label: 'Arial', value: 1},
+  {label: 'Times New Roman', value: 2},
   /*{label: 'Helvetica Neue', value: '14'},
   {label: 'Helvetica', value: '15'},
   {label: 'sans-serif', value: '16'},

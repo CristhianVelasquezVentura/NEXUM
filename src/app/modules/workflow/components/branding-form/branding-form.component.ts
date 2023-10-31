@@ -34,7 +34,6 @@ export class BrandingFormComponent implements OnInit {
     }
 
     private mapValuesForm(formBrandValues: IFormBrandingValues) {
-        console.log('set brading')
 
         this.formBrand.patchValue(formBrandValues);
     }
@@ -52,7 +51,7 @@ export class BrandingFormComponent implements OnInit {
 
     private bindLoadBrand(file: ProgressEvent<FileReader>) {
         if (typeof file?.target?.result === "string") {
-            this.formBrand.controls.brand.setValue(file?.target.result)
+            this.formBrand.controls.logo_path.setValue(file?.target.result)
         }
     }
 
