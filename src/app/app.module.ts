@@ -11,6 +11,7 @@ import {RouterModule} from "@angular/router";
 import { SendDocumentComponent } from './modules/send-document/send-document.component';
 import {UiModule} from "@app/core/ui/ui.module";
 import {SignatureInterceptor} from "@app/core/services/interceptors/sign/sign.interceptor";
+import { QueryDocsComponent } from './modules/query-docs/query-docs.component';
 
 export function createTranslateLoader(http: HttpClient): any {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -20,6 +21,7 @@ export function createTranslateLoader(http: HttpClient): any {
   declarations: [
     AppComponent,
     SendDocumentComponent,
+    QueryDocsComponent,
   ],
     imports: [
         BrowserModule,

@@ -27,6 +27,12 @@
     --c-alert-success-d: #22C55E;
     --c-alert-info-d: #0284C7;
     --c-alert-warning-d: #FBBF24;
+
+    --c-status-signed: #00E573;
+    --c-status-pending: #FFCC33;
+    --c-status-error: #FF0055;
+    --c-status-explained: #00D4FF;
+    --c-status-cancelled: #8080B2;
   }
   .theme-light {
     --c-fl-white: var(--c-white);
@@ -179,8 +185,16 @@
     }
   }
 
+  .b-hiper {
+    @apply p-6 flex items-center space-x-4 t-subtitle text-zc-800 text-left bg-white rounded-lg border border-zc-200;
+  }
+
+  .b-status {
+    @apply flex items-center justify-center h-14 w-14 rounded-lg;
+  }
+
   .i-outline {
-    @apply border border-zc-200 rounded-lg flex flex-col p-3;
+    @apply border border-zc-200 rounded-lg flex flex-col p-3 bg-white;
     label {
       @apply t-label text-zc-400;
     }

@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'workflow',
     loadChildren: () => import('./modules/workflow/workflow.routes').then((m) => m.routes)
   },
+  {
+    path: 'query-docs',
+    loadChildren: () => import('./modules/query-docs/query-docs.module').then((m) => m.QueryDocsModule)
+  }
 ];
 
 @NgModule({
