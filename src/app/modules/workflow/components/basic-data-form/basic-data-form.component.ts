@@ -11,14 +11,13 @@ import {SessionStorageService} from "@app/core/services/storage/session-storage.
 import {IFormAnnexesStep1, IFormBasicDataValues, IValuesStep1} from "@app/core/models/workflow/workflow.model";
 import {UiModule} from "@app/core/ui/ui.module";
 import {BlockUiComponent} from "@app/core/ui/block-ui/block-ui.component";
-import {RoleSignerFormComponent} from "@app/modules/workflow/components/role-signer-form/role-signer-form.component";
 
 @Component({
   selector: 'workflow-basic-data-form',
   templateUrl: './basic-data-form.component.html',
   styleUrls: ['./basic-data-form.component.scss'],
   standalone: true,
-  imports: [ReactiveFormsModule, ToastComponent, NgIf, NgForOf, UiModule, BlockUiComponent, RoleSignerFormComponent],
+  imports: [ReactiveFormsModule, ToastComponent, NgIf, NgForOf, UiModule, BlockUiComponent],
   providers: [ToastService]
 })
 export class BasicDataFormComponent implements OnInit {
