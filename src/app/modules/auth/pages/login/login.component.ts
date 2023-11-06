@@ -15,6 +15,7 @@ import {Router, RouterLink} from '@angular/router';
 import {ToastService} from "@app/public/services/toast/toast.service";
 import {UiModule} from "@app/core/ui/ui.module";
 import {ToastComponent} from "@app/public/toast/toast.component";
+import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
 
 @Component({
   selector: 'app-login',
@@ -44,6 +45,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private _messageService: ToastService,
     private _loginService: LoginService,
     private router: Router,
+    private _sessionStorageService: SessionStorageService,
     //private appStore: Store<{ app: any }>
   ) {
     this.token = '';
@@ -67,11 +69,11 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   private checkLogin(): void {
     const token = sessionStorage.getItem("access-token");
-    if (token) {
-      this.router.navigate(['send-document']).then(() => {
-        this.getUserPictureProfile();
-      });
-    }
+    if(token === null) return
+
+    this.router.navigate(['send-document']).then(() => {
+      this.getUserPictureProfile();
+    });
   }
 
   private getNewForm(): UntypedFormGroup {
@@ -189,25 +191,27 @@ export class LoginComponent implements OnInit, OnDestroy {
 
 
   private getUserPictureProfile(): void {
-    this._loginService.getUserPictureProfile().subscribe(
-      async (resp) => {
+    this._loginService.getUserPictureProfile().subscribe({
+      next: async (resp) => {
         console.log(resp)
         if (resp.error) {
           this._messageService.add({type: 'error', message: resp.msg, life: 5000});
-        } else {
-          this.user = this._loginService.getUserByToke();
-          this.user.full_path_photo = resp.data;
-          //this.Store.dispatch(reloadedProfile({user: this.user}));
+          return
         }
+
+        this.user = this._loginService.getUserByToke();
+        this.user.full_path_photo = resp.data;
+        //this.Store.dispatch(reloadedProfile({user: this.user}));
       },
-      (err: HttpErrorResponse) => {
+      error: (err: HttpErrorResponse) => {
         console.error(err);
         this._messageService.add({
           type: 'error',
           message: 'No se pudo obtener la foto de perfil, intente de nuevo!',
           life: 5000,
         });
-      })
+      }
+    })
   }
 
 }

@@ -9,7 +9,7 @@
         <span class="t-body text-zc-400">Ingrese los criterios de búsqueda:</span>
       </div>
 
-      <form *ngIf="true" class="parameter-query-docs grid md:grid-cols-2 gap-4">
+      <form *ngIf="!true" class="parameter-query-docs grid md:grid-cols-2 gap-4">
         <div class="i-outline">
           <label>Flujo de trabajo</label>
           <input type="text">
@@ -81,7 +81,7 @@
         </div>
       </form>
 
-      <form *ngIf="false" class="parameter-query-dashboard grid md:grid-cols-2 gap-4">
+      <form *ngIf="!false" class="parameter-query-dashboard grid md:grid-cols-2 gap-4">
         <div class="i-outline md:col-span-2">
           <label>Rango de fecha</label>
           <div class="flex items-center space-x-4">

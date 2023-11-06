@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'query-docs',
-    loadChildren: () => import('./modules/query-docs/query-docs.module').then((m) => m.QueryDocsModule)
+    loadChildren: () => import('./modules/query-docs/query-docs-routes').then((m) => m.routes)
   }
 ];
 
