@@ -1,4 +1,11 @@
 import {Document} from "@app/core/models/document"
+import {
+  IFormAnnexesStep1,
+  IFormOTPNotifyEMAILValues,
+  IFormOTPNotifySMSValues,
+  IFormReminderEMAILValues,
+  IFormReminderSMSValues, IFormStyleSignValues
+} from "@app/core/models/workflow/workflow.model";
 
 export interface Documents {
   name: string;
@@ -16,26 +23,21 @@ export interface ImgLogo {
   extension: string;
 }
 
-export interface valueAttributes {
-  text: string;
-  attribute: string;
-}
-
-export interface basicObject {
-  type: string;
-  value: string;
-}
-
 export interface DtoWorkflow {
+  // STEP 1 - INFO BASIC
   name: string;
-  sender_name: string;
-  sender_email: string;
-  sender_cellphone: string;
   id_language: number;
   document_expiration: string;
   id_expiration_frequency: number;
+  sender_name: string;
+  sender_email: string;
+  sender_cellphone: string;
   url_page_redirect: string;
   url_api_redirect: string;
+  attached_document: IFormAnnexesStep1[];
+  requested_documents: IFormAnnexesStep1[];
+
+  // STEP 1 - BRANDING
   logo_path: string;
   id_body_font: number;
   id_body_font_size: number;
@@ -45,41 +47,22 @@ export interface DtoWorkflow {
   button_color_font: string;
   button_color_bg: string;
   id_button_font_size: number;
-  email_notice_to_signer: DtoEmailNoticeToSigner;
-  sms_notices_to_signers: DtoSmsNoticesToSigners;
-  attached_document: DtoAttachedDocument[];
-  requested_documents: DtoRequestedDocuments[];
+
+  // STEP 2
+  signature_appearance: IFormStyleSignValues;
+
+  // STEP 3?
+  notifications_sms?: DtoNotificationsSms;
   notifications_email: DtoNotificationsEmail;
-  notifications_sms: DtoNotificationsSms;
-  signature_appearance: DtoSignatureAppearance;
-  roles_signers: DtoRolesSigners[];
+
+  // STEP 4
   otp: DtoOtp;
-}
 
-export interface DtoEmailNoticeToSigner {
-  active: boolean;
-  frequency_reminder: number;
-  id_frequency: number;
-  subject: string;
-  text: string;
-  bcc: string;
-  cc: string;
-}
+  // STEP 5
+  email_notice_to_signer: IFormReminderEMAILValues;
+  sms_notices_to_signers: IFormReminderSMSValues;
 
-export interface DtoAttachedDocument {
-  doctype_name: string;
-  required: boolean;
-}
-
-export interface DtoNoticesToSigners {
-  active: boolean;
-  frequency_reminder: number;
-  id_frequency: number;
-  subject: string;
-  text: string;
-  bcc: string;
-  cc: string;
-  id_user: number;
+  roles_signers: DtoRolesSigners[];
 }
 
 export interface DtoNotificationsEmail {
@@ -97,52 +80,18 @@ export interface DtoNotificationsSms {
   reminder: boolean;
 }
 
-export interface DtoRequestedDocuments {
-  doctype_name: string;
-  required: boolean;
-}
-
 export interface DtoRolesSigners {
   name: string;
-}
-
-export interface DtoSignatureAppearance {
-  color: string;
-  color_text: string;
-  id_font: number;
-  include_names: boolean;
-  include_id_number: boolean;
-  include_role: boolean;
-  include_initials: boolean;
-  include_rubric: boolean;
-}
-
-export interface DtoSmsNoticesToSigners {
-  active: boolean;
-  frequency_reminder: number;
-  id_frequency: number;
-  text: string;
 }
 
 export interface DtoOtp {
   characters: number;
   attempts: number;
-  id_issues_code: number;
   ttl: number;
+  id_issues_code: number;
   id_frequency_time: number;
-  otp_notifications_email: DtoOtpNotificationsEmail;
-  otp_notifications_sms: DtoOtpNotificationsSms;
-}
-
-export interface DtoOtpNotificationsEmail {
-  active_email: boolean;
-  subject: string;
-  text: string;
-}
-
-export interface DtoOtpNotificationsSms {
-  active_sms: boolean;
-  text: string;
+  otp_notifications_email: IFormOTPNotifyEMAILValues;
+  otp_notifications_sms: IFormOTPNotifySMSValues;
 }
 
 export interface ResponseWorkflow {
@@ -292,7 +241,7 @@ export interface Workflow {
   updated_at: string;
 }
 
-export interface Roles {
+export interface IRoleSigner {
   name: string;
 }
 

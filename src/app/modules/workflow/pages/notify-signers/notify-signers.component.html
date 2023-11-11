@@ -1,0 +1,87 @@
+<div class="flex bg-zc-50 justify-center w-full h-screen">
+  <div class="w-full relative h-screen pt-8 space-y-6 flex flex-col" style="max-width: 640px">
+    <div>
+      <app-header-nexum [router]="'/workflow'" [icon]="'close'"
+                        [title]="'Creación de Flujo'"></app-header-nexum>
+    </div>
+    <div class="body space-y-6 bg-white w-full overflow-y-auto h-full rounded-t-lg p-8">
+
+      <div class="step w-full flex items-center space-x-4">
+        <div class="flex items-center justify-center w-14 h-14 relative rounded-full bg-zc-50">
+
+          <span class="t-body text-brand-c">3/5</span>
+
+          <svg class="absolute top-0 left-0" width="56" height="56" viewBox="0 0 59 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M28.458 2C32.8767 2 37.2326 3.04577 41.1697 5.05182C45.1068 7.05786 48.5132 9.96722 51.1105 13.542C53.7077 17.1168 55.422 21.2555 56.1133 25.6198C56.8045 29.9841 56.453 34.45 55.0876 38.6525C53.7221 42.8549 51.3815 46.6745 48.257 49.799C45.1325 52.9235 41.3129 55.2641 37.1105 56.6296C32.908 57.995 28.4421 58.3465 24.0778 57.6553C19.7135 56.964 15.5748 55.2497 12 52.6525" stroke="url(#paint0_linear_674_679)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="paint0_linear_674_679" x1="12" y1="30.6512" x2="56.458" y2="30.6512" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#F66100"/>
+                <stop offset="1" stop-color="#F4BC2C"/>
+              </linearGradient>
+            </defs>
+          </svg>
+
+        </div>
+        <div class="flex flex-col">
+          <span class="t-body text-zc-800">Notificaciones para Firmantes</span>
+          <span class="t-label text-brand-c">Sigue: Configuración OTP</span>
+        </div>
+      </div>
+
+      <div class="flex w-full h-fit space-x-2" style="max-width: 320px">
+        <button class="flex-1 {{!showEmailOption ? 'b-tab-on':'b-tab-off'}}" (click)="setShowEmailOption(false)">SMS</button>
+        <button class="flex-1 {{showEmailOption ? 'b-tab-on':'b-tab-off'}}" (click)="setShowEmailOption(true)">Correo</button>
+      </div>
+
+      <div class="sms-section" *ngIf="!showEmailOption">
+
+        <workflow-notify-signers-sms-form></workflow-notify-signers-sms-form>
+
+      </div>
+
+      <div class="email-section" *ngIf="showEmailOption">
+
+        <workflow-notify-signers-email-form></workflow-notify-signers-email-form>
+
+      </div>
+
+      <div class="h-16"></div>
+    </div>
+    <div class="b-nav-dual absolute left-1/2 -translate-x-2/4 bottom-4">
+      <button class="secondary" routerLink="/workflow/create/sign-style" >Anterior</button>
+      <div class="separador"></div>
+      <button class="primary" (click)="nextStep()">Siguiente</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="false" class="fixed top-0 left-0 w-full h-screen flex p-8 flex items-center justify-center"
+     style="background-color: rgba(0,0,0,0.2)">
+  <div class="space-y-6 p-6 rounded-lg border-zc-200 bg-white drop-shadow-lg w-full h-fit" style="max-width: 350px;">
+    <div class="title-section flex items-center space-x-2">
+      <div class="w-1 h-4 rounded bg-brand-c"></div>
+      <span class="t-body text-brand-c">Agregar solicitud</span>
+    </div>
+
+    <form class="grid gap-2 w-full">
+      <div class="i-outline">
+        <label>Documento</label>
+        <input type="text" class="w-full" formControlName="name">
+      </div>
+      <div class="flex items-center space-x-2">
+        <input type="checkbox" class="w-4 h-4" formControlName="requiredAnnexe">
+        <span class="flex-1 text-zc-800 t-body">Obligatorio</span>
+      </div>
+    </form>
+    <div class="w-full flex items-center space-x-2">
+      <button class="b-ghost-md w-full" routerLink="/workflow/create/sign-style">Cancelar</button>
+      <div class="separador h-6 border-l border-zc-200"></div>
+      <button class="b-ghost-md w-full">
+        <span class="text-brand-c">Agregar</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<app-toast></app-toast>

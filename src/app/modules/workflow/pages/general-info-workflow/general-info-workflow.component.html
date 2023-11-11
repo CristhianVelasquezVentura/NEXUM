@@ -1,0 +1,67 @@
+<div class="flex bg-zc-50 justify-center w-full h-screen">
+    <div class="w-full relative h-screen pt-8 space-y-6 flex flex-col" style="max-width: 640px">
+        <div>
+            <app-header-nexum [router]="'/workflow'" [icon]="'close'"
+                              [title]="'Creación de Flujo'"></app-header-nexum>
+        </div>
+        <div class="body space-y-6 bg-white w-full overflow-y-auto h-full rounded-t-lg p-8">
+
+            <!--TODO: component-->
+
+            <div class="step w-full flex items-center space-x-4">
+                <div class="flex items-center justify-center w-14 h-14 relative rounded-full bg-zc-50">
+
+                    <span class="t-body text-brand-c">1/5</span>
+
+                    <svg class="absolute top-0 left-0" width="56" height="56" viewBox="0 0 57 58" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M28 2C33.913 2 39.6743 3.87194 44.458 7.34752C49.2417 10.8231 52.8024 15.7239 54.6296 21.3475"
+                              stroke="url(#paint0_linear_674_679)" stroke-width="4" stroke-linecap="round"
+                              stroke-linejoin="round"/>
+                        <defs>
+                            <linearGradient id="paint0_linear_674_679" x1="28" y1="11.8987" x2="54.6296" y2="11.8987"
+                                            gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#F66100"/>
+                                <stop offset="1" stop-color="#F4BC2C"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="t-body text-zc-800">Información General</span>
+                    <span class="t-label text-brand-c">Sigue: Apariencia de la Firma</span>
+                </div>
+            </div>
+
+            <!---->
+
+            <div class="flex w-full h-fit space-x-2" style="max-width: 320px">
+                <button class="flex-1 {{showBasicData ? 'b-tab-on':'b-tab-off'}}" (click)="setShowBasicData(true)">Datos
+                    básicos
+                </button>
+                <button class="flex-1 {{!showBasicData ? 'b-tab-on':'b-tab-off'}}" (click)="setShowBasicData(false)">
+                    Branding
+                </button>
+            </div>
+
+            <div class="basic-data-section mt-6" *ngIf="showBasicData">
+
+                <workflow-basic-data-form></workflow-basic-data-form>
+
+            </div>
+
+            <div class="branding-section mt-6" *ngIf="!showBasicData">
+
+                <workflow-branding-form></workflow-branding-form>
+
+            </div>
+
+            <div class="h-16"></div>
+        </div>
+        <div class="b-nav-dual absolute left-1/2 -translate-x-2/4 bottom-4">
+            <button class="primary" (click)="nextStep()">Siguiente</button>
+        </div>
+    </div>
+</div>
+
+<app-toast></app-toast>

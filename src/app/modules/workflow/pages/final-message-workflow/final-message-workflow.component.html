@@ -1,0 +1,34 @@
+<div class="flex bg-zc-50 justify-center w-full h-screen">
+  <div class="w-full relative h-screen pt-8 space-y-6 flex flex-col" style="max-width: 640px">
+    <div>
+      <app-header-nexum [router]="'/workflow'" [icon]="'close'" [title]="'Creación de Flujo'"></app-header-nexum>
+    </div>
+    <form class="body space-y-6 bg-white w-full overflow-y-auto h-full rounded-t-lg p-8">
+
+      <div *ngIf="true" class="w-full pt-36 flex flex-col items-center space-y-2 text-center">
+        <div class="stroke-alert-success">
+          <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M60 80L73.3333 93.3333L100 66.6667M52.2316 31.3136C57.0151 30.9319 61.5564 29.0509 65.2088 25.9383C73.732 18.6749 86.268 18.6749 94.7912 25.9383C98.4436 29.0509 102.985 30.9319 107.768 31.3136C118.931 32.2045 127.796 41.0687 128.686 52.2316C129.068 57.0151 130.949 61.5564 134.062 65.2088C141.325 73.732 141.325 86.268 134.062 94.7912C130.949 98.4436 129.068 102.985 128.686 107.768C127.796 118.931 118.931 127.796 107.768 128.686C102.985 129.068 98.4436 130.949 94.7912 134.062C86.268 141.325 73.732 141.325 65.2088 134.062C61.5564 130.949 57.0151 129.068 52.2316 128.686C41.0687 127.796 32.2045 118.931 31.3136 107.768C30.9319 102.985 29.0509 98.4436 25.9383 94.7912C18.6749 86.268 18.6749 73.732 25.9383 65.2088C29.0509 61.5564 30.9319 57.0151 31.3136 52.2316C32.2045 41.0687 41.0687 32.2045 52.2316 31.3136Z" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="text-alert-success t-subtitle">Flujo de Trabajo Creado</span>
+        <span class="t-body text-zc-400">El flujo está listo para usarse en el módulo "Envío de Documento"</span>
+      </div>
+
+      <div *ngIf="false" class="w-full pt-36 flex flex-col items-center space-y-2 text-center">
+        <div class="stroke-alert-error">
+          <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M66.6667 93.3333L80 80M80 80L93.3333 66.6667M80 80L66.6667 66.6667M80 80L93.3333 93.3333M140 80C140 113.137 113.137 140 80 140C46.8629 140 20 113.137 20 80C20 46.8629 46.8629 20 80 20C113.137 20 140 46.8629 140 80Z" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="text-alert-error t-subtitle">Flujo de Trabajo No Creado</span>
+        <span class="t-body text-zc-400">Ocurrió un error inesperado, por favor vuelva a intentar, las configuraciones realizadas previamente seguirán ahí listas para enviar nuevamente.</span>
+      </div>
+
+      <div class="h-16"></div>
+    </form>
+    <div class="b-nav-dual absolute left-1/2 -translate-x-2/4 bottom-4">
+      <button routerLink="/workflow" class="secondary">Cerrar</button>
+    </div>
+  </div>
+</div>

@@ -5,7 +5,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'auth', pathMatch: 'prefix'},
   {
     path: 'auth',
-    loadChildren: () => import('./modules/authentication/authentication.module').then(m => m.AuthenticationModule)
+    loadChildren: () => import('./modules/auth/auth.routes').then(m => m.routes)
   },
   {
     path: 'signature',
@@ -19,6 +19,14 @@ const routes: Routes = [
     path: 'send-document',
     loadChildren: () => import('./modules/send-document/send-document.module').then((m) => m.SendDocumentModule)
   },
+  {
+    path: 'workflow',
+    loadChildren: () => import('./modules/workflow/workflow.routes').then((m) => m.routes)
+  },
+  {
+    path: 'query-docs',
+    loadChildren: () => import('./modules/query-docs/query-docs.module').then((m) => m.QueryDocsModule)
+  }
 ];
 
 @NgModule({

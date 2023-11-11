@@ -1,0 +1,237 @@
+<div class="flex bg-zc-50 justify-center w-full h-screen">
+    <div class="w-full relative h-screen pt-8 space-y-6 flex flex-col" style="max-width: 640px">
+        <div>
+            <app-header-nexum [router]="'/workflow/create'" [icon]="'close'"
+                              [title]="'Creación de Flujo'"></app-header-nexum>
+        </div>
+
+        <div class="body space-y-6 bg-white w-full overflow-y-auto h-full rounded-t-lg p-8">
+            <div class="step w-full flex items-center space-x-4">
+                <div class="flex flex-col">
+                    <span class="t-body text-zc-800">Resumen de configuración</span>
+                </div>
+            </div>
+
+          <div class="space-y-6">
+            <div class="title-section flex items-center space-x-2">
+              <div class="w-1 h-4 rounded bg-brand-c"></div>
+              <span class="t-body text-brand-c">Información General</span>
+            </div>
+            <div
+              class="rounded-lg border-2 border-brand-c p-4 w-full h-full gap-4 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-outline-gray-3">
+
+              <div>
+                <div class="text-brand-c"><span>Nombre del Flujo</span></div>
+                <div><span>{{valueStep1.formBasic.name}}</span></div>
+              </div>
+              <div>
+                <div class="text-label-01"><span>Idioma</span></div>
+                <div><span>{{valueStep1.formBasic.id_language}}</span></div>
+              </div>
+
+              <div>
+                <div class="text-label-01"><span>Caducidad del Documento</span></div>
+                <div><span>{{valueStep1.formBasic.document_expiration}} {{valueStep1.formBasic.id_expiration_frequency}}</span></div>
+              </div>
+              <div>
+                <div class="text-label-01"><span>Tipo de Firma</span></div>
+                <div><span>Firma Electrónica</span></div>
+              </div>
+
+              <div>
+                <div class="text-label-01"><span>Documentos Anexados</span></div>
+                <div *ngFor="let annexe of valueStep1.formBasic.attached_document"><span>{{annexe.doctype_name}}</span></div>
+              </div>
+              <div>
+                <div class="text-label-01"><span>Solicitudes a Firmantes</span></div>
+                <div *ngFor="let document of valueStep1.formBasic.requested_documents"><span>{{document.doctype_name}}</span></div>
+              </div>
+
+              <div *ngIf="valueStep1.formBasic.url_page_redirect" class="col-span-2">
+                <div class="text-label-01"><span>Redireccionar luego de firmar (WEB)</span></div>
+                <div class="truncate"><span>{{valueStep1.formBasic.url_page_redirect}}</span></div>
+              </div>
+              <div *ngIf="valueStep1.formBasic.url_api_redirect" class="col-span-2">
+                <div class="text-label-01"><span>Redireccionar luego de firmar (API)</span></div>
+                <div class="truncate"><span>{{valueStep1.formBasic.url_api_redirect}}</span></div>
+              </div>
+
+              <div class="w-full flex-1 text-outline-gray-3 flex flex-col gap-2 col-span-2">
+                <div class="text-label-01"><span>Identidad de Marca (Logo)</span></div>
+                <div class="rounded-lg w-full bg-outline-gray-3 flex items-center justify-center p-4">
+                  <img class="object-contain h-40 lg:h-36"
+                       [src]="valueStep1.formBranding.logo_path"
+                       alt="logo marca">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="valueStep3?.formSignerNotifySMS" class="space-y-6">
+            <div class="title-section flex items-center space-x-2">
+              <div class="w-1 h-4 rounded bg-brand-c"></div>
+              <span class="t-body text-brand-c">Detalles del SMS</span>
+            </div>
+            <div
+              class="rounded-lg border-2 border-brand-c p-4 w-full h-full gap-4 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-outline-gray-3">
+
+              <div>
+                <div class="text-label-01"><span>Remitente</span></div>
+                <div><span>{{valueStep3.formSignerNotifySMS.sender_name}}</span></div>
+              </div>
+              <div>
+                <div class="text-label-01"><span>Número de telefono del remitente</span></div>
+                <div><span>{{valueStep3.formSignerNotifySMS.sender_cellphone_code}} {{valueStep3.formSignerNotifySMS.sender_cellphone}}</span></div>
+              </div>
+
+              <div class="col-span-2">
+                <div class="text-label-01"><span>Cuerpo del Mensaje</span></div>
+                <span>{{valueStep3.formSignerNotifySMS.text}}</span>
+              </div>
+
+            </div>
+          </div>
+
+          <div *ngIf="valueStep3?.formSignerNotifyEMAIL" class="space-y-6">
+            <div class="title-section flex items-center space-x-2">
+              <div class="w-1 h-4 rounded bg-brand-c"></div>
+              <span class="t-body text-brand-c">Detalles del Email</span>
+            </div>
+            <div
+              class="rounded-lg border-2 border-brand-c p-4 w-full h-full gap-4 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-outline-gray-3">
+
+              <div>
+                <div class="text-label-01"><span>Con Copia a (C.C.)</span></div>
+                <div><span>{{valueStep3.formSignerNotifyEMAIL.cc}}</span></div>
+              </div>
+              <div>
+                <div class="text-label-01"><span>Con Copia Oculta a (B.C.C.)</span></div>
+                <div><span>{{valueStep3.formSignerNotifyEMAIL.bcc}}</span></div>
+              </div>
+
+              <div>
+                <div class="text-label-01"><span>Asunto del Correo</span></div>
+                <span>{{valueStep3.formSignerNotifyEMAIL.subject}}</span>
+              </div>
+
+              <div>
+                <div class="text-label-01"><span>Texto del E-Mail</span></div>
+                <span>{{valueStep3.formSignerNotifyEMAIL.text}}</span>
+              </div>
+
+            </div>
+          </div>
+
+          <div *ngIf="valueStep5?.formReminderSMS" class="space-y-6">
+            <div class="title-section flex items-center space-x-2">
+              <div class="w-1 h-4 rounded bg-brand-c"></div>
+              <span class="t-body text-brand-c">Aviso de Notificaciones por SMS</span>
+            </div>
+            <div
+              class="rounded-lg border-2 border-brand-c p-4 w-full h-full gap-4 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-outline-gray-3">
+
+              <div>
+                <div class="text-label-01"><span>Notificaciones</span></div>
+                <div><span>Cada {{valueStep5.formReminderSMS.frequency_reminder}} {{valueStep5.formReminderSMS.id_frequency}}</span></div>
+              </div>
+
+              <div>
+                <div class="text-label-01"><span>Texto del Mensaje del recordatorio</span></div>
+                <span>{{valueStep5.formReminderSMS.text}}</span>
+              </div>
+
+            </div>
+          </div>
+
+          <div *ngIf="valueStep5?.formReminderEMAIL" class="space-y-6">
+            <div class="title-section flex items-center space-x-2">
+              <div class="w-1 h-4 rounded bg-brand-c"></div>
+              <span class="t-body text-brand-c">Detalles del Email</span>
+            </div>
+            <div
+              class="rounded-lg border-2 border-brand-c p-4 w-full h-full gap-4 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-outline-gray-3">
+
+              <div>
+                <div class="text-label-01"><span>Notificaciones</span></div>
+                <div><span>{{valueStep5.formReminderEMAIL.frequency_reminder}} {{valueStep5.formReminderEMAIL.id_frequency}}</span></div>
+              </div>
+
+              <div>
+                <div class="text-label-01"><span>Con Copia a (C.C.)</span></div>
+                <div><span>{{valueStep5.formReminderEMAIL.cc}}</span></div>
+              </div>
+              <div>
+                <div class="text-label-01"><span>Con Copia Oculta a (B.C.C.)</span></div>
+                <div><span>{{valueStep5.formReminderEMAIL.bcc}}</span></div>
+              </div>
+
+              <div>
+                <div class="text-label-01"><span>Asunto del Correo</span></div>
+                <span>{{valueStep5.formReminderEMAIL.subject}}</span>
+              </div>
+
+              <div>
+                <div class="text-label-01"><span>Texto del E-Mail</span></div>
+                <span>{{valueStep5.formReminderEMAIL.text}}</span>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <div class="title-section flex items-center space-x-2">
+              <div class="w-1 h-4 rounded bg-brand-c"></div>
+              <span class="t-body text-brand-c">Resumen de configuración OTP</span>
+            </div>
+            <div
+              class="rounded-lg border-2 border-brand-c p-4 w-full h-full gap-4 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-outline-gray-3">
+
+              <div>
+                <div class="text-label-01"><span>Número de Carácteres</span></div>
+                <div><span>{{valueStep4.formOTP.characters}}</span></div>
+              </div>
+
+              <div>
+                <div class="text-label-01"><span>Intentos</span></div>
+                <div><span>{{valueStep4.formOTP.attempts}}</span></div>
+              </div>
+
+              <div>
+                <div class="text-label-01"><span>Tiempo de vida del OTP</span></div>
+                <div><span>{{valueStep4.formOTP.ttl}} {{valueStep4.formOTP.id_frequency_time}}</span></div>
+              </div>
+
+              <div>
+                <div class="text-label-01"><span>Se emite</span></div>
+                <div *ngIf="valueStep4.formOTP.id_issues_code === 13"><span>Al ingresar al portal de firma</span></div>
+                <div *ngIf="valueStep4.formOTP.id_issues_code === 14"><span>Al ingresar al portal de firma</span></div>
+              </div>
+
+              <div *ngIf="valueStep4?.formOTPNotifySMS" class="col-span-2">
+                <div class="text-label-01"><span>Texto del Mensaje</span></div>
+                <span>{{valueStep4.formOTPNotifySMS.text}}</span>
+              </div>
+
+              <div *ngIf="valueStep4?.formOTPNotifyEMAIL" class="col-span-2">
+                <div class="text-label-01"><span>Asunto del Correo</span></div>
+                <span>{{valueStep4.formOTPNotifyEMAIL.subject}}</span>
+              </div>
+
+              <div *ngIf="valueStep4?.formOTPNotifyEMAIL" class="col-span-2">
+                <div class="text-label-01"><span>Texto del Correo</span></div>
+                <span
+                >{{valueStep4.formOTPNotifyEMAIL.text}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="b-nav-dual absolute left-1/2 -translate-x-2/4 bottom-4">
+            <button class="secondary" routerLink="/workflow/create/reminder-signers">Anterior</button>
+            <div class="separador"></div>
+            <button class="primary" (click)="createWorkflow()">Crear</button>
+        </div>
+    </div>
+</div>
+
+<app-toast></app-toast>

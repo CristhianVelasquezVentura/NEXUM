@@ -14,13 +14,14 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {DocumentService} from "@app/core/services/document/document.service";
 import {UiModule} from "@app/core/ui/ui.module";
 import {SignatureInterceptor} from "@app/core/services/interceptors/sign/sign.interceptor";
-import {ToastService} from "@app/core/ui/services/toast/toast.service";
+import {ToastService} from "@app/public/services/toast/toast.service";
 import {OtpService} from "@app/core/services/otp/otp.service";
 import {NgxCaptchaModule} from "ngx-captcha";
 import { AttachDocumentsComponent } from './pages/attach-documents/attach-documents.component';
 import { SelfieTestComponent } from './pages/selfie-test/selfie-test.component';
 import { SelfieCaptureComponent } from './components/selfie-capture/selfie-capture.component';
 import { DocumentCaptureComponent } from './components/document-capture/document-capture.component';
+import {ToastComponent} from "@app/public/toast/toast.component";
 
 @NgModule({
     declarations: [
@@ -36,13 +37,14 @@ import { DocumentCaptureComponent } from './components/document-capture/document
         SelfieCaptureComponent,
         DocumentCaptureComponent
     ],
-    imports: [
-        CommonModule,
-        DocumentSignProcessRoutingModule,
-        ReactiveFormsModule,
-        UiModule,
-        NgxCaptchaModule
-    ],
+  imports: [
+    CommonModule,
+    DocumentSignProcessRoutingModule,
+    ReactiveFormsModule,
+    UiModule,
+    NgxCaptchaModule,
+    ToastComponent
+  ],
     providers: [
         SignService,
         ToastService,

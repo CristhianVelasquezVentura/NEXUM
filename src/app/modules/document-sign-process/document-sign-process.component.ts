@@ -6,7 +6,7 @@ import {Time} from "@app/core/utils/constant/constant";
 import {Token} from "@app/core/models/token";
 import {SignService} from "@app/core/services/sign/sign.service";
 import {Message} from "@app/core/models/message";
-import {ToastService} from "@app/core/ui/services/toast/toast.service";
+import {ToastService} from "@app/public/services/toast/toast.service";
 import {Signature} from "@app/core/models/signer";
 import {HttpErrorResponse} from "@angular/common/http";
 

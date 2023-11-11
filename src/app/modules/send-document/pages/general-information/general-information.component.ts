@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DocInfoStep1, DropdownModelWF, FileEvent} from '@app/core/models/signature.model';
-import { ToastService } from '@app/core/ui/services/toast/toast.service';
+import { ToastService } from '@app/public/services/toast/toast.service';
 import { Workflow, Annexes, RequestedDocument, AttachedDocument } from '@app/modules/workflow/models/steps';
 import { WorkflowService } from '@app/modules/workflow/services/workflow.service';
 import { Subscription } from 'rxjs';

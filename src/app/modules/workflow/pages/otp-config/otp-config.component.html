@@ -1,0 +1,161 @@
+<div class="flex bg-zc-50 justify-center w-full h-screen">
+  <div class="w-full relative h-screen pt-8 space-y-6 flex flex-col" style="max-width: 640px">
+    <div>
+      <app-header-nexum [router]="'/workflow'" [icon]="'close'"
+                        [title]="'Creación de Flujo'"></app-header-nexum>
+    </div>
+    <div class="body space-y-6 bg-white w-full overflow-y-auto h-full rounded-t-lg p-8">
+
+      <div class="step w-full flex items-center space-x-4">
+        <div class="flex items-center justify-center w-14 h-14 relative rounded-full bg-zc-50">
+
+          <span class="t-body text-brand-c">4/5</span>
+
+          <svg class="absolute top-0 left-0" width="56" height="56" viewBox="0 0 60 60" fill="none"
+               xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M30 2C35.913 2 41.6743 3.87194 46.458 7.34752C51.2417 10.8231 54.8024 15.7239 56.6296 21.3475C58.4568 26.9711 58.4568 33.0289 56.6296 38.6525C54.8024 44.2761 51.2417 49.1769 46.458 52.6525C41.6743 56.1281 35.913 58 30 58C24.087 58 18.3257 56.1281 13.542 52.6525C8.75828 49.1769 5.19764 44.2761 3.37042 38.6525C1.54319 33.0289 1.54319 26.9711 3.37042 21.3475"
+              stroke="url(#paint0_linear_674_679)" stroke-width="4" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="paint0_linear_674_679" x1="2" y1="30.6512" x2="58" y2="30.6512"
+                              gradientUnits="userSpaceOnUse">
+                <stop stop-color="#F66100"/>
+                <stop offset="1" stop-color="#F4BC2C"/>
+              </linearGradient>
+            </defs>
+          </svg>
+
+        </div>
+        <div class="flex flex-col">
+          <span class="t-body text-zc-800">Configuración de OTP</span>
+          <span class="t-label text-brand-c">Sigue: Aviso para los Firmantes</span>
+        </div>
+      </div>
+
+      <div class="alert-info w-full bg-blue-50 rounded-lg p-4 space-x-4 flex items-center">
+        <div>
+          <svg class="stroke-current stroke-blue-600" width="24" height="24" viewBox="0 0 24 24" fill="none"
+               xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M13 16H12V12H11M12 8H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="text-blue-600 t-body">OTP: Código de acceso de una sola vez.</span>
+      </div>
+
+      <ng-container>
+        <form class="space-y-6 w-full" [formGroup]="otpForm">
+          <div class="title-section flex items-center space-x-2">
+            <div class="w-1 h-4 rounded bg-brand-c"></div>
+            <span class="t-body text-brand-c">Configurar OTP</span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 w-full">
+            <div class="i-outline">
+              <label>Número de caracteres</label>
+              <input formControlName="characters" type="number" min="0">
+              <span
+                *ngIf="isErrorControl(otpForm.controls['characters'])">{{getError(otpForm.controls['characters'])}}</span>
+            </div>
+            <div class="i-outline">
+              <label>Número de intentos</label>
+              <input type="number" formControlName="attempts" min="0">
+              <span
+                *ngIf="isErrorControl(otpForm.controls['attempts'])">{{getError(otpForm.controls['attempts'])}}</span>
+            </div>
+          </div>
+
+          <div class="grid gap-2 w-full">
+            <div class="flex items-center space-x-2">
+              <input type="radio" class="w-4 h-4" name="id_issues_code" checked formControlName="id_issues_code"
+                     [value]="13">
+              <span class="flex-1 text-zc-800 t-body">Pedir el código cuando entra al porfal de firma</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <input type="radio" class="w-4 h-4" name="id_issues_code" formControlName="id_issues_code" [value]="14">
+              <span class="flex-1 text-zc-800 t-body">Pedir el código cuando se firma el documento</span>
+            </div>
+          </div>
+
+          <div class="i-outline">
+            <label>Tiempo de vida del OTP</label>
+            <div class="flex items-center space-x-2">
+              <div>
+                <input class="flex-1" type="number" formControlName="ttl" min="0">
+                <span
+                  *ngIf="isErrorControl(otpForm.controls['ttl'])">{{getError(otpForm.controls['ttl'])}}</span>
+              </div>
+              <div>
+                <select formControlName="id_frequency_time">
+                  <option selected hidden value="">{{'Seleccione una opción'}}</option>
+                  <option *ngFor="let time of timeData" [value]="time.value">{{time.label}}
+                </select>
+                <span
+                  *ngIf="isErrorControl(otpForm.controls['id_frequency_time'])">{{getError(otpForm.controls['id_frequency_time'])}}</span>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div class="title-section flex items-center space-x-2">
+          <div class="w-1 h-4 rounded bg-brand-c"></div>
+          <span class="t-body text-brand-c">Notificaciones</span>
+        </div>
+
+        <form [formGroup]="otpNotifySMSForm">
+          <div class="i-outline">
+            <div class="flex items-center space-x-2">
+              <input type="checkbox" class="w-4 h-4" formControlName="active_sms">
+              <p class="flex-1 text-zc-800 t-body">Notificar por SMS</p>
+            </div>
+            <div class="h-2"></div>
+            <div class="i-outline">
+              <label>Texto del SMS</label>
+              <textarea rows="3" #SMS_text formControlName="text"></textarea>
+              <small class="t-label text-blue-600">{{SMS_text.value.length}}/100</small>
+              <span
+                *ngIf="isErrorControl(otpNotifySMSForm.controls['text'])">{{getError(otpNotifySMSForm.controls['text'])}}</span>
+            </div>
+          </div>
+        </form>
+
+        <form [formGroup]="otpNotifyEMAILForm">
+          <div class="i-outline">
+            <div class="flex items-center space-x-2">
+              <input type="checkbox" class="w-4 h-4" formControlName="active_email">
+              <p class="flex-1 text-zc-800 t-body">Notificar por Correo</p>
+            </div>
+            <div class="h-2"></div>
+            <div class="i-outline">
+              <label>Asunto</label>
+              <input type="text" #email_subject formControlName="subject">
+              <small class="t-label text-blue-600">{{email_subject.value.length}}/30</small>
+              <span
+                *ngIf="isErrorControl(otpNotifyEMAILForm.controls['subject'])">{{getError(otpNotifyEMAILForm.controls['subject'])}}</span>
+            </div>
+            <div class="h-2"></div>
+            <div class="i-outline">
+              <label>Texto del Correo</label>
+              <textarea rows="3" #email_text formControlName="text"></textarea>
+              <small class="t-label text-blue-600">{{email_text.value.length}}/100</small>
+              <span
+                *ngIf="isErrorControl(otpNotifyEMAILForm.controls['text'])">{{getError(otpNotifyEMAILForm.controls['text'])}}</span>
+            </div>
+          </div>
+        </form>
+
+
+      </ng-container>
+
+      <div class="h-16"></div>
+    </div>
+    <div class="b-nav-dual absolute left-1/2 -translate-x-2/4 bottom-4">
+      <button class="secondary" routerLink="/workflow/create/notify-signers">Anterior</button>
+      <div class="separador"></div>
+      <button class="primary" (click)="nextStep()">Siguiente</button>
+    </div>
+  </div>
+</div>
+
+<app-toast></app-toast>

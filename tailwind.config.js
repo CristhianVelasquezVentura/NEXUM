@@ -16,6 +16,13 @@ module.exports = {
         800: 'var(--c-fl-zc-800)',
         900: 'var(--c-fl-zc-900)',
       },
+      status: {
+        signed: 'var(--c-status-signed)',
+        pending: 'var(--c-status-pending)',
+        error: 'var(--c-status-error)',
+        explained: 'var(--c-status-explained)',
+        cancelled: 'var(--c-status-cancelled)'
+      },
       brand: {
         c: 'var(--c-fl-brand)',
         l: 'var(--c-fl-brand-light)',

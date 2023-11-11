@@ -1,0 +1,55 @@
+<div class="flex bg-zc-50 justify-center w-full h-screen">
+  <div class="w-full relative h-screen pt-8 space-y-6 flex flex-col" style="max-width: 640px">
+    <div>
+      <app-header-nexum [router]="'/workflow/create'" [icon]="'close'"
+                        [title]="'Creación de Flujo'"></app-header-nexum>
+    </div>
+    <div class="body space-y-6 bg-white w-full overflow-y-auto h-full rounded-t-lg p-8">
+
+      <div class="step w-full flex items-center space-x-4">
+        <div class="flex items-center justify-center w-14 h-14 relative rounded-full bg-zc-50">
+
+          <span class="t-body text-brand-c">5/5</span>
+
+          <svg class="absolute top-0 left-0" width="56" height="56" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="28" stroke="url(#paint0_linear_678_698)" stroke-width="4"/>
+            <defs>
+              <linearGradient id="paint0_linear_678_698" x1="2" y1="30.6512" x2="58" y2="30.6512" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#F66100"/>
+                <stop offset="1" stop-color="#F4BC2C"/>
+              </linearGradient>
+            </defs>
+          </svg>
+
+
+        </div>
+        <div class="flex flex-col">
+          <span class="t-body text-zc-800">Recordatorio para los Firmantes</span>
+          <span class="t-label text-brand-c">Anterior: Configuración OTP</span>
+        </div>
+      </div>
+
+      <div class="flex w-full h-fit space-x-2" style="max-width: 320px">
+        <button class="flex-1 {{showFormSMS ? 'b-tab-on':'b-tab-off'}}" (click)="showFormSMS=true">SMS</button>
+        <button class="flex-1 {{!showFormSMS ? 'b-tab-on':'b-tab-off'}}" (click)="showFormSMS=false">Correo</button>
+      </div>
+
+      <div class="sms-section" *ngIf="showFormSMS">
+        <workflow-reminder-sms></workflow-reminder-sms>
+      </div>
+
+      <div class="email-section" *ngIf="!showFormSMS">
+        <workflow-reminder-email></workflow-reminder-email>
+      </div>
+
+      <div class="h-16"></div>
+    </div>
+    <div class="b-nav-dual absolute left-1/2 -translate-x-2/4 bottom-4">
+      <button class="secondary" routerLink="/workflow/create/otp-config">Anterior</button>
+      <div class="separador"></div>
+      <button class="primary" (click)="nextPage()">Siguiente</button>
+    </div>
+  </div>
+</div>
+
+<app-toast></app-toast>

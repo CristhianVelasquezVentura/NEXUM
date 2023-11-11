@@ -27,6 +27,12 @@
     --c-alert-success-d: #22C55E;
     --c-alert-info-d: #0284C7;
     --c-alert-warning-d: #FBBF24;
+
+    --c-status-signed: #00E573;
+    --c-status-pending: #FFCC33;
+    --c-status-error: #FF0055;
+    --c-status-explained: #00D4FF;
+    --c-status-cancelled: #8080B2;
   }
   .theme-light {
     --c-fl-white: var(--c-white);
@@ -132,12 +138,16 @@
   .b-small {
     @apply flex items-center space-x-1 px-2 py-1 rounded-lg border border-zc-200 hover:bg-zc-50 t-body text-zc-600 hover:t-body-b;
   }
+
   .b-toolbar {
-    @apply rounded-full flex items-center justify-center h-12 w-12 stroke-zc-400 hover:stroke-brand-c hover:bg-brand-l
+    @apply rounded-full flex items-center justify-center h-12 w-12 hover:bg-brand-l
   }
   .b-toolbar-primary {
+    @apply rounded-full flex items-center justify-center h-12 w-12 hover:drop-shadow-lg border-2 border-brand-c stroke-brand-c bg-white
+  }
+  .b-toolbar-primary-select {
     background: linear-gradient(90deg, #F66100 0%, #F4BC2C 100%);
-    @apply rounded-full flex items-center justify-center h-12 w-12 stroke-white hover:drop-shadow-lg
+    @apply rounded-full flex items-center justify-center h-12 w-12 hover:drop-shadow-lg
   }
 
   .b-ghost-sm {
@@ -175,8 +185,16 @@
     }
   }
 
+  .b-hiper {
+    @apply p-6 flex items-center space-x-4 t-subtitle text-zc-800 text-left bg-white rounded-lg border border-zc-200;
+  }
+
+  .b-status {
+    @apply flex items-center justify-center h-14 w-14 rounded-lg;
+  }
+
   .i-outline {
-    @apply border border-zc-200 rounded-lg flex flex-col p-3;
+    @apply border border-zc-200 rounded-lg flex flex-col p-3 bg-white;
     label {
       @apply t-label text-zc-400;
     }

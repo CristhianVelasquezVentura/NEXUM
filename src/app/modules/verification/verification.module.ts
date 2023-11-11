@@ -6,7 +6,7 @@ import { VerificationComponent } from './verification.component';
 import {UiModule} from "@app/core/ui/ui.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {TrackingDocumentComponent, ValidateDocumentComponent} from "@app/modules/verification/pages";
-import {ToastService} from "@app/core/ui/services/toast/toast.service";
+import {ToastService} from "@app/public/services/toast/toast.service";
 
 
 @NgModule({

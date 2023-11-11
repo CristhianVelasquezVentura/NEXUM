@@ -1,0 +1,21 @@
+<div class="space-y-6 p-6 rounded-lg border-zc-200 bg-white drop-shadow-lg w-full h-fit" style="max-width: 350px;">
+  <div class="title-section flex items-center space-x-2">
+    <div class="w-1 h-4 rounded bg-brand-c"></div>
+    <span class="t-body text-brand-c">Agregar rol</span>
+  </div>
+
+  <form class="grid gap-2 w-full">
+    <div class="i-outline">
+      <label>Rol</label>
+      <input type="text" class="w-full">
+      <!--<span *ngIf="isErrorControl(annexesForm.controls['name'])">{{getError(annexesForm.controls['name'])}}</span>-->
+    </div>
+  </form>
+  <div class="w-full flex items-center space-x-2">
+    <button class="b-ghost-md w-full" (click)="emitCancelEvent()">Cancelar</button>
+    <div class="separador h-6 border-l border-zc-200"></div>
+    <button class="b-ghost-md w-full">
+      <span class="text-brand-c">Agregar</span>
+    </button>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {UntypedFormControl, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {ToastService} from "@app/core/ui/services/toast/toast.service";
+import {ToastService} from "@app/public/services/toast/toast.service";
 import {Subscription} from "rxjs";
 import {HttpErrorResponse} from "@angular/common/http";
 import {OtpService} from "@app/core/services/otp/otp.service";

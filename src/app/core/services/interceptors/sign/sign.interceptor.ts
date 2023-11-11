@@ -13,7 +13,7 @@ export class SignatureInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    const token = sessionStorage.getItem('signature-token');
+    const token = sessionStorage.getItem('access-token');
     //debugger
     let req = request;
     if (token) {

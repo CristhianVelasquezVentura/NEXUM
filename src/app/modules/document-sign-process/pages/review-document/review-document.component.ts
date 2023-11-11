@@ -11,7 +11,7 @@ import {GetExtensionOfBase64, GetMimeTypeOfBase64, GetTokenUser} from "@app/core
 import {DocumentService} from "@app/core/services/document/document.service";
 import {FileAnnexe} from "@app/core/models/document";
 import {Router} from "@angular/router";
-import {ToastService} from "@app/core/ui/services/toast/toast.service";
+import {ToastService} from "@app/public/services/toast/toast.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Token} from "@app/core/models/token";
 
