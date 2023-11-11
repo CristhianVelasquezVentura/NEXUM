@@ -27,8 +27,8 @@ export class DocumentSignProcessComponent implements OnInit, OnDestroy {
   public minutes: number = 0;
   public seconds: number = 0;
   public isFinish: boolean = false;
-  //public page: string = 'access-code';
-  public page: string = 'selfie-test';
+  public page: string = 'access-code';
+  //public page: string = 'selfie-test';
   public message!: Message;
   public isBlock: boolean = false;
 
