@@ -59,7 +59,8 @@ export class SelfieTestComponent {
   public setIdentityDocument(value: { front: string, back: string }): void {
     this.lifeTest.document_front = value.front;
     this.lifeTest.document_back = value.back;
-    this.component = 2;
+    debugger
+    this.component = 1;
   }
 
   /**

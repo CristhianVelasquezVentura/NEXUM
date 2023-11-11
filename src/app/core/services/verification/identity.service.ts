@@ -30,6 +30,5 @@ export class IdentityService {
       errorMessage = `Error:code ${err.message}`;
     }
     return throwError(errorMessage);
-
   }
 }
