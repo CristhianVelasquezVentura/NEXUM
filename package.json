@@ -23,6 +23,7 @@
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
     "@types/offscreencanvas": "^2019.7.0",
+    "@vladmandic/face-api": "^1.7.12",
     "@types/ws": "^8.5.4",
     "crypto-js": "^4.1.1",
     "ecapture-ng-ui": "^0.6.1",

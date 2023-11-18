@@ -28,6 +28,7 @@ export class DocumentSignProcessComponent implements OnInit, OnDestroy {
   public seconds: number = 0;
   public isFinish: boolean = false;
   public page: string = 'access-code';
+  //public page: string = 'selfie-test';
   public message!: Message;
   public isBlock: boolean = false;
 
@@ -40,7 +41,7 @@ export class DocumentSignProcessComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.initSession();
+    //this.initSession();
   }
 
   ngOnDestroy(): void {
@@ -142,7 +143,7 @@ export class DocumentSignProcessComponent implements OnInit, OnDestroy {
    * Método que valida la autenticación del access code del firmate
    */
   public authenticated(): void {
-    this.page = 'document-review';
+    this.page = 'selfie-test';
   }
 
   /**

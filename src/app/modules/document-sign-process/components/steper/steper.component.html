@@ -3,7 +3,7 @@
     <div *ngIf="steper[0] === 'd' || steper[0] === 'f'" class="w-10 h-10 rounded-full flex items-center justify-center {{steper[0] === 'd' ? 'bg-brand-l stroke-brand-c':'bg-brand-c stroke-white'}}">
       <div>
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M17.5 17.5L12.5 12.5M14.1667 8.33333C14.1667 11.555 11.555 14.1667 8.33333 14.1667C5.11167 14.1667 2.5 11.555 2.5 8.33333C2.5 5.11167 5.11167 2.5 8.33333 2.5C11.555 2.5 14.1667 5.11167 14.1667 8.33333Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M7.49994 10.0002L9.16661 11.6668L12.4999 8.33352M6.52889 3.91439C7.12683 3.86667 7.69449 3.63154 8.15104 3.24247C9.21644 2.33454 10.7834 2.33454 11.8488 3.24247C12.3054 3.63154 12.873 3.86667 13.471 3.91439C14.8664 4.02574 15.9744 5.13377 16.0857 6.52913C16.1334 7.12708 16.3686 7.69473 16.7576 8.15128C17.6656 9.21669 17.6656 10.7837 16.7576 11.8491C16.3686 12.3056 16.1334 12.8733 16.0857 13.4712C15.9744 14.8666 14.8664 15.9746 13.471 16.086C12.873 16.1337 12.3054 16.3688 11.8488 16.7579C10.7834 17.6658 9.21644 17.6658 8.15104 16.7579C7.69449 16.3688 7.12683 16.1337 6.52889 16.086C5.13353 15.9746 4.0255 14.8666 3.91414 13.4712C3.86643 12.8733 3.6313 12.3056 3.24223 11.8491C2.3343 10.7837 2.3343 9.21669 3.24223 8.15128C3.6313 7.69473 3.86643 7.12708 3.91414 6.52913C4.0255 5.13377 5.13353 4.02574 6.52889 3.91439Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
     </div>
@@ -16,15 +16,17 @@
     </div>
     <div class="flex flex-col flex-1">
       <span class="t-label text-zc-400">Paso 1</span>
-      <span class="t-body text-zc-800">Revisar documentos</span>
+      <span class="t-body text-zc-800">Validación de identidad</span>
     </div>
   </div>
   <div class="separador h-6 border-r w-5 border-zc-200"></div>
   <div class="step flex items-center space-x-4">
     <div *ngIf="steper[1] === 'd' || steper[1] === 'f'" class="w-10 h-10 rounded-full flex items-center justify-center {{steper[1] === 'd' ? 'bg-brand-l stroke-brand-c':'bg-brand-c stroke-white'}}">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7.49994 10.0002L9.16661 11.6668L12.4999 8.33352M6.52889 3.91439C7.12683 3.86667 7.69449 3.63154 8.15104 3.24247C9.21644 2.33454 10.7834 2.33454 11.8488 3.24247C12.3054 3.63154 12.873 3.86667 13.471 3.91439C14.8664 4.02574 15.9744 5.13377 16.0857 6.52913C16.1334 7.12708 16.3686 7.69473 16.7576 8.15128C17.6656 9.21669 17.6656 10.7837 16.7576 11.8491C16.3686 12.3056 16.1334 12.8733 16.0857 13.4712C15.9744 14.8666 14.8664 15.9746 13.471 16.086C12.873 16.1337 12.3054 16.3688 11.8488 16.7579C10.7834 17.6658 9.21644 17.6658 8.15104 16.7579C7.69449 16.3688 7.12683 16.1337 6.52889 16.086C5.13353 15.9746 4.0255 14.8666 3.91414 13.4712C3.86643 12.8733 3.6313 12.3056 3.24223 11.8491C2.3343 10.7837 2.3343 9.21669 3.24223 8.15128C3.6313 7.69473 3.86643 7.12708 3.91414 6.52913C4.0255 5.13377 5.13353 4.02574 6.52889 3.91439Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <div>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.5 17.5L12.5 12.5M14.1667 8.33333C14.1667 11.555 11.555 14.1667 8.33333 14.1667C5.11167 14.1667 2.5 11.555 2.5 8.33333C2.5 5.11167 5.11167 2.5 8.33333 2.5C11.555 2.5 14.1667 5.11167 14.1667 8.33333Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
     </div>
     <div *ngIf="steper[1] === 's'" class="w-10 h-10 rounded-full flex items-center justify-center bg-emerald-50 stroke-emerald-500 dark:bg-emerald-800 dark:stroke-emerald-400 border border-emerald-400">
       <div>
@@ -33,19 +35,17 @@
         </svg>
       </div>
     </div>
-    <div class="flex-1 flex flex-col">
+    <div class="flex flex-col flex-1">
       <span class="t-label text-zc-400">Paso 2</span>
-      <span class="t-body text-zc-800">Adjuntar Documentos</span>
+      <span class="t-body text-zc-800">Revisar documentos</span>
     </div>
   </div>
   <div class="separador h-6 border-r w-5 border-zc-200"></div>
   <div class="step flex items-center space-x-4">
     <div *ngIf="steper[2] === 'd' || steper[2] === 'f'" class="w-10 h-10 rounded-full flex items-center justify-center {{steper[2] === 'd' ? 'bg-brand-l stroke-brand-c':'bg-brand-c stroke-white'}}">
-      <div>
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12.6935 4.36019L15.6398 7.30647M13.9435 3.11019C14.7571 2.2966 16.0762 2.2966 16.8898 3.11019C17.7034 3.92379 17.7034 5.24288 16.8898 6.05647L5.41667 17.5296H2.5V14.5537L13.9435 3.11019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7.49994 10.0002L9.16661 11.6668L12.4999 8.33352M6.52889 3.91439C7.12683 3.86667 7.69449 3.63154 8.15104 3.24247C9.21644 2.33454 10.7834 2.33454 11.8488 3.24247C12.3054 3.63154 12.873 3.86667 13.471 3.91439C14.8664 4.02574 15.9744 5.13377 16.0857 6.52913C16.1334 7.12708 16.3686 7.69473 16.7576 8.15128C17.6656 9.21669 17.6656 10.7837 16.7576 11.8491C16.3686 12.3056 16.1334 12.8733 16.0857 13.4712C15.9744 14.8666 14.8664 15.9746 13.471 16.086C12.873 16.1337 12.3054 16.3688 11.8488 16.7579C10.7834 17.6658 9.21644 17.6658 8.15104 16.7579C7.69449 16.3688 7.12683 16.1337 6.52889 16.086C5.13353 15.9746 4.0255 14.8666 3.91414 13.4712C3.86643 12.8733 3.6313 12.3056 3.24223 11.8491C2.3343 10.7837 2.3343 9.21669 3.24223 8.15128C3.6313 7.69473 3.86643 7.12708 3.91414 6.52913C4.0255 5.13377 5.13353 4.02574 6.52889 3.91439Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </div>
     <div *ngIf="steper[2] === 's'" class="w-10 h-10 rounded-full flex items-center justify-center bg-emerald-50 stroke-emerald-500 dark:bg-emerald-800 dark:stroke-emerald-400 border border-emerald-400">
       <div>
@@ -56,15 +56,17 @@
     </div>
     <div class="flex-1 flex flex-col">
       <span class="t-label text-zc-400">Paso 3</span>
-      <span class="t-body text-zc-800">Firma</span>
+      <span class="t-body text-zc-800">Adjuntar Documentos</span>
     </div>
   </div>
   <div class="separador h-6 border-r w-5 border-zc-200"></div>
   <div class="step flex items-center space-x-4">
     <div *ngIf="steper[3] === 'd' || steper[3] === 'f'" class="w-10 h-10 rounded-full flex items-center justify-center {{steper[3] === 'd' ? 'bg-brand-l stroke-brand-c':'bg-brand-c stroke-white'}}">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7.50008 10.8333H12.5001M10.0001 8.33333L10.0001 13.3333M14.1667 17.5H5.83341C4.91294 17.5 4.16675 16.7538 4.16675 15.8333V4.16667C4.16675 3.24619 4.91294 2.5 5.83341 2.5H10.4882C10.7093 2.5 10.9212 2.5878 11.0775 2.74408L15.5893 7.25592C15.7456 7.4122 15.8334 7.62416 15.8334 7.84518V15.8333C15.8334 16.7538 15.0872 17.5 14.1667 17.5Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <div>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.6935 4.36019L15.6398 7.30647M13.9435 3.11019C14.7571 2.2966 16.0762 2.2966 16.8898 3.11019C17.7034 3.92379 17.7034 5.24288 16.8898 6.05647L5.41667 17.5296H2.5V14.5537L13.9435 3.11019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
     </div>
     <div *ngIf="steper[3] === 's'" class="w-10 h-10 rounded-full flex items-center justify-center bg-emerald-50 stroke-emerald-500 dark:bg-emerald-800 dark:stroke-emerald-400 border border-emerald-400">
       <div>
@@ -75,6 +77,27 @@
     </div>
     <div class="flex-1 flex flex-col">
       <span class="t-label text-zc-400">Paso 4</span>
+      <span class="t-body text-zc-800">Firma</span>
+    </div>
+  </div>
+  <div class="separador h-6 border-r w-5 border-zc-200"></div>
+  <div class="step flex items-center space-x-4">
+    <div *ngIf="steper[4] === 'd' || steper[4] === 'f'" class="w-10 h-10 rounded-full flex items-center justify-center {{steper[4] === 'd' ? 'bg-brand-l stroke-brand-c':'bg-brand-c stroke-white'}}">
+      <div>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.50008 10.8333H12.5001M10.0001 8.33333L10.0001 13.3333M14.1667 17.5H5.83341C4.91294 17.5 4.16675 16.7538 4.16675 15.8333V4.16667C4.16675 3.24619 4.91294 2.5 5.83341 2.5H10.4882C10.7093 2.5 10.9212 2.5878 11.0775 2.74408L15.5893 7.25592C15.7456 7.4122 15.8334 7.62416 15.8334 7.84518V15.8333C15.8334 16.7538 15.0872 17.5 14.1667 17.5Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+    <div *ngIf="steper[4] === 's'" class="w-10 h-10 rounded-full flex items-center justify-center bg-emerald-50 stroke-emerald-500 dark:bg-emerald-800 dark:stroke-emerald-400 border border-emerald-400">
+      <div>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4.16666 10.8335L7.49999 14.1668L15.8333 5.8335" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+    <div class="flex-1 flex flex-col">
+      <span class="t-label text-zc-400">Paso 5</span>
       <span class="t-body text-zc-800">Validar firma</span>
     </div>
   </div>
@@ -83,10 +106,11 @@
 <div class="lg:hidden">
   <div class="steppers h-fit flex items-center space-x-4 w-fit">
     <div class="relative h-16 w-16 flex items-center justify-center">
-      <span *ngIf="steper[0] === 'f'" class="absolute text-brand-c t-body">1 / 4</span>
-      <span *ngIf="steper[1] === 'f'" class="absolute text-brand-c t-body">2 / 4</span>
-      <span *ngIf="steper[2] === 'f'" class="absolute text-brand-c t-body">3 / 4</span>
-      <span *ngIf="steper[3] === 'f'" class="absolute text-brand-c t-body">4 / 4</span>
+      <span *ngIf="steper[0] === 'f'" class="absolute text-brand-c t-body">1 / 5</span>
+      <span *ngIf="steper[1] === 'f'" class="absolute text-brand-c t-body">2 / 5</span>
+      <span *ngIf="steper[2] === 'f'" class="absolute text-brand-c t-body">3 / 5</span>
+      <span *ngIf="steper[3] === 'f'" class="absolute text-brand-c t-body">4 / 5</span>
+      <span *ngIf="steper[4] === 'f'" class="absolute text-brand-c t-body">5 / 5</span>
 
       <div *ngIf="steper[0] === 'f'">
         <svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -122,6 +146,17 @@
         </svg>
       </div>
       <div *ngIf="steper[3] === 'f'">
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="30" r="28" stroke="url(#paint0_linear_718_912)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="paint0_linear_718_912" x1="2" y1="30.6512" x2="58" y2="30.6512" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#F66100"/>
+              <stop offset="1" stop-color="#F4BC2C"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div *ngIf="steper[4] === 'f'">
         <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="30" cy="30" r="28" stroke="url(#paint0_linear_718_912)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
           <defs>

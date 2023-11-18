@@ -26,7 +26,8 @@
 </ng-template>
 <ng-template #pages [ngSwitch]="page">
   <app-access-process-sign (authorized)="authenticated()" *ngSwitchCase="'access-code'"></app-access-process-sign>
-  <app-review-document (next-page)="goToPage($event)" *ngSwitchCase="'document-review'"></app-review-document>
+  <app-selfie-test (next-page)="goToPage($event)" *ngSwitchCase="'selfie-test'"></app-selfie-test>
+  <app-review-document (next-page)="goToPage($event)" (back-page)="goToPage($event)" *ngSwitchCase="'document-review'"></app-review-document>
   <app-attach-documents (next-page)="goToPage($event)" (back-page)="goToPage($event)" *ngSwitchCase="'attach-document'"></app-attach-documents>
   <app-sign-user (export-sign)="saveSignature($event)" (back-page)="goToPage($event)" *ngSwitchCase="'sign-user'"></app-sign-user>
   <app-valid-sign (end-process)="sendSignature()" *ngSwitchDefault></app-valid-sign>

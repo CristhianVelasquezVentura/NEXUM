@@ -43,6 +43,7 @@ import {Token} from "@app/core/models/token";
 export class ReviewDocumentComponent implements OnInit, OnDestroy {
 
   @Output('next-page') nextPage: EventEmitter<string> = new EventEmitter<string>();
+  @Output('back-page') backPage: EventEmitter<string> = new EventEmitter<string>();
   private _subscription: Subscription = new Subscription();
   public documentsAnnexes: FileAnnexe[] = [];
   public mainDocument!: FileAnnexe;
