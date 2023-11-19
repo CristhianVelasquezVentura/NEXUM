@@ -1,17 +1,20 @@
 import {Component, OnInit, forwardRef, Input, Output, EventEmitter} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import { NgIf, NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-file-upload',
-  templateUrl: './file-upload.component.html',
-  styleUrls: ['./file-upload.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => FileUploadComponent),
-      multi: true
-    }
-  ]
+    selector: 'app-file-upload',
+    templateUrl: './file-upload.component.html',
+    styleUrls: ['./file-upload.component.scss'],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => FileUploadComponent),
+            multi: true
+        }
+    ],
+    standalone: true,
+    imports: [NgIf, NgClass]
 })
 export class FileUploadComponent implements OnInit, ControlValueAccessor {
 

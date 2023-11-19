@@ -1,18 +1,19 @@
 import {Component} from '@angular/core';
-import {UiModule} from "@app/core/ui/ui.module";
+
 import {
   WorkflowStepDetailsComponent
 } from "@app/modules/workflow/components/workflow-step-details/workflow-step-details.component";
 import {RouterLink} from "@angular/router";
+import {HeaderNexumComponent} from "@app/core/ui";
 
 @Component({
   selector: 'app-workflow-info-create',
   templateUrl: './workflow-info-create.component.html',
   styleUrls: ['./workflow-info-create.component.scss'],
   imports: [
-    UiModule,
     WorkflowStepDetailsComponent,
-    RouterLink
+    RouterLink,
+    HeaderNexumComponent
   ],
   standalone: true
 })

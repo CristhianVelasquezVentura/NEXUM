@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {UiModule} from "@app/core/ui/ui.module";
+
 import {RouterLink} from "@angular/router";
 import {DtoWorkflow} from "@app/modules/workflow/models/steps";
 import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
@@ -15,11 +15,12 @@ import {
 import {WorkflowService} from "@app/modules/workflow/services/workflow.service";
 import {ToastService} from "@app/public/services/toast/toast.service";
 import {ToastComponent} from "@app/public/toast/toast.component";
+import {HeaderNexumComponent} from "@app/core/ui";
 
 @Component({
   selector: 'workflow-pre-creation-summary',
   standalone: true,
-  imports: [CommonModule, UiModule, RouterLink, ToastComponent],
+  imports: [CommonModule, RouterLink, ToastComponent, HeaderNexumComponent],
   templateUrl: './pre-creation-summary.component.html',
   styleUrls: ['./pre-creation-summary.component.scss'],
   providers: [ToastService]

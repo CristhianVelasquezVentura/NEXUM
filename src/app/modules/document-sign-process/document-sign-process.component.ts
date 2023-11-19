@@ -9,11 +9,22 @@ import {Message} from "@app/core/models/message";
 import {ToastService} from "@app/public/services/toast/toast.service";
 import {Signature} from "@app/core/models/signer";
 import {HttpErrorResponse} from "@angular/common/http";
+import { BlockPageComponent } from '../../core/ui/block-page/block-page.component';
+import { ToastComponent } from '../../public/toast/toast.component';
+import { ValidSignComponent } from './pages/valid-sign/valid-sign.component';
+import { SignUserComponent } from './pages/sign-user/sign-user.component';
+import { AttachDocumentsComponent } from './pages/attach-documents/attach-documents.component';
+import { ReviewDocumentComponent } from './pages/review-document/review-document.component';
+import { SelfieTestComponent } from './pages/selfie-test/selfie-test.component';
+import { AccessProcessSignComponent } from './pages/access-process-sign/access-process-sign.component';
+import { NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 
 @Component({
-  selector: 'app-document-sign-process',
-  templateUrl: './document-sign-process.component.html',
-  styleUrls: ['./document-sign-process.component.scss']
+    selector: 'app-document-sign-process',
+    templateUrl: './document-sign-process.component.html',
+    styleUrls: ['./document-sign-process.component.scss'],
+    standalone: true,
+    imports: [NgIf, NgSwitch, NgSwitchCase, AccessProcessSignComponent, SelfieTestComponent, ReviewDocumentComponent, AttachDocumentsComponent, SignUserComponent, NgSwitchDefault, ValidSignComponent, ToastComponent, BlockPageComponent]
 })
 export class DocumentSignProcessComponent implements OnInit, OnDestroy {
   private _subscriptions: Subscription = new Subscription();

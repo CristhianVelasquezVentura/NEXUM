@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
-import {UntypedFormControl, Validators} from "@angular/forms";
+import { UntypedFormControl, Validators, ReactiveFormsModule } from "@angular/forms";
 import {Router} from "@angular/router";
 import {ToastService} from "@app/public/services/toast/toast.service";
 import {Subscription} from "rxjs";
@@ -8,11 +8,16 @@ import {OtpService} from "@app/core/services/otp/otp.service";
 import {Token} from "@app/core/models/token";
 import {GetTokenUser} from "@app/core/utils/validations/validations";
 import {OtpRequest} from "@app/core/models/otp";
+import { NgIf } from '@angular/common';
+import { SteperComponent } from '../../components/steper/steper.component';
+import { HeaderDocumentSignComponent } from '../../components/header-document-sign/header-document-sign.component';
 
 @Component({
-  selector: 'app-valid-sign',
-  templateUrl: './valid-sign.component.html',
-  styleUrls: ['./valid-sign.component.scss']
+    selector: 'app-valid-sign',
+    templateUrl: './valid-sign.component.html',
+    styleUrls: ['./valid-sign.component.scss'],
+    standalone: true,
+    imports: [HeaderDocumentSignComponent, SteperComponent, NgIf, ReactiveFormsModule]
 })
 export class ValidSignComponent implements OnInit, OnDestroy {
 

@@ -13,8 +13,9 @@ import {UserModel} from '@app/modules/workflow/models/steps';
 import {Subscription} from "rxjs";
 import {Router, RouterLink} from '@angular/router';
 import {ToastService} from "@app/public/services/toast/toast.service";
-import {UiModule} from "@app/core/ui/ui.module";
+
 import {ToastComponent} from "@app/public/toast/toast.component";
+import {BlockPageComponent} from "@app/core/ui";
 
 @Component({
   selector: 'app-login',
@@ -24,8 +25,8 @@ import {ToastComponent} from "@app/public/toast/toast.component";
   imports: [
     ReactiveFormsModule,
     RouterLink,
-    UiModule,
-    ToastComponent
+    ToastComponent,
+    BlockPageComponent
   ],
   standalone: true
 })

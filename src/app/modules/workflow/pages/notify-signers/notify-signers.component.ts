@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {codeCountries, languages} from '@app/core/utils/data/constant';
 import {FormWorkflowService} from '@app/core/forms/workflow/form-workflow.service';
 import {Router, RouterLink} from '@angular/router';
-import {UiModule} from "@app/core/ui/ui.module";
+
 import {NgForOf, NgIf} from "@angular/common";
 import {
   NotifySignersSmsFormComponent
@@ -14,19 +14,22 @@ import {ToastComponent} from "@app/public/toast/toast.component";
 import {ToastService} from "@app/public/services/toast/toast.service";
 import {IValuesStep3} from "@app/core/models/workflow/workflow.model";
 import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
+import {HeaderNexumComponent} from "@app/core/ui";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-notify-signers',
   templateUrl: './notify-signers.component.html',
   styleUrls: ['./notify-signers.component.scss'],
   imports: [
-    UiModule,
     NgIf,
     NgForOf,
     RouterLink,
     NotifySignersSmsFormComponent,
     NotifySignersEmailFormComponent,
-    ToastComponent
+    ToastComponent,
+    HeaderNexumComponent,
+    ReactiveFormsModule
   ],
   providers: [ToastService],
   standalone: true

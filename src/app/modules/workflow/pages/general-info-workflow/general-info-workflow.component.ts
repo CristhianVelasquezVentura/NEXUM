@@ -4,28 +4,29 @@ import {Annexes} from '../../models/steps';
 import {ReactiveFormsModule} from '@angular/forms';
 import {codeCountries, fontText, languages} from '@app/core/utils/data/constant';
 import {Router} from '@angular/router';
-import {UiModule} from "@app/core/ui/ui.module";
+
 import {NgForOf, NgIf} from "@angular/common";
 import {ToastComponent} from "@app/public/toast/toast.component";
 import {ToastService} from "@app/public/services/toast/toast.service";
 import {BasicDataFormComponent, BrandingFormComponent} from "@app/modules/workflow/components";
 import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
 import {IValuesStep1} from "@app/core/models/workflow/workflow.model";
+import {HeaderNexumComponent} from "@app/core/ui";
 
 @Component({
     selector: 'app-general-info-workflow',
     templateUrl: './general-info-workflow.component.html',
     styleUrls: ['./general-info-workflow.component.scss'],
     standalone: true,
-    imports: [
-        UiModule,
-        ReactiveFormsModule,
-        NgIf,
-        NgForOf,
-        ToastComponent,
-        BasicDataFormComponent,
-        BrandingFormComponent
-    ],
+  imports: [
+    ReactiveFormsModule,
+    NgIf,
+    NgForOf,
+    ToastComponent,
+    BasicDataFormComponent,
+    BrandingFormComponent,
+    HeaderNexumComponent
+  ],
     providers: [ToastService],
 })
 export class GeneralInfoWorkflowComponent implements OnInit {

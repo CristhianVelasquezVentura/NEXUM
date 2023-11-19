@@ -10,12 +10,14 @@ import { ViewDocQueryDocsComponent } from './pages/view-doc-query-docs/view-doc-
 import { DetailDocQueryDocsComponent } from './pages/detail-doc-query-docs/detail-doc-query-docs.component';
 import { StatusSignDocQueryDocsComponent } from './pages/status-sign-doc-query-docs/status-sign-doc-query-docs.component';
 import { QueryDocsRoutingModule } from './query-docs-routing.module';
-import {UiModule} from "@app/core/ui/ui.module";
+
 
 
 
 @NgModule({
-  declarations: [
+    imports: [
+    CommonModule,
+    QueryDocsRoutingModule,
     TypeQueryDocsComponent,
     IntroQueryDocsComponent,
     DashboardQueryDocsComponent,
@@ -25,11 +27,6 @@ import {UiModule} from "@app/core/ui/ui.module";
     ViewDocQueryDocsComponent,
     DetailDocQueryDocsComponent,
     StatusSignDocQueryDocsComponent
-  ],
-  imports: [
-    CommonModule,
-    QueryDocsRoutingModule,
-    UiModule
-  ]
+]
 })
 export class QueryDocsModule { }

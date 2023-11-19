@@ -3,13 +3,17 @@ import {ToastService} from "@app/public/services/toast/toast.service";
 import {VerificationService} from "@app/core/services/verification/verification.service";
 import {onlyNumbers} from "@app/core/utils/validations/validations";
 import {Subscription} from "rxjs";
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Trazabilidad } from '@app/core/models/traza.model';
+import { BlockPageComponent } from '../../../../core/ui/block-page/block-page.component';
+import { NgIf, NgFor, DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-tracking-document',
-  templateUrl: './tracking-document.component.html',
-  styleUrls: ['./tracking-document.component.scss']
+    selector: 'app-tracking-document',
+    templateUrl: './tracking-document.component.html',
+    styleUrls: ['./tracking-document.component.scss'],
+    standalone: true,
+    imports: [ReactiveFormsModule, FormsModule, NgIf, NgFor, BlockPageComponent, DatePipe]
 })
 export class TrackingDocumentComponent implements OnDestroy, OnInit{
 
