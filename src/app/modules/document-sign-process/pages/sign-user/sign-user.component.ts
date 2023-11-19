@@ -2,11 +2,15 @@ import {Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewC
 import SignaturePad, {PointGroup} from 'signature_pad';
 import {TrimCanvas} from "@app/core/utils/functions/canvas";
 import {UserAgent} from "@app/core/utils/functions/userAnget";
+import { SteperComponent } from '../../components/steper/steper.component';
+import { HeaderDocumentSignComponent } from '../../components/header-document-sign/header-document-sign.component';
 
 @Component({
-  selector: 'app-sign-user',
-  templateUrl: './sign-user.component.html',
-  styleUrls: ['./sign-user.component.scss']
+    selector: 'app-sign-user',
+    templateUrl: './sign-user.component.html',
+    styleUrls: ['./sign-user.component.scss'],
+    standalone: true,
+    imports: [HeaderDocumentSignComponent, SteperComponent]
 })
 export class SignUserComponent implements OnInit {
   @ViewChild('canvas', {static: true}) signatureCanvas!: ElementRef<HTMLCanvasElement>;

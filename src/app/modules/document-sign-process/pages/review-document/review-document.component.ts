@@ -14,31 +14,45 @@ import {Router} from "@angular/router";
 import {ToastService} from "@app/public/services/toast/toast.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Token} from "@app/core/models/token";
+import { BlockPageComponent } from '../../../../core/ui/block-page/block-page.component';
+import { PdfViewerComponent } from '../../../../core/ui/pdf-viewer/pdf-viewer.component';
+import { NgIf, NgFor } from '@angular/common';
+import { SteperComponent } from '../../components/steper/steper.component';
+import { HeaderDocumentSignComponent } from '../../components/header-document-sign/header-document-sign.component';
 
 @Component({
-  selector: 'app-review-document',
-  templateUrl: './review-document.component.html',
-  styleUrls: ['./review-document.component.scss'],
-  animations: [
-    trigger('openClose', [
-      state('open', style({
-        height: '200px',
-        opacity: 1,
-        backgroundColor: 'yellow'
-      })),
-      state('closed', style({
-        height: '100px',
-        opacity: 0.8,
-        backgroundColor: 'blue'
-      })),
-      transition('open => closed', [
-        animate('1s')
-      ]),
-      transition('closed => open', [
-        animate('0.5s')
-      ]),
-    ]),
-  ],
+    selector: 'app-review-document',
+    templateUrl: './review-document.component.html',
+    styleUrls: ['./review-document.component.scss'],
+    animations: [
+        trigger('openClose', [
+            state('open', style({
+                height: '200px',
+                opacity: 1,
+                backgroundColor: 'yellow'
+            })),
+            state('closed', style({
+                height: '100px',
+                opacity: 0.8,
+                backgroundColor: 'blue'
+            })),
+            transition('open => closed', [
+                animate('1s')
+            ]),
+            transition('closed => open', [
+                animate('0.5s')
+            ]),
+        ]),
+    ],
+    standalone: true,
+    imports: [
+        HeaderDocumentSignComponent,
+        SteperComponent,
+        NgIf,
+        NgFor,
+        PdfViewerComponent,
+        BlockPageComponent,
+    ],
 })
 export class ReviewDocumentComponent implements OnInit, OnDestroy {
 

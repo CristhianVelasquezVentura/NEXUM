@@ -1,15 +1,19 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
+import { FormBuilder, FormControl, UntypedFormBuilder, UntypedFormGroup, Validators, ReactiveFormsModule } from "@angular/forms";
 import {VerificationService} from "@app/core/services/verification/verification.service";
 import {ToastService} from "@app/public/services/toast/toast.service";
 import {Response} from "@app/core/models/global.model";
 import * as CryptoJS from 'crypto-js';
 import {Subscription} from "rxjs";
+import { BlockPageComponent } from '../../../../core/ui/block-page/block-page.component';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-validate-document',
-  templateUrl: './validate-document.component.html',
-  styleUrls: ['./validate-document.component.scss']
+    selector: 'app-validate-document',
+    templateUrl: './validate-document.component.html',
+    styleUrls: ['./validate-document.component.scss'],
+    standalone: true,
+    imports: [NgIf, ReactiveFormsModule, BlockPageComponent]
 })
 export class ValidateDocumentComponent implements OnDestroy {
   public formValidateDocument: UntypedFormGroup;

@@ -1,7 +1,6 @@
-import {NgModule} from "@angular/core";
-import {RouterModule, Routes} from "@angular/router";
+import {Routes} from "@angular/router";
 
-const routes: Routes = [
+export const routes: Routes = [
   {path: '', redirectTo: 'auth', pathMatch: 'prefix'},
   {
     path: 'auth',
@@ -28,17 +27,3 @@ const routes: Routes = [
     loadChildren: () => import('./modules/query-docs/query-docs.module').then((m) => m.QueryDocsModule)
   }
 ];
-
-@NgModule({
-  imports: [
-    RouterModule.forRoot(routes, {
-      useHash: true,
-      scrollPositionRestoration: 'top'
-    }),
-  ],
-  exports: [
-    RouterModule
-  ],
-})
-export class AppRoutingModule {
-}

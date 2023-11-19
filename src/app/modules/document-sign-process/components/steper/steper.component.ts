@@ -1,9 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-steper',
-  templateUrl: './steper.component.html',
-  styleUrls: ['./steper.component.scss']
+    selector: 'app-steper',
+    templateUrl: './steper.component.html',
+    styleUrls: ['./steper.component.scss'],
+    standalone: true,
+    imports: [NgIf]
 })
 export class SteperComponent implements OnInit {
 

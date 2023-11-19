@@ -1,15 +1,21 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { DocInfoStep1, DropdownModelWF, FileEvent} from '@app/core/models/signature.model';
 import { ToastService } from '@app/public/services/toast/toast.service';
 import { Workflow, Annexes, RequestedDocument, AttachedDocument } from '@app/modules/workflow/models/steps';
 import { WorkflowService } from '@app/modules/workflow/services/workflow.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { ToastComponent } from '../../../../public/toast/toast.component';
+import { BlockPageComponent } from '../../../../core/ui/block-page/block-page.component';
+import { NgFor, NgIf } from '@angular/common';
+import { HeaderNexumComponent } from '../../../../core/ui/header-nexum/header-nexum.component';
 @Component({
-  selector: 'app-general-information',
-  templateUrl: './general-information.component.html',
-  styleUrls: ['./general-information.component.scss']
+    selector: 'app-general-information',
+    templateUrl: './general-information.component.html',
+    styleUrls: ['./general-information.component.scss'],
+    standalone: true,
+    imports: [HeaderNexumComponent, ReactiveFormsModule, NgFor, NgIf, BlockPageComponent, ToastComponent]
 })
 export class GeneralInformationComponent implements OnInit, OnDestroy {
   private _subscription = new Subscription();

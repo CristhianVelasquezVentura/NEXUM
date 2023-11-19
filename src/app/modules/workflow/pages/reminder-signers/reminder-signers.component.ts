@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {UiModule} from "@app/core/ui/ui.module";
+
 import {NgIf} from "@angular/common";
 import {ReactiveFormsModule} from "@angular/forms";
 import {timeOptions} from "@app/core/utils/data/constant";
@@ -10,18 +10,19 @@ import {Router, RouterLink} from "@angular/router";
 import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
 import {ToastComponent} from "@app/public/toast/toast.component";
 import {IValuesStep5} from "@app/core/models/workflow/workflow.model";
+import {HeaderNexumComponent} from "@app/core/ui";
 @Component({
   selector: 'app-reminder-signers',
   templateUrl: './reminder-signers.component.html',
   styleUrls: ['./reminder-signers.component.scss'],
   imports: [
-    UiModule,
     NgIf,
     ReactiveFormsModule,
     ReminderSmsComponent,
     ReminderEmailComponent,
     ToastComponent,
-    RouterLink
+    RouterLink,
+    HeaderNexumComponent
   ],
   standalone: true,
   providers: [ToastService]

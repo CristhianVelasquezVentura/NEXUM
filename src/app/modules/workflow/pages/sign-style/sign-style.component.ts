@@ -3,27 +3,28 @@ import {AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule} from '@ang
 import {FormWorkflowService} from '@app/core/forms/workflow/form-workflow.service';
 import {fontText} from '@app/core/utils/data/constant';
 import {Router, RouterLink} from '@angular/router';
-import {UiModule} from "@app/core/ui/ui.module";
+
 import {NgForOf, NgIf} from "@angular/common";
 import {getFormControlError} from "@app/public/control-error/utils/functions-form";
 import {ToastComponent} from "@app/public/toast/toast.component";
 import {ToastService} from "@app/public/services/toast/toast.service";
 import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
 import {IFormStyleSignValues, IValuesStep2} from "@app/core/models/workflow/workflow.model";
+import {HeaderNexumComponent} from "@app/core/ui";
 
 @Component({
     selector: 'app-sign-style',
     templateUrl: './sign-style.component.html',
     styleUrls: ['./sign-style.component.scss'],
     standalone: true,
-    imports: [
-        UiModule,
-        ReactiveFormsModule,
-        RouterLink,
-        NgForOf,
-        NgIf,
-        ToastComponent
-    ],
+  imports: [
+    ReactiveFormsModule,
+    RouterLink,
+    NgForOf,
+    NgIf,
+    ToastComponent,
+    HeaderNexumComponent
+  ],
     providers: [ToastService]
 })
 export class SignStyleComponent implements OnInit {

@@ -2,11 +2,14 @@ import {Component, ElementRef, EventEmitter, Output, ViewChild} from '@angular/c
 import * as faceApi from "@vladmandic/face-api";
 import { ToastService } from '@app/public/services/toast/toast.service';
 import { IdentityService } from '@app/core/services/verification/identity.service';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-selfie-capture',
-  templateUrl: './selfie-capture.component.html',
-  styleUrls: ['./selfie-capture.component.scss']
+    selector: 'app-selfie-capture',
+    templateUrl: './selfie-capture.component.html',
+    styleUrls: ['./selfie-capture.component.scss'],
+    standalone: true,
+    imports: [NgIf]
 })
 export class SelfieCaptureComponent {
   @ViewChild('video') videoElement!: ElementRef;

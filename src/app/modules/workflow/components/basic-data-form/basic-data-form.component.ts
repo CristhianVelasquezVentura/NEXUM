@@ -9,7 +9,7 @@ import {ToastComponent} from "@app/public/toast/toast.component";
 import {getFormControlError} from "@app/public/control-error/utils/functions-form";
 import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
 import {IFormAnnexesStep1, IFormBasicDataValues, IValuesStep1} from "@app/core/models/workflow/workflow.model";
-import {UiModule} from "@app/core/ui/ui.module";
+
 import {BlockUiComponent} from "@app/core/ui/block-ui/block-ui.component";
 
 @Component({
@@ -17,7 +17,7 @@ import {BlockUiComponent} from "@app/core/ui/block-ui/block-ui.component";
   templateUrl: './basic-data-form.component.html',
   styleUrls: ['./basic-data-form.component.scss'],
   standalone: true,
-  imports: [ReactiveFormsModule, ToastComponent, NgIf, NgForOf, UiModule, BlockUiComponent],
+  imports: [ReactiveFormsModule, ToastComponent, NgIf, NgForOf, BlockUiComponent],
   providers: [ToastService]
 })
 export class BasicDataFormComponent implements OnInit {

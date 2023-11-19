@@ -1,10 +1,14 @@
 import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { ToastService } from '@app/public/services/toast/toast.service';
+import { ToastComponent } from '../../../../public/toast/toast.component';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-document-capture',
-  templateUrl: './document-capture.component.html',
-  styleUrls: ['./document-capture.component.scss']
+    selector: 'app-document-capture',
+    templateUrl: './document-capture.component.html',
+    styleUrls: ['./document-capture.component.scss'],
+    standalone: true,
+    imports: [NgIf, ToastComponent]
 })
 export class DocumentCaptureComponent {
   @ViewChild('video') videoElement!: ElementRef;

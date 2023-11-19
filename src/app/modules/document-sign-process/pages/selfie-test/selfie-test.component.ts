@@ -6,11 +6,19 @@ import { IdentityService } from '@app/core/services/verification/identity.servic
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { ValidationUserTest } from '@app/core/models/test-validation';
+import { BlockPageComponent } from '../../../../core/ui/block-page/block-page.component';
+import { SelfieCaptureComponent } from '../../components/selfie-capture/selfie-capture.component';
+import { DocumentCaptureComponent } from '../../components/document-capture/document-capture.component';
+import { NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
+import { SteperComponent } from '../../components/steper/steper.component';
+import { HeaderDocumentSignComponent } from '../../components/header-document-sign/header-document-sign.component';
 
 @Component({
-  selector: 'app-selfie-test',
-  templateUrl: './selfie-test.component.html',
-  styleUrls: ['./selfie-test.component.scss']
+    selector: 'app-selfie-test',
+    templateUrl: './selfie-test.component.html',
+    styleUrls: ['./selfie-test.component.scss'],
+    standalone: true,
+    imports: [HeaderDocumentSignComponent, SteperComponent, NgIf, NgSwitch, NgSwitchCase, DocumentCaptureComponent, SelfieCaptureComponent, BlockPageComponent]
 })
 export class SelfieTestComponent {
   @Output('next-page') nextPage: EventEmitter<string> = new EventEmitter<string>();

@@ -13,12 +13,15 @@ import * as pdfJsLib from 'pdfjs-dist';
 import {PdfDimensions} from "@app/core/models/pdf";
 import {PDFDocumentProxy} from "pdfjs-dist";
 import {PDFPageProxy} from "pdfjs-dist/types/src/display/api";
+import { NgIf } from '@angular/common';
 
 
 @Component({
-  selector: 'app-pdf-viewer',
-  templateUrl: './pdf-viewer.component.html',
-  styleUrls: ['./pdf-viewer.component.scss']
+    selector: 'app-pdf-viewer',
+    templateUrl: './pdf-viewer.component.html',
+    styleUrls: ['./pdf-viewer.component.scss'],
+    standalone: true,
+    imports: [NgIf]
 })
 export class PdfViewerComponent implements OnInit, OnChanges {
 

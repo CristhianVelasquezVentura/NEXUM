@@ -5,21 +5,18 @@ import { SignaturesGroupComponent } from './pages/signatures-group/signatures-gr
 import { SectionsSignGroupComponent } from './pages/sections-sign-group/sections-sign-group.component';
 import { SignatureFormComponent } from './pages/signature-form/signature-form.component';
 import { SectionSignFormComponent } from './pages/section-sign-form/section-sign-form.component';
-import {UiModule} from "@app/core/ui/ui.module";
+
 
 
 
 @NgModule({
-  declarations: [
+    imports: [
+    CommonModule,
+    SignaturesSectionsRoutingModule,
     SignaturesGroupComponent,
     SectionsSignGroupComponent,
     SignatureFormComponent,
     SectionSignFormComponent
-  ],
-  imports: [
-    CommonModule,
-    SignaturesSectionsRoutingModule,
-    UiModule
-  ]
+]
 })
 export class SignaturesSectionsModule { }

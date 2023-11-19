@@ -6,11 +6,16 @@ import { AttachedDocument, RequestedDocument } from '@app/modules/workflow/model
 import { WorkflowService } from '@app/modules/workflow/services/workflow.service';
 import { ToastService } from 'ecapture-ng-ui';
 import { Subscription } from 'rxjs';
+import { NgFor } from '@angular/common';
+import { SteperComponent } from '../../components/steper/steper.component';
+import { HeaderDocumentSignComponent } from '../../components/header-document-sign/header-document-sign.component';
 
 @Component({
-  selector: 'app-attach-documents',
-  templateUrl: './attach-documents.component.html',
-  styleUrls: ['./attach-documents.component.scss']
+    selector: 'app-attach-documents',
+    templateUrl: './attach-documents.component.html',
+    styleUrls: ['./attach-documents.component.scss'],
+    standalone: true,
+    imports: [HeaderDocumentSignComponent, SteperComponent, NgFor]
 })
 export class AttachDocumentsComponent implements OnInit, OnDestroy{
   @Output('next-page') nextPage: EventEmitter<string> = new EventEmitter<string>();
