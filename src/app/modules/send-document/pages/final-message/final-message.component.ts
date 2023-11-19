@@ -2,15 +2,15 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HeaderNexumComponent } from '../../../../core/ui/header-nexum/header-nexum.component';
+import { HeaderNexumComponent } from '@app/core/ui';
 
 @Component({
-    selector: 'app-final-messange',
-    templateUrl: './final-messange.component.html',
-    styleUrls: ['./final-messange.component.scss'],
+    selector: 'app-final-message',
+    templateUrl: './final-message.component.html',
+    styleUrls: ['./final-message.component.scss'],
     standalone: true,
     imports: [HeaderNexumComponent, ReactiveFormsModule, NgIf, RouterLink]
 })
-export class FinalMessangeComponent {
+export class FinalMessageComponent {
 
 }

@@ -8,15 +8,15 @@ export const routes: Routes = [
   },
   {
     path: 'signature',
-    loadChildren: () => import('./modules/document-sign-process/document-sign-process.module').then((m) => m.DocumentSignProcessModule)
+    loadChildren: () => import('./modules/document-sign-process/document-sign-process.routes').then((m) => m.routes)
   },
   {
     path: 'verification',
-    loadChildren: () => import('./modules/verification/verification.module').then((m) => m.VerificationModule)
+    loadChildren: () => import('./modules/verification/verification.routes').then((m) => m.routes)
   },
   {
     path: 'send-document',
-    loadChildren: () => import('./modules/send-document/send-document.module').then((m) => m.SendDocumentModule)
+    loadChildren: () => import('./modules/send-document/send-document.routes').then((m) => m.routes)
   },
   {
     path: 'workflow',
@@ -24,6 +24,6 @@ export const routes: Routes = [
   },
   {
     path: 'query-docs',
-    loadChildren: () => import('./modules/query-docs/query-docs.module').then((m) => m.QueryDocsModule)
+    loadChildren: () => import('./modules/query-docs/query-docs.routes').then((m) => m.routes)
   }
 ];
