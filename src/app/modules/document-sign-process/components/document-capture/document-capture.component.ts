@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
-import {ToastService} from "@app/core/ui/services/toast/toast.service";
+import { ToastService } from '@app/public/services/toast/toast.service';
 
 @Component({
   selector: 'app-document-capture',

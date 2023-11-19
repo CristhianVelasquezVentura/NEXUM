@@ -1,7 +1,7 @@
 import {Component, ElementRef, EventEmitter, Output, ViewChild} from '@angular/core';
 import * as faceApi from "@vladmandic/face-api";
 import { Message } from '@app/core/models/toast';
-import {ToastService} from "@app/core/ui/services/toast/toast.service";
+import { ToastService } from '@app/public/services/toast/toast.service';
 import { IdentityService } from '@app/core/services/verification/identity.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
