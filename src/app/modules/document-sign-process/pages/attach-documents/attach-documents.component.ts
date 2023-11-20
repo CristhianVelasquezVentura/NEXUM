@@ -15,7 +15,8 @@ import { HeaderDocumentSignComponent } from '../../components/header-document-si
     templateUrl: './attach-documents.component.html',
     styleUrls: ['./attach-documents.component.scss'],
     standalone: true,
-    imports: [HeaderDocumentSignComponent, SteperComponent, NgFor]
+    imports: [HeaderDocumentSignComponent, SteperComponent, NgFor],
+  providers: [ToastService]
 })
 export class AttachDocumentsComponent implements OnInit, OnDestroy{
   @Output('next-page') nextPage: EventEmitter<string> = new EventEmitter<string>();

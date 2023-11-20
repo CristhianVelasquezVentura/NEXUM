@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {Subscription} from "rxjs";
-import { FormControl, UntypedFormBuilder, UntypedFormControl, Validators, ReactiveFormsModule } from "@angular/forms";
+import { FormControl, UntypedFormBuilder, Validators, ReactiveFormsModule } from "@angular/forms";
 import {HttpErrorResponse} from "@angular/common/http";
 import {SignService} from "@app/core/services/sign/sign.service";
 import {GetTokenUser, onlyNumbers} from "@app/core/utils/validations/validations";
@@ -8,8 +8,8 @@ import {Token} from "@app/core/models/token";
 import {Router} from "@angular/router";
 import {ToastService} from "@app/public/services/toast/toast.service";
 import {EnvServiceProvider} from "@app/core/services/env/env.service.provider";
-import { ToastComponent } from '../../../../public/toast/toast.component';
-import { BlockPageComponent } from '../../../../core/ui/block-page/block-page.component';
+import { ToastComponent } from '@app/public/toast/toast.component';
+import { BlockPageComponent } from '@app/core/ui';
 import { NgIf } from '@angular/common';
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { HeaderDocumentSignComponent } from '../../components/header-document-sign/header-document-sign.component';
@@ -19,7 +19,8 @@ import { HeaderDocumentSignComponent } from '../../components/header-document-si
     templateUrl: './access-process-sign.component.html',
     styleUrls: ['./access-process-sign.component.scss'],
     standalone: true,
-    imports: [HeaderDocumentSignComponent, NgxCaptchaModule, ReactiveFormsModule, NgIf, BlockPageComponent, ToastComponent]
+    imports: [HeaderDocumentSignComponent, NgxCaptchaModule, ReactiveFormsModule, NgIf, BlockPageComponent, ToastComponent],
+    providers: [ToastService]
 })
 export class AccessProcessSignComponent implements OnInit, OnDestroy {
 

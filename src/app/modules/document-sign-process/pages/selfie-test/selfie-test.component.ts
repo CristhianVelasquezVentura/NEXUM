@@ -18,7 +18,8 @@ import { HeaderDocumentSignComponent } from '../../components/header-document-si
     templateUrl: './selfie-test.component.html',
     styleUrls: ['./selfie-test.component.scss'],
     standalone: true,
-    imports: [HeaderDocumentSignComponent, SteperComponent, NgIf, NgSwitch, NgSwitchCase, DocumentCaptureComponent, SelfieCaptureComponent, BlockPageComponent]
+    imports: [HeaderDocumentSignComponent, SteperComponent, NgIf, NgSwitch, NgSwitchCase, DocumentCaptureComponent, SelfieCaptureComponent, BlockPageComponent],
+  providers: [ToastService]
 })
 export class SelfieTestComponent {
   @Output('next-page') nextPage: EventEmitter<string> = new EventEmitter<string>();

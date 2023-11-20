@@ -5,7 +5,7 @@ import {onlyNumbers} from "@app/core/utils/validations/validations";
 import {Subscription} from "rxjs";
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Trazabilidad } from '@app/core/models/traza.model';
-import { BlockPageComponent } from '../../../../core/ui/block-page/block-page.component';
+import { BlockPageComponent } from '@app/core/ui';
 import { NgIf, NgFor, DatePipe } from '@angular/common';
 
 @Component({
@@ -13,7 +13,8 @@ import { NgIf, NgFor, DatePipe } from '@angular/common';
     templateUrl: './tracking-document.component.html',
     styleUrls: ['./tracking-document.component.scss'],
     standalone: true,
-    imports: [ReactiveFormsModule, FormsModule, NgIf, NgFor, BlockPageComponent, DatePipe]
+    imports: [ReactiveFormsModule, FormsModule, NgIf, NgFor, BlockPageComponent, DatePipe],
+  providers: [ToastService]
 })
 export class TrackingDocumentComponent implements OnDestroy, OnInit{
 

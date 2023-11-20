@@ -17,7 +17,8 @@ import { HeaderDocumentSignComponent } from '../../components/header-document-si
     templateUrl: './valid-sign.component.html',
     styleUrls: ['./valid-sign.component.scss'],
     standalone: true,
-    imports: [HeaderDocumentSignComponent, SteperComponent, NgIf, ReactiveFormsModule]
+    imports: [HeaderDocumentSignComponent, SteperComponent, NgIf, ReactiveFormsModule],
+    providers: [ToastService]
 })
 export class ValidSignComponent implements OnInit, OnDestroy {
 

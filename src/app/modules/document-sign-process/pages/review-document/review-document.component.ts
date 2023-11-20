@@ -14,8 +14,8 @@ import {Router} from "@angular/router";
 import {ToastService} from "@app/public/services/toast/toast.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Token} from "@app/core/models/token";
-import { BlockPageComponent } from '../../../../core/ui/block-page/block-page.component';
-import { PdfViewerComponent } from '../../../../core/ui/pdf-viewer/pdf-viewer.component';
+import { BlockPageComponent } from '@app/core/ui';
+import { PdfViewerComponent } from '@app/core/ui';
 import { NgIf, NgFor } from '@angular/common';
 import { SteperComponent } from '../../components/steper/steper.component';
 import { HeaderDocumentSignComponent } from '../../components/header-document-sign/header-document-sign.component';
@@ -53,6 +53,7 @@ import { HeaderDocumentSignComponent } from '../../components/header-document-si
         PdfViewerComponent,
         BlockPageComponent,
     ],
+  providers: [ToastService]
 })
 export class ReviewDocumentComponent implements OnInit, OnDestroy {
 

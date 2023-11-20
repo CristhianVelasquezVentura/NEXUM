@@ -24,7 +24,8 @@ import { NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
     templateUrl: './document-sign-process.component.html',
     styleUrls: ['./document-sign-process.component.scss'],
     standalone: true,
-    imports: [NgIf, NgSwitch, NgSwitchCase, AccessProcessSignComponent, SelfieTestComponent, ReviewDocumentComponent, AttachDocumentsComponent, SignUserComponent, NgSwitchDefault, ValidSignComponent, ToastComponent, BlockPageComponent]
+    imports: [NgIf, NgSwitch, NgSwitchCase, AccessProcessSignComponent, SelfieTestComponent, ReviewDocumentComponent, AttachDocumentsComponent, SignUserComponent, NgSwitchDefault, ValidSignComponent, ToastComponent, BlockPageComponent],
+  providers: [ToastService]
 })
 export class DocumentSignProcessComponent implements OnInit, OnDestroy {
   private _subscriptions: Subscription = new Subscription();

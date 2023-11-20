@@ -12,7 +12,6 @@ export const routes: Routes = [
   },
   {
     path: 'doc',
-    component: OrderSignDocComponent,
     loadComponent: () => import('./pages/order-sign-doc/order-sign-doc.component').then(m => m.OrderSignDocComponent)
   }
 ];

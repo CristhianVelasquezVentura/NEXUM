@@ -13,7 +13,8 @@ import { NgIf } from '@angular/common';
     templateUrl: './validate-document.component.html',
     styleUrls: ['./validate-document.component.scss'],
     standalone: true,
-    imports: [NgIf, ReactiveFormsModule, BlockPageComponent]
+    imports: [NgIf, ReactiveFormsModule, BlockPageComponent],
+  providers: [ToastService]
 })
 export class ValidateDocumentComponent implements OnDestroy {
   public formValidateDocument: UntypedFormGroup;
