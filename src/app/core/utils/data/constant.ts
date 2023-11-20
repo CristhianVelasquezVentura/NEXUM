@@ -265,6 +265,8 @@ export const ecRoleStyle: DropdownModel = {
 };
 
 export const languages = [
+  {value: 21, label: "Spanish; Castilian"},
+  {value: 22, label: "English"},
   /*{value: "ab", label: "Abkhaz"},
   {value: "aa", label: "Afar"},
   {value: "af", label: "Afrikaans"},
@@ -304,7 +306,6 @@ export const languages = [
   {value: "da", label: "Danish"},
   {value: "dv", label: "Divehi; Dhivehi; Maldivian;"},
   {value: "nl", label: "Dutch"},
-  {value: "3", label: "English"},
   {value: "eo", label: "Esperanto"},
   {value: "et", label: "Estonian"},
   {value: "ee", label: "Ewe"},
@@ -411,9 +412,8 @@ export const languages = [
   {value: "sk", label: "Slovak"},
   {value: "sl", label: "Slovene"},
   {value: "so", label: "Somali"},
-  {value: "st", label: "Southern Sotho"},*/
-  {value: 4, label: "Spanish; Castilian"},
-  /*{value: "su", label: "Sundanese"},
+  {value: "st", label: "Southern Sotho"},
+  {value: "su", label: "Sundanese"},
   {value: "sw", label: "Swahili"},
   {value: "ss", label: "Swati"},
   {value: "sv", label: "Swedish"},

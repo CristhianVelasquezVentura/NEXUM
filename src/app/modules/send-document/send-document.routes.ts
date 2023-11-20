@@ -17,7 +17,6 @@ export const routes: Routes = [
   },
   {
     path: 'document-review',
-    component: DocumentReviewComponent,
     loadComponent: () => import('./pages/document-review/document-review.component').then(c => c.DocumentReviewComponent),
   },
   {

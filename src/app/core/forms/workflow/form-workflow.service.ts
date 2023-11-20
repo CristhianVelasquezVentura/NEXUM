@@ -50,9 +50,9 @@ export class FormWorkflowService {
     private initGeneralInfoForm() {
         return this._fbNonNull.group({
             name: ['', [NgxValidators.required, NgxValidators.minLength(4), NgxValidators.maxLength(50)]],
-            id_language: new FormControl(4, {validators: [NgxValidators.required]}),
+            id_language: [21, NgxValidators.required],
             document_expiration: [1, NgxValidators.required],
-            id_expiration_frequency: new FormControl(8, {validators: [NgxValidators.required]}),
+            id_expiration_frequency: [8, NgxValidators.required],
 
             sender_name: ['', [NgxValidators.required, NgxValidators.minLength(4), NgxValidators.maxLength(50)]],
             sender_email: ['', [NgxValidators.required, NgxValidators.email]],

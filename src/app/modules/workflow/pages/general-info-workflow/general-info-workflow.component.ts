@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {FormWorkflowService} from '@app/core/forms/workflow/form-workflow.service';
-import {Annexes} from '../../models/steps';
 import {ReactiveFormsModule} from '@angular/forms';
 import {codeCountries, fontText, languages} from '@app/core/utils/data/constant';
 import {Router} from '@angular/router';
@@ -76,11 +75,12 @@ export class GeneralInfoWorkflowComponent implements OnInit {
 
         const valuesStep: unknown = {
             formBasic: {
-                ...this._formService.generalInfoForm.value,
+                ...this._formService.generalInfoForm.getRawValue(),
                 attached_document: this._formService.attachedDocuments,
-                roleSigners: this._formService.roleSigners
+                roleSigners: this._formService.roleSigners,
+              requested_documents: []
             },
-            formBranding: this._formService.brandingForm.value,
+            formBranding: this._formService.brandingForm.getRawValue(),
         }
 
         this._sessionStorageService.setItem(
