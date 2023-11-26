@@ -6,7 +6,7 @@
       <input type="text" (keypress)="onlyNumbers($event)" [(ngModel)]="documentId">
       <span *ngIf="false">Ingrese el ID del Documento</span>
     </div>
-    <button class="b-small" (click)="getTrackingDocument()">
+    <button [disabled]="!documentId" class="b-small" (click)="getTrackingDocument()">
       <span>Consultar</span>
       <div class="text-brand-c">
         <svg class="stroke-current" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

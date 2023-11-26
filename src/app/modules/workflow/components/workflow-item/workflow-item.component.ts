@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
-import { Workflow } from '../../models/steps';
+import { IWorkflow } from '../../models/steps';
 
 @Component({
   selector: 'workflow-item',
@@ -9,8 +9,8 @@ import { Workflow } from '../../models/steps';
 })
 export class WorkflowItemComponent {
 
-  @Input() workflow!:Workflow;
-  @Output() selectItem: EventEmitter<Workflow> = new EventEmitter<Workflow>();
+  @Input() workflow!:IWorkflow;
+  @Output() selectItem: EventEmitter<IWorkflow> = new EventEmitter<IWorkflow>();
 
   public emitSelectItem(){
     this.selectItem.emit(this.workflow)

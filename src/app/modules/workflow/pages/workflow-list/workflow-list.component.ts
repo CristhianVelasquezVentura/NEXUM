@@ -1,12 +1,13 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {Workflow} from '../../models/steps';
+import {IWorkflow} from '../../models/steps';
 import {WorkflowService} from '../../services/workflow.service';
 
 import {RouterLink} from "@angular/router";
 import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {WorkflowItemComponent} from "@app/modules/workflow/components/workflow-item/workflow-item.component";
-import {HeaderNexumComponent, ToolbarComponent} from "@app/core/ui";
+import {BlockPageComponent, HeaderNexumComponent, ToolbarComponent} from "@app/core/ui";
+import {ToastService} from "@app/public/services/toast/toast.service";
 
 @Component({
   selector: 'app-workflow-list',
@@ -19,22 +20,26 @@ import {HeaderNexumComponent, ToolbarComponent} from "@app/core/ui";
     NgForOf,
     NgIf,
     ToolbarComponent,
-    HeaderNexumComponent
+    HeaderNexumComponent,
+    BlockPageComponent
   ],
   standalone: true
 })
 export class WorkflowListComponent implements OnInit, OnDestroy {
   public isBlockPage: boolean = false;
   private _subscription = new Subscription();
-  public workflows: Workflow[] = [];
-  public workflowsPagination: Workflow[] = [];
-  public workflowsPaginationTemp: Workflow[] = [];
+  public workflows: IWorkflow[] = [];
+  public workflowsPagination: IWorkflow[] = [];
+  public workflowsPaginationTemp: IWorkflow[] = [];
   public totalWorkflowsPagination: number = 0;
   public leftLimit: number = 0;
   public paginationValue: number = 5;
   public rightLimit: number = 5;
 
-  constructor(private _workflowService: WorkflowService) {
+  constructor(
+      private _workflowService: WorkflowService,
+      private _messageService: ToastService,
+  ) {
   }
 
   ngOnDestroy(): void {
@@ -48,23 +53,24 @@ export class WorkflowListComponent implements OnInit, OnDestroy {
   private getWorkflows(): void {
     this.isBlockPage = true;
     this._subscription.add(
-      this._workflowService.getWorkflows().subscribe({
+      this._workflowService.getWorkflows(10, 0).subscribe({
         next: (response) => {
+          this.isBlockPage = false;
           if (response.error) {
-            // this._messageService.add({
-            //   type: 'error',
-            //   message: response.msg,
-            //   life: 5000
-            // });
+            this._messageService.add({
+              type: 'error',
+              message: response.msg,
+              life: 5000
+            });
             return
           }
 
           if (!response.data) {
-            // this._messageService.add({
-            //   type: 'warning',
-            //   message: response.msg,
-            //   life: 5000
-            // });
+            this._messageService.add({
+              type: 'warning',
+              message: response.msg,
+              life: 5000
+            });
             return;
           }
 
@@ -77,15 +83,9 @@ export class WorkflowListComponent implements OnInit, OnDestroy {
             this.workflows.length / this.paginationValue
           );
           console.log(this.workflows);
-          this.isBlockPage = false;
         },
         error: (error: Error) => {
           console.error(error.message);
-          // this._messageService.add({
-          //   type: 'error',
-          //   message: 'No se pudo consultar el listado de flujos de trabajo, intente nuevamente !',
-          //   life: 5000
-          // });
           this.isBlockPage = false;
         },
       })
@@ -103,7 +103,7 @@ export class WorkflowListComponent implements OnInit, OnDestroy {
     );
   }
 
-  public showDetailWorkflow(workflow: Workflow) {
+  public showDetailWorkflow(workflow: IWorkflow) {
 
   }
 }

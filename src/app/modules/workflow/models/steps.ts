@@ -1,11 +1,13 @@
 import {Document} from "@app/core/models/document"
 import {
   IFormAnnexesStep1,
-  IFormOTPNotifyEMAILValues,
-  IFormOTPNotifySMSValues,
-  IFormReminderEMAILValues,
-  IFormReminderSMSValues, IFormStyleSignValues
 } from "@app/core/models/workflow/workflow.model";
+import {
+  IFormOTPNotifyEMAILValues, IFormOTPNotifySMSValues,
+  IFormReminderEMAILValues,
+  IFormReminderSMSValues,
+  IFormStyleSignValues
+} from "@app/core/forms/workflow";
 
 export interface Documents {
   name: string;
@@ -96,7 +98,7 @@ export interface DtoOtp {
 
 export interface ResponseWorkflow {
   error: boolean;
-  data: Workflow;
+  data: IWorkflow;
   code: number;
   type: string;
   msg: string;
@@ -209,13 +211,13 @@ export interface SignersId {
 
 export interface ResponseGetWorkflow {
   error: boolean;
-  data: Workflow[];
+  data: IWorkflow[];
   code: number;
   type: string;
   msg: string;
 }
 
-export interface Workflow {
+export interface IWorkflow {
   id: number;
   name: string;
   sender_name: string;

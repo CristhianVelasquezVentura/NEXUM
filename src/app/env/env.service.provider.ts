@@ -1,7 +1,7 @@
 import { EnvService } from './env.service';
 
 export const EnvServiceFactory = () => {
-  const env: any = new EnvService();
+  const env: EnvService = new EnvService();
 
   const browserWindow: any = window || {};
   const browserWindowEnv = browserWindow['__env'] || {};

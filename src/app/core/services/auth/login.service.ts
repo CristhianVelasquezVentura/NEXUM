@@ -5,7 +5,7 @@ import {Router} from "@angular/router";
 import {Login, LoginResponse } from '@app/core/models/login.module';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {catchError, map} from "rxjs/operators";
-import {EnvServiceProvider} from "@app/core/services/env/env.service.provider";
+import {EnvServiceProvider} from "@app/env/env.service.provider";
 
 const helper = new JwtHelperService();
 
