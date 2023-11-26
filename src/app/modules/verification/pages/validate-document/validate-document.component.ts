@@ -5,8 +5,8 @@ import {ToastService} from "@app/public/services/toast/toast.service";
 import {Response} from "@app/core/models/global.model";
 import * as CryptoJS from 'crypto-js';
 import {Subscription} from "rxjs";
-import { BlockPageComponent } from '../../../../core/ui/block-page/block-page.component';
 import { NgIf } from '@angular/common';
+import {BlockPageComponent} from "@app/core/ui";
 
 @Component({
     selector: 'app-validate-document',
@@ -132,7 +132,7 @@ export class ValidateDocumentComponent implements OnDestroy {
 
     this._subscriptions.add(
       this._verificationService.validateDataFile(data).subscribe({
-        next: (res: Response) => {
+        next: (res: Response<string>) => {
           this.isBlockPage = false;
           if (res.error) {
             this._messageService.add({type: 'error', message: res.msg, life: 5000});

@@ -1,0 +1,29 @@
+<div class="fixed top-0 left-0 w-full h-screen flex p-8 items-center justify-center z-10"
+     style="background-color: rgba(0,0,0,0.2)">
+    <div class="space-y-6 p-6 rounded-lg border-zc-200 bg-white drop-shadow-lg w-full h-fit" style="max-width: 350px;">
+        <div class="title-section flex items-center space-x-2">
+            <div class="w-1 h-4 rounded bg-brand-c"></div>
+            <span class="t-body text-brand-c">Agregar solicitud</span>
+        </div>
+
+        <form class="grid gap-2 w-full" [formGroup]="annexesForm">
+            <div class="i-outline">
+                <label>Documento</label>
+                <input formControlName="doctype_name" type="text" class="w-full">
+                <span *ngIf="isErrorControl(annexesForm.controls['doctype_name'])">{{getError(annexesForm.controls['doctype_name'])}}</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <input formControlName="required" type="checkbox" class="w-4 h-4">
+
+                <span class="flex-1 text-zc-800 t-body">Obligatorio</span>
+            </div>
+        </form>
+        <div class="w-full flex items-center space-x-2">
+            <button class="b-ghost-md w-full" (click)="cancelFormAnnexe()">Cancelar</button>
+            <div class="separador h-6 border-l border-zc-200"></div>
+            <button class="b-ghost-md w-full" (click)="saveFormAnnexe()">
+                <span class="text-brand-c">Agregar</span>
+            </button>
+        </div>
+    </div>
+</div>

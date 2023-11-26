@@ -1,4 +1,4 @@
-export interface Trazabilidad {
+export interface ITraceability {
   id: number,
   document_id: number,
   event: number,

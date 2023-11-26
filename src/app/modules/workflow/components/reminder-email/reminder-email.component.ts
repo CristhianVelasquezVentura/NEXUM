@@ -3,11 +3,13 @@ import {CommonModule} from '@angular/common';
 import {AbstractControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {FormWorkflowService} from "@app/core/forms/workflow/form-workflow.service";
 import {getFormControlError} from "@app/public/control-error/utils/functions-form";
-import {IFormReminderEMAIL, IFormReminderSMS} from "@app/core/forms/workflow/form-workflow.model";
+import {
+  IFormReminderEMAIL,
+  IFormReminderEMAILValues,
+  IFormReminderSMS
+} from "@app/core/forms/workflow/form-workflow.model";
 import {timeOptions} from "@app/core/utils/data/constant";
 import {
-  IFormReminderEMAILValues,
-  IFormSignerNotifySMSValues,
   IValuesStep3,
   IValuesStep5
 } from "@app/core/models/workflow/workflow.model";

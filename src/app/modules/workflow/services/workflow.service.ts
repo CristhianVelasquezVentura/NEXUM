@@ -19,7 +19,8 @@ import {
 import {HttpClient} from "@angular/common/http";
 import {map} from "rxjs/operators";
 import {environment} from "@env/environment";
-import {EnvServiceProvider} from "@app/core/services/env/env.service.provider";
+import {EnvServiceProvider} from "@app/env/env.service.provider";
+import {EnvService} from "@app/env/env.service";
 
 @Injectable({
   providedIn: 'root'
@@ -41,16 +42,16 @@ export class WorkflowService {
   private urlNotificationEmail = EnvServiceProvider.useFactory().API_WORKFLOW + '/api/v1/notification/email';
 
   constructor(
-    private _http: HttpClient
+    private _http: HttpClient,
+    private env: EnvService
   ) { }
 
   public createWorkflow(workflow: DtoWorkflow): Observable<ResponseWorkflow> {
     return this._http.post<ResponseWorkflow>(this.urlCreateWorkflow, workflow).pipe(map(res => res));
   }
 
-  public getWorkflows(): Observable<ResponseGetWorkflow> {
-    const token = sessionStorage.getItem("access-token");
-    return this._http.get<ResponseGetWorkflow>(this.urlGetWorkflow,{headers: { 'Authorization': `Bearer ${token}`}}).pipe(map(res => res));
+  public getWorkflows(limit: number, offset: number): Observable<ResponseGetWorkflow> {
+    return this._http.get<ResponseGetWorkflow>(`${this.env.API_ENGINE}/api/v1/workflow/${limit}/${offset}`).pipe(map(res => res));
   }
 
   public getSignatureAppearance(workflowId: number): Observable<ResponseSignatureAppearance> {

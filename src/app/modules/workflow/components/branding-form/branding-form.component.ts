@@ -3,9 +3,9 @@ import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {fontText} from "@app/core/utils/data/constant";
 import {AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {FormWorkflowService} from "@app/core/forms/workflow/form-workflow.service";
-import {IFormBrand} from "@app/core/forms/workflow/form-workflow.model";
+import {IFormBrand, IFormBrandValues} from "@app/core/forms/workflow/form-workflow.model";
 import {getFormControlError} from "@app/public/control-error/utils/functions-form";
-import {IFormBrandingValues, IValuesStep1} from "@app/core/models/workflow/workflow.model";
+import {IValuesStep1} from "@app/core/models/workflow/workflow.model";
 import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
 
 @Component({
@@ -33,7 +33,7 @@ export class BrandingFormComponent implements OnInit {
         if (workflowCreateStep1?.formBranding) this.mapValuesForm(workflowCreateStep1.formBranding)
     }
 
-    private mapValuesForm(formBrandValues: IFormBrandingValues) {
+    private mapValuesForm(formBrandValues: IFormBrandValues) {
 
         this.formBrand.patchValue(formBrandValues);
     }

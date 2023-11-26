@@ -7,7 +7,7 @@ import {GetTokenUser, onlyNumbers} from "@app/core/utils/validations/validations
 import {Token} from "@app/core/models/token";
 import {Router} from "@angular/router";
 import {ToastService} from "@app/public/services/toast/toast.service";
-import {EnvServiceProvider} from "@app/core/services/env/env.service.provider";
+import {EnvServiceProvider} from "@app/env/env.service.provider";
 import { ToastComponent } from '@app/public/toast/toast.component';
 import { BlockPageComponent } from '@app/core/ui';
 import { NgIf } from '@angular/common';

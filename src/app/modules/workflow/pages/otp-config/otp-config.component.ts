@@ -6,7 +6,7 @@ import {Router, RouterLink} from '@angular/router';
 import {languages, timeOptions} from "@app/core/utils/data/constant";
 import {JsonPipe, NgForOf, NgIf} from "@angular/common";
 import {getFormControlError} from "@app/public/control-error/utils/functions-form";
-import {IFormSignerNotifyEMAILValues, IValuesStep3, IValuesStep4} from "@app/core/models/workflow/workflow.model";
+import {IValuesStep4} from "@app/core/models/workflow/workflow.model";
 import {ToastService} from "@app/public/services/toast/toast.service";
 import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
 import {ToastComponent} from "@app/public/toast/toast.component";

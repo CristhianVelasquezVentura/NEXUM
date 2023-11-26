@@ -16,7 +16,7 @@ import {
   ResponseSmsNoticeToSigner,
   ResponseWorkflow
 } from "@app/modules/workflow/models/steps";
-import {EnvServiceProvider} from "@app/core/services/env/env.service.provider";
+import {EnvServiceProvider} from "@app/env/env.service.provider";
 import { Observable } from 'rxjs';
 import {map} from "rxjs/operators";
 
@@ -38,10 +38,10 @@ export class WorkflowService {
   private urlNotificationSms = EnvServiceProvider.useFactory().API_WORKFLOW + '/api/v1/notification/sms';
   private urlNotificationEmail = EnvServiceProvider.useFactory().API_WORKFLOW + '/api/v1/notification/email';
   constructor(    private _http: HttpClient
-    ) { 
+    ) {
   }
   public getWorkflows(): Observable<ResponseGetWorkflow> {
     return this._http.get<ResponseGetWorkflow>(this.urlGetWorkflow).pipe(map(res => res));
   }
-  
+
 }

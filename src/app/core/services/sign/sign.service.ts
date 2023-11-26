@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {HttpClient} from "@angular/common/http";
-import {EnvServiceProvider} from "@app/core/services/env/env.service.provider";
+import {EnvServiceProvider} from "@app/env/env.service.provider";
 import {ResponseSigners, ResponseSignersId, Signature, Signer} from "@app/core/models/signer";
 import {Response} from "@app/core/models/response";
 

@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {catchError, map} from "rxjs/operators";
 import {Observable, throwError} from "rxjs";
 import {environment} from "@env/environment";
-import {EnvServiceProvider} from "@app/core/services/env/env.service.provider";
+import {EnvServiceProvider} from "@app/env/env.service.provider";
 import { ValidationUserTest } from '@app/core/models/test-validation';
 @Injectable({
   providedIn: 'root'

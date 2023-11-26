@@ -5,11 +5,10 @@ import {AbstractControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {FormWorkflowService} from "@app/core/forms/workflow/form-workflow.service";
 import {getFormControlError} from "@app/public/control-error/utils/functions-form";
 import {
-  IFormSignerNotifyEMAILValues,
-  IFormSignerNotifySMSValues,
   IValuesStep3
 } from "@app/core/models/workflow/workflow.model";
 import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
+import {IFormNotifySignerSMSValues} from "@app/core/forms/workflow";
 
 @Component({
   selector: 'workflow-notify-signers-sms-form',
@@ -36,7 +35,7 @@ export class NotifySignersSmsFormComponent {
     if (workflowCreateStep3?.formSignerNotifySMS) this.mapValuesForm(workflowCreateStep3.formSignerNotifySMS)
   }
 
-  private mapValuesForm(generalSignerNotifySMSValues: IFormSignerNotifySMSValues) {
+  private mapValuesForm(generalSignerNotifySMSValues: IFormNotifySignerSMSValues) {
 
     this.notifySignersSMSForm.patchValue(generalSignerNotifySMSValues);
   }

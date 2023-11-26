@@ -2,10 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {AbstractControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {FormWorkflowService} from "@app/core/forms/workflow/form-workflow.service";
-import {IFormReminderSMS} from "@app/core/forms/workflow/form-workflow.model";
+import {IFormReminderSMS, IFormReminderSMSValues} from "@app/core/forms/workflow/form-workflow.model";
 import {languages, timeOptions} from "@app/core/utils/data/constant";
 import {getFormControlError} from "@app/public/control-error/utils/functions-form";
-import {IFormReminderEMAILValues, IFormReminderSMSValues, IValuesStep5} from "@app/core/models/workflow/workflow.model";
+import {IValuesStep5} from "@app/core/models/workflow/workflow.model";
 import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
 
 @Component({

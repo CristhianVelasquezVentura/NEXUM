@@ -8,9 +8,10 @@ import {ToastService} from "@app/public/services/toast/toast.service";
 import {ToastComponent} from "@app/public/toast/toast.component";
 import {getFormControlError} from "@app/public/control-error/utils/functions-form";
 import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
-import {IFormAnnexesStep1, IFormBasicDataValues, IValuesStep1} from "@app/core/models/workflow/workflow.model";
+import {IFormAnnexesStep1, IValuesStep1} from "@app/core/models/workflow/workflow.model";
 
 import {BlockUiComponent} from "@app/core/ui/block-ui/block-ui.component";
+import {IFormBasicDataValues} from "@app/core/forms/workflow";
 
 @Component({
   selector: 'workflow-basic-data-form',
