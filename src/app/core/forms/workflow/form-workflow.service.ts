@@ -6,7 +6,7 @@ import {
     IFormNotifySignerSMS,
     IFormOTP, IFormOTPNotifyEMAIL, IFormOTPNotifySMS, IFormReminderEMAIL, IFormReminderSMS
 } from "@app/core/forms/workflow/form-workflow.model";
-import {IFormAnnexesStep1} from "@app/core/models/workflow/workflow.model";
+import {IFormAnnexesStep1} from "@app/core/models/workflow/workflow-create.model";
 import {NgxValidators} from "@app/public/control-error/utils/ngx-validators";
 import {IRoleSigner} from "@app/modules/workflow/models/steps";
 

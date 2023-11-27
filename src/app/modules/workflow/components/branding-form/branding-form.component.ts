@@ -5,7 +5,7 @@ import {AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule} from "@ang
 import {FormWorkflowService} from "@app/core/forms/workflow/form-workflow.service";
 import {IFormBrand, IFormBrandValues} from "@app/core/forms/workflow/form-workflow.model";
 import {getFormControlError} from "@app/public/control-error/utils/functions-form";
-import {IValuesStep1} from "@app/core/models/workflow/workflow.model";
+import {IValuesStep1} from "@app/core/models/workflow/workflow-create.model";
 import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
 
 @Component({

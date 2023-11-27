@@ -1,1 +1,1 @@
-export * from './basic-data-form/basic-data-form.component'
+export * from './general-info-form/general-info-form.component'

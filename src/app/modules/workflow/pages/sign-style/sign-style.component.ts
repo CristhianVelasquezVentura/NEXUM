@@ -9,7 +9,7 @@ import {getFormControlError} from "@app/public/control-error/utils/functions-for
 import {ToastComponent} from "@app/public/toast/toast.component";
 import {ToastService} from "@app/public/services/toast/toast.service";
 import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
-import {IValuesStep2} from "@app/core/models/workflow/workflow.model";
+import {IValuesStep2} from "@app/core/models/workflow/workflow-create.model";
 import {HeaderNexumComponent} from "@app/core/ui";
 import {IFormStyleSignValues} from "@app/core/forms/workflow";
 

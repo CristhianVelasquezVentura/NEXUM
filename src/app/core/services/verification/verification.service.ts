@@ -16,11 +16,11 @@ export class VerificationService {
   }
 
   public validateDataFile(data: any): Observable<Response<string>> {
-    return this.http.post<any>(`${this.env.API_ENGINE}/api/v1/files/validate`, data);
+    return this.http.post<Response<string>>(`${this.env.API_ENGINE}/api/v1/files/validate`, data);
   }
 
   public getTrackingDocument(document_id: number): Observable<Response<ITraceability[]>> {
-    return this.http.get<any>(`${this.env.API_ENGINE}/api/v1/document/tracking/${document_id}`);
+    return this.http.get<Response<ITraceability[]>>(`${this.env.API_ENGINE}/api/v1/document/tracking/${document_id}`);
   }
 
   public validateDownloadFile(document_id: number, password: string) {

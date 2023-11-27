@@ -1,20 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
-  DtoWorkflow,
-  ResponseAttachedDocument,
-  ResponseEmailNoticeToSigner,
-  ResponseGetRolesSigners,
-  ResponseGetUserById,
-  ResponseGetWorkflow, ResponseNotificationEmail,
-  ResponseNotificationSms,
-  ResponseOtp,
-  ResponseOtpNotificationEmail,
-  ResponseOtpNotificationSms,
-  ResponseRequestedDocument,
-  ResponseSignatureAppearance,
-  ResponseSmsNoticeToSigner,
-  ResponseWorkflow
+  ResponseGetWorkflow
 } from "@app/modules/workflow/models/steps";
 import {EnvServiceProvider} from "@app/env/env.service.provider";
 import { Observable } from 'rxjs';

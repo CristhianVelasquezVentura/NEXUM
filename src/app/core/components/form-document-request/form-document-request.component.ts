@@ -5,7 +5,7 @@ import {getFormControlError} from "@app/public/control-error/utils/functions-for
 import {NgxValidators} from "@app/public/control-error/utils/ngx-validators";
 import {
   IFormDocumentRequest,
-  IFormDocumentRequestValue
+  IDocumentRequest
 } from "@app/core/components/form-document-request/models/form-document-request.model";
 import {ToastService} from "@app/public/services/toast/toast.service";
 
@@ -18,7 +18,7 @@ import {ToastService} from "@app/public/services/toast/toast.service";
 })
 export class FormDocumentRequestComponent {
   @Output() cancelFormEvent = new EventEmitter<undefined>()
-  @Output() saveFormEvent = new EventEmitter<IFormDocumentRequestValue>()
+  @Output() saveFormEvent = new EventEmitter<IDocumentRequest>()
 
   public annexesForm: FormGroup<IFormDocumentRequest>;
 
@@ -31,7 +31,7 @@ export class FormDocumentRequestComponent {
   private getAnnexesForm() {
     return new FormGroup<IFormDocumentRequest>({
       name: new FormControl('', {validators: NgxValidators.required, nonNullable: true}),
-      isRequired: new FormControl(false, {validators: NgxValidators.required, nonNullable: true}),
+      required: new FormControl(false, {validators: NgxValidators.required, nonNullable: true}),
     });
   }
 

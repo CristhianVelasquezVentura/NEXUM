@@ -2,9 +2,9 @@ import {FormControl} from "@angular/forms";
 
 export interface IFormDocumentRequest {
     name: FormControl<string>;
-    isRequired: FormControl<boolean>;
+    required: FormControl<boolean>;
 }
-export interface IFormDocumentRequestValue {
+export interface IDocumentRequest {
     name: string;
-    isRequired: boolean;
+    required: boolean;
 }

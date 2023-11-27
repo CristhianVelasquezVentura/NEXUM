@@ -1,24 +1,24 @@
-<form class="space-y-6 w-full" [formGroup]="infoGeneralForm">
+<form class="space-y-6 w-full" [formGroup]="mainDataForm">
     <div class="grid gap-2 w-full">
         <div class="i-outline">
             <label>Flujo de trabajo</label>
-            <select formControlName="workflow" class="w-full" (change)="loadConfigWorkflow($event)">
+            <select formControlName="workflow_id" class="w-full" (change)="loadConfigWorkflow($event)">
                 <option selected hidden value="">{{'Seleccione un flujo de trabajo'}}</option>
-                <option *ngFor="let item of workflowsData; index as _index" value="{{item.value}}">{{item.label}}</option>
+                <option *ngFor="let item of workflowsData; index as _index"
+                        value="{{item.value}}">{{item.label}}</option>
             </select>
         </div>
         <div class="i-outline">
             <label>Documento a firmar</label>
             <div class="h-2"></div>
             <input type="file" class="w-full" (change)="uploadMainFile($event)" accept=".pdf">
-            <span></span>
         </div>
     </div>
 
     <div class="grid gap-2 w-full">
         <div class="i-outline">
             <label>Asunto para el envío</label>
-            <input formControlName="tittle" type="text" class="w-full">
+            <input formControlName="title" type="text" class="w-full">
         </div>
         <div class="i-outline">
             <label>Descripción del envío</label>
@@ -37,21 +37,13 @@
         <span *ngIf="attachedDocument.length > 0" class="t-body text-zc-400">Estos documentos son anexos del documento principal:</span>
     </div>
 
-    <div *ngIf="attachedDocument.length < 1" class="grid gap-2 w-full">
+    <div *ngIf="!attachedDocument.length" class="grid gap-2 w-full">
         <span class="t-body text-zc-400">El flujo no requiere de anexos o no seleccionó un flujo.</span>
     </div>
 
-    <div *ngIf="attachedDocument.length > 0" class="grid gap-2 w-full">
+    <div *ngIf="attachedDocument.length" class="grid gap-2 w-full">
         <div *ngFor="let annexe of attachedDocument; let position = index" class="i-outline">
             <label>{{annexe.doctype_name}}</label>
-            <div class="h-2"></div>
-            <input type="file" class="w-full" (change)="setAttachment($event, position)">
-        </div>
-    </div>
-
-    <div *ngIf="attachedDocuments.length > 0 && attachedDocument.length === 0" class="grid gap-2 w-full">
-        <div *ngFor="let annexe of attachedDocuments; let position = index" class="i-outline">
-            <label>{{annexe.name}}</label>
             <div class="h-2"></div>
             <input type="file" class="w-full" (change)="setAttachment($event, position)">
         </div>
@@ -93,7 +85,7 @@
             <input type="checkbox" class="w-4 h-4">
             <span class="flex-1 text-zc-800 t-body">{{item.name}}</span>
             <div
-                    class="t-label text-brand-c bg-brand-l rounded-full px-1 py-0.5">{{item.isRequired ? 'Obligatorio' : ''}}</div>
+                    class="t-label text-brand-c bg-brand-l rounded-full px-1 py-0.5">{{item.required ? 'Obligatorio' : ''}}</div>
             <button class="b-ghost-sm" (click)="deleteAnnexe(position)">
                 <div class="stroke-alert-error">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -117,30 +109,8 @@
     </div>
 </div>
 
-<div *ngIf="modalAddSolicitude" class="fixed top-0 left-0 w-full h-screen flex p-8 flex items-center justify-center"
-     style="background-color: rgba(0,0,0,0.2)">
-    <div class="space-y-6 p-6 rounded-lg border-zc-200 bg-white drop-shadow-lg w-full h-fit" style="max-width: 350px;">
-        <div class="title-section flex items-center space-x-2">
-            <div class="w-1 h-4 rounded bg-brand-c"></div>
-            <span class="t-body text-brand-c">Agregar solicitud</span>
-        </div>
-
-        <form class="grid gap-2 w-full" [formGroup]="annexesForm">
-            <div class="i-outline">
-                <label>Documento</label>
-                <input type="text" class="w-full" formControlName="name">
-            </div>
-            <div class="flex items-center space-x-2">
-                <input type="checkbox" class="w-4 h-4" formControlName="requiredAnnexe">
-                <span class="flex-1 text-zc-800 t-body">Obligatorio</span>
-            </div>
-        </form>
-        <div class="w-full flex items-center space-x-2">
-            <button (click)="modalAddSolicitude = false" class="b-ghost-md w-full">Cancelar</button>
-            <div class="separador h-6 border-l border-zc-200"></div>
-            <button class="b-ghost-md w-full" (click)="addAnnex()">
-                <span class="text-brand-c">Agregar</span>
-            </button>
-        </div>
-    </div>
-</div>
+<app-form-document-request
+        *ngIf="modalAddSolicitude"
+        (cancelFormEvent)="modalAddSolicitude = false"
+        (saveFormEvent)="addRequestAnnexe($event)"
+></app-form-document-request>

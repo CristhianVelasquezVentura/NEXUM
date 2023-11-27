@@ -9,7 +9,7 @@ import {ToastComponent} from "@app/public/toast/toast.component";
 import {ToastService} from "@app/public/services/toast/toast.service";
 import {BasicDataFormComponent, BrandingFormComponent} from "@app/modules/workflow/components";
 import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
-import {IValuesStep1} from "@app/core/models/workflow/workflow.model";
+import {IValuesStep1} from "@app/core/models/workflow/workflow-create.model";
 import {HeaderNexumComponent} from "@app/core/ui";
 
 @Component({

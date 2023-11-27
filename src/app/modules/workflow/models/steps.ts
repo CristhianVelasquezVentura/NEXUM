@@ -1,7 +1,7 @@
 import {Document} from "@app/core/models/document"
 import {
   IFormAnnexesStep1,
-} from "@app/core/models/workflow/workflow.model";
+} from "@app/core/models/workflow/workflow-create.model";
 import {
   IFormOTPNotifyEMAILValues, IFormOTPNotifySMSValues,
   IFormReminderEMAILValues,
@@ -385,44 +385,6 @@ export interface OtpNotificationSms {
   active_sms: boolean;
   text: string;
   id_user: number;
-  created_at: string;
-  updated_at: string;
-}
-
-export interface ResponseAttachedDocument {
-  error: boolean;
-  data: AttachedDocument[];
-  code: number;
-  type: string;
-  msg: string;
-}
-
-export interface AttachedDocument {
-  id: number;
-  id_workflow: number;
-  doctype_name: string;
-  required: boolean;
-  id_user: number;
-  deleted_at: string;
-  created_at: string;
-  updated_at: string;
-}
-
-export interface ResponseRequestedDocument {
-  error: boolean;
-  data: RequestedDocument[];
-  code: number;
-  type: string;
-  msg: string;
-}
-
-export interface RequestedDocument {
-  id: number;
-  id_workflow: number;
-  doctype_name: string;
-  required: boolean;
-  id_user: number;
-  deleted_at: string;
   created_at: string;
   updated_at: string;
 }

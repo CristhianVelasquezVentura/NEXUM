@@ -12,7 +12,7 @@ import {
 } from "@app/modules/workflow/components/notify-signers-email-form/notify-signers-email-form.component";
 import {ToastComponent} from "@app/public/toast/toast.component";
 import {ToastService} from "@app/public/services/toast/toast.service";
-import {IValuesStep3} from "@app/core/models/workflow/workflow.model";
+import {IValuesStep3} from "@app/core/models/workflow/workflow-create.model";
 import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
 import {HeaderNexumComponent} from "@app/core/ui";
 import {ReactiveFormsModule} from "@angular/forms";

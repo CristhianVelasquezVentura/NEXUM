@@ -12,7 +12,7 @@ import {timeOptions} from "@app/core/utils/data/constant";
 import {
   IValuesStep3,
   IValuesStep5
-} from "@app/core/models/workflow/workflow.model";
+} from "@app/core/models/workflow/workflow-create.model";
 import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
 
 @Component({

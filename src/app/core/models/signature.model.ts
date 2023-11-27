@@ -1,5 +1,6 @@
-import {Annexes, RequestedDocument} from "../../modules/workflow/models/steps";
+import {Annexes} from "@app/modules/workflow/models/steps";
 import {FormGroup} from "@angular/forms";
+import {RequestedDocument} from "@app/core/models/workflow/workflow.model";
 
 export interface DocInfoStep1 {
   title: string;

@@ -6,7 +6,7 @@ import {FormWorkflowService} from "@app/core/forms/workflow/form-workflow.servic
 import {getFormControlError} from "@app/public/control-error/utils/functions-form";
 import {
   IValuesStep3
-} from "@app/core/models/workflow/workflow.model";
+} from "@app/core/models/workflow/workflow-create.model";
 import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
 import {IFormNotifySignerSMSValues} from "@app/core/forms/workflow";
 

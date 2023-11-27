@@ -3,12 +3,12 @@ import {NgForOf, NgIf} from '@angular/common';
 import {codeCountries, fontText, languages, timeOptions} from "@app/core/utils/data/constant";
 import {AbstractControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {FormWorkflowService} from "@app/core/forms/workflow/form-workflow.service";
-import {Annexes, IRoleSigner} from "@app/modules/workflow/models/steps";
+import {IRoleSigner} from "@app/modules/workflow/models/steps";
 import {ToastService} from "@app/public/services/toast/toast.service";
 import {ToastComponent} from "@app/public/toast/toast.component";
 import {getFormControlError} from "@app/public/control-error/utils/functions-form";
 import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
-import {IFormAnnexesStep1, IValuesStep1} from "@app/core/models/workflow/workflow.model";
+import {IFormAnnexesStep1, IValuesStep1} from "@app/core/models/workflow/workflow-create.model";
 
 import {BlockUiComponent} from "@app/core/ui/block-ui/block-ui.component";
 import {IFormBasicDataValues} from "@app/core/forms/workflow";

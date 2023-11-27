@@ -1,6 +1,6 @@
 import {FormControl} from "@angular/forms";
 import {IRoleSigner} from "@app/modules/workflow/models/steps";
-import {IFormAnnexesStep1} from "@app/core/models/workflow/workflow.model";
+import {IFormAnnexesStep1} from "@app/core/models/workflow/workflow-create.model";
 
 export interface IFormBasicDataValues {
   name: string;

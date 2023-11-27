@@ -9,7 +9,7 @@ import {ToastService} from "@app/public/services/toast/toast.service";
 import {Router, RouterLink} from "@angular/router";
 import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
 import {ToastComponent} from "@app/public/toast/toast.component";
-import {IValuesStep5} from "@app/core/models/workflow/workflow.model";
+import {IValuesStep5} from "@app/core/models/workflow/workflow-create.model";
 import {HeaderNexumComponent} from "@app/core/ui";
 @Component({
   selector: 'app-reminder-signers',

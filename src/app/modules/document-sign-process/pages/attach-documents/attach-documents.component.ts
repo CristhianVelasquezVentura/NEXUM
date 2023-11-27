@@ -2,13 +2,13 @@ import { Component,EventEmitter,OnDestroy,OnInit,Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { FileEvent } from '@app/core/models/signature.model';
 import { DocumentService } from '@app/core/services/document/document.service';
-import { AttachedDocument, RequestedDocument } from '@app/modules/workflow/models/steps';
 import { WorkflowService } from '@app/modules/workflow/services/workflow.service';
 import { ToastService } from 'ecapture-ng-ui';
 import { Subscription } from 'rxjs';
 import { NgFor } from '@angular/common';
 import { SteperComponent } from '../../components/steper/steper.component';
 import { HeaderDocumentSignComponent } from '../../components/header-document-sign/header-document-sign.component';
+import {AttachedDocument, RequestedDocument} from "@app/core/models/workflow/workflow.model";
 
 @Component({
     selector: 'app-attach-documents',

@@ -4,7 +4,7 @@ import {languages} from "@app/core/utils/data/constant";
 import {AbstractControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {FormWorkflowService} from "@app/core/forms/workflow/form-workflow.service";
 import {getFormControlError} from "@app/public/control-error/utils/functions-form";
-import {IValuesStep3} from "@app/core/models/workflow/workflow.model";
+import {IValuesStep3} from "@app/core/models/workflow/workflow-create.model";
 import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
 import {IFormNotifySignerEMAILValues} from "@app/core/forms/workflow";
 

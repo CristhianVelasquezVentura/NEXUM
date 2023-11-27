@@ -11,7 +11,7 @@ import {
   IValuesStep3,
   IValuesStep4,
   IValuesStep5
-} from "@app/core/models/workflow/workflow.model";
+} from "@app/core/models/workflow/workflow-create.model";
 import {WorkflowService} from "@app/modules/workflow/services/workflow.service";
 import {ToastService} from "@app/public/services/toast/toast.service";
 import {ToastComponent} from "@app/public/toast/toast.component";
