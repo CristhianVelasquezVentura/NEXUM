@@ -77,7 +77,7 @@ export class GeneralInfoFormComponent implements OnChanges {
                 description: localDataInfo.description,
             });
             this.docMain = localDataInfo.docMain;
-            this.attachedDocuments = localDataInfo.attachedDocuments;
+            //this.attachedDocuments = localDataInfo.attachedDocuments;
             this.annexes = localDataInfo.annexes;
             this.requestedDocument = localDataInfo.requestedDocument;
             return
@@ -142,7 +142,7 @@ export class GeneralInfoFormComponent implements OnChanges {
                         return
                     }
 
-                    this.attachedDocument = res.data || [];
+                    //this.attachedDocument = res.data || [];
                 }, error: (err: Error) => {
                     console.error(err.message);
                 }
