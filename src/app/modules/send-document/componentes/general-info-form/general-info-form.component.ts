@@ -11,7 +11,7 @@ import {FilesService} from "@app/core/services/file/file.service";
 import {FormDocumentRequestComponent, IDocumentRequest} from "@app/core/components/form-document-request";
 import {FormSendDocumentService, IFormMainData} from "@app/core/forms/send-document";
 import {SessionStorageService} from "@app/core/services/storage/session-storage.service";
-import {IDocumentFiles, IValuesStep1, RequestedDocumentData} from "@app/core/models/send-document";
+import {AttachedDocumentData, IDocumentFiles, IValuesStep1} from "@app/core/models/send-document";
 import {AttachedDocument, RequestedDocument} from "@app/core/models/workflow/workflow.model";
 
 @Component({
@@ -33,9 +33,8 @@ export class GeneralInfoFormComponent implements OnChanges {
     public isFileCharged: boolean = false;
     public annexes: IDocumentRequest[] = [];
 
-    public attachedDocument: AttachedDocument[] = [];
-    public attachedDocuments: FileEvent[] = [];
-    public requestedDocument: RequestedDocumentData[] = [];
+    public attachedDocument: AttachedDocumentData[] = [];
+    public requestedDocument: RequestedDocument[] = [];
     public documentFiles: IDocumentFiles[] = [];
 
     private docFile64: string = '';
@@ -103,6 +102,10 @@ export class GeneralInfoFormComponent implements OnChanges {
         return !this.documentFiles.find(doc => doc.file_id === 1)
     }
 
+    get hasAttachedDocument() {
+        return !this.documentFiles.find(doc => doc.file_id === 2)
+    }
+
     ngOnDestroy(): void {
         this._subscription.unsubscribe();
     }
@@ -158,7 +161,7 @@ export class GeneralInfoFormComponent implements OnChanges {
 
                     if(!res?.data) return;
 
-                    this.requestedDocument = res.data.map(doc => ({...doc, data: undefined, upload: false}));
+                    this.requestedDocument = res.data;
                 },
                 error: (err: Error) => {
                     console.error(err.message);
@@ -206,5 +209,9 @@ export class GeneralInfoFormComponent implements OnChanges {
                 file_id: 1
             }
         )
+    }
+
+    public cancelEvent(evt: Event){
+        return false
     }
 }

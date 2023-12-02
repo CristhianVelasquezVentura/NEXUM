@@ -34,14 +34,14 @@
             <div class="w-1 h-4 rounded bg-brand-c"></div>
             <span class="t-body text-brand-c">Documentos Adjuntos</span>
         </div>
-        <span *ngIf="attachedDocument.length > 0" class="t-body text-zc-400">Estos documentos son anexos del documento principal:</span>
+        <span *ngIf="attachedDocument.length" class="t-body text-zc-400">Estos documentos son anexos del documento principal:</span>
     </div>
 
-    <div *ngIf="!attachedDocument.length" class="grid gap-2 w-full">
+    <div *ngIf="hasAttachedDocument" class="grid gap-2 w-full">
         <span class="t-body text-zc-400">El flujo no requiere de anexos o no seleccionó un flujo.</span>
     </div>
 
-    <div *ngIf="attachedDocument.length" class="grid gap-2 w-full">
+    <div *ngIf="hasAttachedDocument" class="grid gap-2 w-full">
         <div *ngFor="let annexe of attachedDocument; let position = index" class="i-outline">
             <label>{{annexe.doctype_name}}</label>
             <div class="h-2"></div>
@@ -72,9 +72,9 @@
 
     <div class="w-full flex flex-col">
         <!--Solicitudes del workflow-->
-        <div *ngFor="let annexe of requestedDocument; let position = index"
+        <div *ngFor="let annexe of requestedDocument;"
              class="flex items-center space-x-2 py-2 border-b border-zc-200">
-            <input type="checkbox" class="w-4 h-4" [checked]="annexe.required">
+            <input type="checkbox" class="w-4 h-4" [checked]="annexe.required" (click)="cancelEvent($event)">
             <span class="flex-1 text-zc-800 t-body">{{annexe.doctype_name}}</span>
             <div
                     class="t-label text-brand-c bg-brand-l rounded-full px-1 py-0.5">{{annexe.required ? 'Obligatorio' : ''}}</div>
@@ -97,7 +97,7 @@
             </button>
         </div>
         <div class="flex pt-4 justify-center">
-            <button class="b-small" (click)="modalAddSolicitude = true">
+            <button class="b-small" (click)="modalAddSolicitude = true" [disabled]="true">
                 <span>Agregar solicitud</span>
                 <div class="stroke-brand-c">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
