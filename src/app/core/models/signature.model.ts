@@ -1,16 +1,4 @@
-import {Annexes} from "@app/modules/workflow/models/steps";
 import {FormGroup} from "@angular/forms";
-import {RequestedDocument} from "@app/core/models/workflow/workflow.model";
-
-export interface DocInfoStep1 {
-  title: string;
-  description: string;
-  workflow: any;
-  docMain: any;
-  attachedDocuments: FileEvent[],
-  annexes: Annexes[],
-  requestedDocument: RequestedDocument[]
-}
 
 export interface DropdownModelWF {
   value: string;
@@ -66,12 +54,6 @@ export interface Phone {
 export interface RequestedAnnexes {
   citizenship_card: boolean;
   military_card: boolean;
-}
-
-export interface FileEvent {
-  name: string;
-  value: string;
-  extension: string;
 }
 
 export interface SignerModel {

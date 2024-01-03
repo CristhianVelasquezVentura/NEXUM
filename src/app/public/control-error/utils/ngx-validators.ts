@@ -29,8 +29,8 @@ export class NgxValidators {
 
   public static max(max: number): ValidatorFn {
     return (control) => {
-      const maxfunction = Validators.max(max);
-      const error = maxfunction(control);
+      const maxFunction = Validators.max(max);
+      const error = maxFunction(control);
 
       return error ? {max: this._getMessage('max', [{max: 12, current: 18}])} : null;
     };

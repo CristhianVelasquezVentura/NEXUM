@@ -10,11 +10,10 @@ import {
   ViewChild
 } from '@angular/core';
 import * as pdfJsLib from 'pdfjs-dist';
-import {PdfDimensions} from "@app/core/models/pdf";
 import {PDFDocumentProxy} from "pdfjs-dist";
 import {PDFPageProxy} from "pdfjs-dist/types/src/display/api";
+import {PdfDimensions} from "@app/core/models/pdf";
 import { NgIf } from '@angular/common';
-
 
 @Component({
     selector: 'app-pdf-viewer',
@@ -43,10 +42,15 @@ export class PdfViewerComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.initPDF();
+    //this.initPDF();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+
+    if(changes.hasOwnProperty('pdfBase64')){
+      this.initPDF()
+    }
+
     if (changes.hasOwnProperty('currentPage') && !changes['currentPage'].firstChange && !this.showAll) {
       this.renderPage(this.currentPage);
     }

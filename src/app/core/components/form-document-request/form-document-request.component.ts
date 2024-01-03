@@ -5,7 +5,7 @@ import {getFormControlError} from "@app/public/control-error/utils/functions-for
 import {NgxValidators} from "@app/public/control-error/utils/ngx-validators";
 import {
   IFormDocumentRequest,
-  IDocumentRequest
+  IRequestDocument
 } from "@app/core/components/form-document-request/models/form-document-request.model";
 import {ToastService} from "@app/public/services/toast/toast.service";
 
@@ -18,7 +18,7 @@ import {ToastService} from "@app/public/services/toast/toast.service";
 })
 export class FormDocumentRequestComponent {
   @Output() cancelFormEvent = new EventEmitter<undefined>()
-  @Output() saveFormEvent = new EventEmitter<IDocumentRequest>()
+  @Output() saveFormEvent = new EventEmitter<IRequestDocument>()
 
   public annexesForm: FormGroup<IFormDocumentRequest>;
 

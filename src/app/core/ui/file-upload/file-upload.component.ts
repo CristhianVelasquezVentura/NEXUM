@@ -1,9 +1,10 @@
-import {Component, OnInit, forwardRef, Input, Output, EventEmitter} from '@angular/core';
+import {Component, forwardRef, Input, Output, EventEmitter} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import { NgIf, NgClass } from '@angular/common';
+import {NgIf, NgClass} from '@angular/common';
+import {FileUploadModel} from "@app/core/ui/file-upload/models/file-upload.model";
 
 @Component({
-    selector: 'app-file-upload',
+    selector: 'ec-file-upload',
     templateUrl: './file-upload.component.html',
     styleUrls: ['./file-upload.component.scss'],
     providers: [
@@ -16,83 +17,76 @@ import { NgIf, NgClass } from '@angular/common';
     standalone: true,
     imports: [NgIf, NgClass]
 })
-export class FileUploadComponent implements OnInit, ControlValueAccessor {
+export class FileUploadComponent implements ControlValueAccessor {
+    @Input() label = '';
+    @Input() placeholder = '';
+    @Input() error: boolean;
+    @Input() message: string;
+    @Input() accept: string = '.pdf, .jpg, .png';
+    @Output() onUpload = new EventEmitter<FileUploadModel>();
 
-  @Input() label = '';
-  @Input() inputLabel = '';
-  @Input() infoText = '';
-  @Input() helpText = '';
-  @Input() error: boolean;
-  @Input() message: string;
-  @Input() icon = '';
-  @Input() accept: string = '.pdf, .jpg, .png';
-  @Output() onSelected = new EventEmitter<any>();
-  public currentValue: string;
-  public isDisabled: boolean;
-  private maxValueFile: number;
-  private imageSrcNow: string;
-  private extension: string = '';
+    public value: FileUploadModel | null = null;
+    public isDisabled: boolean;
 
-  constructor() {
-    this.error=false;
-    this.message='';
-    this.currentValue='';
-    this.isDisabled=false;
-    this.maxValueFile=0;
-    this.imageSrcNow='';
-  }
+    private readonly maxFileSizeBytes: number;
 
-  ngOnInit(): void {
-    this.maxValueFile = 3145728;
-    this.icon = this.icon === '' ? 'upload white-base' : this.icon;
-  }
+    // File size in bytes equivalent to 3MB
+    private readonly THREE_MB_BYTES = 3 * 1024 * 1024;
 
-  public onChange = (_: any) => {
-  }
+    constructor() {
+        this.error = false;
+        this.message = '';
+        this.isDisabled = false;
 
-  public onTouch = () => {
-  }
-
-  public newValue(value: any): void {
-    for (const file of value.target.files) {
-      if (file.size >= this.maxValueFile) {
-        this.error = true;
-        this.message = 'El peso del archivo no puede ser mayor a 2mb';
-        break;
-      }
-      this.error = false;
-      this.message = '';
-      this.infoText = file.name;
-      this.extension = file.type
-      this.loadImg(file);
+        this.maxFileSizeBytes = this.THREE_MB_BYTES;
     }
-  }
 
-  private loadImg(file: File): void {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => reader.result;
-    reader.onloadend = this._handleReaderLoaded.bind(this);
-  }
 
-  private _handleReaderLoaded(e:any): void {
-    const reader = e.target;
-    this.imageSrcNow = reader.result;
+    public onChange = (_: any) => {
+    }
+    public onTouch = () => {
+    }
 
-    const type = this.imageSrcNow.split(';')[0];
-    this.currentValue = this.imageSrcNow.replace(type + ';base64,', '');
-    this.onSelected.emit({
-      name: this.infoText,
-      value: this.currentValue,
-      extension: this.extension
-    })
-    this.onTouch();
-    this.onChange(this.currentValue);
-  }
+    public processFileInput(input: any): void {
+        for (const file of input.target.files) {
+            if (file.size >= this.maxFileSizeBytes) {
+                this.error = true;
+                this.message = 'El peso del archivo no puede ser mayor a 2mb';
+                break;
+            }
+            this.error = false;
+            this.message = '';
+            this.loadImg(file);
+        }
+    }
+
+    private loadImg(file: File): void {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = this._handleReaderLoaded.bind(this, file.name, file.type);
+    }
+
+    private _handleReaderLoaded(fileName: string, fileType: string, e: ProgressEvent): void {
+        const reader = e.target as FileReader;
+        const imageSrc = reader.result as string;
+        const type = imageSrc.split(';')[0];
+        const base64 = imageSrc.replace(type + ';base64,', '');
+
+        // Created an object right away
+        this.value = {
+            type: type,
+            base64: base64,
+            name: fileName,
+            extension: fileType
+        }
+        this.onUpload.emit(this.value);
+        this.onTouch();
+        this.onChange(this.value);
+    }
 
   writeValue(value: any): void {
-    if (value) {
-      this.currentValue = value;
+    if (value && Object.keys(value).length) {
+      this.value = value;
     }
   }
 

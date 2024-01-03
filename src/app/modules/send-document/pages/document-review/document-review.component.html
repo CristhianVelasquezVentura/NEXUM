@@ -38,7 +38,7 @@
         </div>
         <div *ngIf="tabSelect === 'annexes'"><!--Anexos-->
           <div class="flex-1 flex space-x-2 overflow-x-auto w-full" style="max-width: calc(100vw - 64px)">
-            <div *ngIf="true"><!--Sin Anexos-->
+            <div *ngIf="!formValues.formMainData.attachedDocuments.length"><!--Sin Anexos-->
               <div class="bg-zc-50 w-40 border border-zc-200 rounded">
                 <div class="flex items-center space-x-2 p-2">
                   <div class="flex flex-col text-left">
@@ -48,8 +48,8 @@
                 </div>
               </div>
             </div>
-            <ng-container><!--NgFor Anexos-->
-              <button class="bg-red-50 border {{true ? 'border-red-500':'border-red-50 hover:border hover:border-red-500'}} rounded">
+            <ng-container *ngFor="let annexe of formValues.formMainData.attachedDocuments"><!--NgFor Anexos-->
+              <button class="bg-red-50 border {{true ? 'border-red-500':'border-red-50 hover:border hover:border-red-500'}} rounded" (click)="setShowNewPdf(annexe.file.base64)">
                 <div class="flex items-center space-x-2 p-2">
                   <div>
                     <svg class="fill-current fill-red-500" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,8 +57,8 @@
                     </svg>
                   </div>
                   <div class="flex flex-col text-left">
-                    <span class="t-label text-zc-black">{{'annexe.name_document'}}</span>
-                    <span class="t-label text-zc-600 uppercase">{{'annexe.type'}}</span>
+                    <span class="t-label text-zc-black">{{annexe.file.name}}</span>
+                    <span class="t-label text-zc-600 uppercase">{{annexe.file.extension}}</span>
                   </div>
                 </div>
               </button>
@@ -67,7 +67,7 @@
         </div>
       </div>
       <div class="h-full space-y-4 overflow-y-auto bg-zc-200 flex justify-center py-4 rounded-lg pb-16">
-
+        <app-pdf-viewer [src]="srcPDF" [current-page]="1"></app-pdf-viewer>
       </div>
 
       <div class="h-16"></div>

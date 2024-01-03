@@ -21,16 +21,17 @@ export class ControlErrorsDirective implements OnInit, OnDestroy {
     private readonly submit$ = this.form ? this.form.submit$ : EMPTY;
     private readonly blurEvent$ = fromEvent(this.elementRef.nativeElement, 'blur');
 
-    ngOnInit(): void {
+
+  ngOnInit(): void {
         merge(this.submit$, this.blurEvent$, this.ngControl.statusChanges!)
             .pipe(takeUntil(this.destroy$))
             .subscribe(() => {
                 const errorControl = getFormControlError(this.ngControl.control!);
                 this.setError(errorControl);
 
-                if (this._isMatInput()) {
-                    this._addIntoMatFormField();
-                }
+                //if (this._isMatInput()) {
+                //    this._addIntoMatFormField();
+                //}
             });
     }
     private _isMatInput() {

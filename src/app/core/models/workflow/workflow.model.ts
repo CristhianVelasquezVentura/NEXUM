@@ -1,3 +1,5 @@
+import {FileUploadModel} from "@app/core/ui/file-upload/models/file-upload.model";
+
 export interface RequestedDocument {
     id: number;
     id_workflow: number;

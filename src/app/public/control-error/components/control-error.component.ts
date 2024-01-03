@@ -6,7 +6,6 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@a
     standalone: true,
     imports: [NgIf],
     templateUrl: './control-error.component.html',
-    styleUrls: ['./control-error.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ControlErrorComponent {

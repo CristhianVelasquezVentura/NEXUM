@@ -1,18 +1,8 @@
 import {IMainData} from "@app/core/forms/send-document";
+import {IRequestDocument} from "@app/core/components/form-document-request";
 
 export interface IValuesStep1 {
-    formMainData: IMainData;
+  formMainData: IMainData;
+  requestDocument: IRequestDocument[];
 }
 
-export interface IDocumentFiles {
-    encoding: string;
-    file_id: number;
-    file_name: string;
-}
-
-export interface AttachedDocumentData {
-    doctype_name: string;
-    required: boolean;
-    upload: boolean;
-    data: IDocumentFiles | undefined;
-}

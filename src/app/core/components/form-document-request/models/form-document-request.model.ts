@@ -4,7 +4,7 @@ export interface IFormDocumentRequest {
     name: FormControl<string>;
     required: FormControl<boolean>;
 }
-export interface IDocumentRequest {
+export interface IRequestDocument {
     name: string;
     required: boolean;
 }
