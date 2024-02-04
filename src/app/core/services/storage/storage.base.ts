@@ -11,6 +11,8 @@ export abstract class StorageBase implements Storage {
   }
 
   getItem<T>(key: string): T | null {
+
+
     const data = this._api.getItem(key);
     return data !== null ? JSON.parse(data) as T : null;
   }
